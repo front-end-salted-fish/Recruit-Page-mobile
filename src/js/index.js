@@ -1,5 +1,5 @@
 // 放置主要的js问卷
-import '../css/index.less'
+import '../css/reset.less'
 
 
  //取消默认行为

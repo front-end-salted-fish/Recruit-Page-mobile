@@ -14,7 +14,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "zepto": "^1.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
