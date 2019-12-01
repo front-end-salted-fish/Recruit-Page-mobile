@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/js/index.js',
-   
+
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, './dist')
@@ -25,9 +25,15 @@ module.exports = {
             {
                 test: require.resolve('zepto'),
                 loader: 'exports-loader?window.Zepto!script-loader'
-              },
+            },
             {
                 test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
                     'file-loader'
                 ]
@@ -44,9 +50,9 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [ 'style-loader', 'css-loader' ]
-              },
-            
+                use: ['style-loader', 'css-loader']
+            },
+
             {
                 test: /\.less$/,
                 use: [{
