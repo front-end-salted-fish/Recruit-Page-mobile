@@ -1,11 +1,12 @@
-// 放置主要的js问卷
+// 放置主要的js文件
 import '../css/reset.less'
+import '../css/index.less'
+import $ from 'zepto'
 
 
- //取消默认行为
- document.addEventListener('touchstart',function(event){
-    event.preventDefault();
-});
+$(function() {
+    console.log($('div'))
+})
 //解决点透事件
 !(function(){
     var aNodes = document.querySelectorAll('a');
