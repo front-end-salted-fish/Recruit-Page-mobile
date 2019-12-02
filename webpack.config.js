@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
+    mode: 'development',
     entry: './src/js/index.js',
 
     output: {
@@ -16,7 +18,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Output Management',
-            template: path.join(__dirname, 'index.html'),
+            template: path.join(__dirname, 'index.html'), 
             filename: 'index.html'
         })
     ],
@@ -27,13 +29,17 @@ module.exports = {
                 loader: 'exports-loader?window.Zepto!script-loader'
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|jpg|gif)$/,
                 use: [
-                    'file-loader'
-                ]
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }]
             },
             {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
                 use: [
                     'file-loader'
                 ]
@@ -47,7 +53,7 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            },
+            },     
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
@@ -63,16 +69,7 @@ module.exports = {
                     loader: "less-loader" // compiles Less to CSS
                 }]
             },
-            {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192
-                        }
-                    }]
-            }
+           
         ]
 
 
