@@ -1,9 +1,7 @@
 import 'zepto/src/touch'
 import './rem'
 import '../font/menu/iconfont.css'
-import mqObj from "./mq-production";
 
-console.log(mqObj);
 var MOVE_DIS = 20;
 var menu = $('#cf-menu');
 var btnWrap = $('#cf-menu .move-wrap')
@@ -162,7 +160,7 @@ function move(node) {
                 mqObj.a = 1;
                 mqObj.swipeD(mqObj.firstId);
                 mqObj.swipeU(mqObj.firstId);
-
+                console.log(mqObj.a);
                 break;
             case 1:
                 is.removeClass('height-light');
@@ -172,7 +170,7 @@ function move(node) {
                 mqObj.a = 1;
                 mqObj.swipeD(mqObj.thirdId);
                 mqObj.swipeU(mqObj.thirdId);
-
+                console.log(mqObj.a);
                 break;
             case 2:
                 is.removeClass('height-light');
@@ -182,7 +180,7 @@ function move(node) {
                 mqObj.a = 1;
                 mqObj.swipeD(mqObj.secondId);
                 mqObj.swipeU(mqObj.secondId);
-
+                console.log(mqObj.a);
                 break;
             case 3:
                 is.removeClass('height-light');
@@ -192,16 +190,17 @@ function move(node) {
                 mqObj.a = 1;
                 mqObj.swipeD(mqObj.lastId);
                 mqObj.swipeU(mqObj.lastId);
-
+                console.log(mqObj.a);
                 break;
             case 4:
                 is.removeClass('height-light');
                 is.eq(3).addClass('height-light');
                 alldetailDiv.hide();
                 iosDiv.show(200);
-                mqObj.a = 1;
+                a = 1;
                 mqObj.swipeD(mqObj.fourthId);
                 mqObj.swipeU(mqObj.fourthId);
+                console.log(mqObj.a);
                 break;
         }
     })
