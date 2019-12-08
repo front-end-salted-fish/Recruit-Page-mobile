@@ -1,0 +1,58 @@
+{
+  "id": "1551628",
+  "name": "new",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "785013",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "1017253",
+      "name": "iOS",
+      "font_class": "ios",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "1108385",
+      "name": "后台8",
+      "font_class": "houtai8",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "2075246",
+      "name": "安卓",
+      "font_class": "anzhuo1",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "6705520",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e70f",
+      "unicode_decimal": 59151
+    },
+    {
+      "icon_id": "7450585",
+      "name": "H5",
+      "font_class": "H",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "10033408",
+      "name": "机器学习",
+      "font_class": "jiqixuexi___",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
