@@ -1,7 +1,9 @@
 import 'zepto/src/touch'
 import './rem'
 import '../font/menu/iconfont.css'
+import mqObj from "./mq-production";
 
+console.log(mqObj);
 var MOVE_DIS = 20;
 var menu = $('#cf-menu');
 var btnWrap = $('#cf-menu .move-wrap')
@@ -127,9 +129,6 @@ function move(node) {
             } else {
                 downCount++;
             }
-            // var ele = menuBtns.last().remove();
-            // menuBtns = $('#cf-menu .move-wrap').children();
-            // menuBtns.first().before(ele)
             startDeg += 72;
             btnWrap.css({
                 transform: 'rotate(' + startDeg + 'deg)'
@@ -137,39 +136,7 @@ function move(node) {
             is.css({
                 transform: 'rotate(' + (-startDeg) + 'deg)'
             });
-            // switch (downCount) {
-            //     case 0:
-            //         is.removeClass('height-light');
-            //         is.eq(2).addClass('height-light');
-            //         alldetailDiv.hide();
-            //         fontEndeDiv.show(200);
-            //         break;
-            //     case 1:
-            //         is.removeClass('height-light');
-            //         is.eq(1).addClass('height-light');
-            //         alldetailDiv.hide();
-            //         andriodDiv.show(200);
-            //         break;
-            //     case 2:
-            //         is.removeClass('height-light');
-            //         is.eq(0).addClass('height-light');
-            //         alldetailDiv.hide();
-            //         backstageDiv.show(200);
-            //         break;
-            //     case 3:
-            //         is.removeClass('height-light');
-            //         is.eq(4).addClass('height-light');
-            //         alldetailDiv.hide();
-            //         iosDiv.show(200);
-            //
-            //         break;
-            //     case 4:
-            //         is.removeClass('height-light');
-            //         is.eq(3).addClass('height-light');
-            //         alldetailDiv.hide();
-            //         iosDiv.show(200);
-            //         break;
-            // }
+
         }
         if (disY < 0 && disY <= -MOVE_DIS) {
             rotateTimes--;
@@ -185,8 +152,6 @@ function move(node) {
             is.css({
                 transform: 'rotate(' + (-startDeg) + 'deg)'
             });
-
-
         }
         switch (downCount) {
             case 0:
@@ -194,30 +159,49 @@ function move(node) {
                 is.eq(2).addClass('height-light');
                 alldetailDiv.hide();
                 fontEndeDiv.show(200);
+                mqObj.a = 1;
+                mqObj.swipeD(mqObj.firstId);
+                mqObj.swipeU(mqObj.firstId);
+
                 break;
             case 1:
                 is.removeClass('height-light');
                 is.eq(1).addClass('height-light');
                 alldetailDiv.hide();
                 andriodDiv.show(200);
+                mqObj.a = 1;
+                mqObj.swipeD(mqObj.thirdId);
+                mqObj.swipeU(mqObj.thirdId);
+
                 break;
             case 2:
                 is.removeClass('height-light');
                 is.eq(0).addClass('height-light');
                 alldetailDiv.hide();
                 backstageDiv.show(200);
+                mqObj.a = 1;
+                mqObj.swipeD(mqObj.secondId);
+                mqObj.swipeU(mqObj.secondId);
+
                 break;
             case 3:
                 is.removeClass('height-light');
                 is.eq(4).addClass('height-light');
                 alldetailDiv.hide();
                 merchineDiv.show(200);
+                mqObj.a = 1;
+                mqObj.swipeD(mqObj.lastId);
+                mqObj.swipeU(mqObj.lastId);
+
                 break;
             case 4:
                 is.removeClass('height-light');
                 is.eq(3).addClass('height-light');
                 alldetailDiv.hide();
                 iosDiv.show(200);
+                mqObj.a = 1;
+                mqObj.swipeD(mqObj.fourthId);
+                mqObj.swipeU(mqObj.fourthId);
                 break;
         }
     })

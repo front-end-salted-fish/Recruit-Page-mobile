@@ -168,7 +168,7 @@ let a = 1; // 切换页面时，将其置1
         // },6000);    
     }   
     !(() => {    
-        swipeU(lastId)
+        swipeU(firstId)
     })();
     // })();
     //滑动往下
@@ -282,7 +282,7 @@ let a = 1; // 切换页面时，将其置1
         // }, 6000);
         // console.log($(classname).find('.innerwrap').position().top)    
     }!(() => { 
-        swipeD(lastId)   
+        swipeD(firstId)
     })();
     // })();
     // function debounce(func, wait) {
@@ -299,3 +299,14 @@ let a = 1; // 切换页面时，将其置1
     //     }
     // // }
     // // // content.onmousemove = debounce(count,1000);
+var mqObj = {
+    firstId,
+    secondId,
+    thirdId,
+    fourthId,
+    lastId,
+    a,
+    swipeD,
+    swipeU
+};
+export default mqObj;
