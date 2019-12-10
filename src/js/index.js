@@ -5,4 +5,6 @@ import '../css/index.less'
 import '../bootstrap-3.3.7-dist/css/bootstrap.css'
 import './zl-index'
 import './mq-production'
-
+import './rj-index'
+import '../../node_modules/zepto/src/fx'
+import '../../node_modules/zepto/src/fx_methods'
