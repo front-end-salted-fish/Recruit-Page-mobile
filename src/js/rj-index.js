@@ -239,13 +239,13 @@ $bannerBtnUl.on('tap', '.rj-banner-btn', function () {
   }
 });
 
-$bannerPages.on('touchstart', function() {
+$bannerPages.tap(function() {
   console.log(rjBanner.nowPageIndex);
   $banner.animate({
-    transform: 'scale(2)',
-    filter: 'blur(10px)',
-    opacity: 0
-  },1000, 'ease',function(){
+    // transform: 'scale(2)',
+    // filter: 'blur(10px)',
+    // opacity: 0
+  },0, 'ease', function(){
     $banner.hide();
   });
 })

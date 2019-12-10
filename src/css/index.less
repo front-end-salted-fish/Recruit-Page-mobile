@@ -43,6 +43,7 @@
     }
 }
 #zl-detail-pages {
+    z-index: 1;
     .zl-text {
         color: white;
         position: absolute;
@@ -69,7 +70,10 @@
         z-index: 2;
         right: 0.1rem;
         margin-right: .8rem;
-        margin-top: .3rem;
+        margin-top: .35rem;
+        color:white;
+        font-size: 1rem;
+        font-family: Georgia, 'Times New Roman', Times, serif;
     }
 }
 @keyframes moveIconUp {
@@ -108,7 +112,7 @@
     }
 
     #mq-frontEnd {
-        display: none;
+        display: block;
         background-image: url(../../img/frontend.jpg);
         // background-color: gray;
         background-repeat: no-repeat;
@@ -151,12 +155,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
             }
         }
@@ -205,12 +209,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
             }
         }
@@ -259,12 +263,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
             }
         }
@@ -314,19 +318,19 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
             }
         }
     }
 
     #mq-ios {
-        // display: none;
+         display: none;
         background-image: url(../../img/ios.jpg);
         // background-color: gold;
         background-repeat: no-repeat;
@@ -368,12 +372,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s;
                 }
             }
         }
@@ -610,6 +614,97 @@
                 top: 0%;
                 font-size: 2.4rem;
                 font-family: '宋体','微软雅黑';
+            }
+        }
+    }
+}
+// 幕布
+.curtain {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+}
+#cf-menu {
+    @keyframes shine  {
+        from{
+            text-shadow: 0 0 0px;
+        }
+        to {
+            text-shadow: 0 0 20px;
+        }
+    }
+    z-index: 1;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-100%);
+    display: block;
+    width: 4rem;
+    height: 5rem;
+    overflow: hidden;
+    padding-left: 1rem;
+    .move-wrap {
+        //display: none;
+        opacity: 0;
+        position: relative;
+        height: 5rem;
+        width: 5rem;
+        background-color: rgba(0, 0, 0, .3);
+        border-radius: 50%;
+        transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
+        box-sizing: border-box;
+        //border: 1rem solid #FFf;
+        transform-origin: 50% 50%;
+        //transform: rotate(-72deg);
+        p {
+            position: absolute;
+            transform:translate(-50%, -50%);
+            text-align: center;
+            i {
+                display: block;
+                transform-origin: center center;
+                font-size: 1rem;
+                transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
+                //font-weight: 600;
+            }
+        }
+        p:nth-child(1) {
+            i {
+                //font-size: 1.2rem;
+                margint-top: -3px;
+            }
+        }
+        .height-light {
+            //text-shadow:  0 0 10px;
+            font-size: 1.3rem!important;
+        }
+    }
+    div.menu-btn {
+        //display: none;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-45%);
+        p {
+            //transition: all  1s;
+            margin: 0;
+            i {
+                font-size: 1rem !important;
+                line-height: 100%;
+                text-align: center;
+                color: #00A7DE !important;
+                font-weight: 600;
+            }
+            .icon-caidan {
+                animation: shine 1.5s infinite;
+            }
+            .icon-guanbi1 {
+                font-size: 0.8rem !important;
+                color: #D74C40 !important;
             }
         }
     }
