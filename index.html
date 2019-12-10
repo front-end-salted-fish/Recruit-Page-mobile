@@ -1,17 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-        <ul class="nav nav-pills">
-                <li role="presentation" class="active "><a href="#"><i class="glyphicon glyphicon-cloud">11</i> Home</a></li>
-                <li role="presentation"><a href="#">Profile</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-                </ul>
-    <div>topview</div>
+    <button class="getmypart">加入我们</button>
+    <div id="wf-form">
+        <button type="button" class="close" aria-label="Close"><span
+                aria-hidden="true">&nbsp;&times;&nbsp;</span></button>
+        <div class="first-part">
+            <div class="center">
+                <p class="title">个人信息</p><!-- 此处应有美化 -->
+                <form class="first-part-form navbar-form form-horizontal" role="form">
+                    <p class="name form-group">
+                        <label for="name" class="need control-label">姓名</label>
+                        <input name='name' type="text" class="form-control">
+                    </p>
+                    <p class="id form-group">
+                        <label for="id" class="need control-label">学号</label>
+                        <input name='id' type="text" class="form-control" maxlength="10">
+                    </p>
+                    <p class="grade form-group">
+                        <label for="grade" class="need control-label">年级专业</label>
+                        <input name='grade' type="text" class="form-control">
+                    </p>
+                    <p class="gender form-group">
+                        <label for="gender" class="need control-label">性别</label>
+                        <input type="radio" name="sex" value="男" checked>男
+                        <input type="radio" name="sex" value="女">女
+                    </p>
+                    <p class="phone form-group">
+                        <label for="phone" class="need control-label">手机</label>
+                        <input name='phone' type="text" class="form-control">
+                    </p>
+                    <p class="email form-group">
+                        <label for="email" class="need control-label">邮箱</label>
+                        <input name='email' type="text" class="form-control">
+                    </p>
+                    <p class="intro form-group">
+                        <label for="intro" class="need intro-la control-label">自我介绍</label>
+                        <textarea name='intro' class="form-control"></textarea>
+                    </p>
+
+                </form>
+                <div class="tn" id="next-page"><button type="button" class="btn btn-default navbar-btn">下一页</button>
+                </div>
+                <!-- 把button用div包住，改变div的text-align使button不受first-part-form 的left控制 -->
+            </div>
+        </div>
+        <div class="second-part">
+            <div class="title">你的想法</div>
+            <form class="second-part-form" role="form">
+                <p class="groups form-group">
+                    <label for="groups" class="groups-la need">发展方向</label>
+                    <!-- <selevct name="groups" id="groups">
+                        <option>前端</option>
+                        <option>后台</option>
+                        <option>安卓</option>
+                        <option>ios</option>
+                        <option>数字学习</option>
+                    </selevct> -->
+                    <!-- 样式1 -->
+                    <select class="form-control" name='direction'>
+                        <option>前端</option>
+                        <option>后台</option>
+                        <option>安卓</option>
+                        <option>ios</option>
+                        <option>机器学习</option>
+                    </select>
+
+                </p>
+                <p>
+                    <label>计算机类技能经验</label>
+                    <textarea class="form-control" name="skills"></textarea>
+                </p>
+                <p>
+                    <label>谈谈你对我们工作室的认识</label>
+                    <textarea class="form-control" name=cognition"></textarea>
+                </p>
+            </form>
+            <div class="btn-groups">
+                <button class="last-page btn">上一页</button>
+                <button id="commit" class="btn btn-success">提 交</button>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
