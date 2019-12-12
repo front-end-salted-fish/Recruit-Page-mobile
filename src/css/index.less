@@ -371,8 +371,12 @@
     }
 }
 #zl-detail-pages {
+<<<<<<< HEAD
     //display: none;
     overflow: hidden;
+=======
+    z-index: 1;
+>>>>>>> 3ac729114d792505087b9a9185cac38dc06f3723
     .zl-text {
         color: white;
         position: absolute;
@@ -399,7 +403,10 @@
         z-index: 2;
         right: 0.1rem;
         margin-right: .8rem;
-        margin-top: .3rem;
+        margin-top: .35rem;
+        color:white;
+        font-size: 1rem;
+        font-family: Georgia, 'Times New Roman', Times, serif;
     }
 }
 @keyframes moveIconUp {
@@ -720,6 +727,240 @@
         }
     }
 
+}
+
+// 陈锐基的轮播图
+#rj-banner {
+    z-index: 99;
+    height: 100%;
+    background: rgb(29, 29, 29);
+    width:16rem;
+    position: absolute;
+    // transform: scale(0.6);
+    overflow: hidden;
+    #rj-banner-container {
+        height: 100%;
+        position: absolute;
+        width:13rem;
+        left:50%;
+        transform: translate(-50%);
+        .rj-banner-page {
+            width:100%;
+            height: 75%;
+            position: absolute;
+            top:12%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            img {
+                position: absolute;
+                // width:100%;
+                height:100%;
+            }
+        }
+        .rj-pre-page {
+            transform: translate(-16rem);
+        }
+        .rj-next-page {
+            transform: translate(16rem);
+        }
+
+        // 下翻页效果
+        .rj-banner-out-to-left {
+            animation: bannerOutToLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            img {
+                animation: bannerImgOutToLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            }
+        }
+        @keyframes bannerOutToLeft {
+            from {
+                transform:scale(1);
+            }
+            to {
+                transform:translate(-120%) scale(.7);
+            }
+        }
+        @keyframes bannerImgOutToLeft {
+            from {
+                transform:scale(1);
+            }
+            to {
+                transform:scale(2.5);
+
+            }
+        }
+        .rj-banner-in-from-right {
+            animation: bannerInFromRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            img {
+                animation: bannerImgInFromRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            }
+        }
+        @keyframes bannerInFromRight {
+            from {
+                transform:translate(120%) scale(.7);
+            }
+            to {
+                transform:scale(1);
+            }
+        }
+        @keyframes bannerImgInFromRight {
+            from {
+                transform:scale(2.5);
+            }
+            to {
+                transform:scale(1);
+            }
+        }
+        // 上翻页效果
+        .rj-banner-out-to-right {
+            animation: bannerOutToRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            img {
+                animation: bannerImgOutToRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            }
+        }
+        @keyframes bannerOutToRight {
+            from {
+                transform:scale(1);
+            }
+            to {
+                transform:translate(120%) scale(.7);
+            }
+        }
+        @keyframes bannerImgOutToRight {
+            from {
+                transform:scale(1);
+            }
+            to {
+                transform:scale(2.5);
+
+            }
+        }
+        .rj-banner-in-from-left {
+            animation: bannerInFromLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            img {
+                animation: bannerImgInFromLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            }
+        }
+        @keyframes bannerInFromLeft {
+            from {
+                transform:translate(-120%) scale(.7);
+            }
+            to {
+                transform:scale(1);
+            }
+        }
+        @keyframes bannerImgInFromLeft {
+            from {
+                transform:scale(2.5);
+            }
+            to {
+                transform:scale(1);
+            }
+        }
+        #rj-banner-btns {
+            height: .15rem;
+            position: absolute;
+            top:91.5%;
+            display: flex;
+            .rj-banner-btn {
+                margin-right:.4rem;
+                width:.75rem;
+                height: 100%;
+                background-color: rgba(255, 255, 255, .4);
+                position: relative;
+                transition: all 1s ease;
+                .rj-banner-timer {
+                    position: absolute;
+                    left:0;
+                    display: inline-block;
+                    height: 100%;
+                    // width:0rem;
+                    background-color: white;
+                    opacity: 1;
+                }
+            }
+            .rj-banner-btn-current {
+                width:2.34rem;
+                .rj-banner-timer {
+                    width:0%;
+                    animation: btnTimer 5.5s linear;
+                }
+                @keyframes btnTimer {
+                    from {
+                        width:0%;
+                    } 
+                    to {
+                        width:100%;
+                    }
+                }
+            }
+        }
+        #rj-change-page-btn {
+            font-size:.7rem;
+            color:white;
+            position: absolute;
+            top:90%;
+            right:1.5rem;
+            transform:translate(41%);
+            text-align: right;
+            font-family: Georgia;
+            letter-spacing: .04rem;
+            #rj-middle {
+                display: inline-block;
+                padding:0 .2rem 0 .2rem;
+            }
+        }
+        #rj-fonts-container {
+            font-size: 1.6rem;
+            position: absolute;
+            width:100%;
+            height: 6rem;
+            // overflow: hidden;
+            // transform: scale(.5);
+            top:36.5%;
+            // background: url(../../img/rj-banner-test2.jpg) center transparent;
+            // background-size: 100% auto;
+            .rj-c-txt,
+            .rj-e-txt {
+                // position: absolute;
+                width:100%;
+                display:flex;
+                justify-content: center;
+                color:white;
+                opacity: 1;
+                mix-blend-mode: difference;
+                // background-clip: text;
+                // -webkit-background-clip: text;
+                // color: transparent;
+                span {
+                    display: inline-block;
+                }
+                .rj-from-right-in-span {
+                    transform: translate(9rem);
+                    opacity: 0;
+                }
+                .rj-from-left-in-span {
+                    transform: translate(-9rem);
+                    opacity: 0;
+                }
+                position: absolute;
+            }
+            @font-face {
+                font-family: gabrielastencil;
+                src: url(../fonts/gabrielastencil-light.woff2);
+            }
+            .rj-e-txt {
+                font-family: gabrielastencil, Helvetica, Arial, sans-serif ;
+                bottom: 0%;
+            }
+            .rj-c-txt {
+                top: 0%;
+                font-size: 2.4rem;
+                font-family: '宋体','微软雅黑';
+            }
+        }
+    }
 }
 // 幕布
 .curtain {
