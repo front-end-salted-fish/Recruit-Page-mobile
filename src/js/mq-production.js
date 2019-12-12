@@ -27,196 +27,303 @@ var backstageDiv = $('#mq-backend');
 var merchineDiv = $('#mq-machineLearning');
 var iosDiv = $('#mq-ios');
 var andriodDiv = $('#mq-android');
-console.log('all',fontEndeDiv);
+
+console.log('all', fontEndeDiv);
 var rotateTimes = 0;
 
 //详情页文字
 //滑动往上
 // !(()=>{
-    // console.log(imgUp)
-      // 创建提示上滑的提示图片
-      let imgUp = new Image();
-      let $upPromot =  $('.zl-up-promot')
-      imgUp.src = upIcon;
-   
-      $(imgUp).css({
-          height: "auto",
-          width: "25px",
-          position: "absolute",
-          left: "50%",
-          top: "93%",
-          marginLeft: "-12px"
-      })
-      $(imgUp).addClass('page-moveIconUp')
-      $upPromot.append(imgUp);
-      function distance1(classname ) {
-        // let list = $(classname).find('.innerwrap').find('.innerContent');
-        let box = $(classname).find('.innerwrap');
-        var pos = box.position();
-        console.log(a) // 2 
-        box.css({
-            position: 'relative',
-            // top: Math.ceil(pos.top/rem - 160/rem) + 'rem',
-            top: (-160 / rem)*(a - 1) + 'rem',   // 0 // -160 //320
-            // opacity: 1,
-            // left: pos.left
-        });
-      }
-      function distance2(classname) {
-        let box = $(classname).find('.innerwrap');
-        var pos = box.position();
-        console.log(a)
-        box.css({
-            position: 'relative',
-            // top: Math.ceil(pos.top/rem + 160/rem)+'rem',
-            top: (-160 / rem)*(a - 1) + 'rem',
-                // left: pos.left
-        });
-        $(imgUp).show();
-      }
-    function swipeU(classname) {
-        $(classname).swipeUp(
+// console.log(imgUp)
+// 创建提示上滑的提示图片
+let imgUp = new Image();
+let $upPromot = $('.zl-up-promot')
+imgUp.src = upIcon;
 
-            function () {
-                console.log('执行了')
+$(imgUp).css({
+    height: "auto",
+    width: "25px",
+    position: "absolute",
+    left: "50%",
+    top: "93%",
+    marginLeft: "-12px"
+})
+$(imgUp).addClass('page-moveIconUp')
+$upPromot.append(imgUp);
 
-                let list = $(classname).find('.innerContent');
-                    let box = $(classname).find('.innerwrap');
-                    var pos = box.position();
-                    $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
-                        $(this).removeClass('opa1');
-                    });
+function distance1(classname) {
+    // let list = $(classname).find('.innerwrap').find('.innerContent');
+    let box = $(classname).find('.innerwrap');
+    var pos = box.position();
+    console.log(a) // 2 
+    box.css({
+        position: 'relative',
+        // top: Math.ceil(pos.top/rem - 160/rem) + 'rem',
+        top: (-200 / rem) * (a - 2) + 'rem', // 0 // -160 //320
+        // opacity: 1,
+        // left: pos.left
+    });
+}
 
-                    // if (box.position().top / rem >= -640 / rem) {
+function distance2(classname) {
+    let box = $(classname).find('.innerwrap');
+    var pos = box.position();
+    console.log(a)
+    box.css({
+        position: 'relative',
+        // top: Math.ceil(pos.top/rem + 160/rem)+'rem',
+        top: (-200 / rem) * (a - 2) + 'rem',
+        // left: pos.left
+    });
+    $(imgUp).show();
+}
 
-                        switch (++a) {
-                            case 2:
-                                $(list[1]).addClass('opa');
-                                distance1(classname)
-                                break;
-                            case 3:
-                                // box.addClass('opa');
+function swipeU(classname) {
+    $(classname).swipeUp(
 
-                                console.log($(list[1]));
-                                $(list[2]).addClass('opa');
-                                distance1(classname)
-                                break;
-                            case 4:
-                                $(list[3]).addClass('opa');
-                                // console.log(list[2]);
-                                distance1(classname)
-                                break;
-                            case 5:
-                                $(list[4]).addClass('opa');
-                                // console.log(list[3]);
-                                distance1(classname)
-                                break;
-                            case 6:
-                                $(list[5]).addClass('opa');
-                                // console.log(list[4]);
-                                distance1(classname)
-                                $(imgUp).hide();
-                                break;
-                            default:
-                                a = 6;
-                                break;
-                        }
-                    // }
-                    console.log('a',a);
+        function () {
+            console.log('执行了')
+            let title = $(classname).find('.title');
+            let span = $(classname).find('.title').find('span');
+            let sup = $(classname).find('.title').find('sup');
+            let list = $(classname).find('.innerContent');
+            let box = $(classname).find('.innerwrap');
+            var pos = box.position();
+            $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
+                // $(this).removeClass('opa1');
+                $(this).css({
+                    opacity:'0'
+                })
+            });
+            
+            // sup.css({
+            //     transform: "scale(1.5)",
+            // })
+
+
+            // if (box.position().top / rem >= -640 / rem) {
+
+            switch (++a) {
+                case 2:
+                        title.css({
+                            top: "1rem",
+                            left:"-2.5rem",
+                            textAlign:"start",
+                            transform: "scale(.5)",
+                        })
+                        // span.css({
+                        //     transform: "scale(.5)",
+                        //     paddingLeft: ".5rem"
+                        // })
+                        // sup.css({
+                        //     fontSize: ".5rem",
+                        //     top: "-.8rem",
+                        //     left:'2.5rem'
+                        // })
+                    // $(list[0]).addClass('opa');
+                    $(list[0]).css({
+                        opacity: '1'
+                    })
+                    // $(list[1]).addClass('opa');
+                    // distance1(classname)
+                    break;
+                case 3:
+                    // box.addClass('opa');
+
+                    console.log($(list[1]));
+                    distance1(classname)
+                    // $(list[0]).removeClass('opa');
+                    $(list[0]).css({
+                        opacity: '0'
+                    })
+                    // $(list[1]).addClass('opa');
+                    $(list[1]).css({
+                        opacity: '1'
+                    })
+                    
+                    break;
+                case 4:
+                        $(list[1]).css({
+                            opacity: '0'
+                        })
+                        $(list[2]).css({
+                            opacity: '1'
+                        })
+                    // $(list[1]).removeClass('opa');
+                    // $(list[2]).addClass('opa');
+                    // console.log(list[2]);
+                    distance1(classname)
+                    break;
+                case 5:
+                        $(list[2]).css({
+                            opacity: '0'
+                        })
+                        $(list[3]).css({
+                            opacity: '1'
+                        })
+                    // $(list[2]).removeClass('opa');
+                    // $(list[3]).addClass('opa');
+                    // console.log(list[3]);
+                    distance1(classname)
+                    // $(imgUp).hide();
+                    break;
+                    // case 6:
+                    //     $(list[5]).addClass('opa');
+                    //     // console.log(list[4]);
+                    //     distance1(classname)
+                    //     $(imgUp).hide();
+                    //     break;
+                case 6:
+                        $(list[3]).css({
+                            opacity: '0'
+                        })
+                        $(list[4]).css({
+                            opacity: '1'
+                        })
+                        // $(list[3]).removeClass('opa');
+                        // $(list[4]).addClass('opa');
+                        // console.log(list[3]);
+                        distance1(classname)
+                        $(imgUp).hide();
+                        break;
+                default:
+                    a = 6;
+                    $(list[4]).css({
+                        opacity: '1'
+                    })
+                    break;
             }
-        )
-    }
-    !(() => {
-        swipeU(firstId)
-        swipeU(secondId)
-        swipeU(thirdId)
-        swipeU(fourthId)
-        swipeU(lastId)
-    })();
-    // })();
-    //滑动往下
+            // }
+            console.log('a', a);
+        }
+    )
+}!(() => {
+    swipeU(firstId)
+    swipeU(secondId)
+    swipeU(thirdId)
+    swipeU(fourthId)
+    swipeU(lastId)
+})();
+// })();
+//滑动往下
 
-    function swipeD(classname) {   
+function swipeD(classname) {
 
-        $(classname).swipeDown(
-            function () {
-                    let list = $(classname).find('.innerContent');
-                    let box = $(classname).find('.innerwrap');
-                    var pos = box.position();
-                    // console.log(pos.top);   
-                    $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
-                        $(this).removeClass('opa');
-                    });
+    $(classname).swipeDown(
+        function () {
+            let list = $(classname).find('.innerContent');
+            let box = $(classname).find('.innerwrap');
+            var pos = box.position();
+            // console.log(pos.top);   
+            $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
+                // $(this).removeClass('opa');
+                $(this).css({
+                    opacity:'0'
+                })
+            });
 
-                    // if (box.position().top / rem <= -160 / rem) {
+            // if (box.position().top / rem <= -160 / rem) {
 
-                        switch (a--) {
-                            case 6:
-                                // list.each(function(item,index){
-                                //     $(this).removeClass('opa');
-                                // });
-                                $(list[4]).addClass('opa1');
-                                distance2(classname)
-                                break;
-                            case 5:
-                                $(list[3]).addClass('opa1');
-                                distance2(classname)
-                                break;
-                            case 4:
-                                // box.addClass('opa');
-                                // console.log($(list[1]));
-                                $(list[2]).addClass('opa1');
-                                distance2(classname)
-                                console.log(1);    
-                                break;
-                            case 3:
-                                $(list[1]).addClass('opa1');
-                                distance2(classname)
-                                // console.log(list[2]);
-                                break;
-                            case 2:
-                                $(list[0]).addClass('opa1');
-                                distance2(classname)
-                                // console.log(list[3]);
-                                    break;
-                            case 1:
-                                $(list[0]).addClass('opa1');
-                                a = 1;
-                                distance2(classname)
-                                // console.log(list[4]);
-                                break;
-                            default:
-                                a = 1;
-                                break;
-                        }
-                    // }
+            switch (a--) {
+                case 6:
+                    // list.each(function(item,index){
+                    //     $(this).removeClass('opa');
+                    // });
+                    distance2(classname)
+                    $(list[3]).css({
+                        opacity: '1'
+                    })
+                    // $(list[3]).addClass('opa1');
+                    // $(list[3]).addClass('opa1');
+                    // console.log(1111111111)
+                   
+                    break;
+                case 5:
+                        $(list[3]).css({
+                            opacity: '0'
+                        })
+                        $(list[2]).css({
+                            opacity: '1'
+                        })
+                    // $(list[3]).removeClass('opa1');
+                    // $(list[2]).addClass('opa1');
+                    distance2(classname)
+                    break;
+                case 4:
+                    // box.addClass('opa');
+                    // console.log($(list[1]));
+                    $(list[2]).css({
+                        opacity: '0'
+                    })
+                    $(list[1]).css({
+                        opacity: '1'
+                    })
+                    // $(list[2]).removeClass('opa1');
+                    // $(list[1]).addClass('opa1');
+                    distance2(classname)
+                    console.log(1);
+                    break;
+                case 3:
+                        $(list[1]).css({
+                            opacity: '0'
+                        })
+                        $(list[0]).css({
+                            opacity: '1'
+                        })
+                    // $(list[1]).removeClass('opa1');
+                    // $(list[0]).addClass('opa1');
+                    
+                    distance2(classname)
+                    a = 2;
+                    // console.log(list[2]);
+                    break;
+                // case 2:
+                //     $(list[0]).addClass('opa1');
+                //     a = 1;
+                //     distance2(classname)
+                //     // console.log(list[3]);
+                //     break;
+                    // case 1:
+                    //     $(list[0]).addClass('opa1');
+                    //     a = 1;
+                    //     distance2(classname)
+                    //     // console.log(list[4]);
+                    //     break;
+                default:
+                    a = 2;
+                    $(list[0]).css({
+                        opacity: '1'
+                    })
+                    break;
+            }
+            // }
 
-            }   
-        )
+        }
+    )
 
-    }!(() => {
+}!(() => {
     swipeD(firstId)
     swipeD(secondId)
     swipeD(thirdId)
     swipeD(fourthId)
     swipeD(lastId)
 
-    })();
-    // })();
-    // function debounce(func, wait) {
-    //     let timeout;
-    //     return function () {
-    //         let context = this;
-    //         let args = arguments;
-    
-    //         if (timeout) clearTimeout(timeout);
-    
-    //         timeout = setTimeout(() => {
-    //             func.apply(context, args)
-    //         }, wait);
-    //     }
-    // // }
-    // // // content.onmousemove = debounce(count,1000);
+})();
+// })();
+// function debounce(func, wait) {
+//     let timeout;
+//     return function () {
+//         let context = this;
+//         let args = arguments;
+
+//         if (timeout) clearTimeout(timeout);
+
+//         timeout = setTimeout(() => {
+//             func.apply(context, args)
+//         }, wait);
+//     }
+// // }
+// // // content.onmousemove = debounce(count,1000);
 
 // 旋转菜单
 function rotateFn(nodes, originNode) {
@@ -257,13 +364,13 @@ function debounce(fn, wait) {
 var menu_timer;
 //menu btn
 var toggleMenu = function (e) {
-    console.log('this',e);
+    console.log('this', e);
     e.stopPropagation();
     var currentRotateDeg = rotateTimes * 72;
     console.log('currentRotateDeg', currentRotateDeg);
-    console.log('ismenu',$(this).find('i'));
-    if($(this).find('i').hasClass('icon-caidan')){
-        btnWrap.css('transform', 'rotate(' + (currentRotateDeg - 72*5) + 'deg)');
+    console.log('ismenu', $(this).find('i'));
+    if ($(this).find('i').hasClass('icon-caidan')) {
+        btnWrap.css('transform', 'rotate(' + (currentRotateDeg - 72 * 5) + 'deg)');
     }
     if (menu_timer) {
         return false
@@ -276,13 +383,13 @@ var toggleMenu = function (e) {
                 curtain.show();
                 i.removeClass();
                 i.addClass('iconfont icon-guanbi');
-                btnWrap.css('transform', 'rotate(' + currentRotateDeg  + 'deg)');
+                btnWrap.css('transform', 'rotate(' + currentRotateDeg + 'deg)');
                 btnWrap.css('opacity', 1)
             } else if (i.hasClass('icon-guanbi')) {
                 curtain.hide();
                 i.removeClass();
                 i.addClass('iconfont icon-caidan');
-                btnWrap.css('transform', 'rotate(' + currentRotateDeg +72*5 + 'deg)');
+                btnWrap.css('transform', 'rotate(' + currentRotateDeg + 72 * 5 + 'deg)');
                 btnWrap.css('opacity', 0);
             }
             menu_timer = undefined
@@ -309,11 +416,35 @@ function move(node) {
         startY = touch.clientY;
     });
     node.addEventListener('touchend', function (e) {
+        //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
         a = 1;
+        let box = $('.innerwrap');
+        let title = $('.title');
+        box.each(function (item, index) {
+            $(this).css({
+                top: '0',
+                // opacity: "1"
+            })
+        })
+        title.css({
+            // opacity: 1;
+            position: "absolute",
+            top: "20%",
+            left:"0",
+            transform: 'scale(1)',
+            // left: 10%;
+            // width: 380/@rem;
+            // height: 160/@rem;
+            textAlign: "center"
+            // transition: all 1s;
+        })
+        box.find(".innerContent").eq(0).css({
+            opacity:"0"
+        })
         console.log('endcom');
         var isOpacity = btnWrap.css('opacity');
         // console.log('opacity',isOpacity);
-        if(isOpacity === '0') {
+        if (isOpacity === '0') {
             return false;
         }
         menuBtns = $('#cf-menu .move-wrap').children();
