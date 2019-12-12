@@ -67,7 +67,7 @@ $(function() {
     $backBtn.tap(function() {
         let $bannerPage = $('#rj-banner');
             // 排他
-        $bannerPage.siblings().hide(1000);
-        $bannerPage.show(1000);
+        // $bannerPage.siblings().hide(1000);
+        // $bannerPage.show(1000);
     })
 })

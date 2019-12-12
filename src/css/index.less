@@ -70,10 +70,10 @@
         z-index: 2;
         right: 0.1rem;
         margin-right: .8rem;
-        margin-top: .35rem;
+        margin-top: .6rem;
         color:white;
         font-size: 1rem;
-        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-family: gabrielastencil,Georgia, 'Times New Roman', Times, serif;
     }
 }
 @keyframes moveIconUp {
@@ -385,14 +385,19 @@
 
 }
 
+
+
+
+
+
+// rj:TODO:
 // 陈锐基的轮播图
 #rj-banner {
-    z-index: 99;
+    z-index: 2;
     height: 100%;
     background: rgb(29, 29, 29);
     width:16rem;
     position: absolute;
-    // transform: scale(0.6);
     overflow: hidden;
     #rj-banner-container {
         height: 100%;
@@ -540,7 +545,7 @@
                 width:2.34rem;
                 .rj-banner-timer {
                     width:0%;
-                    animation: btnTimer 5.5s linear;
+                    animation: btnTimer 4.0s linear;
                 }
                 @keyframes btnTimer {
                     from {
@@ -560,7 +565,7 @@
             right:1.5rem;
             transform:translate(41%);
             text-align: right;
-            font-family: Georgia;
+            font-family: gabrielastencil;
             letter-spacing: .04rem;
             #rj-middle {
                 display: inline-block;
@@ -612,12 +617,127 @@
             }
             .rj-c-txt {
                 top: 0%;
-                font-size: 2.4rem;
+                font-size: 2.7rem;
                 font-family: '宋体','微软雅黑';
+            }
+        }
+        #rj-3d-tv {
+            position: absolute;
+            width:100%;
+            color:white;
+            font-family: gabrielastencil, 'Times New Roman', Times, serif;
+            font-size: 1rem;
+            top:5%;
+            // text-align: center;
+            display: flex;
+            justify-content: center;
+            span {
+                transform: rotate3d(0,1,0,90deg);
+                // float: right;
             }
         }
     }
 }
+#rj-white-curtain {
+    position: fixed;
+    z-index: 3;
+    width:0%;
+    transform: translate(0);
+    height:100%;
+    background: #fafafa;
+    overflow: hidden;
+    div {
+        font-size: 3.5rem;
+        position: fixed;
+        font-family: 'Baskerville Old Face';
+        &:first-child {
+            top:29%;
+        }
+        &:nth-child(2) {
+            top:42%;
+        }
+    }
+}
+@keyframes wcOut {
+    0% {
+        left:0vw;
+        width:0vw;
+    }
+    50% {
+        left:0;
+        width:101vw;
+        right:100vw;
+    }
+    100% {
+        width:0;
+        left:100vw;
+        right:0;
+    }
+}
+@keyframes wcIn {
+    0% {
+        width:0;
+        left:100vw;
+        right:0;
+    }
+    50% {
+        left:0;
+        width:101vw;
+        right:100vw;
+    }
+    100% {
+        left:0vw;
+        width:0vw;
+    }
+}
+// 白色幕布离开和进入
+.rj-white-curtain-out {
+    animation: wcOut 1.4s cubic-bezier(.57,.02,.1,.99) forwards;
+    div {
+        transition: left .7s cubic-bezier(.57,.02,.1,.99) .7s;
+        left:-8rem !important;
+    }
+}
+.rj-curtain-in-div-pre {
+    right:8rem;
+    transform: translate(50%);
+    left: auto;
+}
+.rj-white-curtain-in {
+    animation: wcIn 1.4s cubic-bezier(.57,.02,.1,.99) forwards;
+    div {
+        transition: right .7s cubic-bezier(.57,.02,.1,.99) .7s;
+        right:-8rem !important;
+    }
+}
+.rj-curtain-out-div-pre {
+    left:8rem;
+    transform: translate(-50%);
+    right: auto;
+}
+// 轮播图模块移出
+.rj-banner-out {
+    transform: translate(16rem);
+    filter: brightness(0);
+    transition: all 1s cubic-bezier(.57,.02,.1,.99);
+}
+.rj-banner-in {
+    transform: translate(0rem);
+    filter: brightness(1);
+    transition: all 1s cubic-bezier(.57,.02,.1,.99);
+}
+// 详情页模块移出
+.rj-detail-page-out {
+    transform: translate(-16rem);
+    filter: brightness(0);
+    transition: all 1s cubic-bezier(.57,.02,.1,.99);
+}
+
+
+
+
+
+
 // 幕布
 .curtain {
     display: none;
