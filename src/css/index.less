@@ -6,20 +6,26 @@
     background: #4C3738;
     width: 16rem;
 }
+@loadingAnmFontSize: 9vw;
 #loading-module {
-    display: none;
+    // display: none;
     //z-index: 100;
     height: 100vh;
     width: 100vw;
-    background: #fff;
+    background: #fafafa;
+    font-weight: 600;
     position: relative;
-
+    @font-face {
+        font-family: ITC;
+        src: url(../fonts/ITCAvantGardeStd-Md.otf);
+    }
+    font-family: ITC,'微软雅黑','PingFang Heavy','Fira Code','Century Gothic','Open Sans','Roboto','Franklin Gothic',Arial,sans-serif;
     // 开局动画内部盒子
     #loading-box {
         width: 48vw;
-        height: 40.5vw;
+        height: 41.5vw;
         position: absolute;
-        left: 54%;
+        left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         display: flex;
@@ -29,6 +35,7 @@
         .row {
             height: 6vw;
             width: 100%;
+            margin: 0 !important;
         }
 
         //第一行
@@ -52,22 +59,21 @@
                     overflow: hidden;
 
                     span {
-                        font-size: 6vw;
-                        color: #000;
+                        font-size: @loadingAnmFontSize;
+                        color: #444;
                         display: inline-block;
-                        transform: translateX(100%);
-                        transition: all 1.5s;
+                        transform: translateX(100%)
                     }
                 }
             }
 
             //右边
             .inner-right {
-                background-color: #000;
+                background-color: #444;
                 position: absolute;
                 right: 0;
                 width: 100%; //transform为0时，width由100变为42%（同时字的translate变为0）
-                height: 5vw;
+                height: 7.5vw;
                 z-index: 1;
                 transform: translateX(315%);
 
@@ -82,11 +88,11 @@
 
             .inner-left {
                 position: relative;
-                background-color: #000;
+                background-color: #444;
                 position: absolute;
                 left: 0;
                 width: 100%; //回来时变为36%
-                height: 5vw;
+                height: 7.5vw;
                 z-index: 1;
                 transform: translateX(-220%);
             }
@@ -105,11 +111,11 @@
                     overflow: hidden;
 
                     span {
-                        font-size: 6vw;
+                        font-size: @loadingAnmFontSize;
                         display: inline-block;
-                        color: #000;
+                        color: #444;
                         transform: translateX(100%);
-                        transition: all 1.5s;
+                        // transition: all 1.5s;
                     }
                 }
             }
@@ -135,11 +141,11 @@
                     overflow: hidden;
 
                     span {
-                        font-size: 6vw;
+                        font-size: @loadingAnmFontSize;
                         display: inline-block;
                         transform: translateX(100%);
-                        color: #000;
-                        transition: all 1.5s;
+                        color: #444;
+                        // transition: all 1.5s;
                     }
                 }
             }
@@ -156,11 +162,11 @@
 
             //白框
             .inner-center {
-                background-color: #000;
+                background-color: #444;
                 position: absolute;
                 left: 0%;
                 width: 100%; //回来变为20
-                height: 5vw;
+                height: 7.5vw;
                 z-index: 1;
                 transform: translateX(308%);
             }
@@ -173,11 +179,11 @@
             align-items: center;
 
             .inner-left {
-                background-color: #000;
+                background-color: #444;
                 position: absolute;
                 left: 0;
                 width: 50%; //回来时19
-                height: 5vw;
+                height: 7.5vw;
                 z-index: 1;
                 transform: translateX(-335%);
             }
@@ -197,21 +203,21 @@
                     overflow: hidden;
 
                     span {
-                        font-size: 6vw;
+                        font-size: @loadingAnmFontSize;
                         display: inline-block;
                         transform: translateX(100%);
-                        color: #000;
-                        transition: all 1.5s;
+                        color: #444;
+                        // transition: all 1.5s;
                     }
                 }
             }
 
             .inner-right {
-                background-color: #000;
+                background-color: #444;
                 position: absolute;
                 right: 0;
                 width: 50%; //回来时19
-                height: 5vw;
+                height: 7.5vw;
                 z-index: 1;
                 transform: translateX(335%);
             }
@@ -231,12 +237,13 @@
                 .move-sdiv {
                     span {
                         transform: translate(0%);
+                        transition: all 1.5s;
                     }
                 }
             }
 
             .inner-right {
-                width: 42% !important;
+                width: 46.5% !important;
                 transition: cubic-bezier(0.08, 0.99, 0.6, 1) all 2s !important;
             }
         }
@@ -260,6 +267,7 @@
                 .move-sdiv {
                     span {
                         transform: translate(0%);
+                        transition: all 1.5s;
                     }
                 }
             }
@@ -279,6 +287,7 @@
                 .move-sdiv {
                     span {
                         transform: translate(0%);
+                        transition: all 1.5s;
                     }
                 }
             }
@@ -287,6 +296,7 @@
                 .move-sdiv {
                     span {
                         transform: translate(0%);
+                        transition: all 1.5s;
                     }
                 }
             }
@@ -316,17 +326,18 @@
                 .move-sdiv {
                     span {
                         transform: translate(0%);
+                        transition: all 1.5s;
                     }
                 }
             }
 
             .inner-right {
-                width: 18% !important;
+                width: 21% !important;
                 transition: cubic-bezier(0.08, 0.99, 0.6, 1) all 2s !important;
             }
 
             .inner-left {
-                width: 18% !important;
+                width: 21% !important;
                 transition: cubic-bezier(0.08, 0.99, 0.6, 1) all 2s !important;
             }
         }
