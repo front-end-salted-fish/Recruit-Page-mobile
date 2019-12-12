@@ -38,7 +38,7 @@ var rotateTimes = 0;
 // console.log(imgUp)
 // 创建提示上滑的提示图片
 let imgUp = new Image();
-let $upPromot = $('.zl-up-promot');
+let $upPromot = $('.zl-up-promot')
 imgUp.src = upIcon;
 
 $(imgUp).css({
@@ -56,11 +56,11 @@ function distance1(classname) {
     // let list = $(classname).find('.innerwrap').find('.innerContent');
     let box = $(classname).find('.innerwrap');
     var pos = box.position();
-    console.log(a) // 2
+    console.log(a) // 2 
     box.css({
         position: 'relative',
         // top: Math.ceil(pos.top/rem - 160/rem) + 'rem',
-        top: (-160 / rem) * (a - 1) + 'rem',   // 0 // -160 //320
+        top: (-200 / rem) * (a - 2) + 'rem', // 0 // -160 //320
         // opacity: 1,
         // left: pos.left
     });
@@ -73,7 +73,7 @@ function distance2(classname) {
     box.css({
         position: 'relative',
         // top: Math.ceil(pos.top/rem + 160/rem)+'rem',
-        top: (-160 / rem) * (a - 1) + 'rem',
+        top: (-200 / rem) * (a - 2) + 'rem',
         // left: pos.left
     });
     $(imgUp).show();
@@ -81,57 +81,124 @@ function distance2(classname) {
 
 function swipeU(classname) {
     $(classname).swipeUp(
+
         function () {
             console.log('执行了')
-
+            let title = $(classname).find('.title');
+            let span = $(classname).find('.title').find('span');
+            let sup = $(classname).find('.title').find('sup');
             let list = $(classname).find('.innerContent');
             let box = $(classname).find('.innerwrap');
             var pos = box.position();
             $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
-                $(this).removeClass('opa1');
+                // $(this).removeClass('opa1');
+                $(this).css({
+                    opacity: '0'
+                })
             });
+
+            // sup.css({
+            //     transform: "scale(1.5)",
+            // })
+
 
             // if (box.position().top / rem >= -640 / rem) {
 
             switch (++a) {
                 case 2:
-                    $(list[1]).addClass('opa');
-                    distance1(classname)
+                    title.css({
+                        top: "1rem",
+                        left: "-2.5rem",
+                        textAlign: "start",
+                        transform: "scale(.5)",
+                    })
+                    // span.css({
+                    //     transform: "scale(.5)",
+                    //     paddingLeft: ".5rem"
+                    // })
+                    // sup.css({
+                    //     fontSize: ".5rem",
+                    //     top: "-.8rem",
+                    //     left:'2.5rem'
+                    // })
+                    // $(list[0]).addClass('opa');
+                    $(list[0]).css({
+                        opacity: '1'
+                    })
+                    // $(list[1]).addClass('opa');
+                    // distance1(classname)
                     break;
                 case 3:
                     // box.addClass('opa');
 
                     console.log($(list[1]));
-                    $(list[2]).addClass('opa');
                     distance1(classname)
+                    // $(list[0]).removeClass('opa');
+                    $(list[0]).css({
+                        opacity: '0'
+                    })
+                    // $(list[1]).addClass('opa');
+                    $(list[1]).css({
+                        opacity: '1'
+                    })
+
                     break;
                 case 4:
-                    $(list[3]).addClass('opa');
+                    $(list[1]).css({
+                        opacity: '0'
+                    })
+                    $(list[2]).css({
+                        opacity: '1'
+                    })
+                    // $(list[1]).removeClass('opa');
+                    // $(list[2]).addClass('opa');
                     // console.log(list[2]);
                     distance1(classname)
                     break;
                 case 5:
-                    $(list[4]).addClass('opa');
+                    $(list[2]).css({
+                        opacity: '0'
+                    })
+                    $(list[3]).css({
+                        opacity: '1'
+                    })
+                    // $(list[2]).removeClass('opa');
+                    // $(list[3]).addClass('opa');
                     // console.log(list[3]);
                     distance1(classname)
+                    // $(imgUp).hide();
                     break;
+                // case 6:
+                //     $(list[5]).addClass('opa');
+                //     // console.log(list[4]);
+                //     distance1(classname)
+                //     $(imgUp).hide();
+                //     break;
                 case 6:
-                    $(list[5]).addClass('opa');
-                    // console.log(list[4]);
+                    $(list[3]).css({
+                        opacity: '0'
+                    })
+                    $(list[4]).css({
+                        opacity: '1'
+                    })
+                    // $(list[3]).removeClass('opa');
+                    // $(list[4]).addClass('opa');
+                    // console.log(list[3]);
                     distance1(classname)
                     $(imgUp).hide();
                     break;
                 default:
                     a = 6;
+                    $(list[4]).css({
+                        opacity: '1'
+                    })
                     break;
             }
             // }
             console.log('a', a);
         }
     )
-}
-
-!(() => {
+} !(() => {
     swipeU(firstId)
     swipeU(secondId)
     swipeU(thirdId)
@@ -148,9 +215,12 @@ function swipeD(classname) {
             let list = $(classname).find('.innerContent');
             let box = $(classname).find('.innerwrap');
             var pos = box.position();
-            // console.log(pos.top);
+            // console.log(pos.top);   
             $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
-                $(this).removeClass('opa');
+                // $(this).removeClass('opa');
+                $(this).css({
+                    opacity: '0'
+                })
             });
 
             // if (box.position().top / rem <= -160 / rem) {
@@ -160,38 +230,71 @@ function swipeD(classname) {
                     // list.each(function(item,index){
                     //     $(this).removeClass('opa');
                     // });
-                    $(list[4]).addClass('opa1');
                     distance2(classname)
+                    $(list[3]).css({
+                        opacity: '1'
+                    })
+                    // $(list[3]).addClass('opa1');
+                    // $(list[3]).addClass('opa1');
+                    // console.log(1111111111)
+
                     break;
                 case 5:
-                    $(list[3]).addClass('opa1');
+                    $(list[3]).css({
+                        opacity: '0'
+                    })
+                    $(list[2]).css({
+                        opacity: '1'
+                    })
+                    // $(list[3]).removeClass('opa1');
+                    // $(list[2]).addClass('opa1');
                     distance2(classname)
                     break;
                 case 4:
                     // box.addClass('opa');
                     // console.log($(list[1]));
-                    $(list[2]).addClass('opa1');
+                    $(list[2]).css({
+                        opacity: '0'
+                    })
+                    $(list[1]).css({
+                        opacity: '1'
+                    })
+                    // $(list[2]).removeClass('opa1');
+                    // $(list[1]).addClass('opa1');
                     distance2(classname)
                     console.log(1);
                     break;
                 case 3:
-                    $(list[1]).addClass('opa1');
+                    $(list[1]).css({
+                        opacity: '0'
+                    })
+                    $(list[0]).css({
+                        opacity: '1'
+                    })
+                    // $(list[1]).removeClass('opa1');
+                    // $(list[0]).addClass('opa1');
+
                     distance2(classname)
+                    a = 2;
                     // console.log(list[2]);
                     break;
-                case 2:
-                    $(list[0]).addClass('opa1');
-                    distance2(classname)
-                    // console.log(list[3]);
-                    break;
-                case 1:
-                    $(list[0]).addClass('opa1');
-                    a = 1;
-                    distance2(classname)
-                    // console.log(list[4]);
-                    break;
+                // case 2:
+                //     $(list[0]).addClass('opa1');
+                //     a = 1;
+                //     distance2(classname)
+                //     // console.log(list[3]);
+                //     break;
+                // case 1:
+                //     $(list[0]).addClass('opa1');
+                //     a = 1;
+                //     distance2(classname)
+                //     // console.log(list[4]);
+                //     break;
                 default:
-                    a = 1;
+                    a = 2;
+                    $(list[0]).css({
+                        opacity: '1'
+                    })
                     break;
             }
             // }
@@ -199,9 +302,7 @@ function swipeD(classname) {
         }
     )
 
-}
-
-!(() => {
+} !(() => {
     swipeD(firstId)
     swipeD(secondId)
     swipeD(thirdId)
@@ -231,8 +332,8 @@ function rotateFn(nodes) {
     var r = $('.move-wrap').width() / 2;
     nodes.each(function (index, item) {
         console.log(radio);
-        var top = Math.sin((36+ 144 + index * radio) * Math.PI / 180) * r * 0.75 + r;
-        var left = Math.cos((36 + 144+index * radio) * Math.PI / 180) * r * 0.75 + r;
+        var top = Math.sin((36 + 144 + index * radio) * Math.PI / 180) * r * 0.75 + r;
+        var left = Math.cos((36 + 144 + index * radio) * Math.PI / 180) * r * 0.75 + r;
 
         $(item).css({
             top: top,
@@ -278,11 +379,12 @@ function debounce(fn, wait) {
 
 //防抖定时器
 // var menu_timer;
+let currentRotateDeg = 0;
 // 滑动事件函数
 let toggleMenu = function (e) {
     e.stopPropagation();
-    var currentRotateDeg = rotateTimes * 72;
-    var that = this;
+    currentRotateDeg = rotateTimes * 72;
+    let that = this;
     console.log(this, 'this', e, 'e');
     var i = $(that).find('i');
     if (i.hasClass('icon-caidan')) {
@@ -298,19 +400,19 @@ let toggleMenu = function (e) {
         menu.css('opacity', 1);
         btnWrap.css('transform', 'rotate(' + (currentRotateDeg - 72 * 4) + 'deg)');
         btnWrap.animate({
-                transition: 'all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s',
-                transform: 'rotate(' + (currentRotateDeg) + 'deg)'
-            },
-            {duration: 300}
+            transition: 'all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s',
+            transform: 'rotate(' + (currentRotateDeg) + 'deg)'
+        },
+            { duration: 300 }
         )
     } else if (i.hasClass('icon-guanbi')) {
         curtain.hide();
         i.removeClass();
         i.addClass('iconfont icon-caidan');
         btnWrap.animate({
-                transition: 'all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s',
-                transform: 'rotate(' + (currentRotateDeg + 72 * 4) + 'deg)'
-            },
+            transition: 'all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s',
+            transform: 'rotate(' + (currentRotateDeg + 72 * 4) + 'deg)'
+        },
             {
                 duration: 300, complete: function () {
                     btnWrap.css('transform', 'rotate(' + (currentRotateDeg) + 'deg)');
@@ -345,11 +447,40 @@ function move(node) {
         // console.log('xa',xa, 'ya', ya,'xast',touch.clientX,'yast',touch.clientY);
         startY = touch.clientY;
     });
-    node.addEventListener('touchend', debounce(cfMoveFn, 300))
+    // node.addEventListener('touchend', 
+    node.addEventListener('touchend', debounce(cfMoveFn, 300));
+
+
+
+
 }
 
 let cfMoveFn = (e) => {
+    //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
     a = 1;
+    let box = $('.innerwrap');
+    let title = $('.title');
+    box.each(function (item, index) {
+        $(this).css({
+            top: '0',
+            // opacity: "1"
+        })
+    })
+    title.css({
+        // opacity: 1;
+        position: "absolute",
+        top: "20%",
+        left: "0",
+        transform: 'scale(1)',
+        // left: 10%;
+        // width: 380/@rem;
+        // height: 160/@rem;
+        textAlign: "center"
+        // transition: all 1s;
+    })
+    box.find(".innerContent").eq(0).css({
+        opacity: "0"
+    })
     e = e || window.event;
     var touch = e.changedTouches[0];
     // console.log('xb', touch.clientX, 'yb', touch.clientY);
@@ -421,87 +552,87 @@ let cfMoveFn = (e) => {
         position: 'absolute',
         left: disY > 0 ? '100vw' : '-100vw',
     }).removeClass('current-page');
-    console.log('downcount',downCount);
+    console.log('downcount', downCount);
     switch (downCount) {
         case 0:
             is.removeClass('height-light');
             is.eq(0).addClass('height-light');
             //显示下一张详情页
             fontEndeDiv.animate({
-                    // display: 'block',
-                    position: 'absolute',
-                    left: '0vw',
-                    transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-                }, {
-                    duration: 300,
-                    compute: function () {
-                        fontEndeDiv.css('display', 'block').addClass('current-page');
-                    }
+                // display: 'block',
+                position: 'absolute',
+                left: '0vw',
+                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
+            }, {
+                duration: 300,
+                compute: function () {
+                    fontEndeDiv.css('display', 'block').addClass('current-page');
                 }
+            }
             );
             break;
         case 1:
             is.removeClass('height-light');
             is.eq(1).addClass('height-light');
             merchineDiv.animate({
-                    // display: 'block',
-                    position: 'absolute',
-                    left: '0vw',
-                    transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-                }, {
-                    duration: 300,
-                    compute: function () {
-                        andriodDiv.addClass('current-page');
-                    }
+                // display: 'block',
+                position: 'absolute',
+                left: '0vw',
+                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
+            }, {
+                duration: 300,
+                compute: function () {
+                    andriodDiv.addClass('current-page');
                 }
+            }
             );
             break;
         case 2:
             is.removeClass('height-light');
             is.eq(2).addClass('height-light');
             iosDiv.animate({
-                    // display: 'block',
-                    position: 'absolute',
-                    left: '0vw',
-                    transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-                }, {
-                    duration: 300,
-                    compute: function () {
-                        backstageDiv.addClass('current-page');
-                    }
+                // display: 'block',
+                position: 'absolute',
+                left: '0vw',
+                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
+            }, {
+                duration: 300,
+                compute: function () {
+                    backstageDiv.addClass('current-page');
                 }
+            }
             );
             break;
         case 3:
             is.removeClass('height-light');
             is.eq(3).addClass('height-light');
             andriodDiv.animate({
-                    // display: 'block',
-                    position: 'absolute',
-                    left: '0vw',
-                    transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-                }, {
-                    duration: 300,
-                    compute: function () {
-                        merchineDiv.addClass('current-page');
-                    }
+                // display: 'block',
+                position: 'absolute',
+                left: '0vw',
+                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
+            }, {
+                duration: 300,
+                compute: function () {
+                    merchineDiv.addClass('current-page');
                 }
+            }
             );
             break;
         case 4:
             is.removeClass('height-light');
             is.eq(4).addClass('height-light');
             backstageDiv.animate({
-                    // display: 'block',
-                    position: 'absolute',
-                    left: '0vw',
-                    transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-                }, {
-                    duration: 300,
-                    compute: function () {
-                        iosDiv.addClass('current-page');
-                    }
+                // display: 'block',
+                position: 'absolute',
+                left: '0vw',
+                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
+            }, {
+                duration: 300,
+                compute: function () {
+                    iosDiv.addClass('current-page');
                 }
+            }
             );
             break;
     }
@@ -514,7 +645,15 @@ curtain.on('tap', function () {
     curtain.hide();
     i.removeClass();
     i.addClass('iconfont icon-caidan');
-    btnWrap.css('transform', 'rotate(' + (currentRotateDeg + 72 * 9) + 'deg)');
-    menu.css('opacity', 0);
-    menu.hide();
+    btnWrap.animate({
+        transition: 'all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s',
+        transform: 'rotate(' + (currentRotateDeg + 72 * 4) + 'deg)'
+    },
+        {
+            duration: 300, complete: function () {
+                btnWrap.css('transform', 'rotate(' + (currentRotateDeg) + 'deg)');
+                menu.hide();
+            }
+        }
+    );
 });
