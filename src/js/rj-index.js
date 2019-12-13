@@ -24,6 +24,7 @@ let $rjBackBtn = $('.zl-back-btn'); // 从详情页返回轮播图的按钮
 let previous = 0;
 let canBack = false;  // 是否可以返回轮播图（因为存在动画还没结束就点击按钮的情况）
 
+
 // 轮播图对象
 let rjBanner = {
   nowPageIndex: 0, // 正在播放的轮播图的index值
@@ -48,15 +49,7 @@ let rjBanner = {
     $bannerImgs[1].src = testImg1;
     this.setPosClass();
     // TopView 字样反转
-    $.each($spans, function (index, item) {
-      $(item).animate({
-        transform: 'rotate3d(0,1,0,720deg)'
-      }, {
-        duration: 3000,
-        easing: 'cubic-bezier(.5,.52,0,1)',
-        delay: (index) * 200
-      });
-    });
+
   },
   // 位置class的重置
   setPosClass() {
@@ -168,6 +161,15 @@ let rjBanner = {
       this.hasStart = true;
       $bannerBtns.eq(this.nowPageIndex)
         .addClass('rj-banner-btn-current');
+      $.each($spans, function (index, item) {
+        $(item).animate({
+          transform: 'rotate3d(0,1,0,720deg)'
+        }, {
+          duration: 3000,
+          easing: 'cubic-bezier(.5,.52,0,1)',
+          delay: (index) * 200
+        });
+      });
     }
     // 到下一张图的时间
     let bannerTime = this.bannerTotalTime;
