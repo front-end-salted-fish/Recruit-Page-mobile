@@ -493,6 +493,40 @@
         text-decoration: none;
         color: white;
     }
+    .mq-detail-page {
+        .title {
+            opacity: 1;
+            position: absolute;
+            top: 28%;
+            left:0;
+            transform: scale(1);
+            transform-origin: 0 0;
+            width: 380/@rem;
+            height: 160/@rem;
+            text-align: center;
+            transition: all 1s cubic-bezier(.39,.92,.34,.97);
+            span {
+                // width:100%;
+                display: inline-block;
+                font-size: 3.5rem;
+                transition: all 1s cubic-bezier(.39,.92,.34,.97);
+                position: absolute;
+                left:50%;
+                transform: translate(-50%);
+            }
+
+            sup {
+                top: 160/@rem - 0.5rem !important;
+                font-size: 1rem;
+                display: inline-block;
+                transition: all 1s cubic-bezier(.39,.92,.34,.97);
+                position: absolute;
+                // bottom: .5rem !important;
+                left:50%;
+                transform: translate(-50%);
+            }
+        }
+    }
 
     #mq-frontEnd {
         display: block;
@@ -503,32 +537,6 @@
         background-size: cover;
         width: 100%;
         height: 100%;
-
-        .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
-            sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
-            }
-        }
-
-
 
         .wrap {
             width: 300/@rem;
@@ -550,7 +558,7 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.34,.97);
 
                 .innerContent {
                     position: relative;
@@ -558,7 +566,7 @@
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 2s cubic-bezier(.39,.92,.34,.97);
 
                     p {
                         position: absolute;
@@ -568,12 +576,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 2s cubic-bezier(.39,.92,.34,.97);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 2s cubic-bezier(.39,.92,.34,.97);
                 }
             }
         }
@@ -588,30 +596,6 @@
         width: 100%;
         height: 100%;
 
-        .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
-            sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
-            }
-        }
-
         .wrap {
             width: 300/@rem;
             // width: 18.75rem;
@@ -632,14 +616,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.34,.97);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 2s cubic-bezier(.39,.92,.34,.97);
 
 
                     p {
@@ -650,12 +634,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
             }
         }
@@ -670,29 +654,7 @@
         width: 100%;
         height: 100%;
 
-        .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
 
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
-            sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
-            }
-        }
 
         .wrap {
             width: 300/@rem;
@@ -714,14 +676,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.34,.97);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 2s cubic-bezier(.39,.92,.34,.97);
 
 
                     p {
@@ -732,12 +694,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
             }
         }
@@ -752,30 +714,12 @@
         background-attachment: fixed;
         width: 100%;
         height: 100%;
-
         .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
             span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
-            sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
+                width: 14rem;
             }
         }
+
 
         .wrap {
             width: 300/@rem;
@@ -797,14 +741,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.34,.97);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 2s cubic-bezier(.39,.92,.34,.97);
 
                     p {
                         position: absolute;
@@ -814,12 +758,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
             }
         }
@@ -834,29 +778,7 @@
         width: 100%;
         height: 100%;
 
-        .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
 
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
-            sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
-            }
-        }
 
         .wrap {
             width: 300/@rem;
@@ -878,13 +800,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.34,.97);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
+                    transition: all 2s cubic-bezier(.39,.92,.34,.97);
 
                     p {
                         position: absolute;
@@ -894,12 +817,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.34,.97);
                 }
             }
         }
