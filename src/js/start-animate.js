@@ -13,6 +13,7 @@ import rjBanner from '../js/rj-index'
                 $('#loading-module').hide();
             });
             rjBanner.start();
+            $('#rj-img-pre-load').remove();
         }
     }
     // 开机动画结束

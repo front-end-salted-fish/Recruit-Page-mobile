@@ -53,21 +53,27 @@ $(function() {
     //         $detailPage.show(1000);
     //     })
     // }
+    // 获取所有图片
     // 获取报名按钮，并且为报名按钮绑定点击跳转事件
     let $joinBtn = $('.zl-join .btn');
     $joinBtn.tap(function() {
         let $formPage = $('#zl-form-page');
             // 排他
-        $formPage.siblings().hide(1000);
-        $formPage.show(1000);
+        $formPage.siblings().fadeOut(1000);
+        $('.zl-form').fadeIn()
+        $('.zl-form').removeClass('zl-become-small');
+        $('#wind').css({
+            display: 'none'
+        })
+        $formPage.fadeIn(1000);
     });
   
     // 回退按钮的功能
-    let $backBtn = $('.zl-back-btn');
-    $backBtn.tap(function() {
-        let $bannerPage = $('#rj-banner');
+    // let $backBtn = $('.zl-back-btn');
+    // $backBtn.tap(function() {
+        // let $bannerPage = $('#rj-banner');
             // 排他
         // $bannerPage.siblings().hide(1000);
         // $bannerPage.show(1000);
-    })
+    // })
 })

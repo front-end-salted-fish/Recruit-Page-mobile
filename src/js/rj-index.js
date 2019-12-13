@@ -22,6 +22,8 @@ let $detailPages = $('#mq-production').children(); // 获取详情页
 let $whiteCur = $('#rj-white-curtain');  // 切换时的白色幕布
 let $spans = $('#rj-3d-tv').find('span'); // 轮播图TopView 字样
 let $rjBackBtn = $('.zl-back-btn'); // 从详情页返回轮播图的按钮
+let $preLoad = $('#rj-img-pre-load img');
+
 // 翻页节流共享previous
 let previous = 0;
 let canBack = false;  // 是否可以返回轮播图（因为存在动画还没结束就点击按钮的情况）
@@ -49,9 +51,12 @@ let rjBanner = {
   // 初始化函数
   init() {
     $bannerImgs[1].src = testImg1;
+    $preLoad.forEach(function(item, index){
+      $(item).attr('src',rjBanner.imgSrc[index]);
+    });
+    // $bannerImgs[0].src = testImg3;
+    // $bannerImgs[0].src = testImg2;
     this.setPosClass();
-    // TopView 字样反转
-
   },
   // 位置class的重置
   setPosClass() {
@@ -161,6 +166,7 @@ let rjBanner = {
     // 如果开始则初始化按钮
     if (!this.hasStart) {
       this.hasStart = true;
+      // TopView 字样反转
       $bannerBtns.eq(this.nowPageIndex)
         .addClass('rj-banner-btn-current');
       $.each($spans, function (index, item) {
@@ -257,6 +263,7 @@ let rjBanner = {
               .find('div').addClass('rj-curtain-in-div-pre').removeClass('rj-curtain-out-div-pre');
       canBack = true;
     });
+    $('#zl-detail-pages').fadeIn()
   },
   // 返回轮播图界面
   backToBanner() {
