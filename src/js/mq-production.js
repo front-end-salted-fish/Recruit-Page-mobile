@@ -127,7 +127,7 @@ function swipeU(classname) {
                         // textAlign: "start",
                         transform: "scale(.5)",
                     }).children().css({
-                        left:0,
+                        left: 0,
                         transform: 'translate(0)'
                     })
 
@@ -187,12 +187,12 @@ function swipeU(classname) {
                     distance1(classname)
                     // $(imgUp).hide();
                     break;
-                    // case 6:
-                    //     $(list[5]).addClass('opa');
-                    //     // console.log(list[4]);
-                    //     distance1(classname)
-                    //     $(imgUp).hide();
-                    //     break;
+                // case 6:
+                //     $(list[5]).addClass('opa');
+                //     // console.log(list[4]);
+                //     distance1(classname)
+                //     $(imgUp).hide();
+                //     break;
                 case 6:
                     $(list[3]).css({
                         opacity: '0'
@@ -218,7 +218,7 @@ function swipeU(classname) {
             console.log('mqObj.tag', mqObj.tag);
         }
     )
-}!(() => {
+} !(() => {
     swipeU(firstId)
     swipeU(secondId)
     swipeU(thirdId)
@@ -305,7 +305,7 @@ function swipeD(classname) {
                     $(list[0]).css({
                         opacity: '1'
                     })
-                    
+
                     // $(list[1]).removeClass('opa1');
                     // $(list[0]).addClass('opa1');
 
@@ -313,24 +313,24 @@ function swipeD(classname) {
                     // a = 3;
                     // console.log(list[2]);
                     break;
-                    case 2:
-                        $(list[0]).css({
-                            opacity: '1'
-                        })
-                        // title.css({
-                        //     top: "1rem",
-                        //     left: "-2.5rem",
-                        //     textAlign: "start",
-                        //     transform: "scale(.5)",
-                        // })
-                        // console.log(list[3]);
-                        break;
-                    // case 1:
-                    //     $(list[0]).addClass('opa1');
-                    //     a = 1;
-                    //     distance2(classname)
-                    //     // console.log(list[4]);
-                    //     break;
+                case 2:
+                    $(list[0]).css({
+                        opacity: '1'
+                    })
+                    // title.css({
+                    //     top: "1rem",
+                    //     left: "-2.5rem",
+                    //     textAlign: "start",
+                    //     transform: "scale(.5)",
+                    // })
+                    // console.log(list[3]);
+                    break;
+                // case 1:
+                //     $(list[0]).addClass('opa1');
+                //     a = 1;
+                //     distance2(classname)
+                //     // console.log(list[4]);
+                //     break;
                 default:
                     mqObj.tag = 1;
                     console.log(5);
@@ -344,7 +344,7 @@ function swipeD(classname) {
         }
     )
 
-}!(() => {
+} !(() => {
     swipeD(firstId)
     swipeD(secondId)
     swipeD(thirdId)
@@ -528,8 +528,8 @@ let cfMoveFn = (e) => {
         textAlign: "center"
         // transition: all 1s;
     }).children().css({
-      left:'',
-      transform: ''
+        left: '',
+        transform: ''
     })
     // box.find(".innerContent").eq(0).css({
     //     opacity: "0"
@@ -600,88 +600,50 @@ let cfMoveFn = (e) => {
     //         }
     //     }
     // );
-    alldetailDiv.css({
-        display: 'block',
-        position: 'absolute',
-        left: disY > 0 ? '100vw' : '-100vw',
-    }).removeClass('current-page');
+    // alldetailDiv.css({
+    //     display: 'block',
+    //     position: 'absolute',
+    //     left: disY > 0 ? '100vw' : '-100vw',
+    // }).removeClass('current-page');
+    alldetailDiv.removeClass('detail-move-right').removeClass('detail-move-left');
+    if(disY>0) {
+        alldetailDiv.addClass('detail-move-right');
+    }else{
+        alldetailDiv.addClass('detail-move-left')
+    }
+    let myAnimate = {
+        left: '0vw !importance',
+        transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s !importance'
+    };
+        
+    
     console.log('downcount', downCount);
     switch (downCount) {
         case 0:
             is.removeClass('height-light');
             is.eq(0).addClass('height-light');
             //显示下一张详情页
-            fontEndeDiv.animate({
-                // display: 'block',
-                position: 'absolute',
-                left: '0vw',
-                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-            }, {
-                duration: 300,
-                compute: function () {
-                    fontEndeDiv.css('display', 'block').addClass('current-page');
-                }
-            });
+            fontEndeDiv.css(myAnimate);
             break;
         case 1:
             is.removeClass('height-light');
             is.eq(1).addClass('height-light');
-            merchineDiv.animate({
-                // display: 'block',
-                position: 'absolute',
-                left: '0vw',
-                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-            }, {
-                duration: 300,
-                compute: function () {
-                    andriodDiv.addClass('current-page');
-                }
-            });
+            backstageDiv.css(myAnimate);
             break;
         case 2:
             is.removeClass('height-light');
             is.eq(2).addClass('height-light');
-            iosDiv.animate({
-                // display: 'block',
-                position: 'absolute',
-                left: '0vw',
-                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-            }, {
-                duration: 300,
-                compute: function () {
-                    backstageDiv.addClass('current-page');
-                }
-            });
+            andriodDiv.css(myAnimate);
             break;
         case 3:
             is.removeClass('height-light');
             is.eq(3).addClass('height-light');
-            andriodDiv.animate({
-                // display: 'block',
-                position: 'absolute',
-                left: '0vw',
-                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-            }, {
-                duration: 300,
-                compute: function () {
-                    merchineDiv.addClass('current-page');
-                }
-            });
+            iosDiv.css(myAnimate);
             break;
         case 4:
             is.removeClass('height-light');
             is.eq(4).addClass('height-light');
-            backstageDiv.animate({
-                // display: 'block',
-                position: 'absolute',
-                left: '0vw',
-                transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s'
-            }, {
-                duration: 300,
-                compute: function () {
-                    iosDiv.addClass('current-page');
-                }
-            });
+            merchineDiv.css(myAnimate);
             break;
     }
 };
