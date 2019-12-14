@@ -249,7 +249,7 @@ let rjBanner = {
     $detailPages.eq(pageIndex).css({
       display: 'block'
     }).siblings().css({
-      display: 'none'
+      display: 'none',
     });
     // 幕布出现->消失
     $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', ()=>{
