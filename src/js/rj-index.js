@@ -246,11 +246,10 @@ let rjBanner = {
     console.log("锐基：跳进" + this.cTxtArr[pageIndex]);
     // 轮播图右滑
     $banner.removeClass('rj-banner-in').addClass('rj-banner-out');
-    $detailPages.eq(pageIndex).css({
-      display: 'block'
-    }).siblings().css({
-      display: 'none',
-    });
+    $detailPages.eq(this.watchPageIndex).addClass('cf-blur-in').siblings().addClass('cf-blur-out');
+    // $detailPages.css({
+    //   display: 'block'
+    // });
     // 幕布出现->消失
     $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', ()=>{
       $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-out')
@@ -268,7 +267,7 @@ let rjBanner = {
     $whiteCur.addClass('rj-white-curtain-in').on('webkitAnimationEnd', ()=>{
       $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-in')
       .find('div').addClass('rj-curtain-out-div-pre').removeClass('rj-curtain-in-div-pre');
-      $detailPages.removeClass('rj-detail-page-out');
+      $detailPages.removeClass('rj-detail-page-out cf-blur-out cf-blur-in');
       $banner.removeClass('rj-banner-in');
       this.canBack = false;
     });
