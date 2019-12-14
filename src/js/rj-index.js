@@ -40,6 +40,7 @@ let rjBanner = {
   canBack: false,  // 是否可以返回轮播图（因为存在动画还没结束就点击按钮的情况）
   // 用户正在阅读的页码
   watchPageIndex: undefined,
+  hasInitDeg: false,
   // 存放位置类名的数组
   pagesPosClassArr: ["rj-pre-page", "rj-mid-page", "rj-next-page"],
   // 存放图片链接的数组
@@ -255,6 +256,7 @@ let rjBanner = {
       $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-out')
               .find('div').addClass('rj-curtain-in-div-pre').removeClass('rj-curtain-out-div-pre');
       this.canBack = true;
+      this.hasInitDeg = false;
     });
     $('#zl-detail-pages').fadeIn();
   },
