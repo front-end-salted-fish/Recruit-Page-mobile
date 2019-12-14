@@ -26,7 +26,6 @@ let $preLoad = $('#rj-img-pre-load img');
 
 // 翻页节流共享previous
 let previous = 0;
-let canBack = false;  // 是否可以返回轮播图（因为存在动画还没结束就点击按钮的情况）
 
 
 // 轮播图对象
@@ -38,8 +37,10 @@ let rjBanner = {
   bannerMoveTime: 2500, // 动画时间
   hasStart: false,
   isStopping: true,
+  canBack: false,  // 是否可以返回轮播图（因为存在动画还没结束就点击按钮的情况）
   // 用户正在阅读的页码
   watchPageIndex: undefined,
+  hasInitDeg: false,
   // 存放位置类名的数组
   pagesPosClassArr: ["rj-pre-page", "rj-mid-page", "rj-next-page"],
   // 存放图片链接的数组
@@ -212,7 +213,7 @@ let rjBanner = {
   },
   // 点击进入详情页的函数
   toDetailPage(pageIndex) {
-    console.log(mqObj.tag);
+    // console.log(mqObj.tag);
     //从轮播图进去详情页要重置1，这样再从详情页返回到轮播图之后，再从轮播图进到详情页逻辑才不会乱
     mqObj.tag = 1;
     let box = $('.innerwrap');
@@ -222,27 +223,20 @@ let rjBanner = {
         $(this).css({
             top: '0',
             transition: ''
-            // opacity: "0"
         })
     })
     boxContent.each(function (item, index) {
         $(this).css({
-            // top: '0',
             opacity: "0",
             transition: ''
         })
     })
     title.css({
-        // opacity: 1;
         position: "absolute",
         top: "28%",
         left: "0",
         transform: 'scale(1)',
-        // left: 10%;
-        // width: 380/@rem;
-        // height: 160/@rem;
         textAlign: "center"
-        // transition: all 1s;
     }).children().css({
       left:'',
       transform: ''
@@ -258,24 +252,25 @@ let rjBanner = {
       display: 'none'
     });
     // 幕布出现->消失
-    $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', function () {
+    $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', ()=>{
       $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-out')
               .find('div').addClass('rj-curtain-in-div-pre').removeClass('rj-curtain-out-div-pre');
-      canBack = true;
+      this.canBack = true;
+      this.hasInitDeg = false;
     });
-    $('#zl-detail-pages').fadeIn()
+    $('#zl-detail-pages').fadeIn();
   },
   // 返回轮播图界面
   backToBanner() {
     $detailPages.eq(this.watchPageIndex).addClass('rj-detail-page-out');
     $banner.removeClass('rj-banner-out').addClass('rj-banner-in');
     // 幕布出现->消失
-    $whiteCur.addClass('rj-white-curtain-in').on('webkitAnimationEnd', function () {
+    $whiteCur.addClass('rj-white-curtain-in').on('webkitAnimationEnd', ()=>{
       $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-in')
       .find('div').addClass('rj-curtain-out-div-pre').removeClass('rj-curtain-in-div-pre');
       $detailPages.removeClass('rj-detail-page-out');
       $banner.removeClass('rj-banner-in');
-      canBack = false;
+      this.canBack = false;
     });
     this.start();
   },
@@ -283,16 +278,16 @@ let rjBanner = {
 
 // 返回轮播图界面
 $rjBackBtn.on('touchstart',function(){
-  if(canBack) {
-    canBack = false;
+  if(rjBanner.canBack) {
+    rjBanner.canBack = false;
     rjBanner.backToBanner();
   }
 })
 
 // 调试用
 window.rjBanner = rjBanner;
-window.$banner = $banner;
-window.$whiteCur = $whiteCur;
+// window.$banner = $banner;
+// window.$whiteCur = $whiteCur;
 
 // 轮播图初始化
 rjBanner.init();

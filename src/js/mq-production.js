@@ -6,6 +6,7 @@ import upIcon from '../../img/icon_up.png'
 import './rem'
 import '../font/menu/iconfont.css'
 import functionCaller from "less/lib/less/functions/function-caller";
+import rjBanner from './rj-index'
 
 
 
@@ -37,7 +38,7 @@ var backstageDiv = $('#mq-backend');
 var merchineDiv = $('#mq-machineLearning');
 var iosDiv = $('#mq-ios');
 var andriodDiv = $('#mq-android');
-console.log('all', fontEndeDiv);
+let $cfDetailPages = $('.mq-detail-page');
 var rotateTimes = 0;
 
 //详情页文字
@@ -368,14 +369,16 @@ function swipeD(classname) {
 // // }
 // // // content.onmousemove = debounce(count,1000);
 
+let startDeg = 0;
+let startY = 0;
 // 计算旋转按钮位置
 function rotateFn(nodes) {
     var radio = 360 / nodes.length;
     var r = $('.move-wrap').width() / 2;
     nodes.each(function (index, item) {
         console.log(radio);
-        var top = Math.sin((36 + 144 + index * radio) * Math.PI / 180) * r * 0.75 + r;
-        var left = Math.cos((36 + 144 + index * radio) * Math.PI / 180) * r * 0.75 + r;
+        var top = r - Math.sin((180 + index * radio) * Math.PI / 180) * r * 0.75;
+        var left = Math.cos((180 + index * radio) * Math.PI / 180) * r * 0.75 + r;
 
         $(item).css({
             top: top,
@@ -418,13 +421,33 @@ function debounce(fn, wait) {
         }, wait)
     }
 }
+// 跳转
+function changePage() {
 
-//防抖定时器
-// var menu_timer;
+    is.removeClass('height-light');
+    is.eq(rjBanner.watchPageIndex).addClass('height-light');
+
+    if (rjBanner.hasInitDeg) {
+        $cfDetailPages.eq(rjBanner.watchPageIndex).removeClass('cf-blur-out').addClass('cf-blur-in').siblings().removeClass('cf-blur-in').addClass('cf-blur-out')
+        // $cfDetailPages.removeClass('cf-blur-in').addClass('cf-blur-out')
+        //     .eq(rjBanner.watchPageIndex).addClass('cf-blur-in');
+    }
+
+}
 let currentRotateDeg = 0;
+// let hasInitDeg = false;
 // 滑动事件函数
 let toggleMenu = function (e) {
+
     e.stopPropagation();
+    if (!rjBanner.hasInitDeg) {
+        rotateTimes = rjBanner.watchPageIndex;
+        rjBanner.hasInitDeg = true;
+    }
+    startDeg = rotateTimes * 72;
+    console.log('startdeg', startDeg)
+    console.log(rotateTimes, 'rotatimes');
+    changePage();
     currentRotateDeg = rotateTimes * 72;
     let that = this;
     console.log(this, 'this', e, 'e');
@@ -467,10 +490,6 @@ menuBtn.on('tap', debounce(toggleMenu, 300));
 menuBtn.on('touchend', function (e) {
     e.stopPropagation();
 });
-let startDeg = 0;
-let downCount = 0;
-let startY = 0;
-
 //menu move function
 function move(node) {
     // 开始位置
@@ -495,99 +514,86 @@ function move(node) {
 
 
 }
-
 let cfMoveFn = (e) => {
-    //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
-    mqObj.tag = 1;
-    let box = $('.innerwrap');
-    let boxContent = $('.innerContent');
-    let title = $('.title');
-    box.each(function (item, index) {
-        $(this).css({
-            top: '0',
-            transition: ''
-            // opacity: "0"
-        })
-    })
-    boxContent.each(function (item, index) {
-        $(this).css({
-            // top: '0',
-            opacity: "0",
-            transition: ''
-        })
-    })
-    title.css({
-        // opacity: 1;
-        position: "absolute",
-        top: "28%",
-        left: "0",
-        transform: 'scale(1)',
-        // left: 10%;
-        // width: 380/@rem;
-        // height: 160/@rem;
-        textAlign: "center"
-        // transition: all 1s;
-    }).children().css({
-        left: '',
-        transform: ''
-    })
-    // box.find(".innerContent").eq(0).css({
-    //     opacity: "0"
-    // })
+    console.log(rjBanner.watchPageIndex);
+    
+
+    // cf
     e = e || window.event;
     var touch = e.changedTouches[0];
     // console.log('xb', touch.clientX, 'yb', touch.clientY);
     // 触摸坐标
-    var xb = touch.clientX;
-    var yb = touch.clientX;
+    // var xb = touch.clientX;
+    // var yb = touch.clientX;
     // 计算要偏转的角度
     // console.log(xa,ya,xb,yb);
     // var rotateDeg = computeDeg(xa, ya, xb, yb);
     // console.log('rotateDeg', rotateDeg);
-    var isOpacity = btnWrap.css('opacity');
     menuBtns = $('#cf-menu .move-wrap').children();
     // 获取目标事件手指
     var endY = touch.clientY;
     var disY = startY - endY;
-    // 判断是上滑还是下滑
-    if (disY > 0 || Math.abs(MOVE_DIS) > 20) {
-        // 记录旋转次数
-        rotateTimes++;
-        if (downCount === 0) {
-            downCount = 4
-        } else {
-            downCount--;
-        }
-        startDeg += 72;
-        // console.log('shanghua', downCount, startDeg);
-
-        btnWrap.animate({
-            transform: 'rotate(' + startDeg + 'deg)',
-            // transition: 'all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.2s'
-        });
-        // is.css({
-        //     transform: 'rotate(' + (-startDeg) + 'deg)'
-        // });
-
-    }
-    if (disY < 0 || Math.abs(MOVE_DIS) < 20) {
-        rotateTimes--;
-
-        if (downCount === 4) {
-            downCount = 0;
-        } else {
-            downCount++;
-        }
-        startDeg -= 72;
-        // console.log('xiahua', downCount, startDeg);
-
-        btnWrap.animate({
-            transform: 'rotate(' + startDeg + 'deg)',
-        });
-    }
     if (Math.abs(disY) < MOVE_DIS) {
         return false
     }
+    // 判断是上滑还是下滑
+    if (disY > 0 ) {
+        console.log('上滑', rjBanner.watchPageIndex)
+        // 记录旋转次数
+        rotateTimes++;
+        rjBanner.watchPageIndex = (rjBanner.watchPageIndex === 4) ? 0 : (rjBanner.watchPageIndex + 1);
+        startDeg += 72;
+        // console.log('shanghua', rjBanner.watchPageIndex, startDeg);
+    }
+    if (disY < 0 ) {
+        console.log('下滑', rjBanner.watchPageIndex)
+        rotateTimes--;
+        rjBanner.watchPageIndex = (rjBanner.watchPageIndex === 0) ? 4 : (rjBanner.watchPageIndex - 1);
+        startDeg -= 72;
+        // console.log('xiahua', rjBanner.watchPageIndex, startDeg);
+    }
+        //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
+        mqObj.tag = 1;
+        let box = $('.innerwrap');
+        let boxContent = $('.innerContent');
+        let title = $('.title');
+        box.each(function (item, index) {
+            $(this).css({
+                top: '0',
+                transition: ''
+                // opacity: "0"
+            })
+        })
+        boxContent.each(function (item, index) {
+            $(this).css({
+                // top: '0',
+                opacity: "0",
+                transition: ''
+            })
+        })
+        title.css({
+            // opacity: 1;
+            position: "absolute",
+            top: "28%",
+            left: "0",
+            transform: 'scale(1)',
+            // left: 10%;
+            // width: 380/@rem;
+            // height: 160/@rem;
+            textAlign: "center"
+            // transition: all 1s;
+        }).children().css({
+            left: '',
+            transform: ''
+        })
+    // box.find(".innerContent").eq(0).css({
+    //     opacity: "0"
+    // })
+    btnWrap.animate({
+        transform: 'rotate(' + startDeg + 'deg)',
+    });
+    changePage();
+
     // $('current-page').animate({
     //         // display: 'block',
     //         position: 'absolute',
@@ -605,48 +611,19 @@ let cfMoveFn = (e) => {
     //     position: 'absolute',
     //     left: disY > 0 ? '100vw' : '-100vw',
     // }).removeClass('current-page');
-    alldetailDiv.removeClass('detail-move-right').removeClass('detail-move-left');
-    if(disY>0) {
-        alldetailDiv.addClass('detail-move-right');
-    }else{
-        alldetailDiv.addClass('detail-move-left')
-    }
-    let myAnimate = {
-        left: '0vw !importance',
-        transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s !importance'
-    };
-        
-    
-    console.log('downcount', downCount);
-    switch (downCount) {
-        case 0:
-            is.removeClass('height-light');
-            is.eq(0).addClass('height-light');
-            //显示下一张详情页
-            fontEndeDiv.css(myAnimate);
-            break;
-        case 1:
-            is.removeClass('height-light');
-            is.eq(1).addClass('height-light');
-            backstageDiv.css(myAnimate);
-            break;
-        case 2:
-            is.removeClass('height-light');
-            is.eq(2).addClass('height-light');
-            andriodDiv.css(myAnimate);
-            break;
-        case 3:
-            is.removeClass('height-light');
-            is.eq(3).addClass('height-light');
-            iosDiv.css(myAnimate);
-            break;
-        case 4:
-            is.removeClass('height-light');
-            is.eq(4).addClass('height-light');
-            merchineDiv.css(myAnimate);
-            break;
-    }
+    // alldetailDiv.removeClass('detail-move-right').removeClass('detail-move-left');
+    // if(disY>0) {
+    //     alldetailDiv.addClass('detail-move-right');
+    // }else{
+    //     alldetailDiv.addClass('detail-move-left')
+    // }
+    // let myAnimate = {
+    //     transform: '0vw !importance',
+    //     transition: 'all cubic-bezier(0.17, 0.99, 1, 0.96) 0.3s !importance'
+    // };
+    console.log('rjBanner.watchPageIndex', rjBanner.watchPageIndex);
 };
+
 move(curtain[0]);
 move(menu[0]);
 //点击幕布关闭

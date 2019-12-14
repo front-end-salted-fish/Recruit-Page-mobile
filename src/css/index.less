@@ -404,7 +404,7 @@
 #zl-detail-pages {
     //display: none;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
 
     .zl-text {
         color: white;
@@ -469,18 +469,25 @@
 // }
 @rem: 23.4375rem;
 
-.detail-move-left {
-    display: block !important;
+.cf-blur-out {
+   opacity: 0;
+   filter: blur(1);
+   transform: scale(1.5);
+   display: block !important;
+    transition: all ease 0.4s;
     position: absolute;
-    left: -100vw ;
-    // transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
+    z-index: -1;
+
 }
 
-.detail-move-right {
+.cf-blur-in {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
     display: block !important;
     position: absolute;
-    left: 100vw ;
-    // transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
+    transition: all ease 0.4s;
+
 }
 
 #mq-production {
@@ -539,7 +546,11 @@
         background-size: cover;
         width: 100%;
         height: 100%;
-
+        .title {
+            sup {
+                width: 7rem;
+            }
+        }
         .wrap {
             width: 300/@rem;
             // width: 18.75rem;
@@ -597,7 +608,11 @@
         // background-color: green;
         width: 100%;
         height: 100%;
-
+        .title {
+            sup {
+                width: 7rem;
+            }
+        }
         .wrap {
             width: 300/@rem;
             // width: 18.75rem;
@@ -655,7 +670,11 @@
         background-size: cover;
         width: 100%;
         height: 100%;
-
+        .title {
+            sup {
+                width: 9rem;
+            }
+        }
 
 
         .wrap {
@@ -720,6 +739,11 @@
             span {
                 width: 14rem;
             }
+
+            sup {
+                width: 8rem;
+            }
+            
         }
 
 
@@ -779,6 +803,13 @@
         background-size: cover;
         width: 100%;
         height: 100%;
+        .title {
+            sup {
+                width: 9rem;
+            }
+        }
+
+
         .wrap {
             width: 300/@rem;
             // width: 18.75rem;
@@ -837,7 +868,7 @@
 // rj:TODO:
 // 陈锐基的轮播图
 #rj-banner {
-    z-index:2;
+    z-index:3;
     height: 100%;
     background: rgb(29, 29, 29);
     width: 16rem;
@@ -1324,29 +1355,29 @@
             p:nth-child(2) {
                 i {
 
-                    transform: rotate(72deg);
-
+                    transform: rotate(288deg);
+                    
                 }
             }
-
+            
             p:nth-child(3) {
+                i {
+                    transform: rotate(216deg);
+                    //font-size: 1.2rem;
+                }
+            }
+            
+            p:nth-child(4) {
                 i {
                     //font-size: 1.2rem;
                     transform: rotate(144deg);
                 }
             }
-
-            p:nth-child(4) {
-                i {
-                    //font-size: 1.2rem;
-                    transform: rotate(216deg);
-                }
-            }
-
+            
             p:nth-child(5) {
                 i {
                     //font-size: 1.2rem;
-                    transform: rotate(288deg);
+                    transform: rotate(72deg);
                 }
             }
 

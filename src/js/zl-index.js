@@ -59,7 +59,7 @@ $(function() {
     $joinBtn.tap(function() {
         let $formPage = $('#zl-form-page');
             // 排他
-        $formPage.siblings().fadeOut(1000);
+        $formPage.siblings('#zl-detail-pages').fadeOut(1000);
         $('.zl-form').fadeIn()
         $('.zl-form').removeClass('zl-become-small');
         $('#wind').css({
