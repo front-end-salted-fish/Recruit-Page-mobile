@@ -4,6 +4,7 @@ import '../css/reset.less'
 import '../css/index.less'
 import '../bootstrap-3.3.7-dist/css/bootstrap.css'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import $ from 'zepto'
 import '../js/form'
 import '../../node_modules/zepto/src/fx'
@@ -30,9 +31,28 @@ $(function() {
     document.head.appendChild(styleNode)
 })();
 =======
+=======
+import '../css/zl-plane.css'
+import 'zepto/dist/zepto'
+import 'zepto/src/touch'
+import '../../node_modules/zepto/src/fx'
+import '../../node_modules/zepto/src/fx_methods'
+// import 'zepto/src/fx_methods'
+import './start-animate' 
+>>>>>>> 6dea14dd72b733968e10701e18af598eb254da31
 import './zl-index'
 import './mq-production'
 import './rj-index'
 import '../../node_modules/zepto/src/fx'
 import '../../node_modules/zepto/src/fx_methods'
+<<<<<<< HEAD
 >>>>>>> 3ac729114d792505087b9a9185cac38dc06f3723
+=======
+import './zl-plane'
+// var _srcList = [],
+//     i = 0;
+// 　　　　　　　　　 //获取所有图片路径，存为数组
+//     $('.bg').each(function(){
+//         _srcList.push($(this).attr('src'));
+// })
+>>>>>>> 6dea14dd72b733968e10701e18af598eb254da31
