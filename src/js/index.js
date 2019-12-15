@@ -1,7 +1,9 @@
 // 放置主要的js文件
+import './rem'
 import '../css/reset.less'
 import '../css/index.less'
 import '../bootstrap-3.3.7-dist/css/bootstrap.css'
+<<<<<<< HEAD
 import $ from 'zepto'
 import '../js/form'
 import '../../node_modules/zepto/src/fx'
@@ -27,3 +29,10 @@ $(function() {
     styleNode.innerHTML = 'html{font-size: '+ width/16 +'px !important;}';
     document.head.appendChild(styleNode)
 })();
+=======
+import './zl-index'
+import './mq-production'
+import './rj-index'
+import '../../node_modules/zepto/src/fx'
+import '../../node_modules/zepto/src/fx_methods'
+>>>>>>> 3ac729114d792505087b9a9185cac38dc06f3723
