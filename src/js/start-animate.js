@@ -1,5 +1,34 @@
+import rjBanner from '../js/rj-index'
 // 开机动画
 (() => {
+    // 锐基添加的代码
+    let loadingtransitionEnd = false;  // 动画是否结束
+    let isAllLoaded = false;  // 是否全部加载完成
+    // 开机动画消失
+    let loadingOut = () => {
+        if(isAllLoaded && loadingtransitionEnd) {
+            $('#loading-module').animate({
+                opacity: 0
+            },1000,'ease',()=>{
+                $('#loading-module').hide();
+            });
+            rjBanner.start();
+            $('#rj-img-pre-load').remove();
+        }
+    }
+    // 开机动画结束
+    $($('.row-forth .move-span')[0]).on('webkitTransitionEnd', function(){
+        $($('.row-forth .move-span')[0]).off('webkitTransitionEnd');   
+        loadingtransitionEnd = true; 
+        loadingOut();     
+        // console.log('开机动画结束!',new Date().getTime());
+    })
+    window.onload = function() {
+        isAllLoaded = true;
+        loadingOut();  
+        // console.log('资源加载结束!',new Date().getTime());
+    }
+
     let that;
     class startAnimate {
         constructor() {
@@ -37,4 +66,6 @@
     }
     let newStartAnimate = new startAnimate();
     newStartAnimate.init();
+
+
 })();

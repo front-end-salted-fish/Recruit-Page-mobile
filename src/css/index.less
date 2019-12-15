@@ -7,16 +7,16 @@
 }
 
 @loadingAnmFontSize: 9vw;
-
 #loading-module {
     // display: none;
     //z-index: 100;
+    z-index: 999;
     height: 100vh;
     width: 100vw;
     background: #fafafa;
-    font-weight: 600;
+    
     position: relative;
-
+    transition: all ease 1s;
     @font-face {
         font-family: ITC;
         src: url(../fonts/ITCAvantGardeStd-Md.otf);
@@ -39,12 +39,12 @@
         height: 41.5vw;
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 40%;
         transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
+        opacity: 1 !important;
         .row {
             height: 6vw;
             width: 100%;
@@ -404,7 +404,7 @@
 #zl-detail-pages {
     //display: none;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
 
     .zl-text {
         color: white;
@@ -469,16 +469,25 @@
 // }
 @rem: 23.4375rem;
 
-.detail-move-out {
+.cf-blur-out {
+   opacity: 0;
+   filter: brightness(1) blur(1);
+   transform: scale(1.2);
+   display: block !important;
+    transition: all ease 0.4s;
     position: absolute;
-    left: -100vw;
-    transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
+    z-index: -1;
+
 }
 
-.detail-move-in {
+.cf-blur-in {
+    opacity: 1;
+    filter: brightness(1) blur(1);
+    transform: scale(1);
+    display: block !important;
     position: absolute;
-    left: 100vw;
-    transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
+    transition: all ease 0.4s;
+
 }
 
 #mq-production {
@@ -493,9 +502,43 @@
         text-decoration: none;
         color: white;
     }
+    .mq-detail-page {
+        .title {
+            opacity: 1;
+            position: absolute;
+            top: 28%;
+            left:0;
+            transform: scale(1);
+            transform-origin: 0 0;
+            width: 380/@rem;
+            height: 160/@rem;
+            text-align: center;
+            transition: all 1s cubic-bezier(.39,.92,.74,.94);
+            span {
+                // width:100%;
+                display: inline-block;
+                font-size: 3.5rem;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                position: absolute;
+                left:50%;
+                transform: translate(-50%);
+            }
+
+            sup {
+                top: 160/@rem - 0.5rem !important;
+                font-size: 1.1rem;
+                display: inline-block;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                position: absolute;
+                // bottom: .5rem !important;
+                left:50%;
+                transform: translate(-50%);
+            }
+        }
+    }
 
     #mq-frontEnd {
-        display: block;
+        display: none;
         background-image: url(../../img/frontend.jpg);
         // background-color: gray;
         background-repeat: no-repeat;
@@ -503,33 +546,11 @@
         background-size: cover;
         width: 100%;
         height: 100%;
-
         .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
             sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
+                width: 7.7rem;
             }
         }
-
-
-
         .wrap {
             width: 300/@rem;
             // width: 18.75rem;
@@ -550,7 +571,7 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                 .innerContent {
                     position: relative;
@@ -558,7 +579,7 @@
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                     p {
                         position: absolute;
@@ -568,12 +589,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 2s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
             }
         }
@@ -587,31 +608,11 @@
         // background-color: green;
         width: 100%;
         height: 100%;
-
         .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
             sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
+                width: 7.7rem;
             }
         }
-
         .wrap {
             width: 300/@rem;
             // width: 18.75rem;
@@ -632,14 +633,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
 
                     p {
@@ -650,49 +651,31 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
             }
         }
     }
 
     #mq-android {
-        //display: none;
+        display: none;
         background-image: url(../../img/android.jpg);
         // background-color: yellow;
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
         height: 100%;
-
         .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
             sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
+                width: 9.9rem;
             }
         }
+
 
         .wrap {
             width: 300/@rem;
@@ -714,14 +697,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
 
                     p {
@@ -732,12 +715,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
             }
         }
@@ -752,30 +735,17 @@
         background-attachment: fixed;
         width: 100%;
         height: 100%;
-
         .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
             span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
+                width: 14rem;
             }
 
             sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
+                width: 8.8rem;
             }
+            
         }
+
 
         .wrap {
             width: 300/@rem;
@@ -797,14 +767,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 2s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                     p {
                         position: absolute;
@@ -814,12 +784,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
             }
         }
@@ -833,30 +803,12 @@
         background-size: cover;
         width: 100%;
         height: 100%;
-
         .title {
-            opacity: 1;
-            position: absolute;
-            top: 20%;
-            // left: 10%;
-            width: 380/@rem;
-            height: 160/@rem;
-            text-align: center;
-            transition: all 1s;
-
-            span {
-                display: inline-block;
-                font-size: 4rem;
-                transition: all 1s;
-            }
-
             sup {
-                top: .5rem;
-                font-size: 1rem;
-                display: block;
-                transition: all 1s;
+                width: 9.9rem;
             }
         }
+
 
         .wrap {
             width: 300/@rem;
@@ -878,13 +830,14 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                 .innerContent {
                     position: relative;
                     height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
 
                     p {
                         position: absolute;
@@ -894,12 +847,12 @@
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
             }
         }
@@ -915,12 +868,13 @@
 // rj:TODO:
 // 陈锐基的轮播图
 #rj-banner {
-    z-index: 2;
+    z-index:3;
     height: 100%;
     background: rgb(29, 29, 29);
     width: 16rem;
     position: absolute;
     overflow: hidden;
+    top:0;
 
     #rj-banner-container {
         height: 100%;
@@ -1317,10 +1271,21 @@
 
 // 详情页模块移出
 .rj-detail-page-out {
+
     transform: translate(-16rem);
-    filter: brightness(0);
+    filter: brightness(0) blur(0);
     transition: all 1s cubic-bezier(.57, .02, .1, .99);
+    //display: block !important;
 }
+//.cf-blur-in {
+//    opacity: 1;
+//    filter: blur(0);
+//    transform: scale(1);
+//    display: block !important;
+//    position: absolute;
+//    transition: all ease 0.4s;
+//
+//}
 
 
 
@@ -1401,29 +1366,29 @@
             p:nth-child(2) {
                 i {
 
-                    transform: rotate(72deg);
-
+                    transform: rotate(288deg);
+                    
                 }
             }
-
+            
             p:nth-child(3) {
+                i {
+                    transform: rotate(216deg);
+                    //font-size: 1.2rem;
+                }
+            }
+            
+            p:nth-child(4) {
                 i {
                     //font-size: 1.2rem;
                     transform: rotate(144deg);
                 }
             }
-
-            p:nth-child(4) {
-                i {
-                    //font-size: 1.2rem;
-                    transform: rotate(216deg);
-                }
-            }
-
+            
             p:nth-child(5) {
                 i {
                     //font-size: 1.2rem;
-                    transform: rotate(288deg);
+                    transform: rotate(72deg);
                 }
             }
 

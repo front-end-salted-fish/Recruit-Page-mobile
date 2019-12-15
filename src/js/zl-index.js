@@ -59,12 +59,13 @@ $(function() {
     $joinBtn.tap(function() {
         let $formPage = $('#zl-form-page');
             // 排他
-        $formPage.siblings().fadeOut(1000);
-        $('.zl-form').fadeIn()
-        $('.zl-form').removeClass('zl-become-small');
+        $formPage.siblings('#zl-detail-pages').fadeOut(1000);
+        $('#wf-form').fadeIn()
+        $('#wf-form').removeClass('zl-become-small');
         $('#wind').css({
             display: 'none'
         })
+        $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
         $formPage.fadeIn(1000);
     });
   
