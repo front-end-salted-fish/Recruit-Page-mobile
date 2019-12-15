@@ -1,0 +1,228 @@
+#wf-form {
+    //background-image: url("../../img/form-bac.jpg");
+
+    overflow: hidden;
+    text-align: center;
+    width: 16rem;
+    height: 100%;
+    display: flex;
+    position: relative;
+
+    // transform: translate(16rem,100%);
+    //background-color: rgba(253, 253, 253,0.5);
+    .close {
+        font-size: 1.5rem;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: red;
+        background-color: white;
+        border-radius: 25%;
+        z-index: 1;
+    }
+
+    .second-part {
+        //display: none;
+        //background-color: cadetblue;
+        //right: -16rem;
+        background-image: linear-gradient(to top, #4099ac, #007994, #1e5c73, #2D304A);
+        padding-top: 2rem;
+        // position: absolute;
+        color: white;
+        z-index: 1;
+        //text-align: center;
+        width: 100%;
+        height: 100%;
+        transform: translate(16rem);
+        position: relative;
+        //transition: all 1s;
+
+        .need:after {
+            //必填项加红色星号
+            content: '* ';
+            color: red;
+        }
+
+        .wf-title {
+            font-size: large;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            padding-top: 1rem;
+            /* width: 100%;
+            font-size: 1rem; */
+        }
+
+        .second-part-form {
+            padding-top: 1rem;
+            width: 100%;
+
+            //margin: 0 auto;
+            //text-align: center;
+            p {
+                text-align: left;
+                padding-left: 0.5rem;
+                width: 100%;
+                //display: inline;
+
+                select {
+                    width: 5rem;
+                    display: inline;
+                    vertical-align: middle;
+                    margin-left: 3rem;
+                }
+
+                //padding-top: 0.2rem;
+
+                label:not(.groups-la) {
+                    padding-left: 2rem;
+                    width: 10rem;
+                    display: block;
+                    //vertical-align: middle;
+                }
+
+                .groups-la {
+                    padding-left: 2rem;
+                    width: 10rem;
+                    display: inline;
+                }
+
+                textarea {
+                    margin-top: 0.5rem;
+                    margin-left: 2rem;
+                    width: 70%;
+                    height: 5rem;
+                    //line-height: 5rem;
+                    //border: 1px solid black;
+                }
+            }
+
+        }
+
+        .btn-groups {
+            padding-top: 1rem;
+
+            button {
+                margin: 0 1rem;
+            }
+
+            .last-page {
+                color: black;
+            }
+        }
+    }
+
+    .first-part {
+        position: absolute;
+        //display: none;
+        color: white;
+        z-index: 1;
+        padding-top: 2rem;
+        margin: 0 auto;
+        //text-align: center;
+        /* width: 12rem;
+        height: 90%; */
+        width: 100%;
+        height: 100%;
+        //background-color: rgba(202, 165, 165, 0.5);
+        background-image: linear-gradient(#4099ac, #007994, #1e5c73, #2D304A);
+        align-self: center;
+
+        // text-align: left;
+        .center {
+            margin: 0 auto;
+            text-align: center;
+
+            .wf-title {
+                font-size: large;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                padding-top: 1rem;
+                //text-align: center;
+                /* top: 4%;
+                width: 100%;
+                font-size: 1rem; */
+            }
+
+            .tn {
+                text-align: center;
+                padding-top: 1rem;
+            }
+
+            .first-part-form {
+
+                //padding-left: 0.5rem;
+                margin: 0 auto;
+                text-align: left;
+
+                .form-group {
+                    padding-top: 0.2rem;
+                }
+
+                .intro {
+                    label {
+                        display: inline-block;
+                        width: 70px;
+                        text-align: right;
+                        margin-right: 20px;
+                    }
+
+                    //vertical-align: middle;
+                    textarea {
+                        /* margin-left:5rem;
+                        width: 8rem;
+                        height: 5rem; */
+
+                        width: 8rem;
+                        height: 5rem;
+                        display: block;
+                        margin-top: -1rem;
+                        margin-left: 5.2rem;
+                    }
+                }
+
+                .form-group:not(.gender) {
+                    //padding-left: 0.5rem;
+                    overflow: hidden;
+                    padding-left: 0.5rem;
+
+                    label {
+                        text-align: right;
+                        width: 5rem;
+                        padding-right: 0.5rem;
+                    }
+
+                    input {
+                        width: 8rem;
+                        //border-left: 2px solid blue;
+                        display: inline;
+
+                    }
+
+
+
+                    //为了使标签对齐，只需要设置label标签中的width宽度为一定值即可，
+                    //比如本例中为150px,因为label标签和input标签同属于p标签，他们是从左到右显示的，指定了label标签的长度
+                    //，即可使表单的文本框对齐。
+
+                }
+
+                .gender {
+                    overflow: hidden;
+                    padding-left: 0.5rem;
+
+                    label {
+                        text-align: right;
+                        width: 5rem;
+                        padding-right: 0.5rem;
+                    }
+                }
+
+                .need:after {
+                    //必填项加红色星号
+                    content: '* ';
+                    color: red;
+                }
+            }
+        }
+    }
+}

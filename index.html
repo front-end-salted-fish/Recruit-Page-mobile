@@ -3,108 +3,67 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 
-<body>
-    <button class="getmypart">加入我们</button>
-    <div id="wf-form">
-        <button type="button" class="close" aria-label="Close"><span
-                aria-hidden="true">&nbsp;&times;&nbsp;</span></button>
-        <div class="first-part">
-            <div class="center">
-                <p class="title">个人信息</p><!-- 此处应有美化 -->
-                <form class="first-part-form navbar-form form-horizontal" role="form">
-                    <p class="name form-group">
-                        <label for="name" class="need control-label">姓名</label>
-                        <input name='name' type="text" class="form-control">
-                    </p>
-                    <p class="id form-group">
-                        <label for="id" class="need control-label">学号</label>
-                        <input name='id' type="text" class="form-control" maxlength="10">
-                    </p>
-                    <p class="grade form-group">
-                        <label for="grade" class="need control-label">年级专业</label>
-                        <input name='grade' type="text" class="form-control">
-                    </p>
-                    <p class="gender form-group">
-                        <label for="gender" class="need control-label">性别</label>
-                        <input type="radio" name="sex" value="男" checked>男
-                        <input type="radio" name="sex" value="女">女
-                    </p>
-                    <p class="phone form-group">
-                        <label for="phone" class="need control-label">手机</label>
-                        <input name='phone' type="text" class="form-control">
-                    </p>
-                    <p class="email form-group">
-                        <label for="email" class="need control-label">邮箱</label>
-                        <input name='email' type="text" class="form-control">
-                    </p>
-                    <p class="intro form-group">
-                        <label for="intro" class="need intro-la control-label">自我介绍</label>
-                        <textarea name='intro' class="form-control"></textarea>
-                    </p>
-
-                </form>
-                <div class="tn" id="next-page"><button type="button" class="btn btn-default navbar-btn">下一页</button>
-                </div>
-                <!-- 把button用div包住，改变div的text-align使button不受first-part-form 的left控制 -->
-            </div>
-        </div>
-        <div class="second-part">
-            <div class="title">你的想法</div>
-            <form class="second-part-form" role="form">
-                <p class="groups form-group">
-                    <label for="groups" class="groups-la need">发展方向</label>
-                    <!-- <selevct name="groups" id="groups">
-                        <option>前端</option>
-                        <option>后台</option>
-                        <option>安卓</option>
-                        <option>ios</option>
-                        <option>数字学习</option>
-                    </selevct> -->
-                    <!-- 样式1 -->
-                    <select class="form-control" name='direction'>
-                        <option>前端</option>
-                        <option>后台</option>
-                        <option>安卓</option>
-                        <option>ios</option>
-                        <option>机器学习</option>
-                    </select>
-
-                </p>
-                <p>
-                    <label>计算机类技能经验</label>
-                    <textarea class="form-control" name="skills"></textarea>
-                </p>
-                <p>
-                    <label>谈谈你对我们工作室的认识</label>
-                    <textarea class="form-control" name=cognition"></textarea>
-                </p>
-            </form>
-            <div class="btn-groups">
-                <button class="last-page btn">上一页</button>
-                <button id="commit" class="btn btn-success">提 交</button>
-            </div>
-        </div>
-    </div>
+<body style="height: 100vh;width: 100vw;background: #fafafa; overflow: hidden; touch-action: none;">
     <!-- 开机动画 -->
-    <div id="zl-boot-animation" class="zl-com-height">
-        开机动画
-    </div>
-    <!-- 轮播图界面 -->
-    <!-- <div id="zl-banner-page" class="zl-com-height">
-        <div class="zl-img-container"></div>
-        <div class="zl-banner-mask">
-            <div class="zl-banner-promot">
-                <div class="zl-rectangular"></div>
-                <span class="zl-main-promot"><i class="glyphicon glyphicon-hand-up"></i>&nbsp; 点击进入详情页哦</span>
+    <header id="loading-module" style="height: 100vh;width: 100vw;background: #fafafa;font-weight: bold;">
+        <!-- 文字及banner的容器 -->
+        <div id="loading-box" style="opacity: 0;">
+            <!-- 第一行 -->
+            <div class="row row-one">
+                <div class="inner-left">
+                    <div class="move-sdiv"><span class="move-span">W</span></div>
+                    <div class="move-sdiv"><span class="move-span">E</span></div>
+                    <div class="move-sdiv"><span class="move-span">L</span></div>
+                    <div class="move-sdiv"><span class="move-span">-</span></div>
+                </div>
+                <div class="inner-right">
+                </div>
+            </div>
+            <!-- 第二行 -->
+            <div class="row row-two">
+                <div class="inner-left"></div>
+                <div class="inner-right">
+                    <div class="move-sdiv move-ssdiv"><span class="move-span">C</span></div>
+                    <div class="move-sdiv move-ssdiv"><span class="move-span">O</span></div>
+                    <div class="move-sdiv move-ssdiv"><span class="move-span">M</span></div>
+                    <div class="move-sdiv move-ssdiv"><span class="move-span">E</span></div>
+                </div>
+            </div>
+            <!-- 第三行 -->
+            <div class="row row-three">
+                <div class="inner-left">
+                    <div class="move-sdiv"><span class="move-span">T</span></div>
+                    <div class="move-sdiv"><span class="move-span">O</span></div>
+                </div>
+                <div class="inner-right">
+                    <div class="move-sdiv"><span class="move-span">T</span></div>
+                    <div class="move-sdiv"><span class="move-span">O</span></div>
+                    <div class="move-sdiv"><span class="move-span">P</span></div>
+                    <div class="move-sdiv"><span class="move-span">-</span></div>
+                </div>
+                <div class="inner-center">
+                </div>
+            </div>
+            <!-- 第四行 -->
+            <div class="row row-forth">
+                <div class="inner-left"></div>
+                <div class="inner-center">
+                    <div class="move-sdiv"><span class="move-span">V</span></div>
+                    <div class="move-sdiv"><span class="move-span">I</span></div>
+                    <div class="move-sdiv"><span class="move-span">E</span></div>
+                    <div class="move-sdiv"><span class="move-span">W</span></div>
+                </div>
+                <div class="inner-right"></div>
             </div>
         </div>
-    </div> -->
-    <!-- 陈锐基的轮播界面（先和卓伦分开） -->
+    </header>
+
+    <!-- 陈锐基的轮播界面-->
     <div id="rj-banner">
         <div id="rj-banner-container">
             <div class="rj-banner-page"><img></div>
@@ -140,7 +99,23 @@
                 </div>
                 <div class="rj-e-txt rj-txt-next"></div>
             </div>
+            <div id="rj-3d-tv">
+                —&nbsp;&nbsp;
+                <span>T</span>
+                <span>o</span>
+                <span>p</span>
+                <span>V</span>
+                <span>i</span>
+                <span>e</span>
+                <span>w</span>
+                &nbsp;&nbsp;—
+            </div>
         </div>
+    </div>
+    <!-- 白色幕布 -->
+    <div id="rj-white-curtain">
+        <div class="rj-curtain-out-div-pre ">Top</div>
+        <div class="rj-curtain-out-div-pre ">View</div>
     </div>
     <!-- 详情页 -->
     <div id="zl-detail-pages" class="zl-com-height">
@@ -149,16 +124,16 @@
         </div>
         <div class="detail-pages" style="height: 100%;">
             <ul class="nav nav-pills" style="height: 100%;">
-                <!-- <li role="presentation" class="active "><a href="#"><i class="glyphicon glyphicon-cloud">11</i> Home</a></li> -->
+                <!-- <li role="presentation" class="active "><i class="glyphicon glyphicon-cloud">11</i> Home</a></li> -->
                 <li role="presentation" id="mq-production">
-        
-                    <div id="mq-frontEnd" class="active">
+
+                    <div class="mq-detail-page" id="mq-frontEnd" >
+                        <div class="title" style="opacity: 1;">
+                            <span>前端</span>
+                            <sup>创意、前沿技术</sup>
+                        </div>
                         <div class="wrap">
                             <div class="innerwrap">
-                                <div class="innerContent" style="opacity: 1;">
-                                    <h1><a href="#">前端</a></h1>
-                                    <sup>创意、前沿技术</sup>
-                                </div>
                                 <div class="innerContent">
                                     <p>TopView 前端组主要基于 HTML，CSS，JavaScript 等基础Web前端编程语言进行开发。</p>
                                 </div>
@@ -177,15 +152,14 @@
                             </div>
                         </div>
                     </div>
-        
-        
-                    <div id="mq-backend">
+
+                    <div class="mq-detail-page" id="mq-backend">
+                        <div class="title" style="opacity: 1;">
+                            <span>后台</span>
+                            <sup>坚实后盾、严谨</sup>
+                        </div>
                         <div class="wrap">
                             <div class="innerwrap">
-                                <div class="innerContent" style="opacity: 1;">
-                                    <h1><a href="#">后台</a></h1>
-                                    <sup>坚实后盾、严谨</sup>
-                                </div>
                                 <div class="innerContent">
                                     <p>TopView 后台组是与数据和信息打交道的方向，是
                                         Android、iOS、前端的”坚实后盾”，是每个工作室的核心方向。
@@ -206,15 +180,16 @@
                             </div>
                         </div>
                     </div>
-        
-        
-                    <div id="mq-android">
+
+
+                    <div class="mq-detail-page" id="mq-android">
+                        <div class="title" style="opacity: 1;">
+                            <span>安卓</span>
+                            <sup>技术探索、培养模式</sup>
+                        </div>
                         <div class="wrap">
+
                             <div class="innerwrap">
-                                <div class="innerContent" style="opacity: 1;">
-                                    <h1><a href="">安卓</a></h1>
-                                    <sup>技术探索、培养模式</sup>
-                                </div>
                                 <div class="innerContent">
                                     <p>TopView Android 组专注于有创意、有特色的主流 App 开发、Android 高新技术探索以及 Android 系统源代码的研究。</p>
                                 </div>
@@ -233,42 +208,15 @@
                             </div>
                         </div>
                     </div>
-        
-        
-                    <div id="mq-machineLearning">
-                        <div class="wrap">
-                            <div class="innerwrap">
-                                <div class="innerContent" style="opacity: 1;">
-                                    <h1><a href="#">机器学习</a></h1>
-                                    <sup>人工智能、大数据</sup>
-                                </div>
-                                <div class="innerContent">
-                                    <p>TopView 机器学习组是16年成立的新组，我们关注机器学习算法模型，在理论学习的同时，也包含对工程项目的实践。</p>
-                                </div>
-                                <div class="innerContent">
-                                    <p>我们组以Python语言为主，目前工作集中在爬虫技术、数据挖掘、机器学习、AI研究方向，包括金融信贷反欺诈和在线评论的情感分析等，</p>
-                                </div>
-                                <div class="innerContent">
-                                    <p>发展方向则有大数据、自然语言处理、计算机视觉等多个人工智能领域方向，并与研究生实验室有合作。</p>
-                                </div>
-                                <div class="innerContent">
-                                    <p>了解使用至少一门编程语言（是不是Python都没有关系，并且包括C语言），有自主学习能力，</p>
-                                </div>
-                                <div class="innerContent">
-                                    <p>能承受学习基础理论学科的枯燥性，对学习数学相关知识，阅读外语文献不排斥（我们非常欢迎数学和英语好的同学）, 这样的你是我们机器学习组想要的。</p>
-                                </div>
-                            </div>
+                    
+                    <div class="mq-detail-page" id="mq-ios">
+                        <div class="title" style="opacity: 1;">
+                            <span>iOS</span>
+                            <sup>优雅极致、中流砥柱</sup>
                         </div>
-                    </div>
-        
-        
-                    <div id="mq-ios">
                         <div class="wrap">
+
                             <div class="innerwrap">
-                                <div class="innerContent" style="opacity: 1;">
-                                    <h1><a href="">iOS</a></h1>
-                                    <sup>优雅极致、中流砥柱</sup>
-                                </div>
                                 <div class="innerContent">
                                     <p>TopView iOS组专注于极致和优雅的主流App开发以及iOS新技术的探索。</p>
                                 </div>
@@ -287,21 +235,55 @@
                             </div>
                         </div>
                     </div>
-        
+
+                    <div class="mq-detail-page" id="mq-machineLearning">
+                        <div class="title" style="opacity: 1;">
+                            <span>机器学习</span>
+                            <sup>人工智能、大数据</sup>
+                        </div>
+                        <div class="wrap">
+
+                            <div class="innerwrap">
+                                <div class="innerContent">
+                                    <p>TopView 机器学习组是16年成立的新组，我们关注机器学习算法模型，在理论学习的同时，也包含对工程项目的实践。</p>
+                                </div>
+                                <div class="innerContent">
+                                    <p>我们组以Python语言为主，目前工作集中在爬虫技术、数据挖掘、机器学习、AI研究方向，包括金融信贷反欺诈和在线评论的情感分析等，</p>
+                                </div>
+                                <div class="innerContent">
+                                    <p>发展方向则有大数据、自然语言处理、计算机视觉等多个人工智能领域方向，并与研究生实验室有合作。</p>
+                                </div>
+                                <div class="innerContent">
+                                    <p>了解使用至少一门编程语言（是不是Python都没有关系，并且包括C语言），有自主学习能力，</p>
+                                </div>
+                                <div class="innerContent">
+                                    <p>能承受学习基础理论学科的枯燥性，对学习数学相关知识，阅读外语文献不排斥（我们非常欢迎数学和英语好的同学）, 这样的你是我们机器学习组想要的。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
                 </li>
-                <!-- <li role="presentation"><a href="#">Messages</a></li> -->
+                <!-- <li role="presentation">Messages</a></li> -->
             </ul>
         </div>
         <div class="zl-join">
             <button class="btn btn-default">加入我们</button>
         </div>
-        <div id="cf-menu">
-            <div class="move-wrap">
-                <p><i class="iconfont icon-houtai8" style="color: #000000"></i></p>
-                <p><i class="iconfont icon-anzhuo1" style="color: #44C101"></i></p>
-                <p><i class="iconfont icon-H height-light" style="color: #E44D26"></i></p>
-                <p><i class="iconfont icon-ios" style="color: #258DEC"></i></p>
-                <p><i class="iconfont icon-jiqixuexi___" style="color: #27ADA5"></i></p>
+        <div id="menu-wrap">
+
+            <div id="cf-menu">
+                <div class="move-wrap">
+                    <p><i class="iconfont icon-H "></i></p>
+                    <p><i class="iconfont icon-houtai8"></i></p>
+                    <p><i class="iconfont icon-anzhuo1"></i></p>
+                    <p><i class="iconfont icon-ios"></i></p>
+                    <p><i class="iconfont icon-jiqixuexi___"></i></p>
+                </div>
             </div>
             <div class="menu-btn">
                 <p><i class="iconfont icon-caidan"></i></p>
@@ -311,16 +293,136 @@
 
         </div>
         <div class="zl-up-promot">
-            
+
         </div>
     </div>
     <!-- 表单界面 -->
     <div id="zl-form-page" class="zl-com-height">
-        表单界面
+            <div id="wf-form">
+                    
+                    <div class="first-part">
+                        <div class="center">
+                            <p class="wf-title">个人信息</p><!-- 此处应有美化 -->
+                            <form class="first-part-form navbar-form form-horizontal" role="form">
+                                <p class="name form-group">
+                                    <label for="name" class="need control-label">姓名</label>
+                                    <input name='name' type="text" class="form-control">
+                                </p>
+                                <p class="id form-group">
+                                    <label for="id" class="need control-label">学号</label>
+                                    <input name='id' type="text" class="form-control" maxlength="10">
+                                </p>
+                                <p class="grade form-group">
+                                    <label for="grade" class="need control-label">年级专业</label>
+                                    <input name='grade' type="text" class="form-control">
+                                </p>
+                                <p class="gender form-group">
+                                    <label for="gender" class="need control-label">性别</label>
+                                    <input type="radio" name="sex" value="男" checked>男
+                                    <input type="radio" name="sex" value="女">女
+                                </p>
+                                <p class="phone form-group">
+                                    <label for="phone" class="need control-label">手机</label>
+                                    <input name='phone' type="text" class="form-control">
+                                </p>
+                                <p class="email form-group">
+                                    <label for="email" class="need control-label">邮箱</label>
+                                    <input name='email' type="text" class="form-control">
+                                </p>
+                                <p class="intro form-group">
+                                    <label for="intro" class="need intro-la control-label">自我介绍</label>
+                                    <textarea name='intro' class="form-control"></textarea>
+                                </p>
+            
+                            </form>
+                            <div class="tn" id="next-page"><button type="button" class="btn btn-default navbar-btn">下一页</button>
+                            </div>
+                            <!-- 把button用div包住，改变div的text-align使button不受first-part-form 的left控制 -->
+                        </div>
+                    </div>
+                    <div class="second-part">
+                        <div class="wf-title">你的想法</div>
+                        <form class="second-part-form" role="form">
+                            <p class="groups form-group">
+                                <label for="groups" class="groups-la need">发展方向</label>
+                                <!-- <selevct name="groups" id="groups">
+                                    <option>前端</option>
+                                    <option>后台</option>
+                                    <option>安卓</option>
+                                    <option>ios</option>
+                                    <option>数字学习</option>
+                                </selevct> -->
+                                <!-- 样式1 -->
+                                <select class="form-control" name='direction'>
+                                    <option>前端</option>
+                                    <option>后台</option>
+                                    <option>安卓</option>
+                                    <option>ios</option>
+                                    <option>机器学习</option>
+                                </select>
+            
+                            </p>
+                            <p>
+                                <label>计算机类技能经验</label>
+                                <textarea class="form-control" name="skills"></textarea>
+                            </p>
+                            <p>
+                                <label>谈谈你对我们工作室的认识</label>
+                                <textarea class="form-control" name=cognition"></textarea>
+                            </p>
+                        </form>
+                        <div class="btn-groups">
+                            <button class="last-page btn">上一页</button>
+                            <button id="wf-commit" class="btn btn-success">提 交</button>
+                        </div>
+                    </div>
+                    <button type="button" class="close" aria-label="Close"><span
+                        aria-hidden="true">&nbsp;&times;&nbsp;</span></button>
+                </div>
+            <!-- <div class="zl-form">
+                    <textarea class="message">前端路上，一路有你。编辑你的正能量，快乐工作，努力生活~</textarea>
+                   <button class="send"> 起飞 </button> <br/> 
+                   <textarea class="message">前端路上，一路有你。编辑你的正能量，快乐工作，努力生活~</textarea>
+                   <button class="send"> 起飞 </button> <br/>  <textarea class="message">前端路上，一路有你。编辑你的正能量，快乐工作，努力生活~</textarea>
+                   <button class="send"> 起飞 </button> <br/> 
+                   <button class="zl-btn">
+                       提交
+                   </button>
+               </div> -->
+           <div id="wind">
+               <div id="plane" class="front">   
+                    <div class="message">
+                        <i class="glyphicon glyphicon-ok">提交成功</i> </div>
+                   <button class="send btn-default btn"> 返回首页 </button> <br/> 
+               </div>
+            
+               <div id="wind_container" class="beginning">
+                   <div id="left-wing">
+                       <div class="top_left curvable"> </div>
+                       <div class="bottom_left curvable"> </div>
+                       <div class="wing wing1"></div>
+                       <div class="wing wing2"></div>
+                   </div>
+            
+                   <div id="right-wing">
+                       <div class="top_right curvable"> </div>
+                       <div class="bottom_right curvable"> </div>
+                       <div class="wing wing3"></div>
+                       <div class="wing wing4"></div>
+                   </div>
+            
+               </div>
+            
+           </div>
     </div>
-  
-   
-    <div style="display: none;">topview</div>
+    <!-- 提前加载图片后删除 -->
+    <div id="rj-img-pre-load" style="display:none">
+        <img>
+        <img>
+        <img>
+        <img>
+        <img>
+    </div>
 </body>
 
 </html>

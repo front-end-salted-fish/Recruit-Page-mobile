@@ -2,17 +2,13 @@
 import $ from 'zepto'
 import 'zepto/src/touch'
 import rjBanner from './rj-index'
-$(function(){
+ let zlPlane = () => {
+	 console.log(1)
 	let $wind = $('#wind');
     // 纸飞机
 	    // 起飞
-	    $('.zl-btn').tap(function() {
-			$('.zl-form').addClass('zl-become-small')
-            // $('.zl-form').animate({
-            //     width: '375px',
-		    //     height: '260px',
-		    //     top: '240px'
-            // })
+	    // $('.zl-btn').tap(function() {
+			$('#wf-form').addClass('zl-become-small')
             $('#plane').css({
                     opacity: 0
                 })
@@ -20,7 +16,7 @@ $(function(){
 	        // 步骤一：隐藏面板、显示飞机、完成折叠效果
 	        setTimeout(function() {
                 // 隐藏信息面板
-            	$('.zl-form').fadeOut()
+            	$('#wf-form').fadeOut()
 	            $('#plane').removeClass('front');
 	            // 翻转至正面
 	            $('#wind_container').removeClass('beginning');
@@ -48,13 +44,13 @@ $(function(){
                                 })
 	                            $('#wind_container').removeClass('fly_away fly_away_first hover').addClass('beginning');
 	                            $('.curvable').removeClass('curved');
-	                            $wind.css({"background-color": "#000"}).removeClass('.zl-wind-zindex');
+	                            $wind.css({"background-color": "#ccc"}).removeClass('.zl-wind-zindex');
 	                        },2000);
 	                    }, 400);
 	                }, 1333.3);
 	            }, 1866.7);
 	        }, 600);
-	    });
+	    // });
 	    // 关闭弹窗
 	    $("#wind .send").tap(function(){
 				// rjBanner.stop();
@@ -62,5 +58,9 @@ $(function(){
 				rjBanner.backToBanner();
 				$("#zl-form-page").fadeOut(200);
 	    });
+ }
+ export default zlPlane;
+// $(function(){
+	
 	 
-	});
+// 	});
