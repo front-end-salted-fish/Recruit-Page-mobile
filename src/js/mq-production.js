@@ -43,8 +43,7 @@ let secondId = '#mq-backend';
 let thirdId = '#mq-android';
 let fourthId = '#mq-machineLearning';
 let lastId = '#mq-ios';
-let a = 1; // 切换页面时，将其置1
-
+let a = 1;
 let MOVE_DIS = 20; //滑动距离
 let menu = $('#cf-menu'); //菜单盒子
 var btnWrap = $('#cf-menu .move-wrap'); // 按钮盒子
@@ -1043,5 +1042,5 @@ curtain.on('tap', function () {
 
 
 // export default rjBanner;
- var tag = a;//导出去了，也拿到了，但是拿到的那边改不了变量值
+ //var tag = a;//导出去了，也拿到了，但是拿到的那边改不了变量值
 //  export default a;

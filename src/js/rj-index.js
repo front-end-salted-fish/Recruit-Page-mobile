@@ -6,9 +6,7 @@ import testImg5 from '../../img/rj-banner-test2.jpg'
 import 'zepto'
 import 'zepto/src/fx'
 import 'zepto/src/fx_methods'
-import tag from '../js/mq-production'
-console.log(tag,1111111);
-
+// import tag from './mq-production'
 let $banner = $("#rj-banner"); // 获取整个轮播页面
 let $bannerContainer = $("#rj-banner-container"); // 获取轮播图容器
 let $bannerPages = $(".rj-banner-page");  // 每个轮播页
@@ -204,9 +202,7 @@ let rjBanner = {
   },
   // 点击进入详情页的函数
   toDetailPage(pageIndex) {
-    console.log(tag);
     //从轮播图进去详情页要重置1，这样再从详情页返回到轮播图之后，再从轮播图进到详情页逻辑才不会乱
-    tag = 1;
     let box = $('.innerwrap');
     let boxContent = $('.innerContent');
     let title = $('.title');
