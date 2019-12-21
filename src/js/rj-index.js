@@ -92,7 +92,7 @@ let rjBanner = {
       if (dirFrom === 'right') trueIndex = index;
       else trueIndex = $txt.length - index;
       $(item).animate({
-        transform: `translate(0)`,
+        transform: `translate3d(0, 0, 0)`,
         opacity: 1
       }, {
         duration: 1500,
@@ -107,7 +107,7 @@ let rjBanner = {
   txtOut(dirTo) {
     let $txt = $('#rj-fonts-container .rj-txt-current').find('span');
     let properties = {
-      transform: `translate(${dirTo === 'left' ? '-' : ''}9rem)`,
+      transform: `translate3d(${dirTo === 'left' ? '-' : ''}9rem, 0, 0)`,
       opacity: 0
     }
     let trueIndex;

@@ -881,7 +881,7 @@
         position: absolute;
         width: 13rem;
         left: 50%;
-        transform: translate(-50%);
+        transform: translate3d(-50%, 0, 0);
 
         .rj-banner-page {
             width: 100%;
@@ -901,11 +901,11 @@
         }
 
         .rj-pre-page {
-            transform: translate(-16rem);
+            transform: translate3d(-16rem, 0, 0);
         }
 
         .rj-next-page {
-            transform: translate(16rem);
+            transform: translate3d(16rem, 0, 0);
         }
 
         // 下翻页效果
@@ -923,7 +923,7 @@
             }
 
             to {
-                transform: translate(-120%) scale(.7);
+                transform: translate3d(-120%, 0, 0) scale(.7);
             }
         }
 
@@ -948,7 +948,7 @@
 
         @keyframes bannerInFromRight {
             from {
-                transform: translate(120%) scale(.7);
+                transform: translate3d(120%, 0, 0) scale(.7);
             }
 
             to {
@@ -981,7 +981,7 @@
             }
 
             to {
-                transform: translate(120%) scale(.7);
+                transform: translate3d(120%, 0, 0) scale(.7);
             }
         }
 
@@ -1006,7 +1006,7 @@
 
         @keyframes bannerInFromLeft {
             from {
-                transform: translate(-120%) scale(.7);
+                transform: translate3d(-120%, 0, 0) scale(.7);
             }
 
             to {
@@ -1075,7 +1075,7 @@
             position: absolute;
             top: 90%;
             right: 1.5rem;
-            transform: translate(41%);
+            transform: translate3d(41%, 0, 0);
             text-align: right;
             font-family: gabrielastencil;
             letter-spacing: .04rem;
@@ -1115,12 +1115,12 @@
                 }
 
                 .rj-from-right-in-span {
-                    transform: translate(9rem);
+                    transform: translate3d(9rem, 0, 0);
                     opacity: 0;
                 }
 
                 .rj-from-left-in-span {
-                    transform: translate(-9rem);
+                    transform: translate3d(-9rem, 0, 0);
                     opacity: 0;
                 }
 
@@ -1167,7 +1167,7 @@
     position: fixed;
     z-index: 3;
     width: 0%;
-    transform: translate(0);
+    transform: translate3d(0, 0, 0);
     height: 100%;
     background: #fafafa;
     overflow: hidden;
@@ -1237,7 +1237,7 @@
 
 .rj-curtain-in-div-pre {
     right: 8rem;
-    transform: translate(50%);
+    transform: translate3d(50%, 0, 0);
     left: auto;
 }
 
@@ -1252,19 +1252,19 @@
 
 .rj-curtain-out-div-pre {
     left: 8rem;
-    transform: translate(-50%);
+    transform: translate3d(-50%, 0, 0);
     right: auto;
 }
 
 // 轮播图模块移出
 .rj-banner-out {
-    transform: translate(16rem);
+    transform: translate3d(16rem, 0, 0);
     filter: brightness(0);
     transition: all 1s cubic-bezier(.57, .02, .1, .99);
 }
 
 .rj-banner-in {
-    transform: translate(0rem);
+    transform: translate3d(0rem, 0, 0);
     filter: brightness(1);
     transition: all 1s cubic-bezier(.57, .02, .1, .99);
 }
@@ -1272,7 +1272,7 @@
 // 详情页模块移出
 .rj-detail-page-out {
 
-    transform: translate(-16rem);
+    transform: translate3d(-16rem, 0, 0);
     filter: brightness(0) blur(0);
     transition: all 1s cubic-bezier(.57, .02, .1, .99);
     //display: block !important;
