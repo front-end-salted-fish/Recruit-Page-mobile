@@ -467,7 +467,7 @@
 //     height: 100px;
 //     // background: red;
 // }
-@rem: 23.4375rem;
+// @rem: 23.4375rem;
 
 .cf-blur-out {
    opacity: 0;
@@ -510,8 +510,8 @@
             left:0;
             transform: scale(1);
             transform-origin: 0 0;
-            width: 380/@rem;
-            height: 160/@rem;
+            // width: 380/@rem;
+            // height: 160/@rem;
             text-align: center;
             transition: all 1s cubic-bezier(.39,.92,.74,.94);
             span {
@@ -525,7 +525,7 @@
             }
 
             sup {
-                top: 160/@rem - 0.5rem !important;
+                top: 5rem!important;
                 font-size: 1.1rem;
                 display: inline-block;
                 transition: all 1s cubic-bezier(.39,.92,.74,.94);
@@ -535,8 +535,54 @@
                 transform: translate(-50%);
             }
         }
+        .wrap {
+            // width: 300/@rem;
+            // width: 18.75rem;
+            // height: 200/@rem;
+            // height: 10rem;
+            // -ms-overflow-style: none;
+            overflow: hidden;
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            // line-height: 40/@rem;
+            // line-height: 2.5rem;
+            word-break: break-all;
+            word-wrap: break-word;
+    
+            .innerwrap {
+                position: relative;
+                // top:-800px;
+                top: 0;
+                // opacity: 0;
+                transition: all 1s cubic-bezier(.39,.92,.74,.94);
+    
+                .innerContent {
+                    position: relative;
+                    // height: 200/@rem;
+                    // height: 10rem;
+                    opacity: 0;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
+    
+                    p {
+                        position: absolute;
+                        bottom: 0;
+                    }
+                }
+    
+                .opa {
+                    opacity: 1;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                }
+    
+                .opa1 {
+                    opacity: 1;
+                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                }
+            }
+        }
     }
-
+    
     #mq-frontEnd {
         display: none;
         background-image: url(../../img/frontend.jpg);
@@ -551,53 +597,7 @@
                 width: 7.7rem;
             }
         }
-        .wrap {
-            width: 300/@rem;
-            // width: 18.75rem;
-            height: 200/@rem;
-            // height: 10rem;
-            // -ms-overflow-style: none;
-            overflow: hidden;
-            position: absolute;
-            top: 25%;
-            left: 10%;
-            line-height: 40/@rem;
-            // line-height: 2.5rem;
-            word-break: break-all;
-            word-wrap: break-word;
-
-            .innerwrap {
-                position: relative;
-                // top:-800px;
-                top: 0;
-                // opacity: 0;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                .innerContent {
-                    position: relative;
-                    // padding-top: 30px;
-                    height: 200/@rem;
-                    // height: 10rem;
-                    opacity: 0;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                    p {
-                        position: absolute;
-                        bottom: 0;
-                    }
-                }
-
-                .opa {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-
-                .opa1 {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-            }
-        }
+        
     }
 
     #mq-backend {
@@ -613,53 +613,7 @@
                 width: 7.7rem;
             }
         }
-        .wrap {
-            width: 300/@rem;
-            // width: 18.75rem;
-            height: 200/@rem;
-            // height: 10rem;
-            // -ms-overflow-style: none;
-            overflow: hidden;
-            position: absolute;
-            top: 25%;
-            left: 10%;
-            line-height: 40/@rem;
-            // line-height: 2.5rem;
-            word-break: break-all;
-            word-wrap: break-word;
-
-            .innerwrap {
-                position: relative;
-                // top:-800px;
-                top: 0;
-                // opacity: 0;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                .innerContent {
-                    position: relative;
-                    height: 200/@rem;
-                    // height: 10rem;
-                    opacity: 0;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-
-                    p {
-                        position: absolute;
-                        bottom: 0;
-                    }
-                }
-
-                .opa {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-
-                .opa1 {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-            }
-        }
+        
     }
 
     #mq-android {
@@ -677,53 +631,7 @@
         }
 
 
-        .wrap {
-            width: 300/@rem;
-            // width: 18.75rem;
-            height: 200/@rem;
-            // height: 10rem;
-            // -ms-overflow-style: none;
-            overflow: hidden;
-            position: absolute;
-            top: 25%;
-            left: 10%;
-            line-height: 40/@rem;
-            // line-height: 2.5rem;
-            word-break: break-all;
-            word-wrap: break-word;
-
-            .innerwrap {
-                position: relative;
-                // top:-800px;
-                top: 0;
-                // opacity: 0;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                .innerContent {
-                    position: relative;
-                    height: 200/@rem;
-                    // height: 10rem;
-                    opacity: 0;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-
-                    p {
-                        position: absolute;
-                        bottom: 0;
-                    }
-                }
-
-                .opa {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-
-                .opa1 {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-            }
-        }
+        
     }
 
     #mq-machineLearning {
@@ -747,52 +655,7 @@
         }
 
 
-        .wrap {
-            width: 300/@rem;
-            // width: 18.75rem;
-            height: 200/@rem;
-            // height: 10rem;
-            // -ms-overflow-style: none;
-            overflow: hidden;
-            position: absolute;
-            top: 25%;
-            left: 10%;
-            line-height: 40/@rem;
-            // line-height: 2.5rem;
-            word-break: break-all;
-            word-wrap: break-word;
-
-            .innerwrap {
-                position: relative;
-                // top:-800px;
-                top: 0;
-                // opacity: 0;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                .innerContent {
-                    position: relative;
-                    height: 200/@rem;
-                    // height: 10rem;
-                    opacity: 0;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                    p {
-                        position: absolute;
-                        bottom: 0;
-                    }
-                }
-
-                .opa {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-
-                .opa1 {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-            }
-        }
+       
     }
 
     #mq-ios {
@@ -810,52 +673,7 @@
         }
 
 
-        .wrap {
-            width: 300/@rem;
-            // width: 18.75rem;
-            height: 200/@rem;
-            // height: 10rem;
-            // -ms-overflow-style: none;
-            overflow: hidden;
-            position: absolute;
-            top: 25%;
-            left: 10%;
-            line-height: 40/@rem;
-            // line-height: 2.5rem;
-            word-break: break-all;
-            word-wrap: break-word;
-
-            .innerwrap {
-                position: relative;
-                // top:-800px;
-                top: 0;
-                // opacity: 0;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                .innerContent {
-                    position: relative;
-                    height: 200/@rem;
-                    // height: 10rem;
-                    opacity: 0;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
-                    p {
-                        position: absolute;
-                        bottom: 0;
-                    }
-                }
-
-                .opa {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-
-                .opa1 {
-                    opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-                }
-            }
-        }
+       
     }
 
 }
