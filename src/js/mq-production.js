@@ -10,16 +10,30 @@ import rjBanner from './rj-index'
 
 //我的我的
 var width = document.documentElement.clientWidth;
-var rem = width / 16;
+var rem = width / 16 ;
+console.log(rem);
+
 let firstId = '#mq-frontEnd';
 let secondId = '#mq-backend';
 let thirdId = '#mq-android';
 let fourthId = '#mq-machineLearning';
 let lastId = '#mq-ios';
+let firstParameter = $('.mq-detail-page > .title');
+let secondParameter = $('.mq-detail-page> sup');
+let thirdParameter = $('.mq-detail-page> .wrap');
+let fourthParameter = $('.mq-detail-page >.wrap >.innerwrap> .innerContent');
+const firstWidth = 380/rem +"rem";
+const firstHeight = 160/rem+"rem";
+// const firstTop = (160/rem - 8) +"rem";
+const secondWidth = 300/rem+"rem";
+const secondHeight = 200/rem+"rem";
+const firstlineHeight = 40/rem+"rem";
 // let a = 1; // 切换页面时，将其置1
 let mqObj = {
     tag: 1
 };
+
+console.log(secondParameter);
 
 let MOVE_DIS = 20; //滑动距离
 let menu = $('#cf-menu'); //菜单盒子
@@ -39,6 +53,25 @@ var andriodDiv = $('#mq-android');
 let $cfDetailPages = $('.mq-detail-page');
 var rotateTimes = 0;
 
+console.log(firstWidth);
+
+//设置不同适配里的文字显示
+firstParameter.css({
+    width: firstWidth,
+    height: firstHeight
+});
+// secondParameter.css({
+//     top: firstTop + "!important"
+
+// })
+thirdParameter.css({
+    width: secondWidth,
+    height: secondHeight,
+    lineHeight: firstlineHeight,
+})
+fourthParameter.css({
+    height: secondHeight
+})
 //详情页文字
 //滑动往上
 // !(()=>{
@@ -184,12 +217,12 @@ function swipeU(classname) {
                     distance1(classname)
                     // $(imgUp).hide();
                     break;
-                // case 6:
-                //     $(list[5]).addClass('opa');
-                //     // console.log(list[4]);
-                //     distance1(classname)
-                //     $(imgUp).hide();
-                //     break;
+                    // case 6:
+                    //     $(list[5]).addClass('opa');
+                    //     // console.log(list[4]);
+                    //     distance1(classname)
+                    //     $(imgUp).hide();
+                    //     break;
                 case 6:
                     $(list[3]).css({
                         opacity: '0'
@@ -322,12 +355,12 @@ function swipeD(classname) {
                     // })
                     // console.log(list[3]);
                     break;
-                // case 1:
-                //     $(list[0]).addClass('opa1');
-                //     a = 1;
-                //     distance2(classname)
-                //     // console.log(list[4]);
-                //     break;
+                    // case 1:
+                    //     $(list[0]).addClass('opa1');
+                    //     a = 1;
+                    //     distance2(classname)
+                    //     // console.log(list[4]);
+                    //     break;
                 default:
                     mqObj.tag = 1;
                     console.log(5);
