@@ -8,7 +8,6 @@ import '../font/menu/iconfont.css'
 import functionCaller from "less/lib/less/functions/function-caller";
 import rjBanner from './rj-index'
 
-
 //我的我的
 var width = document.documentElement.clientWidth;
 var rem = width / 16;
@@ -424,6 +423,7 @@ function debounce(fn, wait) {
 
 // 跳转
 function changePage() {
+    //console.log(rjBanner)
 
     is.removeClass('height-light');
     is.eq(rjBanner.watchPageIndex).addClass('height-light');
