@@ -6,8 +6,13 @@
   display: flex;
   position: relative;
 }
-#wf-form .close {
-  font-size: 1.5rem;
+#wf-form .red-form {
+  color: red;
+  width: 70px;
+  margin-left: 5rem;
+}
+#wf-form .wf-close {
+  font-size: 1rem;
   position: absolute;
   right: 1rem;
   top: 1rem;
