@@ -46,6 +46,10 @@ textarea {
 html {
   box-sizing: border-box;
 }
+html,
+body {
+  overflow: hidden;
+}
 *,
 *:before,
 *:after {
@@ -72,8 +76,6 @@ html,
 body {
   height: 100%;
   width: 100%;
-}
-#root {
-  width: 100%;
-  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
