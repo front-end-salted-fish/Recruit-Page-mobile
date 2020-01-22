@@ -1,21 +1,46 @@
 import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
+/* $(document).ready(function () {
+    　　$('body').height($('body')[0].clientHeight);
+    });//解决软键盘覆盖的问题Android---》不知道行不行哈 */
+var winHeight = $(window).height(); //获取当前页面高度  
+$(window).resize(function () {
+    //当窗体大小变化时
+    var thisHeight = $(this).height();  //窗体变化后的高度
+    if (winHeight - thisHeight > 50) {
+        /*
+        软键盘弹出
+        50是设置的阈值，用来排除其他影响窗体大小变化的因素，比如有的浏览器的工具栏的显示和隐藏
+        */
+        $('body').css('height', winHeight + 'px');
+    } else {
+        /*
+        软键盘关闭
+        */
+        $('body').css('height', '100%');
+    }
+});//监听resize ( Android）
+//iOS
+$('input,textarea').on('focusin', function () {
+    //软键盘弹出的事件处理
+    //$(this).scrollIntoView(true);
+});
+
+$('input,textarea').on('focusout', function () {
+    //软键盘收起的事件处理
+});
 $('.getmypart').on('tap', function () {
     $('#wf-form').animate({ transform: 'translate(0,0)' }, 800, 'liner');
     console.log('s');
 })
 //上一页下一页----------------------------------------
 $("#next-page").on('tap', function () {
-    $('.second-part').animate({ transform: 'translate(0)' }, 800, 'linear');
-    //console.log('a');
-    /* $(".second-part").css({
-        transform: 'translate(0)'
-    }); */
+    $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear');
+    $('.first-part').animate({ transform: 'translate(-16rem)' }, 600, 'linear');
 });
 $(".last-page").on('tap', function () {
-    $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
-    //console.log('a');
-    //$(".second-part").css({right:'-16rem'});
+    $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear');
+    $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
 });
 //*******************************************验证(在html中设置好了maxlength)
 $("#wf-name").on("blur", nameCheck);//1.名字
@@ -33,11 +58,11 @@ function nameCheck() {
 }
 $("#wf-id").on("blur", idCheck);//2.学号
 function idCheck() {
-    let reg = /^\d{10}$/;//十位数字
+    let reg = /^\d{9,12}$/;//十位数字
     let id = $('#wf-id').val();
     if (!reg.test(id) || id == '') {
         $("#wf-id").css("border", "1px solid red");
-        $(".wf-id-span").html("<span class='red-form'>请输入十位数字</span>");
+        $(".wf-id-span").html("<span class='red-form'>请输入正确的学号</span>");
         return false;
     }
     $("#wf-id").css("border", "");
@@ -120,7 +145,7 @@ function cogCheck() {
     return true;
 }
 //提交表单
-$("#wf-commit").attr("disabled",false);
+//$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
     //获取到所有的表单元素并转换为数组
     //var info1 = $('form').serializeArray();
@@ -136,18 +161,19 @@ $("#wf-commit").on('tap', function () {
     } */
     //进行判断
     var btn = $(this);
-    if (btn.attr("disabled") == 'false') {//可点
-        btn.attr('disabled', true);
-            setTimeout(function () {
-                btn.attr('disabled', false);
-            }, 2000);
-        if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
-            
-        }
-        else alert("请正确输入信息");
+    //if (btn.attr("disabled") == 'true') {//可点
+    /*         btn.attr('disabled', true);
+                setTimeout(function () {
+                    btn.attr('disabled', false);
+                }, 2000); */
+    if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
+        //在这里提交，小飞机 
+        zlPlane();
     }
+    else console.log("请正确输入信息");
+    //}
 
-    //zlPlane();
+    //
     //关闭弹窗，动画
 })
 //回到详情页
