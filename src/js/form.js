@@ -20,7 +20,7 @@ $(window).resize(function () {
         $('body').css('height', '100%');
     }
 });//监听resize ( Android）
-//iOS
+//------------------------------------------------------------------关注focus
 $('input,textarea').on('focusin', function () {
     //软键盘弹出的事件处理
     //$(this).scrollIntoView(true);
