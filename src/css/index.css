@@ -382,7 +382,7 @@
   transform: translate(-50%);
 }
 #mq-production .mq-detail-page .title sup {
-  top: 5rem!important;
+  top: 6rem!important;
   font-size: 1.1rem;
   display: inline-block;
   transition: all 1s cubic-bezier(0.39, 0.92, 0.74, 0.94);
@@ -422,7 +422,7 @@
 }
 #mq-production #mq-frontEnd {
   display: none;
-  background-image: url(../../img/6.jpg);
+  background-image: url(../../img/28.jpg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -445,7 +445,7 @@
 }
 #mq-production #mq-android {
   display: none;
-  background-image: url(../../img/11.jpg);
+  background-image: url(../../img/27.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -464,14 +464,14 @@
   height: 100%;
 }
 #mq-production #mq-machineLearning .title span {
-  width: 14rem;
+  width: 100%;
 }
 #mq-production #mq-machineLearning .title sup {
   width: 8.8rem;
 }
 #mq-production #mq-ios {
   display: none;
-  background-image: url(../../img/1.jpg);
+  background-image: url(../../img/25.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

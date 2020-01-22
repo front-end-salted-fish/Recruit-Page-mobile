@@ -154,11 +154,12 @@ function swipeU(classname) {
                     title.css({
                         top: "2rem",
                         left: "1.6rem",
-                        // textAlign: "start",
+                        textAlign: "start",
                         transform: "scale(.5)",
                     }).children().css({
                         left: 0,
-                        transform: 'translate(0)'
+                        transform: 'translate(0)',
+                        // textAlign:'start'
                     })
 
                     // span.css({

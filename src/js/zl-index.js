@@ -55,10 +55,14 @@ $(function() {
     // }
     // 获取所有图片
     // 获取报名按钮，并且为报名按钮绑定点击跳转事件
+    // 点击按钮时给表单设置css display:none  ---2020/01/22
     let $joinBtn = $('.zl-join .btn');
     $joinBtn.tap(function() {
         let $formPage = $('#zl-form-page');
             // 排他
+        $('#wf-form').css({
+            display: 'block'
+        })
         $formPage.siblings('#zl-detail-pages').fadeOut(1000);
         $('#wf-form').fadeIn()
         $('#wf-form').removeClass('zl-become-small');
