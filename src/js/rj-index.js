@@ -48,7 +48,7 @@ let rjBanner = {
   // 中文字体的数组
   cTxtArr: ["前端", "后台", "安卓", "iOS", "机器学习"],
   // 英文字体的数组
-  eTxtArr: ["Front-end", "Back-end", "Android", "", "Machine-learning"],
+  eTxtArr: ["Front-end", "Back-end", "android", "", "Machine-learning"],
   // 初始化函数
   init() {
     $bannerImgs[1].src = testImg1;

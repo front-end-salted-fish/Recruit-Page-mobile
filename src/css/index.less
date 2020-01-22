@@ -843,7 +843,6 @@
         }
 
         #rj-banner-btns {
-            height: .15rem;
             position: absolute;
             top: 91.5%;
             display: flex;
@@ -851,20 +850,24 @@
             .rj-banner-btn {
                 margin-right: .4rem;
                 width: .75rem;
-                height: 100%;
+                height: .15rem;
                 background-color: rgba(255, 255, 255, .4);
                 position: relative;
                 transition: all 1s ease;
 
                 .rj-banner-timer {
                     position: absolute;
+                    height: .15rem;
                     left: 0;
                     display: inline-block;
-                    height: 100%;
-                    // width:0rem;
                     background-color: white;
                     opacity: 1;
                 }
+            }
+            .btn-mask {
+                display: block;
+                width: 100%;
+                height: 1rem;
             }
 
             .rj-banner-btn-current {
@@ -901,6 +904,11 @@
             #rj-middle {
                 display: inline-block;
                 padding: 0 .2rem 0 .2rem;
+            }
+            #rj-prev,
+            #rj-next {
+                display: inline-block;
+                padding: 0 0 1rem 0px;
             }
         }
 
@@ -958,7 +966,7 @@
             .rj-c-txt {
                 top: 0%;
                 font-size: 2.7rem;
-                font-family: '宋体', '微软雅黑';
+                font-family: '宋体', gabrielastencil, '微软雅黑';
             }
         }
 
@@ -992,8 +1000,8 @@
 
     div {
         font-size: 3.5rem;
+        font-family: gabrielastencil, 'Baskerville Old Face',Helvetica, Arial, sans-serif;
         position: fixed;
-        font-family: 'Baskerville Old Face';
 
         &:first-child {
             top: 29%;
