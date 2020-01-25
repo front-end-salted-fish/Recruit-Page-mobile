@@ -8,19 +8,32 @@ import '../font/menu/iconfont.css'
 import functionCaller from "less/lib/less/functions/function-caller";
 import rjBanner from './rj-index'
 
-
 //我的我的
 var width = document.documentElement.clientWidth;
 var rem = width / 16;
+console.log(rem);
+
 let firstId = '#mq-frontEnd';
 let secondId = '#mq-backend';
 let thirdId = '#mq-android';
 let fourthId = '#mq-machineLearning';
 let lastId = '#mq-ios';
+let firstParameter = $('.mq-detail-page > .title');
+let secondParameter = $('.mq-detail-page> sup');
+let thirdParameter = $('.mq-detail-page> .wrap');
+let fourthParameter = $('.mq-detail-page >.wrap >.innerwrap> .innerContent');
+const firstWidth = 380 / rem + "rem";
+const firstHeight = 160 / rem + "rem";
+// const firstTop = (160/rem - 8) +"rem";
+const secondWidth = 300 / rem + "rem";
+const secondHeight = 200 / rem + "rem";
+const firstlineHeight = 40 / rem + "rem";
 // let a = 1; // 切换页面时，将其置1
 let mqObj = {
   tag: 1
 };
+
+console.log(secondParameter);
 
 let MOVE_DIS = 20; //滑动距离
 let menu = $('#cf-menu'); //菜单盒子
@@ -40,6 +53,25 @@ var andriodDiv = $('#mq-android');
 let $cfDetailPages = $('.mq-detail-page');
 var rotateTimes = 0;
 
+console.log(firstWidth);
+
+//设置不同适配里的文字显示
+firstParameter.css({
+  width: firstWidth,
+  height: firstHeight
+});
+// secondParameter.css({
+//     top: firstTop + "!important"
+
+// })
+thirdParameter.css({
+  width: secondWidth,
+  height: secondHeight,
+  lineHeight: firstlineHeight,
+})
+fourthParameter.css({
+  height: secondHeight
+})
 //详情页文字
 //滑动往上
 // !(()=>{
@@ -122,11 +154,12 @@ function swipeU(classname) {
           title.css({
             top: "2rem",
             left: "1.6rem",
-            // textAlign: "start",
+            textAlign: "start",
             transform: "scale(.5)",
           }).children().css({
             left: 0,
-            transform: 'translate(0)'
+            transform: 'translate(0)',
+            // textAlign:'start'
           })
 
           // span.css({
@@ -651,7 +684,7 @@ $('.cf-menu').on('click', 'svg', function () {
   // $('.cf-curtain').show();
   // console.log($('.cf-curtain'))
   console.log($('.grid input').prop('checked'))
-  let isOpenMenu = !$('.grid input').prop('checked')
+  let isOpenMenu = !$('.grid input').prop('checked');
   if (isOpenMenu) {
     $('.cf-curtain').css({
       display: 'block'
@@ -661,59 +694,70 @@ $('.cf-menu').on('click', 'svg', function () {
       $('.cf-curtain').removeClass('cf-skew-curtain')
       $('.cf-curtain li').removeClass('cf-skew-text');
     }, 20)
-    console.log('打开菜单');
-
   } else {
-    $('.cf-curtain').addClass('cf-skew-curtain');
-    $('.cf-curtain li').addClass('cf-skew-text');
+    setTimeout(function () {
+      $('.cf-curtain').addClass('cf-skew-curtain');
+      $('.cf-curtain li').addClass('cf-skew-text');
+    },20)
   }
 })
 $('.cf-menu-wrap').on('click', 'li', function () {
   console.log($(this).attr('data-index'));
   let index = $(this).attr('data-index')
   rjBanner.watchPageIndex = index; //给轮播图标注当前是看到那一页
-  $('#mq-production>div').removeClass('cf-blur-in').addClass('cf-blur-out');
-  $('#mq-production>div').eq(index).removeClass('cf-blur-out').addClass('cf-blur-in');
-  $('.cf-curtain').addClass('cf-skew-curtain');
-  $('.cf-curtain li').addClass('cf-skew-text');
-  $('.grid input').prop('checked',false);
+  setTimeout(function () {
+    $('#mq-production>div').removeClass('cf-blur-in').addClass('cf-blur-out');
+    $('#mq-production>div').eq(index).removeClass('cf-blur-out').addClass('cf-blur-in');
+    $('.cf-curtain').addClass('cf-skew-curtain');
+    $('.cf-curtain li').addClass('cf-skew-text');
+    $('.grid input').prop('checked', false);
+  },20)
   // mq的置1
   //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
-    mqObj.tag = 1;
-    let box = $('.innerwrap');
-    let boxContent = $('.innerContent');
-    let title = $('.title');
-    box.each(function (item, index) {
-        $(this).css({
-            top: '0',
-            transition: ''
-            // opacity: "0"
-        })
+  mqObj.tag = 1;
+  let box = $('.innerwrap');
+  let boxContent = $('.innerContent');
+  let title = $('.title');
+  box.each(function (item, index) {
+    $(this).css({
+      top: '0',
+      transition: ''
+      // opacity: "0"
     })
-    boxContent.each(function (item, index) {
-        $(this).css({
-            // top: '0',
-            opacity: "0",
-            transition: ''
-        })
+  })
+  boxContent.each(function (item, index) {
+    $(this).css({
+      // top: '0',
+      opacity: "0",
+      transition: ''
     })
-    title.css({
-        // opacity: 1;
-        position: "absolute",
-        top: "28%",
-        left: "0",
-        transform: 'scale(1)',
-        // left: 10%;
-        // width: 380/@rem;
-        // height: 160/@rem;
-        textAlign: "center"
-        // transition: all 1s;
-    }).children().css({
-        left: '',
-        transform: ''
+  })
+  title.css({
+    // opacity: 1;
+    position: "absolute",
+    top: "28%",
+    left: "0",
+    transform: 'scale(1)',
+    // left: 10%;
+    // width: 380/@rem;
+    // height: 160/@rem;
+    textAlign: "center"
+    // transition: all 1s;
+  }).children().css({
+    left: '',
+    transform: ''
+  })
+  // box.find(".innerContent").eq(0).css({
+  //     opacity: "0"
+  // })
+});
+//当关闭过渡动画结束是dispaly:none
+$('.cf-curtain').on('webkitTransitionEnd',function(){
+  let isOpenMenu = !$('.grid input').prop('checked');
+  if(isOpenMenu) {
+    $('.cf-curtain').css({
+      display: 'none'
     })
-    // box.find(".innerContent").eq(0).css({
-    //     opacity: "0"
-    // })
+  }
 })
 export default mqObj;
