@@ -676,6 +676,44 @@ $('.cf-menu-wrap').on('click', 'li', function () {
   $('#mq-production>div').eq(index).removeClass('cf-blur-out').addClass('cf-blur-in');
   $('.cf-curtain').addClass('cf-skew-curtain');
   $('.cf-curtain li').addClass('cf-skew-text');
-  let isOpenMenu = !$('.grid input').prop('checked',false)
+  $('.grid input').prop('checked',false);
+  // mq的置1
+  //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
+    mqObj.tag = 1;
+    let box = $('.innerwrap');
+    let boxContent = $('.innerContent');
+    let title = $('.title');
+    box.each(function (item, index) {
+        $(this).css({
+            top: '0',
+            transition: ''
+            // opacity: "0"
+        })
+    })
+    boxContent.each(function (item, index) {
+        $(this).css({
+            // top: '0',
+            opacity: "0",
+            transition: ''
+        })
+    })
+    title.css({
+        // opacity: 1;
+        position: "absolute",
+        top: "28%",
+        left: "0",
+        transform: 'scale(1)',
+        // left: 10%;
+        // width: 380/@rem;
+        // height: 160/@rem;
+        textAlign: "center"
+        // transition: all 1s;
+    }).children().css({
+        left: '',
+        transform: ''
+    })
+    // box.find(".innerContent").eq(0).css({
+    //     opacity: "0"
+    // })
 })
 export default mqObj;
