@@ -441,6 +441,80 @@
         font-size: 1rem;
         font-family: gabrielastencil, Georgia, 'Times New Roman', Times, serif;
     }
+    .cf-menu {
+        position: absolute;
+        z-index: 2;
+        width: 10vh;
+        input {
+            display: none;
+        }
+        svg {
+            width: 10vh;
+        }
+        path {
+            fill             : none;
+            stroke           : #fff;
+            stroke-width     : 3;
+            stroke-linecap   : round;
+            stroke-linejoin  : round;
+            --length         : 24;
+            --offset         : -38;
+            stroke-dasharray : var(--length) var(--total-length);
+            stroke-dashoffset: var(--offset);
+            transition       : all .8s cubic-bezier(.645, .045, .355, 1);
+          }
+          
+          circle {
+            fill   : #fff3;
+            opacity: 0;
+          }
+          
+          /* label:hover circle {
+            opacity: 1;
+          } */
+          
+          .cross input:checked+svg .line--1,
+          .cross input:checked+svg .line--3 {
+            --length: 22.627416998;
+          }
+          
+          .cross input:checked+svg .line--2 {
+            --length: 0;
+          }
+          
+          .back input:checked+svg .line--1,
+          .back input:checked+svg .line--3 {
+            --length: 8.602325267;
+          }
+          
+          /* .menu--2 {
+            background-color: #0095f9;
+          } */
+          
+          .menu--2 .line--1,
+          .menu--2 .line--3 {
+            --total-length: 111.22813415527344;
+            --offset      : -50.22813415527344;
+          }
+          
+          .menu--2 .line--2 {
+            --total-length: 99;
+          }
+          
+          .menu--2 input:checked+svg path {
+            transform: translateX(30px);
+          }
+          
+          .menu--2 input:checked+svg .line--1,
+          .menu--2 input:checked+svg .line--3 {
+            --offset: -16.9705627485;
+          }
+          
+          .menu--2 input:checked+svg .line--2 {
+            --offset: -20;
+          }
+    }
+   
 }
 
 @keyframes moveIconUp {
@@ -474,7 +548,7 @@
    filter: brightness(1) blur(1);
    transform: scale(1.2);
    display: block !important;
-    transition: all ease 0.4s;
+    transition: all ease 0.5s;
     position: absolute;
     z-index: -1;
 
@@ -486,7 +560,7 @@
     transform: scale(1);
     display: block !important;
     position: absolute;
-    transition: all ease 0.4s;
+    transition: all ease 0.5s;
 
 }
 
@@ -1290,16 +1364,65 @@
 
 
 
-
+//扭曲幕布
+.cf-skew-curtain {
+  display: none;
+  -webkit-transform: skew(30deg,0deg) rotateX(30deg);
+  transform-origin: 0% 50%;
+  // transition: -webkit-transform 1s linear 0s;
+  opacity: 0;
+}
+.cf-skew-curtain-out {
+  display: none;
+  -webkit-transform: skew(-35deg,0deg) rotateX(30deg);
+  transform-origin: 50% 100%;
+  opacity: 0;
+}
+//扭曲文字
+.cf-skew-text {
+  -webkit-transform: skew(-5deg,30deg) translateY(100%);
+  // opacity: 0;
+}
 // 幕布
-.curtain {
-    display: none;
+.cf-curtain {
+    // display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .9);
+    // transform: scale(0);
+    transition: -webkit-transform .5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s,opacity .5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
+    ul {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      li {
+        color: #fff;
+        text-align: center;
+        height: 8vh;
+        line-height: 8vh;
+        font-size: 3vh;
+        // transition: -webkit-transform 1s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
+      }
+      li:nth-child(1){
+        transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) .05s;
+      }
+      li:nth-child(2){
+        transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) .1s;
+      }
+      li:nth-child(3){
+        transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) .15s;
+      }
+      li:nth-child(4){
+        transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) .2s;
+      }
+      li:nth-child(5){
+        transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) .25s;
+      }
+    }
 }
 
 #menu-wrap {
@@ -1403,7 +1526,6 @@
     }
 
     .menu-btn {
-        ////display: none;
         position: absolute;
         left: 50%;
         top: 50%;
