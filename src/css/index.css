@@ -32,6 +32,8 @@
   height: 6vw;
   width: 100%;
   margin: 0 !important;
+  display: flex;
+  justify-items: center;
 }
 #loading-module #loading-box .row-one {
   position: relative;
@@ -318,6 +320,68 @@
   font-size: 1rem;
   font-family: gabrielastencil, Georgia, 'Times New Roman', Times, serif;
 }
+#zl-detail-pages .cf-menu {
+  position: absolute;
+  z-index: 4;
+  width: 9vh;
+  /* label:hover circle {
+            opacity: 1;
+          } */
+  /* .menu--2 {
+            background-color: #0095f9;
+          } */
+}
+#zl-detail-pages .cf-menu input {
+  display: none;
+}
+#zl-detail-pages .cf-menu svg {
+  width: 9vh;
+}
+#zl-detail-pages .cf-menu path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  --length: 24;
+  --offset: -38;
+  stroke-dasharray: var(--length) var(--total-length);
+  stroke-dashoffset: var(--offset);
+  transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+#zl-detail-pages .cf-menu circle {
+  fill: #fff3;
+  opacity: 0;
+}
+#zl-detail-pages .cf-menu .cross input:checked + svg .line--1,
+#zl-detail-pages .cf-menu .cross input:checked + svg .line--3 {
+  --length: 22.627417;
+}
+#zl-detail-pages .cf-menu .cross input:checked + svg .line--2 {
+  --length: 0;
+}
+#zl-detail-pages .cf-menu .back input:checked + svg .line--1,
+#zl-detail-pages .cf-menu .back input:checked + svg .line--3 {
+  --length: 8.60232527;
+}
+#zl-detail-pages .cf-menu .menu--2 .line--1,
+#zl-detail-pages .cf-menu .menu--2 .line--3 {
+  --total-length: 111.22813416;
+  --offset: -50.22813416;
+}
+#zl-detail-pages .cf-menu .menu--2 .line--2 {
+  --total-length: 99;
+}
+#zl-detail-pages .cf-menu .menu--2 input:checked + svg path {
+  transform: translateX(30px);
+}
+#zl-detail-pages .cf-menu .menu--2 input:checked + svg .line--1,
+#zl-detail-pages .cf-menu .menu--2 input:checked + svg .line--3 {
+  --offset: -16.97056275;
+}
+#zl-detail-pages .cf-menu .menu--2 input:checked + svg .line--2 {
+  --offset: -20;
+}
 @keyframes moveIconUp {
   0% {
     -webkit-transform: translateY(100%);
@@ -340,7 +404,7 @@
   filter: brightness(1) blur(1);
   transform: scale(1.2);
   display: block !important;
-  transition: all ease 0.4s;
+  transition: all ease 0.5s;
   position: absolute;
   z-index: -1;
 }
@@ -350,7 +414,7 @@
   transform: scale(1);
   display: block !important;
   position: absolute;
-  transition: all ease 0.4s;
+  transition: all ease 0.5s;
 }
 #mq-production {
   position: relative;
@@ -804,14 +868,59 @@
   filter: brightness(0) blur(0);
   transition: all 1s cubic-bezier(0.57, 0.02, 0.1, 0.99);
 }
-.curtain {
+.cf-skew-curtain {
+  -webkit-transform: skew(30deg, 0deg) rotateX(30deg);
+  transform-origin: 0% 50%;
+  opacity: 0;
+  display: none;
+}
+.cf-skew-curtain-out {
+  display: none;
+  -webkit-transform: skew(-35deg, 0deg) rotateX(30deg);
+  transform-origin: 50% 100%;
+  opacity: 0;
+}
+.cf-skew-text {
+  -webkit-transform: skew(-5deg, 30deg) translateY(100%);
+}
+.cf-curtain {
   display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 3;
+  transition: -webkit-transform 0.5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s, opacity 0.5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
+}
+.cf-curtain ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cf-curtain ul li {
+  color: #fff;
+  text-align: center;
+  height: 8vh;
+  line-height: 8vh;
+  font-size: 3vh;
+}
+.cf-curtain ul li:nth-child(1) {
+  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.05s;
+}
+.cf-curtain ul li:nth-child(2) {
+  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.1s;
+}
+.cf-curtain ul li:nth-child(3) {
+  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.15s;
+}
+.cf-curtain ul li:nth-child(4) {
+  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.2s;
+}
+.cf-curtain ul li:nth-child(5) {
+  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.25s;
 }
 #menu-wrap {
   position: absolute;
@@ -819,85 +928,5 @@
   top: 35%;
   width: 6rem;
   height: 6rem;
-  z-index: 1;
-}
-#menu-wrap #cf-menu {
-  display: none;
-  width: 6rem;
-  height: 6rem;
-  overflow: hidden;
-}
-@keyframes shine {
-  from {
-    text-shadow: 0 0 0;
-  }
-  to {
-    text-shadow: 0 0 20px;
-  }
-}
-#menu-wrap #cf-menu .move-wrap {
-  position: relative;
-  height: 6rem;
-  width: 6rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  box-sizing: border-box;
-  transform-origin: 50% 50%;
-}
-#menu-wrap #cf-menu .move-wrap p {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-#menu-wrap #cf-menu .move-wrap p i {
-  display: block;
-  transform-origin: center center;
-  font-size: 1rem;
-  -webkit-text-stroke-color: #fff;
-  -webkit-text-stroke-width: 0.5px;
-  color: transparent;
-  transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
-}
-#menu-wrap #cf-menu .move-wrap p:nth-child(1) i {
-  transform: rotate(0deg);
-}
-#menu-wrap #cf-menu .move-wrap p:nth-child(2) i {
-  transform: rotate(288deg);
-}
-#menu-wrap #cf-menu .move-wrap p:nth-child(3) i {
-  transform: rotate(216deg);
-}
-#menu-wrap #cf-menu .move-wrap p:nth-child(4) i {
-  transform: rotate(144deg);
-}
-#menu-wrap #cf-menu .move-wrap p:nth-child(5) i {
-  transform: rotate(72deg);
-}
-#menu-wrap #cf-menu .move-wrap .height-light {
-  font-size: 1.3rem !important;
-  -webkit-text-stroke-width: 0;
-  color: red;
-}
-#menu-wrap .menu-btn {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-#menu-wrap .menu-btn p {
-  margin: 0;
-}
-#menu-wrap .menu-btn p i {
-  font-size: 1rem !important;
-  line-height: 100%;
-  text-align: center;
-  color: #00A7DE !important;
-  font-weight: 600;
-}
-#menu-wrap .menu-btn p .icon-caidan {
-  animation: shine 1.5s infinite;
-}
-#menu-wrap .menu-btn p .icon-guanbi1 {
-  font-size: 0.8rem !important;
-  color: #D74C40 !important;
+  z-index: 3;
 }
