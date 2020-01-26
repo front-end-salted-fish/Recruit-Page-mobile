@@ -152,9 +152,9 @@ function swipeU(classname) {
             switch (++mqObj.tag) {
                 case 2:
                     title.css({
-                        top: "2rem",
+                        top: "2.6rem",
                         left: "1.6rem",
-                        textAlign: "start",
+                        // textAlign: "start",
                         transform: "scale(.5)",
                     }).children().css({
                         left: 0,
