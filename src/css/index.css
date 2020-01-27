@@ -18,7 +18,7 @@
 }
 #loading-module #loading-box {
   width: 48vw;
-  height: 41.5vw;
+  height: 42.5vw;
   position: absolute;
   left: 50%;
   top: 40%;
@@ -29,7 +29,7 @@
   opacity: 1 !important;
 }
 #loading-module #loading-box .row {
-  height: 6vw;
+  height: 9vw;
   width: 100%;
   margin: 0 !important;
   display: flex;
@@ -347,7 +347,7 @@
   --offset: -38;
   stroke-dasharray: var(--length) var(--total-length);
   stroke-dashoffset: var(--offset);
-  transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 #zl-detail-pages .cf-menu circle {
   fill: #fff3;
@@ -669,7 +669,6 @@
   }
 }
 #rj-banner #rj-banner-container #rj-banner-btns {
-  height: 0.15rem;
   position: absolute;
   top: 91.5%;
   display: flex;
@@ -677,18 +676,23 @@
 #rj-banner #rj-banner-container #rj-banner-btns .rj-banner-btn {
   margin-right: 0.4rem;
   width: 0.75rem;
-  height: 100%;
+  height: 0.15rem;
   background-color: rgba(255, 255, 255, 0.4);
   position: relative;
   transition: all 1s ease;
 }
 #rj-banner #rj-banner-container #rj-banner-btns .rj-banner-btn .rj-banner-timer {
   position: absolute;
+  height: 0.15rem;
   left: 0;
   display: inline-block;
-  height: 100%;
   background-color: white;
   opacity: 1;
+}
+#rj-banner #rj-banner-container #rj-banner-btns .btn-mask {
+  display: block;
+  width: 100%;
+  height: 1rem;
 }
 #rj-banner #rj-banner-container #rj-banner-btns .rj-banner-btn-current {
   width: 2.34rem;
@@ -719,6 +723,11 @@
 #rj-banner #rj-banner-container #rj-change-page-btn #rj-middle {
   display: inline-block;
   padding: 0 0.2rem 0 0.2rem;
+}
+#rj-banner #rj-banner-container #rj-change-page-btn #rj-prev,
+#rj-banner #rj-banner-container #rj-change-page-btn #rj-next {
+  display: inline-block;
+  padding: 0 0 1rem 0px;
 }
 #rj-banner #rj-banner-container #rj-fonts-container {
   font-size: 1.6rem;
@@ -762,7 +771,8 @@
 #rj-banner #rj-banner-container #rj-fonts-container .rj-c-txt {
   top: 0%;
   font-size: 2.7rem;
-  font-family: '宋体', '微软雅黑';
+  font-family: '宋体', gabrielastencil, '微软雅黑';
+  font-weight: lighter;
 }
 #rj-banner #rj-banner-container #rj-3d-tv {
   position: absolute;
@@ -788,8 +798,8 @@
 }
 #rj-white-curtain div {
   font-size: 3.5rem;
+  font-family: gabrielastencil, 'Baskerville Old Face', Helvetica, Arial, sans-serif;
   position: fixed;
-  font-family: 'Baskerville Old Face';
 }
 #rj-white-curtain div:first-child {
   top: 29%;
