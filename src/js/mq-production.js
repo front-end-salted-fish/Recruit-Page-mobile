@@ -606,6 +606,7 @@ function swipeD(classname) {
 //             transition: ''
 //         })
 //     })
+
 //     title.css({
 //         // opacity: 1;
 //         position: "absolute",
@@ -678,6 +679,7 @@ function swipeD(classname) {
 //         }
 //     });
 // });
+
 // 新版简约菜单
 $('.cf-menu').on('click', 'svg', function () {
   console.log('我被点了');
