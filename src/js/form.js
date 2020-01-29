@@ -1,6 +1,20 @@
 import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
+
+// 初始化表单数据,用于发给后台的表单数据
+let formData = {
+    username: '',
+    studentId: '',
+    gradeProfessional: '',
+    sex: '',
+    number: '',
+    email: '',
+    introduction: '',
+    direction: '',
+    skills: '',
+    idea: ''
+};
 /* $(document).ready(function () {
     　　$('body').height($('body')[0].clientHeight);
     });//解决软键盘覆盖的问题Android---》不知道行不行哈 */
@@ -49,6 +63,7 @@ function nameCheck() {
     let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
     let name = $('#wf-name').val();
     name = filterXSS(name)
+    formData.username = name
     console.log(name)
     if (!reg.test(name) || name == '') {
         $("#wf-name").css("border", "1px solid red");
@@ -63,6 +78,7 @@ $("#wf-id").on("blur", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
     let id = $('#wf-id').val();
+    formData.studentId = id;
     if (!reg.test(id) || id == '') {
         $("#wf-id").css("border", "1px solid red");
         $(".wf-id-span").html("<span class='red-form'>请输入正确的学号</span>");
@@ -75,7 +91,8 @@ function idCheck() {
 $("#wf-grade").on("blur", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $("#wf-grade").val();
-    grade = filterXSS(grade)
+    grade = filterXSS(grade);
+    formData.grade = grade;
     if (grade == '') {
         $("#wf-grade").css("border", "1px solid red");
         $(".wf-grade-span").html("<span class='red-form'>不能为空！</span>");
@@ -90,6 +107,7 @@ function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
     let phone = $("#wf-phone").val();
     phone = filterXSS(phone)
+    formData.phone = phone
     if (!reg.test(phone) || phone == '') {
         $("#wf-phone").css("border", "1px solid red");
         $(".wf-phone-span").html("<span class='red-form'>请输入正确的手机号码</span>");
@@ -105,6 +123,7 @@ function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     let email = $('#wf-email').val();
     email = filterXSS(email)
+    formData.email = email
     if (!reg.test(email) || email == '') {
         $("#wf-email").css("border", "1px solid red");
         $(".wf-email-span").html("<span class='red-form'>请输入正确的邮箱</span>");
@@ -118,6 +137,7 @@ $("#wf-intro").on("blur", introCheck);//6.自我介绍
 function introCheck() {
     let intro = $("#wf-intro").val();
     intro = filterXSS(intro)
+    formData.introduction = intro
     if (intro == '') {
         $("#wf-intro").css("border", "1px solid red");
         $(".wf-intro-span").html("<span class='red-form'>不能为空！</span>");
@@ -131,6 +151,7 @@ $("#wf-skills").on("blur", skillsCheck);
 function skillsCheck() {
     let skills = $("#wf-skills").val();
     skills = filterXSS(skills)
+    formData.skills = skills
     if (skills == '') {
         $("#wf-skills").css("border", "1px solid red");
         $(".wf-skills-span").html("<span class='red-form'>不能为空！</span>");
@@ -144,6 +165,7 @@ $("#wf-cog").on("blur", cogCheck);
 function cogCheck() {
     let cog = $("#wf-cog").val();
     cog = filterXSS(cog)
+    formData.idea = cog
     if (cog == '') {
         $("#wf-cog").css("border", "1px solid red");
         $(".wf-cog-span").html("<span class='red-form'>不能为空！</span>");
