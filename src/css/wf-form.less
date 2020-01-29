@@ -131,7 +131,7 @@
 		}
 
 		.btn-groups {
-			padding-top: .2rem;
+			padding-top: 1.3rem;
 			padding-bottom: .8rem;
 
 			button {
@@ -286,6 +286,16 @@
 			}
 		}
 	}
+	//验证码
+    #code {
+        font-family: Arial;
+        font-style: italic;
+        font-weight: bold;
+        border: 0;
+        letter-spacing: 2px;
+        color: #aa8d78;
+        // position: absolute;
+  	}
 }
 
 // 锐基补
@@ -651,6 +661,22 @@
 			opacity: 1;
 			-webkit-transform: translateY(calc(-100%));
 			transform: translateY(calc(-100%));
+		}
+	}
+	#rj-code-field {
+		#ctl00_txtcode {
+			width:70%;
+			display: inline-block;
+		}
+		#code {
+			width:28%;
+			display: inline-block;
+		}
+		.rj-field-lines {
+			width:70%;
+		}
+		.rj-field-icon {
+			right: 30%;
 		}
 	}
 

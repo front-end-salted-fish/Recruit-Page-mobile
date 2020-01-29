@@ -178,3 +178,11 @@
   content: '* ';
   color: red;
 }
+#wf-form #code {
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  border: 0;
+  letter-spacing: 2px;
+  color: #aa8d78;
+}

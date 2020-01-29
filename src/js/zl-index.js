@@ -69,6 +69,7 @@ $(function() {
         $('#wind').css({
             display: 'none'
         })
+        $('.first-part').attr("style",'');
         $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
         $formPage.fadeIn(1000);
     });

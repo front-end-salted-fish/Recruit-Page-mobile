@@ -32,8 +32,9 @@
   height: 9vw;
   width: 100%;
   margin: 0 !important;
-  display: flex;
-  justify-items: center;
+  display: flex !important;
+  align-items: center !important;
+  vertical-align: middle;
 }
 #loading-module #loading-box .row-one {
   position: relative;
@@ -415,6 +416,7 @@
   display: block !important;
   position: absolute;
   transition: all ease 0.5s;
+  z-index: 10;
 }
 #mq-production {
   font-weight: lighter;
@@ -915,7 +917,10 @@
   text-align: center;
   height: 8vh;
   line-height: 8vh;
-  font-size: 3vh;
+  letter-spacing: 0.5vw;
+  font-size: 3.3vh;
+  font-weight: lighter;
+  font-family: gabrielastencil, '微软雅黑';
 }
 .cf-curtain ul li:nth-child(1) {
   transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.05s;

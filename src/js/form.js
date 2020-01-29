@@ -1,5 +1,6 @@
 import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
+import filterXSS from 'xss'
 /* $(document).ready(function () {
     　　$('body').height($('body')[0].clientHeight);
     });//解决软键盘覆盖的问题Android---》不知道行不行哈 */
@@ -58,6 +59,8 @@ function nameCheck() {
     let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
     let name = $wfName.val();
     let $field = $wfName.parent('.rj-field');
+    name = filterXSS(name)
+    console.log(name)
     if (!reg.test(name) || name == '') {
         // 如果输入为空或者格式错误
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
@@ -98,6 +101,7 @@ $wfGrade.on("blur", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $wfGrade.val();
     let $field = $wfGrade.parent(".rj-field");
+    grade = filterXSS(grade)
     if (grade == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $("#wf-grade").css("border", "1px solid red");
@@ -115,6 +119,7 @@ function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
     let phone = $wfPhone.val();
     let $field = $wfPhone.parent(".rj-field");
+    phone = filterXSS(phone)
     if (!reg.test(phone) || phone == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $wfPhone.css("border", "1px solid red");
@@ -133,6 +138,7 @@ function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     let email = $wfEmail.val();
     let $field = $wfEmail.parent(".rj-field");
+    email = filterXSS(email)
     if (!reg.test(email) || email == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $("#wf-email").css("border", "1px solid red");
@@ -149,6 +155,7 @@ $wfIntro.on("blur", introCheck);//6.自我介绍
 function introCheck() {
     let intro = $wfIntro.val();
     let $field = $wfIntro.parent(".rj-field");
+    intro = filterXSS(intro)
     if (intro == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $("#wf-intro").css("border", "1px solid red");
@@ -165,6 +172,7 @@ $wfSkills.on("blur", skillsCheck);
 function skillsCheck() {
     let skills = $wfSkills.val();
     let $field = $wfSkills.parent(".rj-field");
+    skills = filterXSS(skills)
     if (skills == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $wfSkills.css("border", "1px solid red");
@@ -181,6 +189,7 @@ $wfCog.on("blur", cogCheck);
 function cogCheck() {
     let cog = $wfCog.val();
     let $field = $wfCog.parent(".rj-field");
+    cog = filterXSS(cog)
     if (cog == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $wfCog.css("border", "1px solid red");
@@ -190,6 +199,45 @@ function cogCheck() {
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
     // $wfCog.css("border", "");
     // $(".wf-cog-span").html("");
+    return true;
+}
+//产生验证码  
+createCode();
+var code; //在全局定义验证码  
+//  var zlFlag = true; //用于解决使用tap事件时触发两次的bug
+function createCode() {
+    code = "";
+    var codeLength = 4; //验证码的长度  
+    var checkCode = document.getElementById("code");
+    var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
+    for (var i = 0; i < codeLength; i++) { //循环操作  
+        var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
+        code += random[index]; //根据索引取得随机数加到code上  
+    }
+    checkCode.value = code; //把code值赋给验证码  
+}
+// 匹配验证码
+function check() {
+    let $txtCode = $("#ctl00_txtcode");     // 验证码输入框
+    let $field = $txtCode.parent(".rj-field");
+
+    var inputCode = $txtCode.val().toUpperCase();
+    if (inputCode == "") {
+        console.log(1)
+        $field.find(".rj-field-tip").text("验证码不能为空!");
+        $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
+        // alert("验证码不能为空");
+        return false;
+    } else if (inputCode != code) {
+        // alert("验证码输入错误,请重新输入！");
+        $field.find(".rj-field-tip").text("验证码输入错误,请重新输入！");
+        $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
+        createCode(); //刷新验证码  
+        document.getElementById("ctl00_txtcode").value = ""; //清空文本框
+        return false;
+    }
+    $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
     return true;
 }
 //提交表单
@@ -215,11 +263,18 @@ $("#wf-commit").on('tap', function () {
                     btn.attr('disabled', false);
                 }, 2000); */
     if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
-        //在这里提交，小飞机 
-        zlPlane();
+        // 判断验证码是否匹配
+        if (!check()) {
+            return false
+        } else {
+            //在这里提交，小飞机 
+            zlPlane();
+        }
     }
-    else console.log("请正确输入信息");
-    //}
+    else {
+        console.log("请正确输入信息");
+    }
+
 
     //
     //关闭弹窗，动画

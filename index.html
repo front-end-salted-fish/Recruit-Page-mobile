@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 
+
 <body style="height: 100vh;width: 100vw;background: #fafafa; overflow: hidden; touch-action: none;">
     <!-- 开机动画 -->
     <header id="loading-module" style="height: 100vh;width: 100vw;background: #fafafa;font-weight: bold;">
@@ -535,6 +536,35 @@
                             placeholder="限一百字"></textarea>
                         <p class="wf-cog-span"></p>
                     </p> -->
+                    <div class="rj-field" id="rj-code-field">
+                        <input type="text" name="code" id="ctl00_txtcode" class="rj-form-input">
+                        <input type="button" id="code" >
+                        <div class="rj-field-placeholder need">验证码</div>
+                        <label for="code" class="rj-field-label">验证码*</label>
+                        <div class="rj-field-lines">
+                            <div class="rj-field-line rj-line-ready"></div>
+                            <div class="rj-field-line rj-line-valid"></div>
+                            <div class="rj-field-line rj-line-error"></div>
+                        </div>
+                        <div class="rj-field-icon rj-icon-valid"></div>
+                        <div class="rj-field-icon rj-icon-error"></div>
+                        <div class="rj-field-tip"></div>
+                    </div>
+                    
+                    <!-- <table cellpadding="0" cellspacing="20" border="0"
+                    class="form_table" align="center" style="margin-left: 2.5rem;">
+                    <tr>
+                        <td valign="middle" align="right">
+                            验&nbsp;证&nbsp;码:&nbsp;
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" id="ctl00_txtcode" style="background: white; outline: none;"/>
+                        </td>
+                            <td valign="middle" style="padding-left: 2%;">
+                                <input type="button" id="code" >
+                            </td>
+                        </tr>
+                    </table> -->
                 </form>
                 <div class="btn-groups">
                     <button class="last-page btn">上一页</button>
@@ -588,5 +618,6 @@
         <img>
         <img>
     </div>
+
 </body>
 </html>
