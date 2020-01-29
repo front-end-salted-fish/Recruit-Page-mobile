@@ -1,30 +1,37 @@
 #wf-form {
+  display: none;
   overflow: hidden;
   text-align: center;
-  width: 16rem;
+  width: 100vw;
   height: 100%;
   display: flex;
   position: relative;
 }
-#wf-form .close {
-  font-size: 1.5rem;
+#wf-form .wf-close {
+  font-size: 1rem;
   position: absolute;
   right: 1rem;
   top: 1rem;
   color: red;
-  background-color: white;
-  border-radius: 25%;
+  background-color: transparent;
+  border: 0;
   z-index: 1;
 }
 #wf-form .second-part {
-  background-image: linear-gradient(to top, #4099ac, #007994, #1e5c73, #2D304A);
+  background-image: linear-gradient(to top, #b0b0b0, #c4c9dd, #9ea6b9, #8a95a7);
   padding-top: 2rem;
-  color: white;
+  color: black;
   z-index: 1;
   width: 100%;
   height: 100%;
   transform: translate(16rem);
   position: relative;
+  overflow-x: hidden;
+}
+#wf-form .second-part .red-form {
+  color: red;
+  width: 70px;
+  margin-left: 2rem;
 }
 #wf-form .second-part .need:after {
   content: '* ';
@@ -55,8 +62,12 @@
 }
 #wf-form .second-part .second-part-form p label:not(.groups-la) {
   padding-left: 2rem;
-  width: 10rem;
+  width: 12rem;
   display: block;
+}
+#wf-form .second-part .second-part-form p label {
+  letter-spacing: 2px;
+  font-weight: lighter;
 }
 #wf-form .second-part .second-part-form p .groups-la {
   padding-left: 2rem;
@@ -66,7 +77,7 @@
 #wf-form .second-part .second-part-form p textarea {
   margin-top: 0.5rem;
   margin-left: 2rem;
-  width: 70%;
+  width: 73%;
   height: 5rem;
 }
 #wf-form .second-part .btn-groups {
@@ -88,8 +99,14 @@
         height: 90%; */
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(#4099ac, #007994, #1e5c73, #2D304A);
+  overflow-x: hidden;
+  background-image: linear-gradient(to bottom, #b0b0b0, #c4c9dd, #9ea6b9, #8a95a7);
   align-self: center;
+}
+#wf-form .first-part .red-form {
+  color: red;
+  width: 70px;
+  margin-left: 5rem;
 }
 #wf-form .first-part .center {
   margin: 0 auto;
@@ -139,6 +156,8 @@
   text-align: right;
   width: 5rem;
   padding-right: 0.5rem;
+  letter-spacing: 2px;
+  font-weight: lighter;
 }
 #wf-form .first-part .center .first-part-form .form-group:not(.gender) input {
   width: 8rem;
@@ -151,9 +170,19 @@
 #wf-form .first-part .center .first-part-form .gender label {
   text-align: right;
   width: 5rem;
+  letter-spacing: 2px;
+  font-weight: lighter;
   padding-right: 0.5rem;
 }
 #wf-form .first-part .center .first-part-form .need:after {
   content: '* ';
   color: red;
+}
+#wf-form #code {
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  border: 0;
+  letter-spacing: 2px;
+  color: #aa8d78;
 }
