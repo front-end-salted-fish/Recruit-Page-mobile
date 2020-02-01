@@ -10,14 +10,14 @@
   background: #fafafa;
   position: relative;
   transition: all ease 1s;
-  font-family: ITC, '微软雅黑', 'PingFang Heavy', 'Fira Code', 'Century Gothic', 'Open Sans', 'Roboto', 'Franklin Gothic', Arial, sans-serif;
+  font-family: '微软雅黑', 'PingFang Heavy', 'Fira Code', 'Century Gothic', 'Open Sans', 'Roboto', 'Franklin Gothic', Arial, sans-serif;
 }
 @font-face {
   font-family: ITC;
   src: url(../fonts/ITCAvantGardeStd-Md.otf);
 }
 #loading-module #loading-box {
-  width: 48vw;
+  width: 50vw;
   height: 42.5vw;
   position: absolute;
   left: 50%;
@@ -29,12 +29,13 @@
   opacity: 1 !important;
 }
 #loading-module #loading-box .row {
+  padding: 0 !important;
   height: 9vw;
   width: 100%;
-  margin: 0 !important;
-  display: flex !important;
-  align-items: center !important;
   vertical-align: middle;
+}
+#loading-module #loading-box .move-sdiv {
+  box-sizing: border-box;
 }
 #loading-module #loading-box .row-one {
   position: relative;
@@ -147,8 +148,6 @@
 }
 #loading-module #loading-box .row-forth {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 #loading-module #loading-box .row-forth .inner-left {
   background-color: #444;
