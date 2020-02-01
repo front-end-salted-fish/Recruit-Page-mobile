@@ -4,16 +4,16 @@ import filterXSS from 'xss'
 
 // 初始化表单数据,用于发给后台的表单数据
 let formData = {
-    username: '',
-    studentId: '',
-    gradeProfessional: '',
-    sex: '',
-    number: '',
-    email: '',
-    introduction: '',
-    direction: '',
-    skills: '',
-    idea: ''
+    username: '', // 姓名
+    studentId: '', // 学号
+    gradeProfessional: '', // 年级班级
+    sex: '', // 性别
+    phone: '', // 手机号码
+    email: '', // 邮箱
+    introduction: '', // 自我介绍
+    direction: '', // 选择的方向
+    skills: '', // 你所掌握的技能
+    idea: '' // 你对我们工作室的想法
 };
 /* $(document).ready(function () {
     　　$('body').height($('body')[0].clientHeight);
@@ -209,6 +209,8 @@ function check() {
 //提交表单
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
+    console.log(formData)
+
     //获取到所有的表单元素并转换为数组
     //var info1 = $('form').serializeArray();
     //var info2 = $('.second-part-form').serializeArray();
