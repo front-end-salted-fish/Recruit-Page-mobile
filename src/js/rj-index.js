@@ -7,7 +7,6 @@ import 'zepto'
 import 'zepto/src/fx'
 import 'zepto/src/fx_methods'
 import mqObj from '../js/mq-production'
-// console.log(mqObj.tag,1111111);
 
 let $banner = $("#rj-banner"); // 获取整个轮播页面
 let $bannerContainer = $("#rj-banner-container"); // 获取轮播图容器
@@ -234,7 +233,7 @@ let rjBanner = {
     title.css({
         position: "absolute",
         top: "28%",
-        left: "0",
+        left: "",
         transform: 'scale(1)',
         textAlign: "center"
     }).children().css({
