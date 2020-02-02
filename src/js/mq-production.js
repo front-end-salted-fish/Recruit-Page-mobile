@@ -57,7 +57,7 @@ console.log(firstWidth);
 
 //设置不同适配里的文字显示
 firstParameter.css({
-  width: firstWidth,
+  width: 15+'rem',
   height: firstHeight
 });
 // secondParameter.css({
@@ -65,7 +65,7 @@ firstParameter.css({
 
 // })
 thirdParameter.css({
-  width: secondWidth,
+  width: 13+'rem',
   height: secondHeight,
   lineHeight: firstlineHeight,
 })

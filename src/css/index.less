@@ -588,15 +588,20 @@
         color: white;
     }
     .mq-detail-page {
-        display: flex;
-        justify-content: space-between;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        // .mq-outerWrap {
+        //     position: relative;
+        // }
         .title {
             // display: flex;
             // justify-content: space-between;
             opacity: 1;
             position: absolute;
             top: 28%;
-            // left:0;
+            left:0;
+            right: 0;
             // background-color: red;
             
             transform: scale(1);
@@ -636,7 +641,7 @@
             overflow: hidden;
             position: absolute;
             top: 25%;
-            left: 10%;
+            // left: 10%;
             // line-height: 40/@rem;
             // line-height: 2.5rem;
             word-break: break-all;
