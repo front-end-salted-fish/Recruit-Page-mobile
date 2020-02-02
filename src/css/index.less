@@ -22,7 +22,7 @@
         src: url(../fonts/ITCAvantGardeStd-Md.otf);
     }
 
-    font-family: 
+    font-family: ITC,
     '微软雅黑',
     'PingFang Heavy',
     'Fira Code',
@@ -588,15 +588,18 @@
         color: white;
     }
     .mq-detail-page {
-        display: flex;
-        justify-content: space-between;
+        display: flex !important;
+				// justify-content: space-between;
+				justify-content: center;
+				align-items: center;
         .title {
             // display: flex;
             // justify-content: space-between;
             opacity: 1;
             position: absolute;
             top: 28%;
-            // left:0;
+						left: 0;
+						right: 0;
             // background-color: red;
             
             transform: scale(1);
@@ -636,7 +639,7 @@
             overflow: hidden;
             position: absolute;
             top: 25%;
-            left: 10%;
+            // left: 10%;
             // line-height: 40/@rem;
             // line-height: 2.5rem;
             word-break: break-all;

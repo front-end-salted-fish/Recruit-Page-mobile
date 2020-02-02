@@ -53,11 +53,11 @@ var andriodDiv = $('#mq-android');
 let $cfDetailPages = $('.mq-detail-page');
 var rotateTimes = 0;
 
-console.log(firstWidth);
+console.log("firstWidth", firstWidth);
 
 //设置不同适配里的文字显示
 firstParameter.css({
-  width: firstWidth,
+  width: 15 + 'rem',
   height: firstHeight
 });
 // secondParameter.css({
