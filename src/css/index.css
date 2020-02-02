@@ -17,6 +17,7 @@
   src: url(../fonts/ITCAvantGardeStd-Md.otf);
 }
 #loading-module #loading-box {
+  user-select: none;
   width: 48vw;
   height: 42.5vw;
   position: absolute;
@@ -306,12 +307,18 @@
 }
 #zl-detail-pages .zl-join .btn {
   width: 6rem;
+  color: white;
+  background: none;
+  border-radius: 6rem;
+  border-color: white;
+  letter-spacing: 2px;
 }
 #zl-detail-pages .page-moveIconUp {
   animation: moveToBottom ease 1.5s both infinite;
   -webkit-animation: moveIconUp ease 1.5s both infinite;
 }
 #zl-detail-pages .zl-back {
+  user-select: none;
   position: absolute;
   z-index: 2;
   right: 0.1rem;
@@ -416,7 +423,6 @@
   display: block !important;
   position: absolute;
   transition: all ease 0.5s;
-  z-index: 10;
 }
 #mq-production {
   font-weight: lighter;
@@ -430,13 +436,17 @@
   text-decoration: none;
   color: white;
 }
+#mq-production .mq-detail-page {
+  display: flex;
+  justify-content: space-between;
+}
 #mq-production .mq-detail-page .title {
   opacity: 1;
   position: absolute;
   top: 28%;
-  left: 0;
   transform: scale(1);
   transform-origin: 0 0;
+  margin: 0 auto;
   transition: all 1s cubic-bezier(0.39, 0.92, 0.74, 0.94);
 }
 #mq-production .mq-detail-page .title span {
@@ -547,6 +557,7 @@
   width: 9.9rem;
 }
 #rj-banner {
+  user-select: none;
   z-index: 3;
   height: 100%;
   background: #1d1d1d;
@@ -556,6 +567,7 @@
   top: 0;
 }
 #rj-banner #rj-banner-container {
+  user-select: none;
   height: 100%;
   position: absolute;
   width: 13rem;
@@ -563,6 +575,7 @@
   transform: translate3d(-50%, 0, 0);
 }
 #rj-banner #rj-banner-container .rj-banner-page {
+  user-select: none;
   width: 100%;
   height: 75%;
   position: absolute;
@@ -574,6 +587,7 @@
 }
 #rj-banner #rj-banner-container .rj-banner-page img {
   position: absolute;
+  user-select: none;
   height: 100%;
 }
 #rj-banner #rj-banner-container .rj-pre-page {
@@ -671,6 +685,7 @@
   }
 }
 #rj-banner #rj-banner-container #rj-banner-btns {
+  user-select: none;
   position: absolute;
   top: 91.5%;
   display: flex;
@@ -678,6 +693,7 @@
 #rj-banner #rj-banner-container #rj-banner-btns .rj-banner-btn {
   margin-right: 0.4rem;
   width: 0.75rem;
+  user-select: none;
   height: 0.15rem;
   background-color: rgba(255, 255, 255, 0.4);
   position: relative;
@@ -687,11 +703,13 @@
   position: absolute;
   height: 0.15rem;
   left: 0;
+  user-select: none;
   display: inline-block;
   background-color: white;
   opacity: 1;
 }
 #rj-banner #rj-banner-container #rj-banner-btns .btn-mask {
+  user-select: none;
   display: block;
   width: 100%;
   height: 1rem;
@@ -712,6 +730,7 @@
   }
 }
 #rj-banner #rj-banner-container #rj-change-page-btn {
+  user-select: none;
   font-size: 0.7rem;
   color: white;
   position: absolute;
@@ -723,16 +742,19 @@
   letter-spacing: 0.04rem;
 }
 #rj-banner #rj-banner-container #rj-change-page-btn #rj-middle {
+  user-select: none;
   display: inline-block;
   padding: 0 0.2rem 0 0.2rem;
 }
 #rj-banner #rj-banner-container #rj-change-page-btn #rj-prev,
 #rj-banner #rj-banner-container #rj-change-page-btn #rj-next {
+  user-select: none;
   display: inline-block;
   padding: 0 0 1rem 0px;
 }
 #rj-banner #rj-banner-container #rj-fonts-container {
   font-size: 1.6rem;
+  user-select: none;
   position: absolute;
   width: 100%;
   height: 6rem;
@@ -740,6 +762,7 @@
 }
 #rj-banner #rj-banner-container #rj-fonts-container .rj-c-txt,
 #rj-banner #rj-banner-container #rj-fonts-container .rj-e-txt {
+  user-select: none;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -750,6 +773,7 @@
 }
 #rj-banner #rj-banner-container #rj-fonts-container .rj-c-txt span,
 #rj-banner #rj-banner-container #rj-fonts-container .rj-e-txt span {
+  user-select: none;
   display: inline-block;
 }
 #rj-banner #rj-banner-container #rj-fonts-container .rj-c-txt .rj-from-right-in-span,
@@ -777,6 +801,7 @@
   font-weight: lighter;
 }
 #rj-banner #rj-banner-container #rj-3d-tv {
+  user-select: none;
   position: absolute;
   width: 100%;
   color: white;
@@ -790,6 +815,7 @@
   transform: rotate3d(0, 1, 0, 90deg);
 }
 #rj-white-curtain {
+  user-select: none;
   position: fixed;
   z-index: 3;
   width: 0%;
