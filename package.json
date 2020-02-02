@@ -9,15 +9,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode development",
+<<<<<<< HEAD
     "start": "webpack-dev-server --open --host 192.168.1.110"
+=======
+    "start": "webpack-dev-server --open --host 192.168.0.143"
+>>>>>>> 13d58ebb2cd2a9987b3cc938cdc0925dec071347
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.4.1",
-    "jquery": "^1.12.4",
     "url": "^0.11.0",
+    "xss": "^1.0.6",
     "zepto": "^1.2.0"
   },
   "devDependencies": {
