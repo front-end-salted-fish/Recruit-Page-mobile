@@ -233,7 +233,7 @@ let rjBanner = {
     title.css({
         position: "absolute",
         top: "28%",
-        left: "0",
+        left: "",
         transform: 'scale(1)',
         textAlign: "center"
     }).children().css({
