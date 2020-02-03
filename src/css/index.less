@@ -1,6 +1,8 @@
 .zl-com-height {
     //display: none;
     position: absolute;
+    top:0;
+    left:0;
     height: 100%;
     // background: #4C3738;
     width: 16rem;
@@ -15,7 +17,7 @@
     width: 100vw;
     background: #fafafa;
     
-    position: relative;
+    position: absolute;
     transition: all ease 1s;
     @font-face {
         font-family: ITC;
@@ -424,7 +426,7 @@
         top: 80%;
         left: 50%;
         transform: translateX(-50%);
-
+        z-index: 3;
         .btn {
             width: 6rem;
             color:white;
@@ -1167,12 +1169,13 @@
     }
 }
 
+@rjCurtainTime : 0.5s;
 // 白色幕布离开和进入
 .rj-white-curtain-out {
-    animation: wcOut 1.4s cubic-bezier(.57, .02, .1, .99) forwards;
+    animation: wcOut @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
 
     div {
-        transition: left .7s cubic-bezier(.57, .02, .1, .99) .7s;
+        transition: left @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
         left: -8rem !important;
     }
 }
@@ -1184,10 +1187,10 @@
 }
 
 .rj-white-curtain-in {
-    animation: wcIn 1.4s cubic-bezier(.57, .02, .1, .99) forwards;
+    animation: wcIn @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
 
     div {
-        transition: right .7s cubic-bezier(.57, .02, .1, .99) .7s;
+        transition: right @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
         right: -8rem !important;
     }
 }

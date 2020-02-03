@@ -57,21 +57,34 @@ $(function() {
     // 获取报名按钮，并且为报名按钮绑定点击跳转事件
     // 点击按钮时给表单设置css display:none  ---2020/01/22
     let $joinBtn = $('.zl-join .btn');
+    let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
     $joinBtn.tap(function() {
         let $formPage = $('#zl-form-page');
+        $rjCircle.addClass('rj-circle-openning');   // 圆点放大
+        $formPage.fadeIn();
             // 排他
-        $('#wf-form').css({
-            display: 'block'
-        })
-        $formPage.siblings('#zl-detail-pages').fadeOut(1000);
-        $('#wf-form').fadeIn()
+        $('#wf-form').addClass('rj-openning');
+        // $('#wf-form').css({
+        //     display: 'block',
+        //     // opacity: 1
+        // }).addClass('rj-openning');
+        $formPage.animate({
+        }, {
+            duration: 1,
+            easing: '',
+            complete: () => { 
+                $formPage.siblings('#zl-detail-pages').fadeOut(0);
+            },
+            delay: 800
+        });
+        // $('#wf-form').fadeIn()
         $('#wf-form').removeClass('zl-become-small');
         $('#wind').css({
             display: 'none'
         })
-        $('.first-part').attr("style",'');
+        $('.first-part').attr("style",'').scrollTop(0);
         $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
-        $formPage.fadeIn(1000);
+        // $formPage.fadeIn(1000);
     });
   
     // 回退按钮的功能

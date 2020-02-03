@@ -1,8 +1,9 @@
-import testImg1 from '../../img/rj-banner-test.jpg'
-import testImg2 from '../../img/rj-banner-test2.jpg'
-import testImg3 from '../../img/rj-banner-test3.jpg'
-import testImg4 from '../../img/rj-banner-test.jpg'
-import testImg5 from '../../img/rj-banner-test2.jpg'
+import testImg1 from '../../img/front-end-banner.jpg'
+import testImg2 from '../../img/back-end-banner.jpg'
+import testImg3 from '../../img/andriod-banner.jpg'
+import testImg4 from '../../img/ios-banner.jpg'
+import testImg5 from '../../img/machine-learning-banner-2.jpg'
+
 import 'zepto'
 import 'zepto/src/fx'
 import 'zepto/src/fx_methods'
@@ -240,15 +241,13 @@ let rjBanner = {
       left:'',
       transform: ''
     })
+
     this.watchPageIndex = pageIndex;
     this.stop();
     console.log("锐基：跳进" + this.cTxtArr[pageIndex]);
     // 轮播图右滑
     $banner.removeClass('rj-banner-in').addClass('rj-banner-out');
     $detailPages.eq(this.watchPageIndex).addClass('cf-blur-in').siblings().addClass('cf-blur-out');
-    // $detailPages.css({
-    //   display: 'block'
-    // });
     // 幕布出现->消失
     $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', ()=>{
       $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-out')
