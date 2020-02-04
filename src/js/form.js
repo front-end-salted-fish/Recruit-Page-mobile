@@ -15,6 +15,10 @@ let formData = {
     skills: '', // 你所掌握的技能
     idea: '' // 你对我们工作室的想法
 };
+// import formTopImg from '../../img/form-top.jpg'
+// import formBottomImg from '../../img/form-bottom.jpg'
+// $('#rj-form-top').attr('src', formTopImg);
+// $('#rj-form-bottom').attr('src', formBottomImg);
 /* $(document).ready(function () {
     　　$('body').height($('body')[0].clientHeight);
     });//解决软键盘覆盖的问题Android---》不知道行不行哈 */
@@ -51,14 +55,12 @@ $('.getmypart').on('tap', function () {
 //上一页下一页----------------------------------------
 $("#next-page").on('tap', function () {
     $("#rj-steps-container").addClass("rj-form-page2");
-    $('.second-part').animate({ transform: 'translate(0)' }, 250, 'linear');
-    $('.first-part').animate({ transform: 'translate(-16rem)' }, 500, 'linear');
-    // $('.second-part').css({display: 'block'})
-    // $('.first-part').css({display: 'none'})
+    $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
+    $('.first-part').animate({ transform: 'translate(-16rem)' }, 300, 'linear');
 });
 $(".last-page").on('tap', function () {
     $("#rj-steps-container").removeClass("rj-form-page2");
-    $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear');
+    $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
     $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
     // $('.second-part').css({display: 'none'})
     // $('.first-part').css({display: 'block'})
@@ -308,22 +310,39 @@ $("#wf-commit").on('tap', function () {
     //
     //关闭弹窗，动画
 })
-//回到详情页
+let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
+// 回到详情页
 $('.wf-close').tap(function () {
+    
     let $formPage = $('#zl-form-page');
+    $formPage.siblings('#zl-detail-pages').fadeIn(0);
+    $('#rj-steps-container').removeClass('rj-form-page2');
+    $rjCircle.removeClass("rj-circle-openning");
+    $('#wf-form').removeClass('rj-openning');
+    
     // 排他
     $("#zl-detail-pages").removeClass("rj-detail-out");
     $("#zl-form-page").removeClass("rj-form-in");
+    
 
-    $formPage.fadeIn();
-    $formPage.siblings('#zl-detail-pages').fadeIn();
+    
+    $formPage.animate({
+    }, {
+        duration: 1,
+        easing: '',
+        complete: () => { 
+            $formPage.fadeOut(10);
+        },
+        delay: 200
+    })
+    
 
     $('#wf-form').removeClass('zl-become-small');
     $('#wind').css({
         display: 'none'
     })
     $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
-    $('#wf-form').fadeOut(1000);
+    // $('#wf-form').fadeOut(1000);
 });
 
 

@@ -1,12 +1,15 @@
 .zl-com-height {
     //display: none;
     position: absolute;
+    top:0;
+    left:0;
     height: 100%;
     // background: #4C3738;
     width: 16rem;
 }
 
 @loadingAnmFontSize: 9vw;
+@loadingSpanHeight: 7.5vw;
 #loading-module {
     // display: none;
     //z-index: 100;
@@ -15,14 +18,14 @@
     width: 100vw;
     background: #fafafa;
     
-    position: relative;
+    position: absolute;
     transition: all ease 1s;
     @font-face {
         font-family: ITC;
         src: url(../fonts/ITCAvantGardeStd-Md.otf);
     }
 
-    font-family: ITC,
+    font-family:
     '微软雅黑',
     'PingFang Heavy',
     'Fira Code',
@@ -32,11 +35,10 @@
     'Franklin Gothic',
     Arial,
     sans-serif;
-
+    
     // 开局动画内部盒子
     #loading-box {
-        user-select: none;
-        width: 48vw;
+        width: 50vw;
         height: 42.5vw;
         position: absolute;
         left: 50%;
@@ -46,14 +48,13 @@
         flex-direction: column;
         justify-content: space-between;
         opacity: 1 !important;
-        .row {
+        .cf-row {
+          padding: 0 !important;
             height: 9vw;
             width: 100%;
-            margin: 0 !important;
-            display: flex !important;
-            align-items: center !important;
+             
             vertical-align: middle;
-        }
+				}
 
         //第一行
         .row-one {
@@ -90,7 +91,7 @@
                 position: absolute;
                 right: 0;
                 width: 100%; //transform为0时，width由100变为42%（同时字的translate变为0）
-                height: 7.5vw;
+                height: @loadingSpanHeight;
                 z-index: 1;
                 transform: translateX(315%);
 
@@ -109,7 +110,7 @@
                 position: absolute;
                 left: 0;
                 width: 100%; //回来时变为36%
-                height: 7.5vw;
+                height: @loadingSpanHeight;
                 z-index: 1;
                 transform: translateX(-220%);
             }
@@ -183,7 +184,7 @@
                 position: absolute;
                 left: 0%;
                 width: 100%; //回来变为20
-                height: 7.5vw;
+                height:  @loadingSpanHeight;
                 z-index: 1;
                 transform: translateX(308%);
             }
@@ -192,15 +193,15 @@
         //第四行
         .row-forth {
             position: relative;
-            display: flex;
-            align-items: center;
+            // display: flex;
+            // align-items: center;
 
             .inner-left {
                 background-color: #444;
                 position: absolute;
                 left: 0;
                 width: 50%; //回来时19
-                height: 7.5vw;
+                height:  @loadingSpanHeight;
                 z-index: 1;
                 transform: translateX(-335%);
             }
@@ -424,7 +425,7 @@
         top: 80%;
         left: 50%;
         transform: translateX(-50%);
-
+        z-index: 3;
         .btn {
             width: 6rem;
             color:white;
@@ -588,13 +589,25 @@
         color: white;
     }
     .mq-detail-page {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        // .mq-outerWrap {
+        //     position: relative;
+        // }
         .title {
+            // display: flex;
+            // justify-content: space-between;
             opacity: 1;
             position: absolute;
             top: 28%;
             left:0;
+            right: 0;
+            // background-color: red;
+            
             transform: scale(1);
             transform-origin: 0 0;
+            margin:0 auto;
             // width: 380/@rem;
             // height: 160/@rem;
             // text-align: center;
@@ -629,7 +642,7 @@
             overflow: hidden;
             position: absolute;
             top: 25%;
-            left: 10%;
+            // left: 10%;
             // line-height: 40/@rem;
             // line-height: 2.5rem;
             word-break: break-all;
@@ -1155,12 +1168,13 @@
     }
 }
 
+@rjCurtainTime : 0.5s;
 // 白色幕布离开和进入
 .rj-white-curtain-out {
-    animation: wcOut 1.4s cubic-bezier(.57, .02, .1, .99) forwards;
+    animation: wcOut @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
 
     div {
-        transition: left .7s cubic-bezier(.57, .02, .1, .99) .7s;
+        transition: left @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
         left: -8rem !important;
     }
 }
@@ -1172,10 +1186,10 @@
 }
 
 .rj-white-curtain-in {
-    animation: wcIn 1.4s cubic-bezier(.57, .02, .1, .99) forwards;
+    animation: wcIn @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
 
     div {
-        transition: right .7s cubic-bezier(.57, .02, .1, .99) .7s;
+        transition: right @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
         right: -8rem !important;
     }
 }

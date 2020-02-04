@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
@@ -15,7 +16,7 @@
         <!-- 文字及banner的容器 -->
         <div id="loading-box" style="opacity: 0;">
             <!-- 第一行 -->
-            <div class="row row-one">
+            <div class="cf-row row-one">
                 <div class="inner-left">
                     <div class="move-sdiv"><span class="move-span">W</span></div>
                     <div class="move-sdiv"><span class="move-span">E</span></div>
@@ -26,7 +27,7 @@
                 </div>
             </div>
             <!-- 第二行 -->
-            <div class="row row-two">
+            <div class="cf-row row-two">
                 <div class="inner-left"></div>
                 <div class="inner-right">
                     <div class="move-sdiv move-ssdiv"><span class="move-span">C</span></div>
@@ -36,7 +37,7 @@
                 </div>
             </div>
             <!-- 第三行 -->
-            <div class="row row-three">
+            <div class="cf-row row-three">
                 <div class="inner-left">
                     <div class="move-sdiv"><span class="move-span">T</span></div>
                     <div class="move-sdiv"><span class="move-span">O</span></div>
@@ -51,7 +52,7 @@
                 </div>
             </div>
             <!-- 第四行 -->
-            <div class="row row-forth">
+            <div class="cf-row row-forth">
                 <div class="inner-left"></div>
                 <div class="inner-center">
                     <div class="move-sdiv"><span class="move-span">V</span></div>
@@ -284,7 +285,7 @@
             <button class="btn btn-default">加入我们</button>
         </div>
         <!-- <div id="menu-wrap">
-
+            
             <div id="cf-menu">
                 <div class="move-wrap">
                     <p><i class="iconfont icon-H "></i></p>
@@ -308,13 +309,17 @@
             </ul>
         </div>
         <div class="zl-up-promot">
-
         </div>
     </div>
+    <!-- 小圆点 -->
+    <div class="rj-circle-container">
+        <div class="rj-menu-overlay_circle"></div>
+    </div>
     <!-- 表单界面 -->
-    <div id="zl-form-page" class="zl-com-height" style="display: none;">
-        <div id="wf-form">
+    <div id="zl-form-page" class="zl-com-height" style="display: none;" scroll="no">
+        <div id="wf-form" scroll="no">
             <div id="rj-steps-container">
+                <!-- <img src="" alt="" id="rj-form-top"> -->
                 <div class="rj-step-title-container">
                     <div class="rj-step-title rj-step-1-title">个人信息</div>
                     <div class="rj-step-title rj-step-2-title">你的想法</div>
@@ -570,6 +575,7 @@
                     <button class="last-page btn">上一页</button>
                     <button id="wf-commit" class="btn btn-success">提 交</button>
                 </div>
+                <!-- <img src="" alt="" id="rj-form-bottom"> -->
             </div>
             <button type="button" class="wf-close" aria-label="Close"><span aria-hidden="true">&nbsp;&times;&nbsp;
                 </span></button>

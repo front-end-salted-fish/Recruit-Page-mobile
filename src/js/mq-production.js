@@ -53,11 +53,11 @@ var andriodDiv = $('#mq-android');
 let $cfDetailPages = $('.mq-detail-page');
 var rotateTimes = 0;
 
-console.log(firstWidth);
+console.log("firstWidth", firstWidth);
 
 //设置不同适配里的文字显示
 firstParameter.css({
-  width: firstWidth,
+  width: 15 + 'rem',
   height: firstHeight
 });
 // secondParameter.css({
@@ -65,7 +65,7 @@ firstParameter.css({
 
 // })
 thirdParameter.css({
-  width: secondWidth,
+  width: 13+'rem',
   height: secondHeight,
   lineHeight: firstlineHeight,
 })
@@ -734,11 +734,15 @@ $('.cf-menu-wrap').on('click', 'li', function () {
       transition: ''
     })
   })
+  // title.removeAttr("left");
   title.css({
     // opacity: 1;
     position: "absolute",
     top: "28%",
-    left: "0",
+    left: "",
+    // display:flex,
+    // justifyContent: space-between,
+    // margin:0 auto,
     transform: 'scale(1)',
     // left: 10%;
     // width: 380/@rem;
