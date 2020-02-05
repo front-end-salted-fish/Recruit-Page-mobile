@@ -50,10 +50,10 @@ $(".last-page").on('tap', function () {
     $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
 });
 //******************************************* 验证(在html中设置好了maxlength)
-$(".rj-form-input").on("focus",function(){
+$(".rj-form-input").on("focus", function () {
     let $field = $(this.parentNode);
     // console.log($field);
-    if($field[0].className === 'rj-field') {
+    if ($field[0].className === 'rj-field') {
         $field.addClass("rj-field-ready");
     }
 });
@@ -78,7 +78,7 @@ function nameCheck() {
     return true;
 }
 
-$(".rj-gender-select").on("tap",function(){
+$(".rj-gender-select").on("tap", function () {
     $(this).toggleClass("rj-boy rj-girl");
 })
 
@@ -95,12 +95,12 @@ function idCheck() {
         return false;
     }
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
-    
+
     // $("#wf-id").css("border", "");
     // $(".wf-id-span").html("");
     return true;
 }
-let $wfGrade = $("#wf-grade"); 
+let $wfGrade = $("#wf-grade");
 $wfGrade.on("blur", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $wfGrade.val();
@@ -245,12 +245,24 @@ function check() {
     return true;
 }
 //提交表单
+let formData = {
+    username: '',
+    studentId: '',
+    gradeProfessional: '',
+    sex: '',
+    phone: '',
+    email: '',
+    introduction: '',
+    direction: '',
+    skills: '',
+    idea: '',
+}
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
-    //获取到所有的表单元素并转换为数组
-    //var info1 = $('form').serializeArray();
-    //var info2 = $('.second-part-form').serializeArray();
-    //info1 = info1.concat(info2);
+    /* //获取到所有的表单元素并转换为数组
+    var info1 = $('form').serializeArray();
+    var info2 = $('.second-part-form').serializeArray();
+    info1 = info1.concat(info2); */
     //console.log(info1);
     /* function emptyCheck() {
         for (var i = 0; i < 10; i++) {
@@ -271,6 +283,22 @@ $("#wf-commit").on('tap', function () {
         if (!check()) {
             return false
         } else {
+            //获取到所有的表单元素并转换为数组
+            var info1 = $('form').serializeArray();
+            var info2 = $('.second-part-form').serializeArray();
+            info1 = info1.concat(info2);
+            let formData = {
+                username: info[0].value,
+                studentId: info[1].value,
+                gradeProfessional: info[2].value,
+                sex: info[3].value,
+                phone: info[4].value,
+                email: info[5].value,
+                introduction: info[6].value,
+                direction: info[7].value,
+                skills: info[8].value,
+                idea: info[9].value,
+            }
             //在这里提交，小飞机 
             zlPlane();
         }
@@ -286,29 +314,29 @@ $("#wf-commit").on('tap', function () {
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
 // 回到详情页
 $('.wf-close').tap(function () {
-    
+
     let $formPage = $('#zl-form-page');
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
     $('#rj-steps-container').removeClass('rj-form-page2');
     $rjCircle.removeClass("rj-circle-openning");
     $('#wf-form').removeClass('rj-openning');
-    
+
     // 排他
     $("#zl-detail-pages").removeClass("rj-detail-out");
     $("#zl-form-page").removeClass("rj-form-in");
-    
 
-    
+
+
     $formPage.animate({
     }, {
         duration: 1,
         easing: '',
-        complete: () => { 
+        complete: () => {
             $formPage.fadeOut(10);
         },
         delay: 200
     })
-    
+
 
     $('#wf-form').removeClass('zl-become-small');
     $('#wind').css({
