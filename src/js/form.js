@@ -13,7 +13,9 @@ let formData = {
     introduction: '', // 自我介绍
     direction: '', // 选择的方向
     skills: '', // 你所掌握的技能
-    idea: '' // 你对我们工作室的想法
+    idea: '', // 你对我们工作室的想法
+    checkFront: '', // 前端动态生成的验证码
+    checkBack: '' // 用户填写的验证码
 };
 // import formTopImg from '../../img/form-top.jpg'
 // import formBottomImg from '../../img/form-bottom.jpg'
@@ -124,7 +126,7 @@ function gradeCheck() {
     let grade = $wfGrade.val();
     let $field = $wfGrade.parent(".rj-field");
     grade = filterXSS(grade)
-    formData.grade = grade;
+    formData.gradeProfessional = grade;
 
     if (grade == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
@@ -244,6 +246,7 @@ function createCode() {
         var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
         code += random[index]; //根据索引取得随机数加到code上  
     }
+    formData.checkFront = code;
     checkCode.value = code; //把code值赋给验证码  
 }
 // 匹配验证码
@@ -252,6 +255,8 @@ function check() {
     let $field = $txtCode.parent(".rj-field");
 
     var inputCode = $txtCode.val().toUpperCase();
+    inputCode = filterXSS(inputCode)
+    formData.checkBack = inputCode
     if (inputCode == "") {
         console.log(1)
         $field.find(".rj-field-tip").text("验证码不能为空!");
@@ -273,7 +278,6 @@ function check() {
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
     console.log(formData)
-
     //获取到所有的表单元素并转换为数组
     //var info1 = $('form').serializeArray();
     //var info2 = $('.second-part-form').serializeArray();
