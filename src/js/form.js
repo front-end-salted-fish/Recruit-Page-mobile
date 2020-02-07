@@ -42,17 +42,54 @@ $(window).resize(function () {
     }
 });//监听resize ( Android）
 //------------------------------------------------------------------关注focus
-$('input,textarea').on('focusin', function () {
-    //软键盘弹出的事件处理
-    //$(this).scrollIntoView(true);
+$('input,textarea').on('click', function (e) {
+    fixedForm()
+    e.preventDefault();
+    e.stopPropagation();
 });
 
 $('input,textarea').on('focusout', function () {
-    //软键盘收起的事件处理
+    //失去焦点时让解除固定定位
+    relieveFixed()
 });
 $('.getmypart').on('tap', function () {
     $('#wf-form').animate({ transform: 'translate(0,0)' }, 800, 'liner');
     console.log('s');
+})
+// 让表单不溢出
+function fixedForm() {
+    $('body').css({
+        position: 'fixed'
+    });
+    $('html').css({
+        position: 'fixed'
+    });
+}
+// 解除固定定位
+function relieveFixed() {
+    $('body').css({
+        position: 'static'
+    });
+    $('html').css({
+        position: 'static'
+    });
+}
+// 下拉框
+let $select = $('.second-part-form .form-control')
+$select.click(function(e) {
+    fixedForm()
+    e.preventDefault();
+    e.stopPropagation();
+})
+//下拉框的值发生改变时，
+$select.on('change', function() {
+    relieveFixed()
+})
+// 整个表单页面
+$('#zl-form-page').click(function() {
+    console.log('relieveFixed')
+
+    relieveFixed()
 })
 //上一页下一页----------------------------------------
 $("#next-page").on('tap', function () {
