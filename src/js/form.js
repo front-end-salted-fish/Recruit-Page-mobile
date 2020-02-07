@@ -42,13 +42,13 @@ $(window).resize(function () {
     }
 });//监听resize ( Android）
 //------------------------------------------------------------------关注focus
-$('input,textarea').on('click', function (e) {
+$('#zl-form-page input,#zl-form-page textarea').on('click', function (e) {
     fixedForm()
     e.preventDefault();
     e.stopPropagation();
 });
 
-$('input,textarea').on('focusout', function () {
+$('#zl-form-page input,#zl-form-page textarea').on('focusout', function () {
     //失去焦点时让解除固定定位
     relieveFixed()
 });
