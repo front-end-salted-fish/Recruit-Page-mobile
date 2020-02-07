@@ -274,19 +274,7 @@ function check() {
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
     return true;
 }
-//提交表单
-let formData = {
-    username: '',
-    studentId: '',
-    gradeProfessional: '',
-    sex: '',
-    phone: '',
-    email: '',
-    introduction: '',
-    direction: '',
-    skills: '',
-    idea: '',
-}
+
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
     console.log(formData)
