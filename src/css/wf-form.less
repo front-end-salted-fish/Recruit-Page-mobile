@@ -1,4 +1,6 @@
 #zl-form-page {
+	// overflow-x: hidden;
+	// overflow-y: auto;
 	overflow: hidden;
 	// transform: translateY(100vh);
 	// transition: all 1s ease;
@@ -15,15 +17,19 @@
 // 	transform: translateY(0vh) !important;
 // }
 #wf-form {
-	display: none; //默认不显示
+	// display: none; //默认不显示
 	//background-image: url("../../img/form-bac.jpg");
+	// overflow-x: hidden;
+	// overflow-y: auto;
 	overflow: hidden;
 	text-align: center;
-	width: 100vw;
+	width: 16rem;
 	height: 100%;
-	display: flex;
-	position: relative;
-	background-color: white;
+	// display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	// background-color: white;
 	// transform: translate(16rem,100%);
 	//background-color: rgba(253, 253, 253,0.5);
 	.wf-close {
@@ -34,7 +40,7 @@
 		color: #4c4c4c;
 		background-color: transparent;
 		border: 0;
-		z-index: 1;
+		z-index: 3;
 		padding:0;
 	}
 
@@ -46,14 +52,16 @@
 		// padding-top: 2rem;
 		// position: absolute;
 		color: black;
-		z-index: 1;
-		padding: 10px 15px;
-		background: white;
+		z-index: 3;
+		// padding: 10px 15px;
+		padding: 10px 15px 0px 15px;
+		// background: white;
 		//text-align: center;
 		width: 100%;
 		height: calc(100% - 6rem);
 		// height: 100%;
 		transform: translate(16rem);
+		// display: none;
 		position: relative;
 		//transition: all 1s;
 		overflow-x: hidden;
@@ -154,11 +162,11 @@
 	}
 
 	.first-part {
-		background: white;
+		// background: white;
 		position: absolute;
 		//display: none;
 		color: white;
-		z-index: 1;
+		z-index: 3;
 		// padding-top: 2rem;
 		margin: 0 auto;
 		//text-align: center;
@@ -298,14 +306,19 @@
   	}
 }
 
+@circle-time: .3s;
 // 锐基补
 #wf-form {
-	
 	#rj-steps-container {
 		height:6rem;
 		width:100%;
 		padding-top:2.5rem;
 		overflow: hidden;
+		position: relative;
+		z-index: 3;
+		opacity: 0;
+		transform: translateY(1rem);
+		transition: all .2s 0s;
 		.rj-step-title-container {
 			width:200vw;
 			display: flex;
@@ -362,7 +375,6 @@
 			}
 		}
 	}
-
 	.rj-form-page2 {
 		.rj-step-title-container {
 			transform: translate(-100vw) !important;
@@ -390,8 +402,12 @@
 		}
 	}
 	.rj-field {
+		z-index: 3;
 		position: relative;
 		margin: 0 1rem 1rem 1rem;
+		transition: all .5s;
+		opacity: 0;
+		transform: translateY(1rem);
 		label {
 			font-weight: normal;
 		}
@@ -417,7 +433,7 @@
 
 		input,
 		textarea {
-			width: 100%;
+			width: e('calc(100% - 30px)');
 			font-family: Butler;
 			background-color: white;
 			font-size: .7rem;
@@ -425,6 +441,7 @@
 			padding-top: .45rem;
 			padding-bottom: .3rem;
 			resize: none;
+			word-break: break-all;
 			&::placeholder {
 				transition: all .5s .45s;
 				opacity: 0;
@@ -513,15 +530,16 @@
 		}
 
 		.rj-field-icon {
-			z-index: 4;
+			z-index: 5;
 			position: absolute;
 			right: 0;
 			top: 20px;
 			width: 30px;
 			height: 20px;
-			pointer-events: none;
+			user-select: none;
 			&:before,
 			&:after {
+				z-index: 5;
 				content: "";
 				display: block;
 				position: absolute;
@@ -585,10 +603,13 @@
 		}
 
 	}
+	.rj-field {
+			transition: all .2s 0s;
+	}
 	.rj-field-valid {
 		.rj-line-valid {
 			transform: scaleX(1) !important;
-			z-index: 2;
+			z-index: 3;
 		}
 		.rj-icon-valid {
 			&:before {
@@ -612,7 +633,7 @@
 	.rj-field-error {
 		.rj-line-error {
 			transform: scaleX(1) !important;
-			z-index: 2;
+			z-index: 3;
 		}
 		.rj-field-tip {
 			margin:.1rem 0 0 0 !important;
@@ -679,11 +700,10 @@
 			right: 30%;
 		}
 	}
-
-
 	// 男女开关按钮
 	.rj-gender-select {
 		display: inline-flex;
+		z-index: 3;
 		align-items: center;
 		width: 3rem;
 		height: 1.3rem;
@@ -695,7 +715,10 @@
 		// margin-left: 1.5rem;
 		margin-left: 2rem;
 		border-radius: 1.3rem;
-		transition: all .5s;
+		transition: all .2s 0s;
+		opacity: 0;
+		transform: translateY(1rem);
+		
 		span {
 			display: inline-block;
 			transition: all .5s;
@@ -741,4 +764,72 @@
 			left: .1rem;
 		}
 	}
+}
+.rj-openning {
+	#rj-steps-container {
+		opacity: 1 !important;
+		transform: translateY(0) !important;
+		transition: all .5s, transform .5s @circle-time, opacity .5s @circle-time !important;
+	}
+	.rj-gender-select {
+		opacity: 1 !important;
+		transform: translateY(0) !important;
+		transition: all .5s, transform .5s @circle-time + .1s, opacity .5s @circle-time + .1s !important;
+	}
+	.rj-field {
+		transition: all .5s !important;
+		@rj-field-delay: .1s;
+		&:nth-child(1) {
+			transition-delay: @rj-field-delay + @circle-time !important;
+		}
+		&:nth-child(2) {
+			transition-delay: 1 * @rj-field-delay + @circle-time !important;
+		}
+		&:nth-child(3) {
+			transition-delay: 2 * @rj-field-delay + @circle-time !important;
+		}
+		&:nth-child(4) {
+			transition-delay: 3 * @rj-field-delay + @circle-time !important;
+		}
+		&:nth-child(5) {
+			transition-delay: 4 * @rj-field-delay + @circle-time !important;
+		}
+		&:nth-child(6) {
+			transition-delay: 5 * @rj-field-delay + @circle-time !important;
+		}
+		&:nth-child(7) {
+			transition-delay: 6 * @rj-field-delay + @circle-time !important;
+		}
+		opacity: 1 !important;
+		transform: translateY(0) !important;
+	}
+}
+.rj-circle-container {
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	position: absolute;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	
+	.rj-menu-overlay_circle {
+		margin: 0 auto;
+		position: absolute;
+		z-index: 2;
+		top:83%;
+		pointer-events: none;
+		background: white;
+		border-radius: 50%;
+		width: 0px;
+		height: 0px;
+		transform: translate3d(0%, 0px,0);
+		transition: all .6s;
+	}
+}
+.rj-circle-openning {
+	width: 1435.89px !important;
+	height: 1435.89px !important;
+	transform: translate3d(0%, -714.943px,0) !important;
 }

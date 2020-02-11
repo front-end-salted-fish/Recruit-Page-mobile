@@ -1,6 +1,26 @@
 import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
+
+// 初始化表单数据,用于发给后台的表单数据
+let formData = {
+    username: '', // 姓名
+    studentId: '', // 学号
+    gradeProfessional: '', // 年级班级
+    sex: '', // 性别
+    phone: '', // 手机号码
+    email: '', // 邮箱
+    introduction: '', // 自我介绍
+    direction: '', // 选择的方向
+    skills: '', // 你所掌握的技能
+    idea: '', // 你对我们工作室的想法
+    checkFront: '', // 前端动态生成的验证码
+    checkBack: '' // 用户填写的验证码
+};
+// import formTopImg from '../../img/form-top.jpg'
+// import formBottomImg from '../../img/form-bottom.jpg'
+// $('#rj-form-top').attr('src', formTopImg);
+// $('#rj-form-bottom').attr('src', formBottomImg);
 /* $(document).ready(function () {
     　　$('body').height($('body')[0].clientHeight);
     });//解决软键盘覆盖的问题Android---》不知道行不行哈 */
@@ -22,44 +42,85 @@ $(window).resize(function () {
     }
 });//监听resize ( Android）
 //------------------------------------------------------------------关注focus
-$('input,textarea').on('focusin', function () {
-    //软键盘弹出的事件处理
-    //$(this).scrollIntoView(true);
+$('#zl-form-page input,#zl-form-page textarea').on('click', function (e) {
+    fixedForm()
+    e.preventDefault();
+    e.stopPropagation();
 });
 
-$('input,textarea').on('focusout', function () {
-    //软键盘收起的事件处理
+$('#zl-form-page input,#zl-form-page textarea').on('focusout', function () {
+    //失去焦点时让解除固定定位
+    relieveFixed()
 });
 $('.getmypart').on('tap', function () {
     $('#wf-form').animate({ transform: 'translate(0,0)' }, 800, 'liner');
     console.log('s');
 })
+// 让表单不溢出
+function fixedForm() {
+    $('body').css({
+        position: 'fixed'
+    });
+    $('html').css({
+        position: 'fixed'
+    });
+}
+// 解除固定定位
+function relieveFixed() {
+    $('body').css({
+        position: 'static'
+    });
+    $('html').css({
+        position: 'static'
+    });
+}
+// 下拉框
+let $select = $('.second-part-form .form-control')
+$select.click(function(e) {
+    fixedForm()
+    e.preventDefault();
+    e.stopPropagation();
+})
+//下拉框的值发生改变时，
+$select.on('change', function() {
+    relieveFixed()
+})
+// 整个表单页面
+$('#zl-form-page').click(function() {
+    console.log('relieveFixed')
+
+    relieveFixed()
+})
 //上一页下一页----------------------------------------
 $("#next-page").on('tap', function () {
     $("#rj-steps-container").addClass("rj-form-page2");
-    $('.second-part').animate({ transform: 'translate(0)' }, 250, 'linear');
-    $('.first-part').animate({ transform: 'translate(-16rem)' }, 500, 'linear');
+    $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
+    $('.first-part').animate({ transform: 'translate(-16rem)' }, 300, 'linear');
 });
 $(".last-page").on('tap', function () {
     $("#rj-steps-container").removeClass("rj-form-page2");
-    $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear');
+    $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
     $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
+    // $('.second-part').css({display: 'none'})
+    // $('.first-part').css({display: 'block'})
 });
 //******************************************* 验证(在html中设置好了maxlength)
-$(".rj-form-input").on("focus",function(){
+$(".rj-form-input").on("focus", function () {
     let $field = $(this.parentNode);
     // console.log($field);
-    if($field[0].className === 'rj-field') {
+    if ($field[0].className === 'rj-field') {
         $field.addClass("rj-field-ready");
     }
 });
 let $wfName = $("#wf-name");        // 输入名字的input框
 $wfName.on("blur", nameCheck);//1.名字
 function nameCheck() {
-    let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+    //let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+    let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
     let name = $wfName.val();
     let $field = $wfName.parent('.rj-field');
     name = filterXSS(name)
+    formData.username = name
     console.log(name)
     if (!reg.test(name) || name == '') {
         // 如果输入为空或者格式错误
@@ -74,7 +135,7 @@ function nameCheck() {
     return true;
 }
 
-$(".rj-gender-select").on("tap",function(){
+$(".rj-gender-select").on("tap", function () {
     $(this).toggleClass("rj-boy rj-girl");
 })
 
@@ -83,6 +144,7 @@ $wfId.on("blur", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
     let id = $wfId.val();
+    formData.studentId = id;
     let $field = $wfId.parent('.rj-field');
     if (!reg.test(id) || id == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
@@ -91,17 +153,19 @@ function idCheck() {
         return false;
     }
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
-    
+
     // $("#wf-id").css("border", "");
     // $(".wf-id-span").html("");
     return true;
 }
-let $wfGrade = $("#wf-grade"); 
+let $wfGrade = $("#wf-grade");
 $wfGrade.on("blur", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $wfGrade.val();
     let $field = $wfGrade.parent(".rj-field");
     grade = filterXSS(grade)
+    formData.gradeProfessional = grade;
+
     if (grade == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $("#wf-grade").css("border", "1px solid red");
@@ -120,6 +184,7 @@ function phoneCheck() {
     let phone = $wfPhone.val();
     let $field = $wfPhone.parent(".rj-field");
     phone = filterXSS(phone)
+    formData.phone = phone
     if (!reg.test(phone) || phone == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $wfPhone.css("border", "1px solid red");
@@ -139,6 +204,7 @@ function emailCheck() {
     let email = $wfEmail.val();
     let $field = $wfEmail.parent(".rj-field");
     email = filterXSS(email)
+    formData.email = email
     if (!reg.test(email) || email == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $("#wf-email").css("border", "1px solid red");
@@ -156,6 +222,7 @@ function introCheck() {
     let intro = $wfIntro.val();
     let $field = $wfIntro.parent(".rj-field");
     intro = filterXSS(intro)
+    formData.introduction = intro
     if (intro == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $("#wf-intro").css("border", "1px solid red");
@@ -173,6 +240,7 @@ function skillsCheck() {
     let skills = $wfSkills.val();
     let $field = $wfSkills.parent(".rj-field");
     skills = filterXSS(skills)
+    formData.skills = skills
     if (skills == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $wfSkills.css("border", "1px solid red");
@@ -190,6 +258,7 @@ function cogCheck() {
     let cog = $wfCog.val();
     let $field = $wfCog.parent(".rj-field");
     cog = filterXSS(cog)
+    formData.idea = cog
     if (cog == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $wfCog.css("border", "1px solid red");
@@ -215,6 +284,7 @@ function createCode() {
         var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
         code += random[index]; //根据索引取得随机数加到code上  
     }
+    formData.checkFront = code;
     checkCode.value = code; //把code值赋给验证码  
 }
 // 匹配验证码
@@ -223,6 +293,8 @@ function check() {
     let $field = $txtCode.parent(".rj-field");
 
     var inputCode = $txtCode.val().toUpperCase();
+    inputCode = filterXSS(inputCode)
+    formData.checkBack = inputCode
     if (inputCode == "") {
         console.log(1)
         $field.find(".rj-field-tip").text("验证码不能为空!");
@@ -240,9 +312,10 @@ function check() {
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
     return true;
 }
-//提交表单
+
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
+    console.log(formData)
     //获取到所有的表单元素并转换为数组
     //var info1 = $('form').serializeArray();
     //var info2 = $('.second-part-form').serializeArray();
@@ -267,6 +340,22 @@ $("#wf-commit").on('tap', function () {
         if (!check()) {
             return false
         } else {
+            //获取到所有的表单元素并转换为数组
+            var info1 = $('form').serializeArray();
+            var info2 = $('.second-part-form').serializeArray();
+            info1 = info1.concat(info2);
+            let formData = {
+                username: info[0].value,
+                studentId: info[1].value,
+                gradeProfessional: info[2].value,
+                sex: info[3].value,
+                phone: info[4].value,
+                email: info[5].value,
+                introduction: info[6].value,
+                direction: info[7].value,
+                skills: info[8].value,
+                idea: info[9].value,
+            }
             //在这里提交，小飞机 
             zlPlane();
         }
@@ -279,26 +368,47 @@ $("#wf-commit").on('tap', function () {
     //
     //关闭弹窗，动画
 })
-//回到详情页
+let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
+// 回到详情页
 $('.wf-close').tap(function () {
+
     let $formPage = $('#zl-form-page');
+    $formPage.siblings('#zl-detail-pages').fadeIn(0);
+    $('#rj-steps-container').removeClass('rj-form-page2');
+    $rjCircle.removeClass("rj-circle-openning");
+    $('#wf-form').removeClass('rj-openning');
+
     // 排他
     $("#zl-detail-pages").removeClass("rj-detail-out");
     $("#zl-form-page").removeClass("rj-form-in");
 
-    $formPage.fadeIn();
-    $formPage.siblings('#zl-detail-pages').fadeIn();
+
+
+    $formPage.animate({
+    }, {
+        duration: 1,
+        easing: '',
+        complete: () => {
+            $formPage.fadeOut(10);
+        },
+        delay: 200
+    })
+
 
     $('#wf-form').removeClass('zl-become-small');
     $('#wind').css({
         display: 'none'
     })
     $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
-    $('#wf-form').fadeOut(1000);
+    // $('#wf-form').fadeOut(1000);
 });
 
 
-
+// 表单点击红色 x 清空内容
+$('.rj-icon-error').tap(function () {
+    $(this).siblings('.rj-form-input').val('');
+    $(this).parent('.rj-field').toggleClass('rj-field-ready rj-field-error');
+});
 
 
 
