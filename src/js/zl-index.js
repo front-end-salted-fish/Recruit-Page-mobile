@@ -1,5 +1,5 @@
 import $ from '../../lib/myZepto'
-import qianduan from '../../img/1575287686458.jpg'
+// import qianduan from '../../img/1575287686458.jpg'
 // 放置逻辑功能的主函数
 
 $(function() {
