@@ -17,12 +17,7 @@
   src: url(../fonts/ITCAvantGardeStd-Md.otf);
 }
 #loading-module #loading-box {
-<<<<<<< HEAD
   width: 50vw;
-=======
-  user-select: none;
-  width: 48vw;
->>>>>>> 52387ee66ee149ffded955e4f4e4255bdfa9a5a6
   height: 42.5vw;
   position: absolute;
   left: 50%;
