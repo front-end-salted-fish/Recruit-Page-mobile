@@ -60,7 +60,8 @@ $(".rj-form-input").on("focus", function () {
 let $wfName = $("#wf-name");        // 输入名字的input框
 $wfName.on("blur", nameCheck);//1.名字
 function nameCheck() {
-    let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+    //let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+    let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
     let name = $wfName.val();
     let $field = $wfName.parent('.rj-field');
     name = filterXSS(name)
