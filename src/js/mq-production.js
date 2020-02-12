@@ -690,7 +690,7 @@ $('.cf-menu').on('click', 'svg', function () {
     // $('.cf-curtain').css('display');
     setTimeout(function () {
       $('.cf-curtain-bg').animate({
-        "-webkitTransform": "translate(100%,100%) scale(100)!important"
+        "-webkitTransform": "translate(100%,100%) scale3d(100,100,1)!important"
       }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
         $('.cf-curtain li>span').removeClass('cf-skew-text');
       });
@@ -701,7 +701,7 @@ $('.cf-menu').on('click', 'svg', function () {
     setTimeout(function () {
       $('.cf-curtain li>span').addClass('cf-skew-text');
       $('.cf-curtain-bg').animate({
-        "-webkitTransform": "translate(100%,100%) scale(0)!important"
+        "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
       }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
       });
     },20)
@@ -716,7 +716,7 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     $('#mq-production>div').eq(index).removeClass('cf-blur-out').addClass('cf-blur-in');
     $('.cf-curtain li>span').addClass('cf-skew-text');
     $('.cf-curtain-bg').animate({
-      "-webkitTransform": "translate(100%,100%) scale(0)!important"
+      "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
     }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
     });
     $('.grid input').prop('checked', false);
