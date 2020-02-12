@@ -19,7 +19,7 @@ let thirdId = '#mq-android';
 let fourthId = '#mq-machineLearning';
 let lastId = '#mq-ios';
 let firstParameter = $('.mq-detail-page > .title');
-let secondParameter = $('.mq-detail-page> sup');
+let innerSpan = $('.mq-detail-page> .inner-span');
 let thirdParameter = $('.mq-detail-page> .wrap');
 let fourthParameter = $('.mq-detail-page >.wrap >.innerwrap> .innerContent');
 const firstWidth = 380 / rem + "rem";
@@ -33,7 +33,7 @@ let mqObj = {
   tag: 1
 };
 
-console.log(secondParameter);
+// console.log(secondParameter);
 
 let MOVE_DIS = 20; //滑动距离
 let menu = $('#cf-menu'); //菜单盒子
@@ -152,15 +152,21 @@ function swipeU(classname) {
             switch (++mqObj.tag) {
                 case 2:
                     title.css({
-                        top: "2.6rem",
+                        top: "1.8rem",
                         left: "1.6rem",
                         // textAlign: "start",
                         transform: "scale(.5)",
+                        transition:'1s'
                     }).children().css({
-                        left: 0,
-                        transform: 'translate(0)',
-                        // textAlign:'start'
+                        // left: 0,
+                        // transform: 'translate(0)',
+                        textAlign:'start',
+                        // transition: '1s'
                     })
+                    // innerSpan.css({
+                    //     textAlign:'start'
+                    // })
+                    // console.log(innerSpan)
 
                     // span.css({
                     //     transform: "scale(.5)",
@@ -757,8 +763,9 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     textAlign: "center"
     // transition: all 1s;
   }).children().css({
-    left: '',
-    transform: ''
+    // left: '',
+    // transform: '',
+    textAlign:''
   })
   // box.find(".innerContent").eq(0).css({
   //     opacity: "0"

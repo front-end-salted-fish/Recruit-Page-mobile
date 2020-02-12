@@ -1,5 +1,7 @@
 .zl-com-height {
   position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 16rem;
 }
@@ -8,7 +10,7 @@
   height: 100vh;
   width: 100vw;
   background: #fafafa;
-  position: relative;
+  position: absolute;
   transition: all ease 1s;
   font-family: '微软雅黑', 'PingFang Heavy', 'Fira Code', 'Century Gothic', 'Open Sans', 'Roboto', 'Franklin Gothic', Arial, sans-serif;
 }
@@ -33,9 +35,6 @@
   height: 9vw;
   width: 100%;
   vertical-align: middle;
-}
-#loading-module #loading-box .move-sdiv {
-  box-sizing: border-box;
 }
 #loading-module #loading-box .row-one {
   position: relative;
@@ -302,6 +301,7 @@
   top: 80%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 3;
 }
 #zl-detail-pages .zl-join .btn {
   width: 6rem;
@@ -451,6 +451,7 @@
   transition: all 1s cubic-bezier(0.39, 0.92, 0.74, 0.94);
 }
 #mq-production .mq-detail-page .title span {
+  width: 15rem;
   display: inline-block;
   font-size: 3.5rem;
   transition: all 1s cubic-bezier(0.39, 0.92, 0.74, 0.94);
@@ -458,7 +459,7 @@
   left: 50%;
   transform: translate(-50%);
 }
-#mq-production .mq-detail-page .title sup {
+#mq-production .mq-detail-page .title .inner-span {
   top: 6rem!important;
   font-size: 1.1rem;
   display: inline-block;
@@ -505,8 +506,8 @@
   width: 100%;
   height: 100%;
 }
-#mq-production #mq-frontEnd .title sup {
-  width: 7.7rem;
+#mq-production #mq-frontEnd .title .inner-span {
+  width: 15rem;
 }
 #mq-production #mq-backend {
   display: none;
@@ -516,8 +517,8 @@
   width: 100%;
   height: 100%;
 }
-#mq-production #mq-backend .title sup {
-  width: 7.7rem;
+#mq-production #mq-backend .title .inner-span {
+  width: 15rem;
 }
 #mq-production #mq-android {
   display: none;
@@ -527,23 +528,22 @@
   width: 100%;
   height: 100%;
 }
-#mq-production #mq-android .title sup {
-  width: 9.9rem;
+#mq-production #mq-android .title .inner-span {
+  width: 15rem;
 }
 #mq-production #mq-machineLearning {
   display: none;
   background-image: url(../../img/10.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
   width: 100%;
   height: 100%;
 }
 #mq-production #mq-machineLearning .title span {
   white-space: nowrap;
 }
-#mq-production #mq-machineLearning .title sup {
-  width: 8.8rem;
+#mq-production #mq-machineLearning .title .inner-span {
+  width: 15rem;
 }
 #mq-production #mq-ios {
   display: none;
@@ -553,8 +553,8 @@
   width: 100%;
   height: 100%;
 }
-#mq-production #mq-ios .title sup {
-  width: 9.9rem;
+#mq-production #mq-ios .title .inner-span {
+  width: 15rem;
 }
 #rj-banner {
   user-select: none;
@@ -868,10 +868,10 @@
   }
 }
 .rj-white-curtain-out {
-  animation: wcOut 1.4s cubic-bezier(0.57, 0.02, 0.1, 0.99) forwards;
+  animation: wcOut 1s cubic-bezier(0.57, 0.02, 0.1, 0.99) forwards;
 }
 .rj-white-curtain-out div {
-  transition: left 0.7s cubic-bezier(0.57, 0.02, 0.1, 0.99) 0.7s;
+  transition: left 0.5s cubic-bezier(0.57, 0.02, 0.1, 0.99) 0.5s;
   left: -8rem !important;
 }
 .rj-curtain-in-div-pre {
@@ -880,10 +880,10 @@
   left: auto;
 }
 .rj-white-curtain-in {
-  animation: wcIn 1.4s cubic-bezier(0.57, 0.02, 0.1, 0.99) forwards;
+  animation: wcIn 1s cubic-bezier(0.57, 0.02, 0.1, 0.99) forwards;
 }
 .rj-white-curtain-in div {
-  transition: right 0.7s cubic-bezier(0.57, 0.02, 0.1, 0.99) 0.7s;
+  transition: right 0.5s cubic-bezier(0.57, 0.02, 0.1, 0.99) 0.5s;
   right: -8rem !important;
 }
 .rj-curtain-out-div-pre {
