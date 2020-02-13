@@ -151,18 +151,22 @@ function swipeU(classname) {
 
             switch (++mqObj.tag) {
                 case 2:
-                    title.css({
+                    title.animate({
                         top: "1.8rem",
-                        left: "1.6rem",
+                        left: "1rem",
                         // textAlign: "start",
+                        // fontSize: "2rem",
                         transform: "scale(.5)",
-                        transition:'1s'
-                    }).children().css({
-                        // left: 0,
-                        // transform: 'translate(0)',
-                        textAlign:'start',
-                        // transition: '1s'
+                        transition:'2s'
                     })
+                    
+                    // .children().css({
+                    //     // left: 0,
+                    //     // transform: 'translate(0)',
+                    //     // textAlign:'start',
+                    //     fontSize:"1.5rem"
+                    //     // transition: '1s'
+                    // })
                     // innerSpan.css({
                     //     textAlign:'start'
                     // })
@@ -753,13 +757,17 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     // left: 10%;
     // width: 380/@rem;
     // height: 160/@rem;
-    textAlign: "center"
+    textAlign: "center",
+    // fontSize:"3.5rem"
     // transition: all 1s;
-  }).children().css({
-    // left: '',
-    // transform: '',
-    textAlign:''
   })
+  // .children().css({
+  //   // left: '',
+  //   // transform: '',
+  //   // textAlign:''
+  //   fontSize:"3.5rem"
+  // })
+  
   // box.find(".innerContent").eq(0).css({
   //     opacity: "0"
   // })
