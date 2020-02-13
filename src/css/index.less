@@ -1,3 +1,7 @@
+@font-face {
+    font-family: gabrielastencil;
+    src: url(../fonts/gabrielastencil-light.woff2);
+  }
 .zl-com-height {
     //display: none;
     position: absolute;
@@ -603,6 +607,7 @@
             top: 28%;
             left:0;
             right: 0;
+            user-select: none;
             // background-color: red;
             
             transform: scale(1);
@@ -613,22 +618,24 @@
             // text-align: center;
             transition: all 1s cubic-bezier(.39,.92,.74,.94);
             span {
-                // width:100%;
+                width: 15rem;
                 display: inline-block;
                 font-size: 3.5rem;
                 transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 position: absolute;
                 left:50%;
                 transform: translate(-50%);
+                // text-align: center;
             }
 
-            sup {
+            .inner-span {
                 top: 6rem!important;
                 font-size: 1.1rem;
                 display: inline-block;
                 transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 position: absolute;
                 // bottom: .5rem !important;
+                // text-align: center;
                 left:50%;
                 transform: translate(-50%);
             }
@@ -647,32 +654,32 @@
             // line-height: 2.5rem;
             word-break: break-all;
             word-wrap: break-word;
-    
+
             .innerwrap {
                 position: relative;
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
                 transition: all 1s cubic-bezier(.39,.92,.74,.94);
-    
+
                 .innerContent {
                     position: relative;
                     // height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
                     transition: all 1s cubic-bezier(.39,.92,.74,.94);
-    
+
                     p {
                         position: absolute;
                         bottom: 0;
                     }
                 }
-    
+
                 .opa {
                     opacity: 1;
                     transition: all 1s cubic-bezier(.39,.92,.74,.94);
                 }
-    
+
                 .opa1 {
                     opacity: 1;
                     transition: all 1s cubic-bezier(.39,.92,.74,.94);
@@ -680,7 +687,7 @@
             }
         }
     }
-    
+
     #mq-frontEnd {
         display: none;
         background-image: url(../../img/28.jpg);
@@ -691,8 +698,8 @@
         width: 100%;
         height: 100%;
         .title {
-            sup {
-                width: 7.7rem;
+            .inner-span {
+                width: 15rem;
             }
         }
         
@@ -707,8 +714,8 @@
         width: 100%;
         height: 100%;
         .title {
-            sup {
-                width: 7.7rem;
+            .inner-span {
+                width: 15rem;
             }
         }
         
@@ -723,8 +730,8 @@
         width: 100%;
         height: 100%;
         .title {
-            sup {
-                width: 9.9rem;
+            .inner-span {
+                width: 15rem;
             }
         }
 
@@ -748,8 +755,8 @@
                 white-space: nowrap;
             }
 
-            sup {
-                width: 8.8rem;
+            .inner-span {
+                width: 15rem;
             }
             
         }
@@ -767,20 +774,16 @@
         width: 100%;
         height: 100%;
         .title {
-            sup {
-                width: 9.9rem;
+            .inner-span {
+                width: 15rem;
             }
         }
 
 
-       
+
     }
 
 }
-
-
-
-
 
 
 // rj:TODO:
@@ -829,13 +832,14 @@
         .rj-next-page {
             transform: translate3d(16rem, 0, 0);
         }
-
+        
+        @bannerTime: 1.5s;
         // 下翻页效果
         .rj-banner-out-to-left {
-            animation: bannerOutToLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgOutToLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -861,10 +865,10 @@
         }
 
         .rj-banner-in-from-right {
-            animation: bannerInFromRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgInFromRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -890,10 +894,10 @@
 
         // 上翻页效果
         .rj-banner-out-to-right {
-            animation: bannerOutToRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgOutToRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -919,10 +923,10 @@
         }
 
         .rj-banner-in-from-left {
-            animation: bannerInFromLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgInFromLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -1010,217 +1014,245 @@
             font-family: gabrielastencil;
             letter-spacing: .04rem;
 
-            #rj-middle {
-                user-select: none;
-                display: inline-block;
-                padding: 0 .2rem 0 .2rem;
-            }
-            #rj-prev,
-            #rj-next {
-                user-select: none;
-                display: inline-block;
-                padding: 0 0 1rem 0px;
-            }
-        }
+      #rj-middle {
+        user-select: none;
+        display: inline-block;
+        padding: 0 .2rem 0 .2rem;
+      }
 
-        #rj-fonts-container {
-            font-size: 1.6rem;
-            user-select: none;
-            position: absolute;
-            width: 100%;
-            height: 6rem;
-            // overflow: hidden;
-            // transform: scale(.5);
-            top: 36.5%;
-
-            // background: url(../../img/rj-banner-test2.jpg) center transparent;
-            // background-size: 100% auto;
-            .rj-c-txt,
-            .rj-e-txt {
-                user-select: none;
-                // position: absolute;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                color: white;
-                opacity: 1;
-                mix-blend-mode: difference;
-
-                // background-clip: text;
-                // -webkit-background-clip: text;
-                // color: transparent;
-                span {
-                    user-select: none;
-                    display: inline-block;
-                }
-
-                .rj-from-right-in-span {
-                    transform: translate3d(9rem, 0, 0);
-                    opacity: 0;
-                }
-
-                .rj-from-left-in-span {
-                    transform: translate3d(-9rem, 0, 0);
-                    opacity: 0;
-                }
-
-                position: absolute;
-            }
-
-            @font-face {
-                font-family: gabrielastencil;
-                src: url(../fonts/gabrielastencil-light.woff2);
-            }
-
-            .rj-e-txt {
-                font-family: gabrielastencil, Helvetica, Arial, sans-serif;
-                bottom: 0%;
-            }
-
-            .rj-c-txt {
-                top: 0%;
-                font-size: 2.7rem;
-                font-family: '宋体', gabrielastencil, '微软雅黑';
-                font-weight: lighter;
-            }
-        }
-
-        #rj-3d-tv {
-            user-select: none;
-            position: absolute;
-            width: 100%;
-            color: white;
-            font-family: gabrielastencil, 'Times New Roman', Times, serif;
-            font-size: 1rem;
-            top: 5%;
-            // text-align: center;
-            display: flex;
-            justify-content: center;
-
-            span {
-                transform: rotate3d(0, 1, 0, 90deg);
-                // float: right;
-            }
-        }
+      #rj-prev,
+      #rj-next {
+        user-select: none;
+        display: inline-block;
+        padding: 0 0 1rem 0px;
+      }
     }
+
+    #rj-fonts-container {
+      pointer-events: none;
+      font-size: 1.6rem;
+      user-select: none;
+      position: absolute;
+      width: 100%;
+      height: 6rem;
+      // overflow: hidden;
+      // transform: scale(.5);
+      top: 33.5%;
+      //   top: 36.5%;
+
+      // background: url(../../img/rj-banner-test2.jpg) center transparent;
+      // background-size: 100% auto;
+      .rj-c-txt,
+      .rj-e-txt {
+        user-select: none;
+        // position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        color: white;
+        opacity: 1;
+        mix-blend-mode: difference;
+
+        // background-clip: text;
+        // -webkit-background-clip: text;
+        // color: transparent;
+        span {
+          user-select: none;
+          display: inline-block;
+        }
+
+        .rj-from-right-in-span {
+          transform: translate3d(9rem, 0, 0);
+          opacity: 0;
+        }
+
+        .rj-from-left-in-span {
+          transform: translate3d(-9rem, 0, 0);
+          opacity: 0;
+        }
+
+        position: absolute;
+      }
+
+
+
+      .rj-e-txt {
+        font-family: gabrielastencil, Helvetica, Arial, sans-serif;
+        bottom: 0%;
+      }
+
+      .rj-c-txt {
+        font-family: gabrielastencil, Helvetica, Arial, sans-serif;
+        top: 0%;
+        font-size: 2.7rem;
+      }
+    }
+
+    #rj-3d-tv {
+      user-select: none;
+      position: absolute;
+      width: 100%;
+      color: white;
+      font-family: gabrielastencil, 'Times New Roman', Times, serif;
+      font-size: 1rem;
+      top: 5%;
+      // text-align: center;
+      display: flex;
+      justify-content: center;
+
+      span {
+        transform: rotate3d(0, 1, 0, 90deg);
+        // float: right;
+      }
+    }
+    #rj-join-btn {
+        mix-blend-mode: difference;
+        position: absolute;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        height: 6vh;
+        // top: 78vh;
+        font-family: gabrielastencil, Helvetica, Arial, sans-serif;
+        bottom: 18vh;
+        left: 50%;
+        padding: 6px 12px;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
+        border: 1.7px solid white;
+        background-color: transparent;
+        // border-radius: 6rem;
+        color: white;
+        width: 6rem;
+        font-size: 18px;
+        font-weight: bolder !important;
+        letter-spacing: 2px;
+    }
+  }
+
 }
 
 #rj-white-curtain {
-    user-select: none;
+  pointer-events: none;
+  user-select: none;
+  position: fixed;
+  z-index: 3;
+  width: 0%;
+  transform: translate3d(0, 0, 0);
+  height: 100%;
+  background: #fafafa;
+  overflow: hidden;
+
+  div {
+    font-size: 3.5rem;
+    font-family: gabrielastencil, 'Baskerville Old Face', Helvetica, Arial, sans-serif;
     position: fixed;
-    z-index: 3;
-    width: 0%;
-    transform: translate3d(0, 0, 0);
-    height: 100%;
-    background: #fafafa;
-    overflow: hidden;
 
-    div {
-        font-size: 3.5rem;
-        font-family: gabrielastencil, 'Baskerville Old Face',Helvetica, Arial, sans-serif;
-        position: fixed;
-
-        &:first-child {
-            top: 29%;
-        }
-
-        &:nth-child(2) {
-            top: 42%;
-        }
+    &:first-child {
+      top: 29%;
     }
+
+    &:nth-child(2) {
+      top: 42%;
+    }
+  }
 }
 
 @keyframes wcOut {
-    0% {
-        left: 0vw;
-        width: 0vw;
-    }
+  0% {
+    left: 0vw;
+    width: 0vw;
+  }
 
-    50% {
-        left: 0;
-        width: 101vw;
-        right: 100vw;
-    }
+  50% {
+    left: 0;
+    width: 101vw;
+    right: 100vw;
+  }
 
-    100% {
-        width: 0;
-        left: 100vw;
-        right: 0;
-    }
+  100% {
+    width: 0;
+    left: 100vw;
+    right: 0;
+  }
 }
 
 @keyframes wcIn {
-    0% {
-        width: 0;
-        left: 100vw;
-        right: 0;
-    }
+  0% {
+    width: 0;
+    left: 100vw;
+    right: 0;
+  }
 
-    50% {
-        left: 0;
-        width: 101vw;
-        right: 100vw;
-    }
+  50% {
+    left: 0;
+    width: 101vw;
+    right: 100vw;
+  }
 
-    100% {
-        left: 0vw;
-        width: 0vw;
-    }
+  100% {
+    left: 0vw;
+    width: 0vw;
+  }
 }
 
-@rjCurtainTime : 0.5s;
+@rjCurtainTime: 0.5s;
 // 白色幕布离开和进入
 .rj-white-curtain-out {
-    animation: wcOut @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
+  animation: wcOut @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
 
-    div {
-        transition: left @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
-        left: -8rem !important;
-    }
+  div {
+    transition: left @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
+    left: -8rem !important;
+  }
 }
 
 .rj-curtain-in-div-pre {
-    right: 8rem;
-    transform: translate3d(50%, 0, 0);
-    left: auto;
+  right: 8rem;
+  transform: translate3d(50%, 0, 0);
+  left: auto;
 }
 
 .rj-white-curtain-in {
-    animation: wcIn @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
+  animation: wcIn @rjCurtainTime * 2 cubic-bezier(.57, .02, .1, .99) forwards;
 
-    div {
-        transition: right @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
-        right: -8rem !important;
-    }
+  div {
+    transition: right @rjCurtainTime cubic-bezier(.57, .02, .1, .99) @rjCurtainTime;
+    right: -8rem !important;
+  }
 }
 
 .rj-curtain-out-div-pre {
-    left: 8rem;
-    transform: translate3d(-50%, 0, 0);
-    right: auto;
+  left: 8rem;
+  transform: translate3d(-50%, 0, 0);
+  right: auto;
 }
 
 // 轮播图模块移出
 .rj-banner-out {
-    transform: translate3d(16rem, 0, 0);
-    filter: brightness(0);
-    transition: all 1s cubic-bezier(.57, .02, .1, .99);
+  transform: translate3d(16rem, 0, 0);
+  filter: brightness(0);
+  transition: all 1s cubic-bezier(.57, .02, .1, .99);
 }
 
 .rj-banner-in {
-    transform: translate3d(0rem, 0, 0);
-    filter: brightness(1);
-    transition: all 1s cubic-bezier(.57, .02, .1, .99);
+  transform: translate3d(0rem, 0, 0);
+  filter: brightness(1);
+  transition: all 1s cubic-bezier(.57, .02, .1, .99);
 }
 
 // 详情页模块移出
 .rj-detail-page-out {
 
-    transform: translate3d(-16rem, 0, 0);
-    filter: brightness(0) blur(0);
-    transition: all 1s cubic-bezier(.57, .02, .1, .99);
-    //display: block !important;
+  transform: translate3d(-16rem, 0, 0);
+  filter: brightness(0) blur(0);
+  transition: all 1s cubic-bezier(.57, .02, .1, .99);
+  //display: block !important;
 }
+
 //.cf-blur-in {
 //    opacity: 1;
 //    filter: blur(0);
@@ -1236,298 +1268,86 @@
 
 //扭曲幕布
 .cf-skew-curtain {
-  display: none;
-  -webkit-transform: skew(30deg,0deg) rotateX(30deg);
-  transform-origin: 0% 50%;
-  // transition: -webkit-transform 1s linear 0s;
-  opacity: 0;
-  display: none;
+  -webkit-transform: translate(100%,100%) scale3d(0,0,0)!important;
 }
+
 .cf-skew-curtain-out {
   display: none;
-  -webkit-transform: skew(-35deg,0deg) rotateX(30deg);
+  -webkit-transform: skew(-35deg, 0deg) rotateX(30deg);
   transform-origin: 50% 100%;
   opacity: 0;
 }
+
 //扭曲文字
 .cf-skew-text {
-  -webkit-transform: skew(-5deg,30deg) translateY(100%);
-  // opacity: 0;
+  -webkit-transform:  translateY(100%) !important;
+  opacity: 0;
 }
+
 @cf-duration: 0.05s;
-@text-cubic: cubic-bezier(0.46, 0.1, 0.66, 0.99);
+@text-cubic: cubic-bezier(0.17, 1.31, 1, 0.99);
 // 幕布
 .cf-curtain {
-    display: none;
+  user-select: none;
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  overflow: hidden;
+  //transition: -webkit-transform .5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s, opacity .5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
+  .cf-curtain-bg {
+    ////position: relative;
+    width: 3vh;
+    height: 3vh;
+    border-radius: 50%;
+    -webkit-transform: translate(100%,100%) scale3d(100,100,1);
+    background-color: rgba(0,0,0,.8);
+    transition: all  .5s cubic-bezier(0.48, 0.21, 0.95, 0.71);
+    overflow: hidden;
+  }
+  ul {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .9);
-    z-index: 3;
-    // transform: scale(0);
-    transition: -webkit-transform .5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s,opacity .5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
-    ul {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      li {
-        
-        color: #fff;
-        text-align: center;
-        height: 8vh;
-        line-height: 8vh;
-        letter-spacing: .5vw;
-        font-size: 3.3vh;
-        font-weight: lighter;
-        font-family: gabrielastencil, '微软雅黑';
-        // transition: -webkit-transform 1s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
-      }
-      li:nth-child(1){
-        transition: -webkit-transform 0.5s @text-cubic @cf-duration*1;
-      }
-      li:nth-child(2){
-        transition: -webkit-transform 0.5s @text-cubic @cf-duration*2;
-      }
-      li:nth-child(3){
-        transition: -webkit-transform 0.5s @text-cubic @cf-duration*3;
-      }
-      li:nth-child(4){
-        transition: -webkit-transform 0.5s @text-cubic @cf-duration*4;
-      }
-      li:nth-child(5){
-        transition: -webkit-transform 0.5s @text-cubic @cf-duration*5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    li {
+      color: #fff;
+      text-align: center;
+      height: 8vh;
+      line-height: 8vh;
+      letter-spacing: .5vw;
+      font-size: 3.3vh;
+      font-weight: lighter;
+      font-family: gabrielastencil, '微软雅黑';
+      opacity: 1;
+      overflow: hidden;
+      // transition: -webkit-transform 1s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
+      span {
+        display: inline-block;
       }
     }
+
+    li:nth-child(1) span {
+      transition: all 0.5s @text-cubic @cf-duration*1;
+    }
+
+    li:nth-child(2) span {
+      transition: all 0.5s @text-cubic @cf-duration*2;
+    }
+
+    li:nth-child(3) span {
+      transition: all 0.5s @text-cubic @cf-duration*3;
+    }
+
+    li:nth-child(4) span {
+      transition: all 0.5s @text-cubic @cf-duration*4;
+    }
+
+    li:nth-child(5) span {
+      transition: all 0.5s @text-cubic @cf-duration*5;
+    }
+  }
 }
-
-#menu-wrap {
-
-    position: absolute;
-    left: 12rem;
-    top: 35%;
-    width: 6rem;
-    height: 6rem;
-    z-index: 3;
-
-    // #cf-menu {
-    //     @keyframes shine {
-    //         from {
-    //             text-shadow: 0 0 0;
-    //         }
-
-    //         to {
-    //             text-shadow: 0 0 20px;
-    //         }
-    //     }
-
-    //     display: none;
-    //     //position: absolute;
-    //     //right: 0.5rem;
-    //     //top: 50%;
-    //     //transform: translateY(-100%);
-    //     width: 6rem;
-    //     height: 6rem;
-    //     overflow: hidden;
-
-    //     .move-wrap {
-    //         position: relative;
-    //         height: 6rem;
-    //         width: 6rem;
-    //         background-color: rgba(0, 0, 0, .3);
-    //         border-radius: 50%;
-    //         box-sizing: border-box;
-
-    //         transform-origin: 50% 50%;
-
-    //         p {
-    //             position: absolute;
-    //             transform: translate(-50%, -50%);
-    //             text-align: center;
-
-    //             i {
-    //                 display: block;
-    //                 transform-origin: center center;
-    //                 font-size: 1rem;
-    //                 -webkit-text-stroke-color: #fff;
-    //                 -webkit-text-stroke-width: 0.5px;
-    //                 color: transparent;
-    //                 transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
-    //             }
-    //         }
-
-    //         p:nth-child(1) {
-    //             i {
-    //                 transform: rotate(0deg);
-    //             }
-    //         }
-
-    //         p:nth-child(2) {
-    //             i {
-
-    //                 transform: rotate(288deg);
-                    
-    //             }
-    //         }
-            
-    //         p:nth-child(3) {
-    //             i {
-    //                 transform: rotate(216deg);
-    //                 //font-size: 1.2rem;
-    //             }
-    //         }
-            
-    //         p:nth-child(4) {
-    //             i {
-    //                 //font-size: 1.2rem;
-    //                 transform: rotate(144deg);
-    //             }
-    //         }
-            
-    //         p:nth-child(5) {
-    //             i {
-    //                 //font-size: 1.2rem;
-    //                 transform: rotate(72deg);
-    //             }
-    //         }
-
-    //         .height-light {
-    //             //text-shadow:  0 0 10px;
-    //             font-size: 1.3rem !important;
-    //             //transform: scale(2);
-    //             -webkit-text-stroke-width: 0;
-    //             color: red;
-    //         }
-    //     }
-    // }
-
-    // .menu-btn {
-    //     position: absolute;
-    //     left: 50%;
-    //     top: 50%;
-    //     transform: translate(-50%, -50%);
-
-    //     p {
-    //         //transition: all  1s;
-    //         margin: 0;
-
-    //         i {
-    //             font-size: 1rem !important;
-    //             line-height: 100%;
-    //             text-align: center;
-    //             color: #00A7DE !important;
-    //             font-weight: 600;
-    //         }
-
-    //         .icon-caidan {
-    //             animation: shine 1.5s infinite;
-    //         }
-
-    //         .icon-guanbi1 {
-    //             font-size: 0.8rem !important;
-    //             color: #D74C40 !important;
-    //         }
-    //     }
-    // }
-}
-
-
-
-
-
-
-// #cf-menu {
-//     @keyframes shine {
-//         from {
-//             text-shadow: 0 0 0px;
-//         }
-
-//         to {
-//             text-shadow: 0 0 20px;
-//         }
-//     }
-
-//     z-index: 1;
-//     position: absolute;
-//     right: 0.5rem;
-//     top: 50%;
-//     transform: translateY(-100%);
-//     display: block;
-//     width: 4rem;
-//     height: 5rem;
-//     overflow: hidden;
-//     padding-left: 1rem;
-
-//     .move-wrap {
-//         //display: none;
-//         opacity: 0;
-//         position: relative;
-//         height: 5rem;
-//         width: 5rem;
-//         background-color: rgba(0, 0, 0, .3);
-//         border-radius: 50%;
-//         transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
-//         box-sizing: border-box;
-//         //border: 1rem solid #FFf;
-//         transform-origin: 50% 50%;
-
-//         //transform: rotate(-72deg);
-//         p {
-//             position: absolute;
-//             transform: translate(-50%, -50%);
-//             text-align: center;
-
-//             i {
-//                 display: block;
-//                 transform-origin: center center;
-//                 font-size: 1rem;
-//                 transition: all cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s;
-//                 //font-weight: 600;
-//             }
-//         }
-
-//         p:nth-child(1) {
-//             i {
-//                 //font-size: 1.2rem;
-//                 margin-top: -3px;
-//             }
-//         }
-
-//         .height-light {
-//             //text-shadow:  0 0 10px;
-//             font-size: 1.3rem !important;
-//         }
-//     }
-
-//     div.menu-btn {
-//         //display: none;
-//         position: absolute;
-//         left: 50%;
-//         top: 50%;
-//         transform: translate(-50%, -50%);
-
-//         p {
-//             //transition: all  1s;
-//             margin: 0;
-
-//             i {
-//                 font-size: 1rem !important;
-//                 line-height: 100%;
-//                 text-align: center;
-//                 color: #00A7DE !important;
-//                 font-weight: 600;
-//             }
-
-//             .icon-caidan {
-//                 animation: shine 1.5s infinite;
-//             }
-
-//             .icon-guanbi1 {
-//                 font-size: 0.8rem !important;
-//                 color: #D74C40 !important;
-//             }
-//         }
-//     }
-// }
