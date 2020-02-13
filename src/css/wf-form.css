@@ -1,15 +1,15 @@
 #zl-form-page {
   overflow: hidden;
+  z-index: 2;
 }
 #wf-form {
-  display: none;
   overflow: hidden;
   text-align: center;
-  width: 100vw;
+  width: 16rem;
   height: 100%;
-  display: flex;
-  position: relative;
-  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #wf-form .wf-close {
   font-size: 1.5rem;
@@ -19,14 +19,13 @@
   color: #4c4c4c;
   background-color: transparent;
   border: 0;
-  z-index: 1;
+  z-index: 3;
   padding: 0;
 }
 #wf-form .second-part {
   color: black;
-  z-index: 1;
-  padding: 10px 15px;
-  background: white;
+  z-index: 3;
+  padding: 10px 15px 0px 15px;
   width: 100%;
   height: calc(100% - 6rem);
   transform: translate(16rem);
@@ -105,10 +104,9 @@
   border-width: 1.5px;
 }
 #wf-form .first-part {
-  background: white;
   position: absolute;
   color: white;
-  z-index: 1;
+  z-index: 3;
   margin: 0 auto;
   /* width: 12rem;
         height: 90%; */
@@ -212,6 +210,11 @@
   width: 100%;
   padding-top: 2.5rem;
   overflow: hidden;
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: all 0.2s 0s;
 }
 #wf-form #rj-steps-container .rj-step-title-container {
   width: 200vw;
@@ -281,8 +284,12 @@
   display: inline-block;
 }
 #wf-form .rj-field {
+  z-index: 3;
   position: relative;
   margin: 0 1rem 1rem 1rem;
+  transition: all 0.5s;
+  opacity: 0;
+  transform: translateY(1rem);
 }
 #wf-form .rj-field label {
   font-weight: normal;
@@ -466,9 +473,12 @@
   -webkit-transform-origin: left bottom;
   transform-origin: left bottom;
 }
+#wf-form .rj-field {
+  transition: all 0.2s 0s;
+}
 #wf-form .rj-field-valid .rj-line-valid {
   transform: scaleX(1) !important;
-  z-index: 2;
+  z-index: 3;
 }
 #wf-form .rj-field-valid .rj-icon-valid:before {
   -webkit-transform: rotate(45deg) translateX(-100%) scaleX(1);
@@ -488,7 +498,7 @@
 }
 #wf-form .rj-field-error .rj-line-error {
   transform: scaleX(1) !important;
-  z-index: 2;
+  z-index: 3;
 }
 #wf-form .rj-field-error .rj-field-tip {
   margin: 0.1rem 0 0 0 !important;
@@ -556,6 +566,7 @@
 }
 #wf-form .rj-gender-select {
   display: inline-flex;
+  z-index: 3;
   align-items: center;
   width: 3rem;
   height: 1.3rem;
@@ -566,7 +577,9 @@
   position: relative;
   margin-left: 2rem;
   border-radius: 1.3rem;
-  transition: all 0.5s;
+  transition: all 0.2s 0s;
+  opacity: 0;
+  transform: translateY(1rem);
 }
 #wf-form .rj-gender-select span {
   display: inline-block;
@@ -611,4 +624,68 @@
 }
 #wf-form .rj-girl .rj-circle {
   left: 0.1rem;
+}
+.rj-openning #rj-steps-container {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.5s, transform 0.5s 0.4s, opacity 0.5s 0.4s !important;
+}
+.rj-openning .rj-gender-select {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.5s, transform 0.5s 0.5s, opacity 0.5s 0.5s !important;
+}
+.rj-openning .rj-field {
+  transition: all 0.5s !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.rj-openning .rj-field:nth-child(1) {
+  transition-delay: 0.5s !important;
+}
+.rj-openning .rj-field:nth-child(2) {
+  transition-delay: 0.5s !important;
+}
+.rj-openning .rj-field:nth-child(3) {
+  transition-delay: 0.6s !important;
+}
+.rj-openning .rj-field:nth-child(4) {
+  transition-delay: 0.7s !important;
+}
+.rj-openning .rj-field:nth-child(5) {
+  transition-delay: 0.8s !important;
+}
+.rj-openning .rj-field:nth-child(6) {
+  transition-delay: 0.9s !important;
+}
+.rj-openning .rj-field:nth-child(7) {
+  transition-delay: 1s !important;
+}
+.rj-circle-container {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.rj-circle-container .rj-menu-overlay_circle {
+  margin: 0 auto;
+  position: absolute;
+  z-index: 2;
+  top: 83%;
+  pointer-events: none;
+  background: white;
+  border-radius: 50%;
+  width: 0px;
+  height: 0px;
+  transform: translate3d(0%, 0px, 0);
+  transition: all 0.8s;
+}
+.rj-circle-openning {
+  width: 1435.89px !important;
+  height: 1435.89px !important;
+  transform: translate3d(0%, -714.943px, 0) !important;
 }

@@ -1,7 +1,6 @@
 import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
-
 // 初始化表单数据,用于发给后台的表单数据
 let formData = {
     username: '', // 姓名
@@ -87,8 +86,6 @@ $select.on('change', function() {
 })
 // 整个表单页面
 $('#zl-form-page').click(function() {
-    console.log('relieveFixed')
-
     relieveFixed()
 })
 //上一页下一页----------------------------------------

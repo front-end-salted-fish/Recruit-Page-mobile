@@ -84,11 +84,10 @@ imgUp.src = upIcon;
 
 $(imgUp).css({
   height: "auto",
-  width: "25px",
+  width: "1rem",
   position: "absolute",
-  left: "50%",
-  top: "93%",
-  marginLeft: "-12px"
+  left: "47%",
+  top: "81%",
 })
 $(imgUp).addClass('page-moveIconUp')
 $upPromot.append(imgUp);
