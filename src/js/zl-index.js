@@ -58,9 +58,14 @@ $(function() {
     // 点击按钮时给表单设置css display:none  ---2020/01/22
     let $joinBtn = $('.zl-join .btn');
     let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
-    $joinBtn.tap(function() {
+    $joinBtn.tap(function(e) {
+        console.log(e
+            );
+        
         let $formPage = $('#zl-form-page');
-        $rjCircle.addClass('rj-circle-openning');   // 圆点放大
+        $rjCircle.css({
+            'top': e.clientY + 'px'
+        }).addClass('rj-circle-openning');   // 圆点放大
         $formPage.fadeIn();
             // 排他
         $('#wf-form').addClass('rj-openning');

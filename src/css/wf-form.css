@@ -1,5 +1,6 @@
 #zl-form-page {
   overflow: hidden;
+  z-index: 2;
 }
 #wf-form {
   overflow: hidden;

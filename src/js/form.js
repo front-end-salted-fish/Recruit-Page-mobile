@@ -12,7 +12,7 @@ let formData = {
     username: '', // 姓名
     studentId: '', // 学号
     gradeProfessional: '', // 年级班级
-    sex: '男', // 性别-》默认男
+    sex: '', // 性别-》默认男
     phone: '', // 手机号码
     email: '', // 邮箱
     introduction: '', // 自我介绍
@@ -22,9 +22,9 @@ let formData = {
     checkFront: '', // 前端动态生成的验证码
     checkBack: '' // 用户填写的验证码
 };
-$(".rj-boy").on('tap', function () {
+/* $(".rj-boy").on('tap', function () {
     formData.sex = '女'
-})
+}) */
 // import formTopImg from '../../img/form-top.jpg'
 // import formBottomImg from '../../img/form-bottom.jpg'
 // $('#rj-form-top').attr('src', formTopImg);
@@ -94,9 +94,7 @@ $select.on('change', function () {
     relieveFixed()
 })
 // 整个表单页面
-$('#zl-form-page').click(function () {
-    console.log('relieveFixed')
-
+$('#zl-form-page').click(function() {
     relieveFixed()
 })
 //上一页下一页----------------------------------------
@@ -121,7 +119,7 @@ $(".rj-form-input").on("focus", function () {
     }
 });
 let $wfName = $("#wf-name");        // 输入名字的input框
-$wfName.on("blur", nameCheck);//1.名字
+$wfName.on("input", nameCheck);//1.名字
 function nameCheck() {
     //let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
     let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
@@ -167,7 +165,7 @@ $(".rj-gender-select").on("click", function () {
 })
 
 let $wfId = $("#wf-id");
-$wfId.on("blur", idCheck);//2.学号
+$wfId.on("input", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
     let id = $wfId.val();
@@ -186,7 +184,7 @@ function idCheck() {
     return true;
 }
 let $wfGrade = $("#wf-grade");
-$wfGrade.on("blur", gradeCheck);//3.年级专业
+$wfGrade.on("input", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $wfGrade.val();
     let $field = $wfGrade.parent(".rj-field");
@@ -205,7 +203,7 @@ function gradeCheck() {
     return true;
 }
 let $wfPhone = $("#wf-phone");
-$wfPhone.on("blur", phoneCheck);//4.手机
+$wfPhone.on("input", phoneCheck);//4.手机
 function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
     let phone = $wfPhone.val();
@@ -225,7 +223,7 @@ function phoneCheck() {
 }
 
 let $wfEmail = $("#wf-email");
-$wfEmail.on("blur", emailCheck);//5.邮箱
+$wfEmail.on("input", emailCheck);//5.邮箱
 function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     let email = $wfEmail.val();
@@ -244,7 +242,7 @@ function emailCheck() {
     return true;
 }
 let $wfIntro = $("#wf-intro");
-$wfIntro.on("blur", introCheck);//6.自我介绍
+$wfIntro.on("input", introCheck);//6.自我介绍
 function introCheck() {
     let intro = $wfIntro.val();
     let $field = $wfIntro.parent(".rj-field");
@@ -262,7 +260,7 @@ function introCheck() {
     return true;
 }
 let $wfSkills = $("#wf-skills");
-$wfSkills.on("blur", skillsCheck);
+$wfSkills.on("input", skillsCheck);
 function skillsCheck() {
     let skills = $wfSkills.val();
     let $field = $wfSkills.parent(".rj-field");
@@ -280,7 +278,7 @@ function skillsCheck() {
     return true;
 }
 let $wfCog = $("#wf-cog");
-$wfCog.on("blur", cogCheck);
+$wfCog.on("input", cogCheck);
 function cogCheck() {
     let cog = $wfCog.val();
     let $field = $wfCog.parent(".rj-field");
@@ -361,7 +359,7 @@ function textTip(str, t, callBack) {
     }, t);
 }
 
-const commitCount = 0
+let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
     if (commitCount > 0) {
@@ -369,8 +367,6 @@ $("#wf-commit").on('tap', function () {
     }
     //进行判断
     else {
-
-
         if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
 
             // 判断验证码是否匹配
@@ -382,7 +378,8 @@ $("#wf-commit").on('tap', function () {
                 var info2 = $('.second-part-form').serializeArray();
                 info1 = info1.concat(info2);
                 //console.log(info1)
-                let sex = formData.sex
+                let sex = $('.rj-gender-select').hasClass('rj-boy')?"男":"女"
+                //console.log(sex)
                 formData = {
                     username: info1[0].value.trim(),
                     studentId: info1[1].value.trim(),
@@ -418,7 +415,7 @@ $("#wf-commit").on('tap', function () {
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
 // 回到详情页
 $('.wf-close').tap(function () {
-
+    commitCount = 0//count清零
     let $formPage = $('#zl-form-page');
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
     $('#rj-steps-container').removeClass('rj-form-page2');
