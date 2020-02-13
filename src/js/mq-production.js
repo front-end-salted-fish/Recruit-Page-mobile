@@ -19,7 +19,7 @@ let thirdId = '#mq-android';
 let fourthId = '#mq-machineLearning';
 let lastId = '#mq-ios';
 let firstParameter = $('.mq-detail-page > .title');
-let secondParameter = $('.mq-detail-page> sup');
+let innerSpan = $('.mq-detail-page> .inner-span');
 let thirdParameter = $('.mq-detail-page> .wrap');
 let fourthParameter = $('.mq-detail-page >.wrap >.innerwrap> .innerContent');
 const firstWidth = 380 / rem + "rem";
@@ -33,7 +33,7 @@ let mqObj = {
   tag: 1
 };
 
-console.log(secondParameter);
+// console.log(secondParameter);
 
 let MOVE_DIS = 20; //滑动距离
 let menu = $('#cf-menu'); //菜单盒子
@@ -150,16 +150,26 @@ function swipeU(classname) {
 
             switch (++mqObj.tag) {
                 case 2:
-                    title.css({
-                        top: "2.6rem",
-                        left: "1.6rem",
+                    title.animate({
+                        top: "1.8rem",
+                        left: "1rem",
                         // textAlign: "start",
+                        // fontSize: "2rem",
                         transform: "scale(.5)",
-                    }).children().css({
-                        left: 0,
-                        transform: 'translate(0)',
-                        // textAlign:'start'
+                        transition:'2s'
                     })
+                    
+                    // .children().css({
+                    //     // left: 0,
+                    //     // transform: 'translate(0)',
+                    //     // textAlign:'start',
+                    //     fontSize:"1.5rem"
+                    //     // transition: '1s'
+                    // })
+                    // innerSpan.css({
+                    //     textAlign:'start'
+                    // })
+                    // console.log(innerSpan)
 
                     // span.css({
                     //     transform: "scale(.5)",
@@ -681,10 +691,6 @@ function swipeD(classname) {
 
 // 新版简约菜单
 $('.cf-menu').on('click', 'svg', function () {
-  console.log('我被点了');
-  // $('.cf-curtain').show();
-  // console.log($('.cf-curtain'))
-  console.log($('.grid input').prop('checked'))
   let isOpenMenu = !$('.grid input').prop('checked');
   if (isOpenMenu) {
     $('.cf-curtain').css({
@@ -692,25 +698,36 @@ $('.cf-menu').on('click', 'svg', function () {
     })
     // $('.cf-curtain').css('display');
     setTimeout(function () {
-      $('.cf-curtain').removeClass('cf-skew-curtain')
-      $('.cf-curtain li').removeClass('cf-skew-text');
+      $('.cf-curtain-bg').animate({
+        "-webkitTransform": "translate(100%,100%) scale3d(100,100,1)!important"
+      }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
+        $('.cf-curtain li>span').removeClass('cf-skew-text');
+      });
+      // $('.cf-curtain li>span').removeClass('cf-skew-text');
+
     }, 20)
   } else {
     setTimeout(function () {
-      $('.cf-curtain').addClass('cf-skew-curtain');
-      $('.cf-curtain li').addClass('cf-skew-text');
+      $('.cf-curtain li>span').addClass('cf-skew-text');
+      $('.cf-curtain-bg').animate({
+        "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
+      }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
+      });
     },20)
   }
 })
 $('.cf-menu-wrap').on('click', 'li', function () {
-  console.log($(this).attr('data-index'));
+
   let index = $(this).attr('data-index')
   rjBanner.watchPageIndex = index; //给轮播图标注当前是看到那一页
   setTimeout(function () {
     $('#mq-production>div').removeClass('cf-blur-in').addClass('cf-blur-out');
     $('#mq-production>div').eq(index).removeClass('cf-blur-out').addClass('cf-blur-in');
-    $('.cf-curtain').addClass('cf-skew-curtain');
-    $('.cf-curtain li').addClass('cf-skew-text');
+    $('.cf-curtain li>span').addClass('cf-skew-text');
+    $('.cf-curtain-bg').animate({
+      "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
+    }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
+    });
     $('.grid input').prop('checked', false);
   },20)
   // mq的置1
@@ -746,12 +763,17 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     // left: 10%;
     // width: 380/@rem;
     // height: 160/@rem;
-    textAlign: "center"
+    textAlign: "center",
+    // fontSize:"3.5rem"
     // transition: all 1s;
-  }).children().css({
-    left: '',
-    transform: ''
   })
+  // .children().css({
+  //   // left: '',
+  //   // transform: '',
+  //   // textAlign:''
+  //   fontSize:"3.5rem"
+  // })
+  
   // box.find(".innerContent").eq(0).css({
   //     opacity: "0"
   // })

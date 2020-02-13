@@ -149,7 +149,7 @@
                     <div class="mq-detail-page" id="mq-frontEnd">
                         <div class="title" style="opacity: 1;">
                             <span>前端</span>
-                            <sup>创意、前沿技术</sup>
+                            <span class="inner-span">创意、前沿技术</span>
                         </div>
                         <div class="wrap">
                             <div class="innerwrap">
@@ -174,7 +174,7 @@
                     <div class="mq-detail-page" id="mq-backend">
                         <div class="title" style="opacity: 1;">
                             <span>后台</span>
-                            <sup>坚实后盾、严谨</sup>
+                            <span class="inner-span">坚实后盾、严谨</span>
                         </div>
                         <div class="wrap">
                             <div class="innerwrap">
@@ -201,7 +201,7 @@
                     <div class="mq-detail-page" id="mq-android">
                       <div class="title" style="opacity: 1;">
                           <span>安卓</span>
-                          <sup>技术探索、培养模式</sup>
+                          <span class="inner-span">技术探索、培养模式</span>
                       </div>
                       <div class="wrap">
 
@@ -228,7 +228,7 @@
                     <div class="mq-detail-page" id="mq-ios">
                         <div class="title" style="opacity: 1;">
                             <span>iOS</span>
-                            <sup>优雅极致、中流砥柱</sup>
+                            <span class="inner-span">优雅极致、中流砥柱</span>
                         </div>
                         <div class="wrap">
 
@@ -254,7 +254,7 @@
                     <div class="mq-detail-page" id="mq-machineLearning">
                         <div class="title" style="opacity: 1;">
                             <span>机器学习</span>
-                            <sup>人工智能、大数据</sup>
+                            <span class="inner-span">人工智能、大数据</span>
                         </div>
                         <div class="wrap">
 
@@ -299,13 +299,16 @@
                 <p><i class="iconfont icon-caidan"></i></p>
             </div>
         </div> -->
-        <div class="cf-curtain cf-skew-curtain">
+        <div class="cf-curtain">
+            <div class="cf-curtain-bg cf-skew-curtain">
+
+            </div>
             <ul class="cf-menu-wrap">
-                <li data-index=0 class="cf-skew-text">前端</li>
-                <li data-index=1 class="cf-skew-text">后台</li>
-                <li data-index=2 class="cf-skew-text">Android</li>
-                <li data-index=3 class="cf-skew-text">iOS</li>
-                <li data-index=4 class="cf-skew-text"> 机器学习</li>
+                <li data-index=0 ><span class="cf-skew-text">前端</span></li>
+                <li data-index=1 ><span class="cf-skew-text">后台</span></li>
+                <li data-index=2 ><span class="cf-skew-text">Android</span></li>
+                <li data-index=3 ><span class="cf-skew-text">iOS</span></li>
+                <li data-index=4 ><span class="cf-skew-text">机器学习</span></li>
             </ul>
         </div>
         <div class="zl-up-promot">
@@ -350,10 +353,28 @@
                                 <div class="rj-field-icon rj-icon-error"></div>
                                 <div class="rj-field-tip">请输入2~10位中文</div>
                             </div>
-                            <div class="rj-gender-select rj-boy">
-                                <span class="rj-boy-txt">男</span>
-                                <span class="rj-circle"></span>
-                                <span class="rj-girl-txt">女</span>
+                            <div class="rj-field-icon rj-icon-valid"></div>
+                            <div class="rj-field-icon rj-icon-error"></div>
+                            <div class="rj-field-tip">请输入2~20位中文(可包含·)</div>
+                        </div>
+                        <div class="rj-gender-select rj-boy">
+                            <span class="rj-boy-txt">男</span>
+                            <span class="rj-circle"></span>
+                            <span class="rj-girl-txt">女</span>
+                        </div>
+                        <!-- <p class="gender form-group">
+                            <label for="gender" class="need control-label">性别</label>
+                            <input type="radio" name="sex" value="男" checked>男
+                            <input type="radio" name="sex" value="女">女
+                        </p> -->
+                        <div class="rj-field">
+                            <input id="wf-id" name="id" type="text" class="rj-form-input" maxlength="12">
+                            <div class="rj-field-placeholder need">学号</div>
+                            <label for="id" class="rj-field-label">学号*</label>
+                            <div class="rj-field-lines">
+                                <div class="rj-field-line rj-line-ready"></div>
+                                <div class="rj-field-line rj-line-valid"></div>
+                                <div class="rj-field-line rj-line-error"></div>
                             </div>
                             <!-- <p class="gender form-group">
                                 <label for="gender" class="need control-label">性别</label>

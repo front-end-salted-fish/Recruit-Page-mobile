@@ -6,7 +6,7 @@ let formData = {
     username: '', // 姓名
     studentId: '', // 学号
     gradeProfessional: '', // 年级班级
-    sex: '', // 性别
+    sex: '', // 性别-》默认男
     phone: '', // 手机号码
     email: '', // 邮箱
     introduction: '', // 自我介绍
@@ -16,6 +16,9 @@ let formData = {
     checkFront: '', // 前端动态生成的验证码
     checkBack: '' // 用户填写的验证码
 };
+/* $(".rj-boy").on('tap', function () {
+    formData.sex = '女'
+}) */
 // import formTopImg from '../../img/form-top.jpg'
 // import formBottomImg from '../../img/form-bottom.jpg'
 // $('#rj-form-top').attr('src', formTopImg);
@@ -75,13 +78,13 @@ function relieveFixed() {
 }
 // 下拉框
 let $select = $('.second-part-form .form-control')
-$select.click(function(e) {
+$select.click(function (e) {
     fixedForm()
     e.preventDefault();
     e.stopPropagation();
 })
 //下拉框的值发生改变时，
-$select.on('change', function() {
+$select.on('change', function () {
     relieveFixed()
 })
 // 整个表单页面
@@ -110,9 +113,10 @@ $(".rj-form-input").on("focus", function () {
     }
 });
 let $wfName = $("#wf-name");        // 输入名字的input框
-$wfName.on("blur", nameCheck);//1.名字
+$wfName.on("input", nameCheck);//1.名字
 function nameCheck() {
-    let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+    //let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+    let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
     let name = $wfName.val();
     let $field = $wfName.parent('.rj-field');
     name = filterXSS(name)
@@ -136,7 +140,7 @@ $(".rj-gender-select").on("tap", function () {
 })
 
 let $wfId = $("#wf-id");
-$wfId.on("blur", idCheck);//2.学号
+$wfId.on("input", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
     let id = $wfId.val();
@@ -155,7 +159,7 @@ function idCheck() {
     return true;
 }
 let $wfGrade = $("#wf-grade");
-$wfGrade.on("blur", gradeCheck);//3.年级专业
+$wfGrade.on("input", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $wfGrade.val();
     let $field = $wfGrade.parent(".rj-field");
@@ -174,7 +178,7 @@ function gradeCheck() {
     return true;
 }
 let $wfPhone = $("#wf-phone");
-$wfPhone.on("blur", phoneCheck);//4.手机
+$wfPhone.on("input", phoneCheck);//4.手机
 function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
     let phone = $wfPhone.val();
@@ -194,7 +198,7 @@ function phoneCheck() {
 }
 
 let $wfEmail = $("#wf-email");
-$wfEmail.on("blur", emailCheck);//5.邮箱
+$wfEmail.on("input", emailCheck);//5.邮箱
 function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     let email = $wfEmail.val();
@@ -213,7 +217,7 @@ function emailCheck() {
     return true;
 }
 let $wfIntro = $("#wf-intro");
-$wfIntro.on("blur", introCheck);//6.自我介绍
+$wfIntro.on("input", introCheck);//6.自我介绍
 function introCheck() {
     let intro = $wfIntro.val();
     let $field = $wfIntro.parent(".rj-field");
@@ -231,7 +235,7 @@ function introCheck() {
     return true;
 }
 let $wfSkills = $("#wf-skills");
-$wfSkills.on("blur", skillsCheck);
+$wfSkills.on("input", skillsCheck);
 function skillsCheck() {
     let skills = $wfSkills.val();
     let $field = $wfSkills.parent(".rj-field");
@@ -249,7 +253,7 @@ function skillsCheck() {
     return true;
 }
 let $wfCog = $("#wf-cog");
-$wfCog.on("blur", cogCheck);
+$wfCog.on("input", cogCheck);
 function cogCheck() {
     let cog = $wfCog.val();
     let $field = $wfCog.parent(".rj-field");
@@ -308,66 +312,85 @@ function check() {
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
     return true;
 }
+function textTip(str, t, callBack) {
+    t = t || 2000;
+    var dom = document.createElement("p");
+    dom.setAttribute('class', 'text-tip');
+    document.body.appendChild(dom);
+    var mytip = document.querySelector('.text-tip')
 
+    mytip.style.display = "block";
+    mytip.innerHTML = str;
+    var tipHeight = mytip.offsetHeight;
+
+    //文字两行或两行以上
+    if ((tipHeight - 20) / 18 > 1) {
+        mytip.style.width = "55%";
+    }
+    setTimeout(function () {
+        mytip.style.display = "none";
+        mytip.parentNode.removeChild(mytip);
+        if (callBack) { callBack(); }
+    }, t);
+}
+
+let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
-    console.log(formData)
-    //获取到所有的表单元素并转换为数组
-    //var info1 = $('form').serializeArray();
-    //var info2 = $('.second-part-form').serializeArray();
-    //info1 = info1.concat(info2);
-    //console.log(info1);
-    /* function emptyCheck() {
-        for (var i = 0; i < 10; i++) {
-            if (info1[i].value == '') {
-                return false;//有元素没填
-            }
-        }
-    } */
+    if (commitCount > 0) {
+        textTip("请勿重复提交！", 1000)
+    }
     //进行判断
-    var btn = $(this);
-    //if (btn.attr("disabled") == 'true') {//可点
-    /*         btn.attr('disabled', true);
-                setTimeout(function () {
-                    btn.attr('disabled', false);
-                }, 2000); */
-    if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
-        // 判断验证码是否匹配
-        if (!check()) {
-            return false
-        } else {
-            //获取到所有的表单元素并转换为数组
-            var info1 = $('form').serializeArray();
-            var info2 = $('.second-part-form').serializeArray();
-            info1 = info1.concat(info2);
-            let formData = {
-                username: info[0].value,
-                studentId: info[1].value,
-                gradeProfessional: info[2].value,
-                sex: info[3].value,
-                phone: info[4].value,
-                email: info[5].value,
-                introduction: info[6].value,
-                direction: info[7].value,
-                skills: info[8].value,
-                idea: info[9].value,
+    else {
+        if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
+
+            // 判断验证码是否匹配
+            if (!check()) {
+                return false
+            } else {
+                //获取到所有的表单元素并转换为数组
+                var info1 = $('.first-part-form').serializeArray();
+                var info2 = $('.second-part-form').serializeArray();
+                info1 = info1.concat(info2);
+                //console.log(info1)
+                let sex = $('.rj-gender-select').hasClass('rj-boy')?"男":"女"
+                //console.log(sex)
+                formData = {
+                    username: info1[0].value.trim(),
+                    studentId: info1[1].value.trim(),
+                    gradeProfessional: info1[2].value.trim(),
+                    sex: sex,
+                    phone: info1[3].value.trim(),
+                    email: info1[4].value.trim(),
+                    introduction: info1[5].value.trim(),
+                    direction: info1[6].value.trim(),
+                    skills: info1[7].value.trim(),
+                    idea: info1[8].value.trim(),
+                    checkFront: info1[9].value.trim(), // 前端动态生成的验证码
+                    checkBack: info1[9].value.trim() // 用户填写的验证码 */
+                }
+                textTip('提交成功', 1000, function () {
+                    //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+                });
+                commitCount++
+                //console.log(formData)
+                //在这里提交，小飞机 
+                zlPlane();
             }
-            //在这里提交，小飞机 
-            zlPlane();
+        }
+        else {
+            textTip('请正确输入信息', 1000, function () {
+                //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+            });
+            //alert("请正确输入信息")
+            //console.log("请正确输入信息");
         }
     }
-    else {
-        console.log("请正确输入信息");
-    }
-
-
-    //
-    //关闭弹窗，动画
 })
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
 // 回到详情页
 $('.wf-close').tap(function () {
-
+    commitCount = 0//count清零
     let $formPage = $('#zl-form-page');
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
     $('#rj-steps-container').removeClass('rj-form-page2');
@@ -400,7 +423,11 @@ $('.wf-close').tap(function () {
 });
 
 
-
+// 表单点击红色 x 清空内容
+$('.rj-icon-error').tap(function () {
+    $(this).siblings('.rj-form-input').val('');
+    $(this).parent('.rj-field').toggleClass('rj-field-ready rj-field-error');
+});
 
 
 
