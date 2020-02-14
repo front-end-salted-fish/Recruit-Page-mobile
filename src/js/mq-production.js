@@ -84,11 +84,10 @@ imgUp.src = upIcon;
 
 $(imgUp).css({
   height: "auto",
-  width: "25px",
+  width: "1rem",
   position: "absolute",
-  left: "50%",
-  top: "93%",
-  marginLeft: "-12px"
+  left: "47%",
+  top: "81%",
 })
 $(imgUp).addClass('page-moveIconUp')
 $upPromot.append(imgUp);
@@ -701,7 +700,7 @@ $('.cf-menu').on('click', 'svg', function () {
     setTimeout(function () {
       $('.cf-curtain-bg').animate({
         "-webkitTransform": "translate(100%,100%) scale3d(100,100,1)!important"
-      }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
+      }, 300, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
         $('.cf-curtain li>span').removeClass('cf-skew-text');
       });
       // $('.cf-curtain li>span').removeClass('cf-skew-text');
@@ -710,10 +709,15 @@ $('.cf-menu').on('click', 'svg', function () {
   } else {
     setTimeout(function () {
       $('.cf-curtain li>span').addClass('cf-skew-text');
-      $('.cf-curtain-bg').animate({
-        "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
-      }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
-      });
+      setTimeout(function(){
+        $('.cf-curtain-bg').animate({
+          "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
+        }, 300, 'cubic-bezier(0.65, 0.04, 1, 0.99)', function () {
+          $('.cf-curtain').css({
+            display: 'none'
+          })
+        });
+      },100)
     },20)
   }
 })
@@ -725,15 +729,21 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     $('#mq-production>div').removeClass('cf-blur-in').addClass('cf-blur-out');
     $('#mq-production>div').eq(index).removeClass('cf-blur-out').addClass('cf-blur-in');
     $('.cf-curtain li>span').addClass('cf-skew-text');
-    $('.cf-curtain-bg').animate({
-      "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
-    }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
-    });
+    setTimeout(function () {
+      $('.cf-curtain-bg').animate({
+        "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
+      }, 300, 'cubic-bezier(0.65, 0.04, 1, 0.99)', function () {
+        $('.cf-curtain').css({
+          display: 'none'
+        })
+      });
+    },100)
     $('.grid input').prop('checked', false);
   },20)
   // mq的置1
   //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
   mqObj.tag = 1;
+  $(imgUp).show(); // 详情页提示上滑元素恢复显示
   let box = $('.innerwrap');
   let boxContent = $('.innerContent');
   let title = $('.title');
@@ -781,12 +791,12 @@ $('.cf-menu-wrap').on('click', 'li', function () {
   // })
 });
 //当关闭过渡动画结束是dispaly:none
-$('.cf-curtain').on('webkitTransitionEnd',function(){
-  let isOpenMenu = !$('.grid input').prop('checked');
-  if(isOpenMenu) {
-    $('.cf-curtain').css({
-      display: 'none'
-    })
-  }
-})
+// $('.cf-curtain').on('webkitTransitionEnd',function(){
+//   let isOpenMenu = !$('.grid input').prop('checked');
+//   if(isOpenMenu) {
+//     $('.cf-curtain').css({
+//       display: 'none'
+//     })
+//   }
+// })
 export default mqObj;

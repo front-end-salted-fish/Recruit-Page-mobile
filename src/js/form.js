@@ -1,13 +1,19 @@
 import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
+import { academy, direction } from './myDropDown'
+
+console.log(academy.selectedKey);  // 学院
+console.log(direction.selectedKey); // 发展方向
+
 
 // 初始化表单数据,用于发给后台的表单数据
 let formData = {
     username: '', // 姓名
     studentId: '', // 学号
+    academy: '', // 学院
     gradeProfessional: '', // 年级班级
-    sex: '男', // 性别-》默认男
+    sex: '', // 性别-》默认男
     phone: '', // 手机号码
     email: '', // 邮箱
     introduction: '', // 自我介绍
@@ -17,9 +23,9 @@ let formData = {
     checkFront: '', // 前端动态生成的验证码
     checkBack: '' // 用户填写的验证码
 };
-$(".rj-boy").on('tap', function () {
+/* $(".rj-boy").on('tap', function () {
     formData.sex = '女'
-})
+}) */
 // import formTopImg from '../../img/form-top.jpg'
 // import formBottomImg from '../../img/form-bottom.jpg'
 // $('#rj-form-top').attr('src', formTopImg);
@@ -89,9 +95,7 @@ $select.on('change', function () {
     relieveFixed()
 })
 // 整个表单页面
-$('#zl-form-page').click(function () {
-    console.log('relieveFixed')
-
+$('#zl-form-page').click(function() {
     relieveFixed()
 })
 //上一页下一页----------------------------------------
@@ -116,7 +120,7 @@ $(".rj-form-input").on("focus", function () {
     }
 });
 let $wfName = $("#wf-name");        // 输入名字的input框
-$wfName.on("blur", nameCheck);//1.名字
+$wfName.on("input", nameCheck);//1.名字
 function nameCheck() {
     //let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
     let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
@@ -138,15 +142,34 @@ function nameCheck() {
     return true;
 }
 
-$(".rj-gender-select").on("tap", function () {
+$(".rj-gender-select").on("click", function () {
+    let color = !$(this).hasClass('rj-boy') ? '#5fc7f2' :'#FF7070';
+    // 波纹特效
+    $(this).animate({
+        "box-shadow": `0 0 30px ${color}`,
+    }, {
+        duration: 150,  
+        complete: () => {
+            $(this).animate({
+                "box-shadow": `0 0 30px white`,
+            }, {
+                duration: 150,  
+                complete: () => {
+                    $(this).css({
+                        "box-shadow": ''
+                    })
+                },
+            })
+        },
+    })
     $(this).toggleClass("rj-boy rj-girl");
 })
 
 let $wfId = $("#wf-id");
-$wfId.on("blur", idCheck);//2.学号
+$wfId.on("input", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
-    let id = $wfId.val();
+    let id = $wfId.val().trim();
     formData.studentId = id;
     let $field = $wfId.parent('.rj-field');
     if (!reg.test(id) || id == '') {
@@ -162,9 +185,9 @@ function idCheck() {
     return true;
 }
 let $wfGrade = $("#wf-grade");
-$wfGrade.on("blur", gradeCheck);//3.年级专业
+$wfGrade.on("input", gradeCheck);//3.年级专业
 function gradeCheck() {
-    let grade = $wfGrade.val();
+    let grade = $wfGrade.val().trim();
     let $field = $wfGrade.parent(".rj-field");
     grade = filterXSS(grade)
     formData.gradeProfessional = grade;
@@ -181,10 +204,10 @@ function gradeCheck() {
     return true;
 }
 let $wfPhone = $("#wf-phone");
-$wfPhone.on("blur", phoneCheck);//4.手机
+$wfPhone.on("input", phoneCheck);//4.手机
 function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
-    let phone = $wfPhone.val();
+    let phone = $wfPhone.val().trim();
     let $field = $wfPhone.parent(".rj-field");
     phone = filterXSS(phone)
     formData.phone = phone
@@ -201,10 +224,10 @@ function phoneCheck() {
 }
 
 let $wfEmail = $("#wf-email");
-$wfEmail.on("blur", emailCheck);//5.邮箱
+$wfEmail.on("input", emailCheck);//5.邮箱
 function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    let email = $wfEmail.val();
+    let email = $wfEmail.val().trim();
     let $field = $wfEmail.parent(".rj-field");
     email = filterXSS(email)
     formData.email = email
@@ -220,9 +243,9 @@ function emailCheck() {
     return true;
 }
 let $wfIntro = $("#wf-intro");
-$wfIntro.on("blur", introCheck);//6.自我介绍
+$wfIntro.on("input", introCheck);//6.自我介绍
 function introCheck() {
-    let intro = $wfIntro.val();
+    let intro = $wfIntro.val().trim();
     let $field = $wfIntro.parent(".rj-field");
     intro = filterXSS(intro)
     formData.introduction = intro
@@ -238,9 +261,9 @@ function introCheck() {
     return true;
 }
 let $wfSkills = $("#wf-skills");
-$wfSkills.on("blur", skillsCheck);
+$wfSkills.on("input", skillsCheck);
 function skillsCheck() {
-    let skills = $wfSkills.val();
+    let skills = $wfSkills.val().trim();
     let $field = $wfSkills.parent(".rj-field");
     skills = filterXSS(skills)
     formData.skills = skills
@@ -256,9 +279,9 @@ function skillsCheck() {
     return true;
 }
 let $wfCog = $("#wf-cog");
-$wfCog.on("blur", cogCheck);
+$wfCog.on("input", cogCheck);
 function cogCheck() {
-    let cog = $wfCog.val();
+    let cog = $wfCog.val().trim();
     let $field = $wfCog.parent(".rj-field");
     cog = filterXSS(cog)
     formData.idea = cog
@@ -337,7 +360,7 @@ function textTip(str, t, callBack) {
     }, t);
 }
 
-const commitCount = 0
+let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('tap', function () {
     if (commitCount > 0) {
@@ -345,8 +368,6 @@ $("#wf-commit").on('tap', function () {
     }
     //进行判断
     else {
-
-
         if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
 
             // 判断验证码是否匹配
@@ -357,22 +378,24 @@ $("#wf-commit").on('tap', function () {
                 var info1 = $('.first-part-form').serializeArray();
                 var info2 = $('.second-part-form').serializeArray();
                 info1 = info1.concat(info2);
-                //console.log(info1)
-                let sex = formData.sex
-                formData = {
-                    username: info1[0].value.trim(),
-                    studentId: info1[1].value.trim(),
-                    gradeProfessional: info1[2].value.trim(),
-                    sex: sex,
-                    phone: info1[3].value.trim(),
-                    email: info1[4].value.trim(),
-                    introduction: info1[5].value.trim(),
-                    direction: info1[6].value.trim(),
-                    skills: info1[7].value.trim(),
-                    idea: info1[8].value.trim(),
-                    checkFront: info1[9].value.trim(), // 前端动态生成的验证码
-                    checkBack: info1[9].value.trim() // 用户填写的验证码 */
-                }
+                let sex = $('.rj-gender-select').hasClass('rj-boy')?"男":"女"
+                formData.direction = direction.selectedKey
+                formData.academy = academy.selectedKey
+                formData.sex = sex
+                // formData = {
+                //     username: info1[0].value.trim(),
+                //     studentId: info1[1].value.trim(),
+                //     gradeProfessional: info1[2].value.trim(),
+                //     sex: sex,
+                //     phone: info1[3].value.trim(),
+                //     email: info1[4].value.trim(),
+                //     introduction: info1[5].value.trim(),
+                //     direction: info1[6].value.trim(),
+                //     skills: info1[7].value.trim(),
+                //     idea: info1[8].value.trim(),
+                //     checkFront: info1[9].value.trim(), // 前端动态生成的验证码
+                //     checkBack: info1[9].value.trim() // 用户填写的验证码 */
+                // }
                 textTip('提交成功', 1000, function () {
                     //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
                 });
@@ -394,7 +417,7 @@ $("#wf-commit").on('tap', function () {
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
 // 回到详情页
 $('.wf-close').tap(function () {
-
+    commitCount = 0//count清零
     let $formPage = $('#zl-form-page');
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
     $('#rj-steps-container').removeClass('rj-form-page2');
@@ -428,11 +451,10 @@ $('.wf-close').tap(function () {
 
 
 // 表单点击红色 x 清空内容
-$('.rj-icon-error').tap(function () {
+$('.rj-icon-error').on("click",function () {
     $(this).siblings('.rj-form-input').val('');
-    $(this).parent('.rj-field').toggleClass('rj-field-ready rj-field-error');
+    $(this).parent('.rj-field').removeClass('rj-field-error');
 });
-
 
 
 
