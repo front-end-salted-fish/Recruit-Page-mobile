@@ -150,37 +150,37 @@ function swipeU(classname) {
 
             switch (++mqObj.tag) {
                 case 2:
-                    title.animate({
-                        top: "1.8rem",
-                        left: "1rem",
-                        // textAlign: "start",
-                        // fontSize: "2rem",
-                        transform: "scale(.5)",
-                        transition:'2s'
-                    })
-                    
-                    // .children().css({
-                    //     // left: 0,
-                    //     // transform: 'translate(0)',
-                    //     // textAlign:'start',
-                    //     fontSize:"1.5rem"
-                    //     // transition: '1s'
-                    // })
-                    // innerSpan.css({
-                    //     textAlign:'start'
-                    // })
-                    // console.log(innerSpan)
-
-                    // span.css({
-                    //     transform: "scale(.5)",
-                    //     paddingLeft: ".5rem"
-                    // })
-                    // sup.css({
-                    //     fontSize: ".5rem",
-                    //     top: "-.8rem",
-                    //     left:'2.5rem'
-                    // })
-                    // $(list[0]).addClass('opa');
+                    let titleHtml = title.children().eq(0).html();
+                    if(titleHtml == '机器学习'){
+                      title
+                      .animate({
+                        top:"10%",
+                        left:"1.6rem",
+                        transform: "scale(.5)", 
+                      },800)
+                    }else if(titleHtml == "前端"||"后台"){
+                      title.
+                      animate({
+                        textIndent:"-6rem",
+                      },100)
+                      .animate({
+                        top:"10%",
+                        left:"1.6rem",
+                        transform: "scale(.5)", 
+                      },800)
+                    }else{
+                      title.
+                      animate({
+                        textIndent:"-4rem",
+                      },100)
+                      .animate({
+                        top:"10%",
+                        left:"1.6rem",
+                        transform: "scale(.5)", 
+                      },800)
+                    }
+                   
+                  
                     $(list[0]).css({
                         opacity: '1'
                     })
@@ -771,6 +771,7 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     // justifyContent: space-between,
     // margin:0 auto,
     transform: 'scale(1)',
+    textIndent:'',
     // left: 10%;
     // width: 380/@rem;
     // height: 160/@rem;

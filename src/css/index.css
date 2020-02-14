@@ -460,7 +460,7 @@
   transform: translate(-50%);
 }
 #mq-production .mq-detail-page .title .inner-span {
-  top: 6rem!important;
+  top: 5rem!important;
   font-size: 1.1rem;
   display: inline-block;
   transition: all 1s cubic-bezier(0.39, 0.92, 0.74, 0.94);
@@ -907,10 +907,7 @@
   transition: all 1s cubic-bezier(0.57, 0.02, 0.1, 0.99);
 }
 .cf-skew-curtain {
-  -webkit-transform: skew(30deg, 0deg) rotateX(30deg);
-  transform-origin: 0% 50%;
-  opacity: 0;
-  display: none;
+  -webkit-transform: translate(100%, 100%) scale3d(0, 0, 0) !important;
 }
 .cf-skew-curtain-out {
   display: none;
@@ -919,18 +916,27 @@
   opacity: 0;
 }
 .cf-skew-text {
-  -webkit-transform: skew(-5deg, 30deg) translateY(100%);
+  -webkit-transform: translateY(100%) !important;
+  opacity: 0;
 }
 .cf-curtain {
   display: none;
   position: absolute;
-  top: 0;
+  width: 100vw;
+  height: 100vh;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  top: 0;
   z-index: 3;
-  transition: -webkit-transform 0.5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s, opacity 0.5s cubic-bezier(0.15, 0.73, 0.69, 0.85) 0s;
+  overflow: hidden;
+}
+.cf-curtain .cf-curtain-bg {
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  -webkit-transform: translate(100%, 100%) scale3d(100, 100, 1);
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all 0.5s cubic-bezier(0.48, 0.21, 0.95, 0.71);
+  overflow: hidden;
 }
 .cf-curtain ul {
   position: absolute;
@@ -947,27 +953,24 @@
   font-size: 3.3vh;
   font-weight: lighter;
   font-family: gabrielastencil, '微软雅黑';
+  opacity: 1;
+  overflow: hidden;
 }
-.cf-curtain ul li:nth-child(1) {
-  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.05s;
+.cf-curtain ul li span {
+  display: inline-block;
 }
-.cf-curtain ul li:nth-child(2) {
-  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.1s;
+.cf-curtain ul li:nth-child(1) span {
+  transition: all 0.5s cubic-bezier(0.17, 1.31, 1, 0.99) 0.05s;
 }
-.cf-curtain ul li:nth-child(3) {
-  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.15s;
+.cf-curtain ul li:nth-child(2) span {
+  transition: all 0.5s cubic-bezier(0.17, 1.31, 1, 0.99) 0.1s;
 }
-.cf-curtain ul li:nth-child(4) {
-  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.2s;
+.cf-curtain ul li:nth-child(3) span {
+  transition: all 0.5s cubic-bezier(0.17, 1.31, 1, 0.99) 0.15s;
 }
-.cf-curtain ul li:nth-child(5) {
-  transition: -webkit-transform 0.5s cubic-bezier(0.46, 0.1, 0.66, 0.99) 0.25s;
+.cf-curtain ul li:nth-child(4) span {
+  transition: all 0.5s cubic-bezier(0.17, 1.31, 1, 0.99) 0.2s;
 }
-#menu-wrap {
-  position: absolute;
-  left: 12rem;
-  top: 35%;
-  width: 6rem;
-  height: 6rem;
-  z-index: 3;
+.cf-curtain ul li:nth-child(5) span {
+  transition: all 0.5s cubic-bezier(0.17, 1.31, 1, 0.99) 0.25s;
 }
