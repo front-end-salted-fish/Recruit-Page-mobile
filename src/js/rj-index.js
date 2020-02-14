@@ -33,8 +33,9 @@ let rjBanner = {
   nowPageIndex: 0, // 正在播放的轮播图的index值
   timer: undefined, // 轮播图控制器
   bannerTotalTime: 4000, // 动画时间+阅读时间
-  bannerWatchTime: 1500, // 阅读时间
-  bannerMoveTime: 2500, // 动画时间
+  bannerWatchTime: 2500, // 阅读时间
+  bannerMoveTime: 1500, // 动画时间
+  bannerTxtDelayTime: 20,
   hasStart: false,
   isStopping: true,
   canBack: false,  // 是否可以返回轮播图（因为存在动画还没结束就点击按钮的情况）
@@ -73,56 +74,94 @@ let rjBanner = {
     }
   },
   // 文字滑入
-  txtIn(dirFrom, cTxt, eTxt) {
+  txtIn(dirFrom) {
+    let cTxt = this.cTxtArr[this.nowPageIndex];   // 即将滑入的中文内容
+    let eTxt = this.eTxtArr[this.nowPageIndex];   // 即将滑入的英文内容
     let that = this;
     let trueIndex;
     let cTxtHtml = '';
     let eTxtHtml = '';
-    for (let i = 0; i < cTxt.length; i++) {
+    let cLength = cTxt.length;    // 中文个数
+    let eLength = eTxt.length;    // 英文个数
+    let $nextCTxt = $fontsContainer.find('.rj-c-txt.rj-txt-next'); // 中文容器
+    let $nextETxt = $fontsContainer.find('.rj-e-txt.rj-txt-next'); // 英文容器
+    for (let i = 0; i < cLength; i++) {
       cTxtHtml += `<span class="rj-from-${dirFrom}-in-span">${cTxt[i]}</span>`;
     }
-    for (let i = 0; i < eTxt.length; i++) {
+    for (let i = 0; i < eLength; i++) {
       eTxtHtml += `<span class="rj-from-${dirFrom}-in-span">${eTxt[i]}</span>`;
     }
-    $fontsContainer.find('.rj-c-txt.rj-txt-next').append(cTxtHtml);
-    $fontsContainer.find('.rj-e-txt.rj-txt-next').append(eTxtHtml);
-    let $txt = $('#rj-fonts-container .rj-txt-next').find('span');
-    $.each($txt, function (index, item) {
-      // console.log(item);
-      if (dirFrom === 'right') trueIndex = index;
-      else trueIndex = $txt.length - index;
+    $nextCTxt.append(cTxtHtml);
+    $nextETxt.append(eTxtHtml);
+    let $nextCHtml = $nextCTxt.find('span');
+    let $nextEHtml = $nextETxt.find('span');
+    let cMoveTime = this.bannerMoveTime - ((cLength - 1) * this.bannerTxtDelayTime);
+    let eMoveTime = this.bannerMoveTime - ((eLength - 1) * this.bannerTxtDelayTime);
+    $.each($nextCHtml, function (index, item) {
+      if (dirFrom === 'right') trueIndex = index;  // 从右往左进入
+      else trueIndex = cLength - index;
       $(item).animate({
         transform: `translate3d(0, 0, 0)`,
         opacity: 1
       }, {
-        duration: 1500,
+        duration: cMoveTime,  // 每个span的动画时间
         easing: 'cubic-bezier(.5,.52,0,1)',
         complete: () => { },
-        delay: (trueIndex + 5) * (that.nowPageIndex === 4 ? 20 : 40)
+        delay: that.bannerTxtDelayTime * trueIndex
       });
     });
+
+    $.each($nextEHtml, function (index, item) {
+      if (dirFrom === 'right') trueIndex = index;  // 从右往左进入
+      else trueIndex = eLength - index;
+      $(item).animate({
+        transform: `translate3d(0, 0, 0)`,
+        opacity: 1
+      }, {
+        duration: eMoveTime,  // 每个span的动画时间
+        easing: 'cubic-bezier(.5,.52,0,1)',
+        complete: () => { },
+        delay: that.bannerTxtDelayTime * trueIndex
+      });
+    })
     $fontsContainer.find('div').toggleClass('rj-txt-next rj-txt-current');
   },
   // 文字滑出
   txtOut(dirTo) {
-    let $txt = $('#rj-fonts-container .rj-txt-current').find('span');
+    let trueIndex;
+    let $currentCTxt = $fontsContainer.find('.rj-c-txt.rj-txt-current span'); // 中文span
+    let $currentETxt = $fontsContainer.find('.rj-e-txt.rj-txt-current span'); // 英文span
+    let cLength = $currentCTxt.length;
+    let eLength = $currentETxt.length;
+    let cMoveTime = this.bannerMoveTime - ((cLength - 1) * this.bannerTxtDelayTime);
+    let eMoveTime = this.bannerMoveTime - ((eLength - 1) * this.bannerTxtDelayTime);
+    let that = this;
     let properties = {
       transform: `translate3d(${dirTo === 'left' ? '-' : ''}9rem, 0, 0)`,
       opacity: 0
     }
-    let trueIndex;
-    // console.log($txt);
-    $.each($txt, function (index, item) {
-      // console.log(item);
+    $.each($currentCTxt, function (index, item) {
       if (dirTo === 'left') trueIndex = index;
-      else trueIndex = $txt.length - index;
+      else trueIndex = cLength - index;
       $(item).animate(properties, {
-        duration: 1500,
+        duration: cMoveTime,
         easing: 'cubic-bezier(.5,.52,0,1)',
         complete: () => {
           $(this).remove();
         },
-        delay: trueIndex * 25
+        delay: that.bannerTxtDelayTime * trueIndex
+      });
+    });
+    $.each($currentETxt, function (index, item) {
+      if (dirTo === 'left') trueIndex = index;
+      else trueIndex = eLength - index;
+      $(item).animate(properties, {
+        duration: eMoveTime,
+        easing: 'cubic-bezier(.5,.52,0,1)',
+        complete: () => {
+          $(this).remove();
+        },
+        delay: that.bannerTxtDelayTime * trueIndex
       });
     });
   },
@@ -141,7 +180,7 @@ let rjBanner = {
     $($bannerPages[this.pagesPosClassArr.indexOf("rj-next-page")]).addClass("rj-banner-in-from-right");
     // 文字移入移出
     this.txtOut('left');
-    this.txtIn('right', this.cTxtArr[this.nowPageIndex], this.eTxtArr[this.nowPageIndex]);
+    this.txtIn('right');
     // 更新
     this.pagesPosClassArr.unshift(this.pagesPosClassArr.pop());
     this.setPosClass();
@@ -156,7 +195,7 @@ let rjBanner = {
     $($bannerPages[this.pagesPosClassArr.indexOf("rj-mid-page")]).addClass("rj-banner-out-to-right");
     $($bannerPages[this.pagesPosClassArr.indexOf("rj-pre-page")]).addClass("rj-banner-in-from-left");
     this.txtOut('right');
-    this.txtIn('left', this.cTxtArr[this.nowPageIndex], this.eTxtArr[this.nowPageIndex]);
+    this.txtIn('left');
     this.pagesPosClassArr.push(this.pagesPosClassArr.shift());
     this.setPosClass();
     this.setBtns();
@@ -199,7 +238,7 @@ let rjBanner = {
   stop() {
     this.isStopping = true;
     clearInterval(this.timer);
-    console.log($('.rj-banner-btn-current .rj-banner-timer'));
+    // console.log($('.rj-banner-btn-current .rj-banner-timer'));
     let $timer = $('.rj-banner-btn-current .rj-banner-timer');
     $timer.css({
       animationPlayState: 'paused',
@@ -244,9 +283,17 @@ let rjBanner = {
 
     this.watchPageIndex = pageIndex;
     this.stop();
-    console.log("锐基：跳进" + this.cTxtArr[pageIndex]);
+    // console.log("锐基：跳进" + this.cTxtArr[pageIndex]);
     // 轮播图右滑
-    $banner.removeClass('rj-banner-in').addClass('rj-banner-out');
+    $banner.removeClass('rj-banner-in').addClass('rj-banner-out').animate({
+    }, {
+      duration: 1,
+      easing: 'cubic-bezier(.5,.52,0,1)',
+      complete: () => { 
+        $banner.hide();
+      },
+      delay: 500
+    });
     $detailPages.eq(this.watchPageIndex).addClass('cf-blur-in').siblings().addClass('cf-blur-out');
     // 幕布出现->消失
     $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', ()=>{
@@ -260,7 +307,15 @@ let rjBanner = {
   // 返回轮播图界面
   backToBanner() {
     $detailPages.eq(this.watchPageIndex).addClass('rj-detail-page-out');
-    $banner.removeClass('rj-banner-out').addClass('rj-banner-in');
+    $banner.removeClass('rj-banner-out').addClass('rj-banner-in').animate({
+    }, {
+      duration: 1,
+      easing: 'cubic-bezier(.5,.52,0,1)',
+      complete: () => { 
+        $banner.show();
+      },
+      delay: 500
+    });
     // 幕布出现->消失
     $whiteCur.addClass('rj-white-curtain-in').on('webkitAnimationEnd', ()=>{
       $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-in')
@@ -271,10 +326,22 @@ let rjBanner = {
     });
     this.start();
   },
+  openForm(e) {
+    let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
+    let $formPage = $('#zl-form-page');
+    $rjCircle.css({
+      top: e.clientY
+    }).addClass('rj-circle-openning');   // 圆点放大
+    $formPage.fadeIn();
+    $('#wf-form').addClass('rj-openning');
+    $('.first-part').attr("style",'').scrollTop(0);
+    $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
+  }
 }
 
 // 返回轮播图界面
 $rjBackBtn.on('touchstart',function(){
+  $('.zl-up-promot img').show() // 显示详情页的上滑提示元素
   if(rjBanner.canBack) {
     rjBanner.canBack = false;
     rjBanner.backToBanner();
@@ -350,5 +417,8 @@ $bannerPages.tap(function () {
   rjBanner.toDetailPage(rjBanner.nowPageIndex);
 })
 
+//  轮播图打开表单
+let $joinBtn = $('#rj-join-btn');
+$joinBtn.on('click',rjBanner.openForm);
 
 export default rjBanner;

@@ -4,7 +4,7 @@
 	overflow: hidden;
 	// transform: translateY(100vh);
 	// transition: all 1s ease;
-	// z-index: 2;
+	z-index: 3;
 }
 // #zl-detail-pages {
 // 	transition: all .5s ease;
@@ -21,6 +21,7 @@
 	//background-image: url("../../img/form-bac.jpg");
 	// overflow-x: hidden;
 	// overflow-y: auto;
+	
 	overflow: hidden;
 	text-align: center;
 	width: 16rem;
@@ -45,6 +46,7 @@
 	}
 
 	.second-part {
+		text-align: left;
 		//display: none;
 		//background-color: cadetblue;
 		//right: -16rem;
@@ -140,7 +142,8 @@
 
 		.btn-groups {
 			padding-top: 1.3rem;
-			padding-bottom: .8rem;
+			padding-bottom: 1rem;
+			text-align: center;
 
 			button {
 				width: 5rem;
@@ -395,7 +398,7 @@
 	.first-part {
 		.rj-field {
 			&:first-child {
-				width: 50%;
+				width: 55%;
 				margin-right: 0;
 				display: inline-block;
 			}
@@ -411,13 +414,18 @@
 		label {
 			font-weight: normal;
 		}
-		#direction {
+		#direction,
+		#academy {
 			top:0 !important;
 			line-height: 34px;
 		}
 		#direction-select {
 			width:50%;
 			margin-left: 50%;
+		}
+		#academy-select {
+			width:70%;
+			margin-left: 30%;
 		}
 		button,
 		input,
@@ -713,7 +721,7 @@
 		font-size: .64rem;
 		position: relative;
 		// margin-left: 1.5rem;
-		margin-left: 2rem;
+		margin-left: 1.3rem;
 		border-radius: 1.3rem;
 		transition: all .2s 0s;
 		opacity: 0;
@@ -800,6 +808,9 @@
 		&:nth-child(7) {
 			transition-delay: 6 * @rj-field-delay + @circle-time !important;
 		}
+		&:nth-child(8) {
+			transition-delay: 7 * @rj-field-delay + @circle-time !important;
+		}
 		opacity: 1 !important;
 		transform: translateY(0) !important;
 	}
@@ -817,15 +828,15 @@
 	.rj-menu-overlay_circle {
 		margin: 0 auto;
 		position: absolute;
-		z-index: 2;
-		top:83%;
+		z-index: 3;
+		top:92%;
 		pointer-events: none;
 		background: white;
 		border-radius: 50%;
 		width: 0px;
 		height: 0px;
 		transform: translate3d(0%, 0px,0);
-		transition: all .6s;
+		transition: width .6s, height .6s, transform .6s;
 	}
 }
 .rj-circle-openning {
