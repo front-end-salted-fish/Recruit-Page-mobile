@@ -712,7 +712,7 @@ $('.cf-menu').on('click', 'svg', function () {
       setTimeout(function(){
         $('.cf-curtain-bg').animate({
           "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
-        }, 300, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
+        }, 300, 'cubic-bezier(0.65, 0.04, 1, 0.99)', function () {
           $('.cf-curtain').css({
             display: 'none'
           })
@@ -732,7 +732,7 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     setTimeout(function () {
       $('.cf-curtain-bg').animate({
         "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
-      }, 300, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
+      }, 300, 'cubic-bezier(0.65, 0.04, 1, 0.99)', function () {
         $('.cf-curtain').css({
           display: 'none'
         })
