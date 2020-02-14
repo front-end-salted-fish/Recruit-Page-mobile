@@ -446,7 +446,7 @@
 			background-color: white;
 			font-size: .7rem;
 			color: #000;
-			padding-top: .45rem;
+			margin-top: .45rem;
 			padding-bottom: .3rem;
 			resize: none;
 			word-break: break-all;
@@ -691,6 +691,9 @@
 			-webkit-transform: translateY(calc(-100%));
 			transform: translateY(calc(-100%));
 		}
+		.rj-text-counter {
+			opacity: 1;
+		}
 	}
 	#rj-code-field {
 		#ctl00_txtcode {
@@ -860,4 +863,24 @@
 	z-index: 9999;
 	font-size: 12px;
 	text-align: center;
+}
+.rj-text-counter {
+	position: absolute;
+	width: auto;
+	z-index: 12;
+	color: #000;
+	right: 2px;
+	font-family: Butler;
+	// bottom: 3px;
+	// top: 10.5rem;
+	font-size: 0.8rem;
+	transition: all .5s;
+	pointer-events: none;
+	opacity: 0;
+	.rj-current-cnt {
+		padding-right: .05rem;
+	}
+	.rj-total-cnt {
+		padding-left: .05rem;
+	}
 }

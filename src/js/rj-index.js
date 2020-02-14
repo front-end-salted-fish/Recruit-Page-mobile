@@ -349,7 +349,7 @@ $rjBackBtn.on('touchstart',function(){
 })
 
 // 调试用
-window.rjBanner = rjBanner;
+// window.rjBanner = rjBanner;
 // window.$banner = $banner;
 // window.$whiteCur = $whiteCur;
 

@@ -99,7 +99,7 @@ $('#zl-form-page').click(function() {
     relieveFixed()
 })
 //上一页下一页----------------------------------------
-$("#next-page").on('tap', function () {
+$("#next-page button").on('tap', function () {
     $("#rj-steps-container").addClass("rj-form-page2");
     $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
     $('.first-part').animate({ transform: 'translate(-16rem)' }, 300, 'linear');
@@ -118,7 +118,12 @@ $(".rj-form-input").on("focus", function () {
     if ($field[0].className === 'rj-field') {
         $field.addClass("rj-field-ready");
     }
-});
+}).on('blur',function () {
+    let $field = $(this.parentNode);
+    if(!$(this).val()) {
+        $field.removeClass('rj-field-ready rj-field-valid rj-field-error');
+    }
+})
 let $wfName = $("#wf-name");        // 输入名字的input框
 $wfName.on("input", nameCheck);//1.名字
 function nameCheck() {
@@ -362,7 +367,7 @@ function textTip(str, t, callBack) {
 
 let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
-$("#wf-commit").on('tap', function () {
+$("#wf-commit").on('click', function () {
     if (commitCount > 0) {
         textTip("请勿重复提交！", 1000)
     }
@@ -415,8 +420,8 @@ $("#wf-commit").on('tap', function () {
     }
 })
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
-// 回到详情页
-$('.wf-close').tap(function () {
+
+export let closeForm  = function () {
     commitCount = 0//count清零
     let $formPage = $('#zl-form-page');
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
@@ -447,22 +452,61 @@ $('.wf-close').tap(function () {
     })
     $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
     // $('#wf-form').fadeOut(1000);
-});
+}
+// 回到详情页
+$('.wf-close').tap(closeForm);
+
 
 
 // 表单点击红色 x 清空内容
 $('.rj-icon-error').on("click",function () {
+    let field = $(this).parent('.rj-field');
+    if(!field.hasClass('rj-field-error')) return ;
     $(this).siblings('.rj-form-input').val('');
-    $(this).parent('.rj-field').removeClass('rj-field-error');
+    field.removeClass('rj-field-error');
 });
 
-
+// 字体计数器
+class textCounter {
+    constructor({selector, maxLen}) {
+        this.selector = selector;
+        this.maxLen = maxLen;
+        this.rows = selector.attr('rows');
+    }
+    init() {
+        let $counter = $(`
+            <div class="rj-text-counter" style="top:${this.rows - 1}.2rem"><span class="rj-current-cnt">0</span>/<span class="rj-total-cnt">${this.maxLen}</span></div>
+        `);
+        this.selector.after($counter);
+        this.currentCntSpan = $counter.find('.rj-current-cnt');
+        console.log(this.currentCntSpan);
+        let that = this;
+        this.currentCnt = this.currentCntSpan.text();  // 当前字数
+        this.countEvent = function (e) {
+            let length = $(e.target).val().length > 200 ? 200 : $(e.target).val().length;
+            that.currentCntSpan.text(length);
+        }
+        this.selector.on('input',this.countEvent);
+    }
+}
+(new textCounter({
+    selector: $('#wf-intro'),
+    maxLen: 200
+})).init();
+(new textCounter({
+    selector: $('#wf-skills'),
+    maxLen: 100
+})).init();
+(new textCounter({
+    selector: $('#wf-cog'),
+    maxLen: 100
+})).init();
 
 /**
  * 文本框根据输入内容自适应高度
  * @param                {HTMLElement}        输入框元素
- * @param                {Number}                设置光标与输入框保持的距离(默认0)
- * @param                {Number}                设置最大高度(可选)
+ * @param                {Number}             设置光标与输入框保持的距离(默认0)
+ * @param                {Number}             设置最大高度(可选)
  */
 
 // var autoTextarea = function (elem, extra, maxHeight) {
