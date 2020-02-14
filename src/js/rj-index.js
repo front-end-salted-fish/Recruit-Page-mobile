@@ -341,6 +341,7 @@ let rjBanner = {
 
 // 返回轮播图界面
 $rjBackBtn.on('touchstart',function(){
+  $('.zl-up-promot img').show() // 显示详情页的上滑提示元素
   if(rjBanner.canBack) {
     rjBanner.canBack = false;
     rjBanner.backToBanner();

@@ -733,6 +733,7 @@ $('.cf-menu-wrap').on('click', 'li', function () {
   // mq的置1
   //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
   mqObj.tag = 1;
+  $(imgUp).show(); // 详情页提示上滑元素恢复显示
   let box = $('.innerwrap');
   let boxContent = $('.innerContent');
   let title = $('.title');
