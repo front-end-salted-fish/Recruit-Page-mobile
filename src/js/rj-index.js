@@ -1,5 +1,5 @@
 import testImg1 from '../../img/front-end-banner.jpg'
-import testImg2 from '../../img/back-end-banner.jpg'
+import testImg2 from '../../img/backstage.png'
 import testImg3 from '../../img/andriod-banner.jpg'
 import testImg4 from '../../img/ios-banner.jpg'
 import testImg5 from '../../img/machine-learning-banner-2.jpg'
