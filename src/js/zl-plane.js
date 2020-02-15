@@ -54,12 +54,13 @@ console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
 	            }, 1866.7);
 	        }, 600);
 	    // });
-	    // 关闭弹窗
+	    // 关闭弹窗返回首页
 	    $("#wind .send").tap(function(){
 				// rjBanner.stop();
-				console.log('卓伦');
-				rjBanner.backToBanner();
-				$("#zl-form-page").fadeOut(200);
+				// console.log('卓伦');
+				// rjBanner.backToBanner();
+				// $("#zl-form-page").fadeOut(200);
+				window.location.reload()
 	    });
  }
  export default zlPlane;
