@@ -401,9 +401,9 @@ $("#wf-commit").on('click', function () {
                 //     checkFront: info1[9].value.trim(), // 前端动态生成的验证码
                 //     checkBack: info1[9].value.trim() // 用户填写的验证码 */
                 // }
-                textTip('提交成功', 1000, function () {
-                    //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
-                });
+                // textTip('提交成功', 1000, function () {
+                //     //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+                // });
                 commitCount++
                 //console.log(formData)
                 //在这里提交，小飞机 
