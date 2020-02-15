@@ -362,10 +362,10 @@ let rjBanner = {
     // $('#zl-detail-pages').fadeIn();
   },
   // 返回轮播图界面
-  backToBanner() {
+  backToBanner(callBack1, callBack2) {
     //从轮播图进去详情页要重置1，这样再从详情页返回到轮播图之后，再从轮播图进到详情页逻辑才不会乱
     mqFunc();
-    this.isInDetailPage = false;
+    if(this.isInDetailPage) this.isInDetailPage = false;
     $('body').append(this.createHtml("#4e4b4a"));
     let $curtainUp = $('#rj-curtain-up');
     let $curtainDown = $('#rj-curtain-down');
@@ -377,6 +377,7 @@ let rjBanner = {
       easing: 'cubic-bezier(.57, .02, .1, .99)',
       complete: () => {
         // $detailPages.eq(this.watchPageIndex).removeClass('cf-blur-out cf-blur-in');
+        callBack1 && callBack1();
         $detailPages.removeClass('rj-detail-page-out cf-blur-out cf-blur-in');
         setTimeout(() => {
           $banner.css('visibility','');
@@ -388,6 +389,7 @@ let rjBanner = {
               duration: 700,
               easing: 'cubic-bezier(.57, .02, .1, .99)',
               complete: () => {
+                callBack2 && callBack2();
                 $('.rj-curtain-container').remove();
               }
             });
@@ -418,7 +420,7 @@ let rjBanner = {
         // });
       }
     })
-    rjBanner.start();
+    rjBanner.isStopping && rjBanner.start();
 
     // $banner.removeClass('rj-banner-out').addClass('rj-banner-in').animate({
     // }, {

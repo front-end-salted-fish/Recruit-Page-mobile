@@ -428,7 +428,7 @@ export let closeForm  = function () {
     $('#rj-steps-container').removeClass('rj-form-page2');
     $rjCircle.removeClass("rj-circle-openning");
     $('#wf-form').removeClass('rj-openning');
-    if(!rjBanner.isInDetailPage) rjBanner.start();
+    if(!rjBanner.isInDetailPage && rjBanner.isStopping) rjBanner.start();
     // 排他
     $("#zl-detail-pages").removeClass("rj-detail-out");
     $("#zl-form-page").removeClass("rj-form-in");
