@@ -334,7 +334,7 @@ function check() {
         return false;
     } else if (inputCode != code) {
         // alert("验证码输入错误,请重新输入！");
-        $field.find(".rj-field-tip").text("验证码输入错误,请重新输入！");
+        $field.find(".rj-field-tip").text("看清楚点噢！");
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         createCode(); //刷新验证码  
         document.getElementById("ctl00_txtcode").value = ""; //清空文本框
