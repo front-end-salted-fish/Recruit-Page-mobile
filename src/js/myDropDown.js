@@ -8,6 +8,7 @@ class DropDown {
     this.id = selector.attr('id'); // id
     this.zIndex = 100;
     this.selectedKey = '';
+    this.onfocus = false; // 判断是否聚焦
   }
 
 
@@ -17,7 +18,7 @@ class DropDown {
       height: '40px'
     });
     let $select = $(`
-      <div class="rj-dropDown-container dropUp" id="${this.id}" style="z-index:${this.zIndex + 1};">
+      <div class="rj-dropDown-container dropUp" tabindex="-1" id="${this.id}" style="z-index:${this.zIndex + 1};">
         <div style="z-index:${this.zIndex + 1};" class="rj-dropDown-selected-contianer">
           <span class="rj-dropDown-selected" style="z-index:${this.zIndex + 1};">${this.options.eq(0).text()}</span>
           <img src="${iconDown}" class="rj-icon-down" style="z-index:${this.zIndex + 1};"/>
@@ -47,6 +48,7 @@ class DropDown {
 
     // 收起
     this.dropUp = () => {
+      this.onfocus = false;
       this.selectedContainer.removeClass('dropDownClose').addClass('dropDownOpen');
       this.options.forEach((item, index) => {
         $(item).css({
@@ -60,6 +62,7 @@ class DropDown {
 
     // 点击下拉
     this.dropDown = () => {
+      this.onfocus = true;
       this.selectedContainer.removeClass('dropDownOpen').addClass('dropDownClose');
       let isUp = this.selector.hasClass('dropUp');
       if(!isUp) {
@@ -84,6 +87,11 @@ class DropDown {
     }
 
     this.selected.on('click',this.dropDown);
+    this.selector.on('blur',()=>{
+      if(this.onfocus) {
+        this.dropUp();
+      }
+    })
     this.options.on('click', this.select);
 
   }
