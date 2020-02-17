@@ -42,14 +42,14 @@ $(window).resize(function () {
         软键盘弹出
         50是设置的阈值，用来排除其他影响窗体大小变化的因素，比如有的浏览器的工具栏的显示和隐藏
         */
-        console.log(document.activeElement.id, 'resize');
+        // console.log(document.activeElement.id, 'resize');
         $wfForm.scrollTop($(document.activeElement).offset().top + $wfForm.scrollTop() - 4 * rem);
-        $('body').css('height', winHeight + 'px');
+        // $('body').css('height', winHeight + 'px');
     } else {
         /*
         软键盘关闭
         */
-        $('body').css('height', '100%');
+        // $('body').css('height', '100%');
     }
 });//监听resize ( Android）
 //------------------------------------------------------------------关注focus
@@ -115,8 +115,6 @@ $('#zl-form-page').click(function() {
 // });
 //******************************************* 验证(在html中设置好了maxlength)
 $(".rj-form-input").on("focus", function (e) {
-    console.log(e.target.id, 'focus');
-    
     let $field = $(this.parentNode);
     // console.log($field);
     if ($field[0].className === 'rj-field') {
@@ -126,6 +124,10 @@ $(".rj-form-input").on("focus", function (e) {
     let $field = $(this.parentNode);
     if(!$(this).val()) {
         $field.removeClass('rj-field-ready rj-field-valid rj-field-error');
+    }
+    // ios微信软键盘的bug解决
+    if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+        window.scroll(0,0);
     }
 })
 let $wfName = $("#wf-name");        // 输入名字的input框
@@ -431,7 +433,7 @@ export let closeForm  = function () {
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
     $('#rj-steps-container').removeClass('rj-form-page2');
     $rjCircle.removeClass("rj-circle-openning");
-    $('#wf-form').removeClass('rj-openning');
+    $('#wf-form').removeClass('rj-openning').scrollTop(0);
     if(!rjBanner.isInDetailPage && rjBanner.isStopping) rjBanner.start();
     // 排他
     $("#zl-detail-pages").removeClass("rj-detail-out");
@@ -456,6 +458,7 @@ export let closeForm  = function () {
     })
     // $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
     // $('#wf-form').fadeOut(1000);
+    $('#rj-form-header').removeClass('rj-form-header-show');
 }
 // 回到详情页
 $('.wf-close').on("click",closeForm);
