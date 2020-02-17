@@ -7,7 +7,6 @@
         })
     }
 })();
-
 // rem适配
 !(function () {
     var styleNode = document.createElement('style');

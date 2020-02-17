@@ -2,10 +2,9 @@ import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
 import { academy, direction } from './myDropDown'
-
+import tvHeader from '../../img/tv-header.png'
 console.log(academy.selectedKey);  // 学院
 console.log(direction.selectedKey); // 发展方向
-
 
 // 初始化表单数据,用于发给后台的表单数据
 let formData = {
@@ -34,6 +33,7 @@ let formData = {
     　　$('body').height($('body')[0].clientHeight);
     });//解决软键盘覆盖的问题Android---》不知道行不行哈 */
 var winHeight = $(window).height(); //获取当前页面高度  
+let $wfForm = $('#wf-form');
 $(window).resize(function () {
     //当窗体大小变化时
     var thisHeight = $(this).height();  //窗体变化后的高度
@@ -42,6 +42,8 @@ $(window).resize(function () {
         软键盘弹出
         50是设置的阈值，用来排除其他影响窗体大小变化的因素，比如有的浏览器的工具栏的显示和隐藏
         */
+        console.log(document.activeElement.id, 'resize');
+        $wfForm.scrollTop($(document.activeElement).offset().top + $wfForm.scrollTop() - 4 * rem);
         $('body').css('height', winHeight + 'px');
     } else {
         /*
@@ -52,14 +54,14 @@ $(window).resize(function () {
 });//监听resize ( Android）
 //------------------------------------------------------------------关注focus
 $('#zl-form-page input,#zl-form-page textarea').on('click', function (e) {
-    fixedForm()
-    e.preventDefault();
-    e.stopPropagation();
+    // fixedForm()
+    // e.preventDefault();
+    // e.stopPropagation();
 });
 
 $('#zl-form-page input,#zl-form-page textarea').on('focusout', function () {
     //失去焦点时让解除固定定位
-    relieveFixed()
+    // relieveFixed()
 });
 $('.getmypart').on('tap', function () {
     $('#wf-form').animate({ transform: 'translate(0,0)' }, 800, 'liner');
@@ -86,33 +88,35 @@ function relieveFixed() {
 // 下拉框
 let $select = $('.second-part-form .form-control')
 $select.click(function (e) {
-    fixedForm()
-    e.preventDefault();
-    e.stopPropagation();
+    // fixedForm()
+    // e.preventDefault();
+    // e.stopPropagation();
 })
 //下拉框的值发生改变时，
 $select.on('change', function () {
-    relieveFixed()
+    // relieveFixed()
 })
 // 整个表单页面
 $('#zl-form-page').click(function() {
-    relieveFixed()
+    // relieveFixed()
 })
 //上一页下一页----------------------------------------
-$("#next-page button").on('tap', function () {
-    $("#rj-steps-container").addClass("rj-form-page2");
-    $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
-    $('.first-part').animate({ transform: 'translate(-16rem)' }, 300, 'linear');
-});
-$(".last-page").on('tap', function () {
-    $("#rj-steps-container").removeClass("rj-form-page2");
-    $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
-    $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
-    // $('.second-part').css({display: 'none'})
-    // $('.first-part').css({display: 'block'})
-});
+// $("#next-page button").on('tap', function () {
+//     $("#rj-steps-container").addClass("rj-form-page2");
+//     $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
+//     $('.first-part').animate({ transform: 'translate(-16rem)' }, 300, 'linear');
+// });
+// $(".last-page").on('tap', function () {
+//     $("#rj-steps-container").removeClass("rj-form-page2");
+//     $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
+//     $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
+//     // $('.second-part').css({display: 'none'})
+//     // $('.first-part').css({display: 'block'})
+// });
 //******************************************* 验证(在html中设置好了maxlength)
-$(".rj-form-input").on("focus", function () {
+$(".rj-form-input").on("focus", function (e) {
+    console.log(e.target.id, 'focus');
+    
     let $field = $(this.parentNode);
     // console.log($field);
     if ($field[0].className === 'rj-field') {
@@ -440,7 +444,7 @@ export let closeForm  = function () {
     $('#wind').css({
         display: 'none'
     })
-    $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
+    // $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
     // $('#wf-form').fadeOut(1000);
 }
 // 回到详情页
@@ -491,6 +495,39 @@ class textCounter {
     selector: $('#wf-cog'),
     maxLen: 100
 })).init();
+
+// 打开表单的时候获取
+let wfForm = document.getElementById('wf-form');
+let imgWidth = $(window).width() - 50;
+let $header = $('#rj-form-header');
+let $wfClose = $('.wf-close');
+let rem = document.documentElement.clientWidth / 16;
+$wfForm.on('scroll', function () {
+    let scrollTop = $wfForm.scrollTop();
+    if(imgWidth < scrollTop) {
+        if(!$header.hasClass('rj-form-header-show')) $header.addClass('rj-form-header-show');
+        if(!$wfClose.hasClass('__change')) $wfClose.addClass('__change');
+        $('#rj-form-progress-bar').css('transform', `scaleX(${scrollTop / (wfForm.scrollHeight - wfForm.clientHeight)})`)
+    } else {
+        $wfClose.removeClass('__change');
+        $header.removeClass('rj-form-header-show');
+    }
+});
+
+// 安卓表单空间聚焦自动滚动到合适位置
+if (/Android/.test(navigator.appVersion)) {
+    $('.rj-form-input').on('focus', function (e) {
+        $wfForm.scrollTop($(e.target).offset().top + $wfForm.scrollTop() - 4 * rem);
+    });
+}
+// 聚焦校准
+$wfForm.on('tap',function(t){
+    if($(t.target).hasClass('rj-form-input'))
+    $(t.target).focus();
+})
+
+// 表单图片
+$('#rj-tv-header').attr('src', tvHeader)
 
 /**
  * 文本框根据输入内容自适应高度
