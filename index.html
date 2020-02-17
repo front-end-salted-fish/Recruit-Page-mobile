@@ -321,8 +321,15 @@
     <!-- 表单界面 -->
     <div id="zl-wrap-form" style="height:100%;width:100%;overflow: hidden;">
         <div id="zl-form-page" class="zl-com-height" style="display: none;" scroll="no" >
-            <div id="wf-form" scroll="no">
-                <div id="rj-steps-container">
+            <div id="wf-form">
+                <div id="rj-form-header">
+                    <!-- <div id="rj-form-header-title">TopView Studio</div> -->
+                    <img id="rj-tv-header" src="" alt="">
+                    <!-- <span class="rj-part-1-title">个人信息</span> -->
+                    <!-- <span class="rj-part-2-title">你的想法</span> -->
+                    <div id="rj-form-progress-bar"></div>
+                </div>
+                <div id="rj-steps-container" style="display: none;">
                     <!-- <img src="" alt="" id="rj-form-top"> -->
                     <div class="rj-step-title-container">
                         <div class="rj-step-title rj-step-1-title">个人信息</div>
@@ -337,9 +344,22 @@
                     </div>
                 </div>
             <!-- </div> -->
+                <div id="rj-form-top-image-container">
+                    <div id="rj-form-placeholder-div"></div>
+                    <img id="rj-form-top-image" src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/d4ebafd3a89d4e8d872ed0f5373d95b81581865917258/form-top.jpg" alt="">
+                </div>
                 <div class="first-part">
                     <div class="center">
                         <!-- <p class="wf-title">个人信息</p>此处应有美化 -->
+                        <div class="rj-form-title-container">
+                            <!-- <span class="rj-part">Part Ⅰ</span> -->
+                            <span class="rj-part-title">个人信息</span>
+                            <div class="rj-part-line"></div>
+                            <!-- <span class="rj-part-right-line rj-part-line"></span> -->
+                            <span class="rj-part-title-en">PERSONAL INFORMATION</span>
+                            <!-- <span class="rj-part-title-en">Personal information</span> -->
+                            <!-- Ⅱ -->
+                        </div>
                         <form class="first-part-form navbar-form form-horizontal" role="form">
                             <div class="rj-field">
                                 <input id='wf-name' name="name" type="text" class="rj-form-input" maxlength="10">
@@ -486,12 +506,17 @@
                             </p> -->
     
                         </form>
-                        <div class="tn" id="next-page"><button type="button" class="btn btn-default navbar-btn">下一页</button>
-                        </div>
+                        <!-- <div class="tn" id="next-page"><button type="button" class="btn btn-default navbar-btn">下一页</button>
+                        </div> -->
                         <!-- 把button用div包住，改变div的text-align使button不受first-part-form 的left控制 -->
                     </div>
                 </div>
                 <div class="second-part">
+                    <div class="rj-form-title-container">
+                        <span class="rj-part-title">你的想法</span>
+                        <div class="rj-part-line"></div>
+                        <span class="rj-part-title-en">YOUR THOUGHTS</span>
+                    </div>
                     <form class="second-part-form" role="form">
                         <div class="rj-field">
                             <div class="rj-field-placeholder need" id="direction">发展方向</div>
@@ -530,7 +555,7 @@
                             </div>
                             <div class="rj-field-icon rj-icon-valid"></div>
                             <div class="rj-field-icon rj-icon-error"></div>
-                            <div class="rj-field-tip">总得吹点水吧<img class="wangchai" src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png"></div>
+                            <div class="rj-field-tip">总得吹点水吧 <img class="wangchai" src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png"></div>
                         </div>
                         <div class="rj-field" id="rj-code-field">
                             <input type="text" name="code" id="ctl00_txtcode" class="rj-form-input">
@@ -548,12 +573,15 @@
                         </div>
                     </form>
                     <div class="btn-groups">
-                        <button class="last-page btn">上一页</button>
+                        <!-- <button class="last-page btn">上一页</button> -->
                         <button id="wf-commit" class="btn btn-success">提 交</button>
                     </div>
                 </div>
-                <button type="button" class="wf-close" aria-label="Close"><span aria-hidden="true">&nbsp;&times;&nbsp;
-                    </span></button>
+                <button type="button" class="wf-close" aria-label="Close">
+                    <!-- span aria-hidden="true">&nbsp;&times;&nbsp;
+                    </span> -->
+                    <i class="iconfont">&#xe63f;</i>
+                </button>
             </div>
             <div id="wind">
                 <div id="plane" class="front">
