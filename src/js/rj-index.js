@@ -362,10 +362,10 @@ let rjBanner = {
     // $('#zl-detail-pages').fadeIn();
   },
   // 返回轮播图界面
-  backToBanner() {
+  backToBanner(callBack1, callBack2) {
     //从轮播图进去详情页要重置1，这样再从详情页返回到轮播图之后，再从轮播图进到详情页逻辑才不会乱
     mqFunc();
-    this.isInDetailPage = false;
+    if(this.isInDetailPage) this.isInDetailPage = false;
     $('body').append(this.createHtml("#4e4b4a"));
     let $curtainUp = $('#rj-curtain-up');
     let $curtainDown = $('#rj-curtain-down');
@@ -377,6 +377,7 @@ let rjBanner = {
       easing: 'cubic-bezier(.57, .02, .1, .99)',
       complete: () => {
         // $detailPages.eq(this.watchPageIndex).removeClass('cf-blur-out cf-blur-in');
+        callBack1 && callBack1();
         $detailPages.removeClass('rj-detail-page-out cf-blur-out cf-blur-in');
         setTimeout(() => {
           $banner.css('visibility','');
@@ -388,6 +389,7 @@ let rjBanner = {
               duration: 700,
               easing: 'cubic-bezier(.57, .02, .1, .99)',
               complete: () => {
+                callBack2 && callBack2();
                 $('.rj-curtain-container').remove();
               }
             });
@@ -418,7 +420,7 @@ let rjBanner = {
         // });
       }
     })
-    rjBanner.start();
+    rjBanner.isStopping && rjBanner.start();
 
     // $banner.removeClass('rj-banner-out').addClass('rj-banner-in').animate({
     // }, {
@@ -446,17 +448,17 @@ let rjBanner = {
     $rjCircle.css({
       top: e.clientY
     }).addClass('rj-circle-openning'); // 圆点放大
-    $formPage.fadeIn();
-    $('#wf-form').addClass('rj-openning');
-    $('.first-part').attr("style", '').scrollTop(0);
-    $('.second-part').animate({
-      transform: 'translate(16rem)'
-    }, 800, 'linear');
+    $formPage.fadeIn(0);
+    $('#wf-form').addClass('rj-openning').scrollTop(0);
+    // $('.first-part').attr("style", '').scrollTop(0);
+    // $('.second-part').animate({
+    //   transform: 'translate(16rem)'
+    // }, 800, 'linear');
   },
   createHtml(color) { 
     return `
     <div id="rj-curtain-up-container" class="rj-curtain-container" style="height: 50%;width: 100vw;z-index: 999;background: transparent;position: absolute;top: 0;left: 0; overflow:hidden;">
-      <div id="rj-curtain-up" style="background: ${color};height: 100%;width: 100%;position: absolute;top:0;left:0;transform: translate3d(0, 100%, 0);">></div>
+      <div id="rj-curtain-up" style="background: ${color};height: 100%;width: 100%;position: absolute;top:0;left:0;transform: translate3d(0, 100%, 0);"></div>
     </div>
     <div id="rj-curtain-down-container" class="rj-curtain-container" style="height: 50%;width: 100vw;z-index: 999;background: transparent;position: absolute;bottom: 0;left: 0;overflow:hidden;">
       <div id="rj-curtain-down" style="background: ${color};height: 100%;width: 100%;position: absolute;bottom:0;left:0;transform: translate3d(0, -100%, 0);"></div>
@@ -476,7 +478,7 @@ $rjBackBtn.on('touchstart', function () {
 })
 
 // 调试用
-window.rjBanner = rjBanner;
+// window.rjBanner = rjBanner;
 // window.$banner = $banner;
 // window.$whiteCur = $whiteCur;
 
@@ -546,3 +548,32 @@ let $joinBtn = $('#rj-join-btn');
 $joinBtn.on('click', rjBanner.openForm);
 
 export default rjBanner;
+
+// 安卓表单聚焦滚动
+// if (/Android [4-6]/.test(navigator.appVersion)) {
+//   window.addEventListener('resize', function () {
+//     if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+//       window.setTimeout(function () {
+//         document.activeElement.scrollIntoView(true)
+//         //  document.activeElement.scrollIntoViewIfNeeded()
+//        }, 0)
+//      }
+//   })
+// }
+
+// document.addEventListener('tap',function(){
+//   console.log($('#wf-form').height());
+//   console.log($('.first-part').height());
+// })
+
+// var u = navigator.userAgent;
+// if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
+//     //  拿到获取焦点的input
+//     let input = document.querySelector('input')
+//     input.addEventListener('focus', function () {
+//         setInterval(function () {
+//             // 核心
+//             input.scrollIntoView(false);
+//         }, 200)
+//     })
+// }

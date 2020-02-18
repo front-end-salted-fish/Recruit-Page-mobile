@@ -1,7 +1,16 @@
 @font-face {
     font-family: gabrielastencil;
     src: url(../fonts/gabrielastencil-light.woff2);
-  }
+}
+@font-face {
+    font-family: 'iconfont';  /* project id 1613212 */
+    src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot');
+    src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.svg#iconfont') format('svg');
+}
 .zl-com-height {
     //display: none;
     position: absolute;
@@ -12,8 +21,8 @@
     width: 16rem;
 }
 
-@loadingAnmFontSize: 9vw;
-@loadingSpanHeight: 7.5vw;
+@loadingAnmFontSize: 9 * 0.16rem;
+@loadingSpanHeight: 7.5 * 0.16rem;
 #loading-module {
     // display: none;
     //z-index: 100;
@@ -431,6 +440,7 @@
         transform: translateX(-50%);
         z-index: 3;
         .btn {
+            font-size: .6rem;
             width: 6rem;
             color:white;
             background: none;
@@ -459,12 +469,12 @@
     .cf-menu {
         position: absolute;
         z-index: 4;
-        width: 2.65rem;
+        width: 9vh;
         input {
             display: none;
         }
         svg {
-            width: 2.65rem;
+            width: 9vh;
         }
         path {
             fill: none;
@@ -1127,7 +1137,7 @@
         // border-radius: 6rem;
         color: white;
         width: 6rem;
-        font-size: 18px;
+        font-size: .77rem;
         font-weight: bolder !important;
         letter-spacing: 2px;
     }

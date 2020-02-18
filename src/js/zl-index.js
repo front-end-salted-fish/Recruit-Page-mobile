@@ -10,8 +10,6 @@ $(function() {
     let $joinBtn = $('.zl-join .btn');
     let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
     $joinBtn.tap(function(e) {
-        console.log(e
-            );
         
         let $formPage = $('#zl-form-page');
         $rjCircle.css({
@@ -19,7 +17,7 @@ $(function() {
         }).addClass('rj-circle-openning');   // 圆点放大
         $formPage.fadeIn();
             // 排他
-        $('#wf-form').addClass('rj-openning');
+        $('#wf-form').addClass('rj-openning').scrollTop(0);
         $formPage.animate({
         }, {
             duration: 1,
@@ -34,6 +32,6 @@ $(function() {
             display: 'none'
         })
         $('.first-part').attr("style",'').scrollTop(0);
-        $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
+        // $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
     });
 })

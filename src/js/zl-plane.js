@@ -54,12 +54,22 @@ console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
 	            }, 1866.7);
 	        }, 600);
 	    // });
-	    // 关闭弹窗
-	    $("#wind .send").tap(function(){
+	    // 关闭弹窗返回首页
+	
+	    $("#wind .send").on('click',function(){
 				// rjBanner.stop();
-				console.log('卓伦');
-				rjBanner.backToBanner();
-				$("#zl-form-page").fadeOut(200);
+				// console.log('卓伦');
+				// $('#wf-form').fadeIn();
+				// if(rjBanner.isInDetailPage) {
+				// 	rjBanner.backToBanner(()=>{
+				// 		$('.rj-menu-overlay_circle').css('display', 'none');
+				// 		closeForm();
+				// 	},()=>{
+				// 		$('.rj-menu-overlay_circle').css('display', '');
+				// 	});
+				// }
+				// else closeForm();
+				window.location.reload()
 	    });
  }
  export default zlPlane;

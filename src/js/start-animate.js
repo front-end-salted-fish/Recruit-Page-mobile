@@ -13,7 +13,7 @@ import rjBanner from '../js/rj-index'
                 $('#loading-module').hide();
             });
             rjBanner.start();
-            $('#rj-img-pre-load').remove();
+            // $('#rj-img-pre-load').remove();
             $('body').css('background-color','#1d1d1d');
         }
     }
