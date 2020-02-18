@@ -2,6 +2,9 @@
 import $ from 'zepto'
 import 'zepto/src/touch'
 import rjBanner from './rj-index'
+import { closeForm } from './form'
+console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
+ 
  let zlPlane = () => {
 	 console.log(1)
 	let $wind = $('#wind');
