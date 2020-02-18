@@ -458,7 +458,7 @@ let rjBanner = {
   createHtml(color) { 
     return `
     <div id="rj-curtain-up-container" class="rj-curtain-container" style="height: 50%;width: 100vw;z-index: 999;background: transparent;position: absolute;top: 0;left: 0; overflow:hidden;">
-      <div id="rj-curtain-up" style="background: ${color};height: 100%;width: 100%;position: absolute;top:0;left:0;transform: translate3d(0, 100%, 0);">></div>
+      <div id="rj-curtain-up" style="background: ${color};height: 100%;width: 100%;position: absolute;top:0;left:0;transform: translate3d(0, 100%, 0);"></div>
     </div>
     <div id="rj-curtain-down-container" class="rj-curtain-container" style="height: 50%;width: 100vw;z-index: 999;background: transparent;position: absolute;bottom: 0;left: 0;overflow:hidden;">
       <div id="rj-curtain-down" style="background: ${color};height: 100%;width: 100%;position: absolute;bottom:0;left:0;transform: translate3d(0, -100%, 0);"></div>

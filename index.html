@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TopView工作室</title>
+    <script>
+        var docEl = document.documentElement;
+        var width = docEl.getBoundingClientRect().width;
+        var rem = width / 16;
+        rem = parseFloat(rem.toFixed(3));
+        docEl.style.fontSize = rem + 'px';
+
+        var realitySize = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
+        if (rem !== realitySize) {
+        rem = rem * rem / realitySize;
+        docEl.style.fontSize = rem + 'px';
+        }
+    </script>
 </head>
 
 
@@ -612,11 +625,11 @@
     </div>
     <!-- 提前加载图片后删除 -->
     <div id="rj-img-pre-load" style="display:none ">
-        <img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/e70fa300f6a14a3f9e22456b546c5d0f1581764421458/front-end-banner.jpg">
-        <img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/6c1f1a76b9cb4af08fd2aebba06c7a361581770295650/backstage.png">
-        <img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/1ab1e4687190487290d0d177d73300871581770367403/andriod-banner.jpg">
-        <img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/5727f3066fbe40279f5e23b09fa82df91581770418754/ios-banner.jpg">
-        <img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/02674cf25478490b8aaf0406612005fd1581770447407/machine-learning-banner-2.jpg">
+        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/e70fa300f6a14a3f9e22456b546c5d0f1581764421458/front-end-banner.jpg">
+        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/6c1f1a76b9cb4af08fd2aebba06c7a361581770295650/backstage.png">
+        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/1ab1e4687190487290d0d177d73300871581770367403/andriod-banner.jpg">
+        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/5727f3066fbe40279f5e23b09fa82df91581770418754/ios-banner.jpg">
+        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/02674cf25478490b8aaf0406612005fd1581770447407/machine-learning-banner-2.jpg">
     </div>
 </body>
 </html>
