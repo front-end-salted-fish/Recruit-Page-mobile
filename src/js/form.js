@@ -532,6 +532,7 @@ if (/Android/.test(navigator.appVersion)) {
     $('.rj-form-input').on('focus', function (e) {
         $wfForm.scrollTop($(e.target).offset().top + $wfForm.scrollTop() - 4 * rem);
     });
+    $('#mq-production').css('font-weight', 'lighter');
 }
 // 聚焦校准
 $wfForm.on('tap',function(t){
