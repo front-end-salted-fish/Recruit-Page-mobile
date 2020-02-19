@@ -219,7 +219,6 @@ let rjBanner = {
     this.pagesPosClassArr.unshift(this.pagesPosClassArr.pop());
     this.setPosClass();
     this.setBtns();
-    // console.log('跳转到下一页：', this.nowPageIndex);
   },
   // 上一页
   prePage(nextPageIndex) {
@@ -233,7 +232,6 @@ let rjBanner = {
     this.pagesPosClassArr.push(this.pagesPosClassArr.shift());
     this.setPosClass();
     this.setBtns();
-    // console.log('跳转到上一页：', this.nowPageIndex);
   },
   // 开始轮播图
   start() {

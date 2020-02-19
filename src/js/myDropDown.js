@@ -45,14 +45,13 @@ class DropDown {
     this.selected = this.selector.find('.rj-dropDown-selected'); // span
     this.selectedContainer = this.selected.parent();
 
-
     // 收起
     this.dropUp = () => {
       this.onfocus = false;
       this.selectedContainer.removeClass('dropDownClose').addClass('dropDownOpen');
       this.options.forEach((item, index) => {
         $(item).css({
-          'transform': `translateY(0px)`
+          'transform': `translate3d(0px,0px,0px)`
         });
       })
       this.selector.css({
@@ -71,7 +70,7 @@ class DropDown {
       }
       this.options.forEach((item, index) => {
         $(item).css({
-          'transform': `translateY(${isUp ? 40 * (index + 1) : 0}px)`
+          'transform': `translate3d(0px,${isUp ? 40 * (index + 1) : 0}px,0px)`
         })
       })
       this.selector.css({
@@ -101,3 +100,36 @@ export let academy = new DropDown($('#academy-select'));
 export let direction = new DropDown($('#direction-select'));
 academy.init();
 direction.init();
+
+
+// // if( 'mixBlendMode' in document.documentElement.style){
+// //   // return true;
+// //   alert('yes');
+// // }else{
+// //   // return false;
+// //   alert('no');
+// // }
+// var support_css3 = (function() {
+//   var div = document.createElement('div'),
+//    vendors = 'Ms O Moz Webkit'.split(' '),
+//    len = vendors.length;
+   
+//   return function(prop) {
+//    if ( prop in div.style ) return true;
+   
+//    prop = prop.replace(/^[a-z]/, function(val) {
+//     return val.toUpperCase();
+//    });
+   
+//    while(len--) {
+//     if ( vendors[len] + prop in div.style ) {
+//     return true;
+//     } 
+//    }
+//    return false;
+//   };
+//  })();
+//  if(support_css3('mixBlendMode')) {
+//    alert('yes');
+//  }
+ $('.rj-fonts-container,.rj-c-txt,.rj-e-txt').css('mix-blend-mode', 'difference');
