@@ -114,22 +114,40 @@ $('#zl-form-page').click(function() {
 //     // $('.first-part').css({display: 'block'})
 // });
 //******************************************* 验证(在html中设置好了maxlength)
+let fixbug = false;
 $(".rj-form-input").on("focus", function (e) {
     let $field = $(this.parentNode);
     // console.log($field);
     if ($field[0].className === 'rj-field') {
         $field.addClass("rj-field-ready");
     }
+
+    fixbug = false
 }).on('blur',function () {
     let $field = $(this.parentNode);
     if(!$(this).val()) {
         $field.removeClass('rj-field-ready rj-field-valid rj-field-error');
     }
+    fixbug = true
     // ios微信软键盘的bug解决
     if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
-        window.scroll(0,0);
+        setTimeout(function() {
+            if (fixbug) {
+                    window.scroll(0,0);
+            }
+        },100)
     }
 })
+if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+    $(document).click(function() {
+        if (fixbug) {
+            // ios微信软键盘的bug解决
+            window.scroll(0,0);
+            fixbug = false
+        }
+    })
+}
+
 let $wfName = $("#wf-name");        // 输入名字的input框
 $wfName.on("input", nameCheck);//1.名字
 function nameCheck() {
