@@ -907,8 +907,8 @@
 			width: 1.1rem;
 			position: absolute;
 			background: white;
-			border-radius: 50%;
-			transition: all .5s;
+			border-radius: .55rem;
+			// transition: all .5s;
 		}
 	}
 	.rj-boy {
@@ -920,7 +920,7 @@
 		}
 		background: #5fc7f2;
 		.rj-circle {
-			left: 1.8rem;
+			animation: rjBoy .5s ease-in-out forwards;
 		}
 	}
 	.rj-girl {
@@ -932,8 +932,43 @@
 		}
 		background: #ff7070;
 		.rj-circle {
-			left: .1rem;
+			animation: rjGirl .5s ease-in-out forwards;
+			// left: .1rem;
 		}
+	}
+}
+@keyframes rjBoy {
+	0% {
+		width: 1.1rem;
+		left: .1rem;
+		border-radius: .55rem;
+	}
+	50% {
+		width: 2.8rem;
+		left: .1rem;
+		border-radius: 1.4rem;
+	}
+	100% {
+		width: 1.1rem;
+		border-radius: .55rem;
+		left: 1.8rem;
+	}
+}
+@keyframes rjGirl {
+	0% {
+		width: 1.1rem;
+		border-radius: .55rem;
+		left: 1.8rem;
+	}
+	50% {
+		width: 2.8rem;
+		left: .1rem;
+		border-radius: 1.4rem;
+	}
+	100% {
+		width: 1.1rem;
+		left: .1rem;
+		border-radius: .55rem;
 	}
 }
 .rj-openning {

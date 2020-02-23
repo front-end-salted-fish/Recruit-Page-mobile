@@ -467,6 +467,8 @@ export let closeForm  = function () {
     // $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
     // $('#wf-form').fadeOut(1000);
     $('#rj-form-header').removeClass('rj-form-header-show');
+    $(document.activeElement).blur();
+
 }
 // 回到详情页
 $('.wf-close').on("click",closeForm);
@@ -537,14 +539,16 @@ $wfForm.on('scroll', function () {
 
 // 安卓表单空间聚焦自动滚动到合适位置
 if (/Android/.test(navigator.appVersion)) {
-    $('.rj-form-input').on('focus', function (e) {
-        $wfForm.scrollTop($(e.target).offset().top + $wfForm.scrollTop() - 4 * rem);
-    });
+    // $('.rj-form-input').on('focus', function (e) {
+        // $wfForm.scrollTop($(e.target).offset().top + $wfForm.scrollTop() - 4 * rem);
+    // });
+    $('#mq-production').css('font-weight', 'lighter');
 }
 // 聚焦校准
 $wfForm.on('tap',function(t){
-    if($(t.target).hasClass('rj-form-input'))
-    $(t.target).focus();
+    if($(t.target).hasClass('rj-form-input')) {
+        $(t.target).focus(); 
+    }
 })
 
 // 表单图片

@@ -9,8 +9,8 @@ $(function() {
     // 点击按钮时给表单设置css display:none  ---2020/01/22
     let $joinBtn = $('.zl-join .btn');
     let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
-    $joinBtn.tap(function(e) {
-        
+    $joinBtn.on("click",function(e) {
+
         let $formPage = $('#zl-form-page');
         $rjCircle.css({
             'top': e.clientY + 'px'

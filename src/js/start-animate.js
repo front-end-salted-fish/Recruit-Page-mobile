@@ -14,7 +14,9 @@ import rjBanner from '../js/rj-index'
             });
             rjBanner.start();
             // $('#rj-img-pre-load').remove();
+            // FastClick.attach(document.body);
             $('body').css('background-color','#1d1d1d');
+            $('#rj-join-btn').css('mix-blend-mode', 'difference');
         }
     }
     // 开机动画结束
