@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode development",
-    "start": "webpack-dev-server --open --host 192.168.0.101"
+    "start": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "bootstrap": "^3.4.1",
     "fastclick": "^1.0.6",
     "g": "^2.0.1",
+    "html2canvas": "^1.0.0-rc.5",
     "spy-debugger": "^3.8.5",
     "url": "^0.11.0",
     "xss": "^1.0.6",

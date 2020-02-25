@@ -16,6 +16,7 @@ body{
     transition: all 2s linear; */
 }
 #wind{
+    /* background: black !important; */
     position: absolute;
     top: 0px;
     left: 0px;
@@ -136,7 +137,7 @@ body{
  
 #plane {
     z-index:3;
-    background: rgba(255, 255, 255, 0.15);
+    /* background: rgba(255, 255, 255, 0.15); */
     *background: hsl(0, 0%, 88%);
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
@@ -158,7 +159,7 @@ body{
     backface-visibility: hidden;
     width: 375px;
     height: 260px;
-    top: 240px;
+    /* top: 240px; */
  
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
@@ -393,17 +394,17 @@ body{
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    height: 140px;
+    height: 100px;
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-font-smoothing: subpixel-antialiased;
     -ms-font-smoothing: subpixel-antialiased;
     -o-font-smoothing: subpixel-antialiased;
-    font-size: 40px;
+    font-size: 36px;
     font-family: "Microsoft YaHei",Helvetica, Arial, Verdana;
-    line-height: 20px;
+    line-height: 18px;
 }
  
-.send {
+/* .send {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -424,7 +425,7 @@ body{
     font-family: "Microsoft YaHei";
     background-color: hsl(0, 0%, 94%);
     border-radius: (4px);
-}
+} */
 #plane_close{
     color: #FFF;
     text-decoration: none;
@@ -638,3 +639,5 @@ body{
     height: 260px; */
     transform: translateY(1.6rem) scaleY(.4);
 }
+
+
