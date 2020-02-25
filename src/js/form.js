@@ -116,7 +116,7 @@ $(".rj-form-input").on("focus", function () {
     }
 });
 let $wfName = $("#wf-name");        // 输入名字的input框
-$wfName.on("input", nameCheck);//1.名字
+$wfName.on("blur", nameCheck);//1.名字
 function nameCheck() {
     //let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
     let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
@@ -138,12 +138,12 @@ function nameCheck() {
     return true;
 }
 
-$(".rj-gender-select").on("tap", function () {
+$(".rj-gender-select").on("click", function () {
     $(this).toggleClass("rj-boy rj-girl");
 })
 
 let $wfId = $("#wf-id");
-$wfId.on("input", idCheck);//2.学号
+$wfId.on("blur", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
     let id = $wfId.val();
@@ -162,7 +162,7 @@ function idCheck() {
     return true;
 }
 let $wfGrade = $("#wf-grade");
-$wfGrade.on("input", gradeCheck);//3.年级专业
+$wfGrade.on("blur", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $wfGrade.val();
     let $field = $wfGrade.parent(".rj-field");
@@ -181,7 +181,7 @@ function gradeCheck() {
     return true;
 }
 let $wfPhone = $("#wf-phone");
-$wfPhone.on("input", phoneCheck);//4.手机
+$wfPhone.on("blur", phoneCheck);//4.手机
 function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
     let phone = $wfPhone.val();
@@ -201,7 +201,7 @@ function phoneCheck() {
 }
 
 let $wfEmail = $("#wf-email");
-$wfEmail.on("input", emailCheck);//5.邮箱
+$wfEmail.on("blur", emailCheck);//5.邮箱
 function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     let email = $wfEmail.val();
@@ -220,7 +220,7 @@ function emailCheck() {
     return true;
 }
 let $wfIntro = $("#wf-intro");
-$wfIntro.on("input", introCheck);//6.自我介绍
+$wfIntro.on("blur", introCheck);//6.自我介绍
 function introCheck() {
     let intro = $wfIntro.val();
     let $field = $wfIntro.parent(".rj-field");
@@ -238,7 +238,7 @@ function introCheck() {
     return true;
 }
 let $wfSkills = $("#wf-skills");
-$wfSkills.on("input", skillsCheck);
+$wfSkills.on("blur", skillsCheck);
 function skillsCheck() {
     let skills = $wfSkills.val();
     let $field = $wfSkills.parent(".rj-field");
@@ -256,7 +256,7 @@ function skillsCheck() {
     return true;
 }
 let $wfCog = $("#wf-cog");
-$wfCog.on("input", cogCheck);
+$wfCog.on("blur", cogCheck);
 function cogCheck() {
     let cog = $wfCog.val();
     let $field = $wfCog.parent(".rj-field");
@@ -332,14 +332,15 @@ function textTip(str, t, callBack) {
     }
     setTimeout(function () {
         mytip.style.display = "none";
-        mytip.parentNode.removeChild(mytip);
+        //mytip.parentNode.removeChild(mytip);``````````
+        mytip.remove()
         if (callBack) { callBack(); }
     }, t);
 }
 
 let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
-$("#wf-commit").on('tap', function () {
+$("#wf-commit").on('click', function () {
     if (commitCount > 0) {
         textTip("请勿重复提交！", 1000)
     }
