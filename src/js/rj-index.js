@@ -1,9 +1,3 @@
-// import testImg1 from '../../img/front-end-banner.jpg'
-// import testImg2 from '../../img/backstage.png'
-// import testImg3 from '../../img/andriod-banner.jpg'
-// import testImg4 from '../../img/ios-banner.jpg'
-// import testImg5 from '../../img/machine-learning-banner-2.jpg'
-
 import 'zepto'
 import 'zepto/src/fx'
 import 'zepto/src/fx_methods'
@@ -35,7 +29,7 @@ let mqFunc = () => {
     })
 };
 let $banner = $("#rj-banner"); // 获取整个轮播页面
-let $bannerContainer = $("#rj-banner-container"); // 获取轮播图容器
+// let $bannerContainer = $("#rj-banner-container"); // 获取轮播图容器
 let $bannerPages = $(".rj-banner-page"); // 每个轮播页
 let $bannerImgs = $(".rj-banner-page img"); // 每个轮播页的图片
 let $bannerBtnUl = $("#rj-banner-btns"); // 按钮ul
@@ -44,10 +38,10 @@ let $nextBannerBtn = $("#rj-next"); // 下一页按钮
 let $preBannerBtn = $("#rj-prev"); // 上一页按钮
 let $fontsContainer = $('#rj-fonts-container'); // 文字存储框
 let $detailPages = $('#mq-production').children(); // 获取详情页
-let $whiteCur = $('#rj-white-curtain'); // 切换时的白色幕布
+// let $whiteCur = $('#rj-white-curtain'); // 切换时的白色幕布
 let $spans = $('#rj-3d-tv').find('span'); // 轮播图TopView 字样
 let $rjBackBtn = $('.zl-back-btn'); // 从详情页返回轮播图的按钮
-let $preLoad = $('#rj-img-pre-load img');
+// let $preLoad = $('#rj-img-pre-load img');
 
 // 翻页节流共享previous
 let previous = 0;
@@ -57,9 +51,9 @@ let previous = 0;
 let rjBanner = {
   nowPageIndex: 0, // 正在播放的轮播图的index值
   timer: undefined, // 轮播图控制器
-  bannerTotalTime: 4000, // 动画时间+阅读时间
-  bannerWatchTime: 2500, // 阅读时间
-  bannerMoveTime: 1500, // 动画时间
+  bannerTotalTime: 2700, // 动画时间+阅读时间
+  bannerWatchTime: 1400, // 阅读时间
+  bannerMoveTime: 1300, // 动画时间
   bannerTxtDelayTime: 20,
   hasStart: false,
   isStopping: true,
@@ -70,7 +64,6 @@ let rjBanner = {
   // 存放位置类名的数组
   pagesPosClassArr: ["rj-pre-page", "rj-mid-page", "rj-next-page"],
   // 存放图片链接的数组
-  // imgSrc: [testImg1, testImg2, testImg3, testImg4, testImg5, ],
   imgSrc:[
     "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/e70fa300f6a14a3f9e22456b546c5d0f1581764421458/front-end-banner.jpg",
     "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/6c1f1a76b9cb4af08fd2aebba06c7a361581770295650/backstage.png",
@@ -87,11 +80,6 @@ let rjBanner = {
   // 初始化函数
   init() {
     $bannerImgs.eq(1).attr('src', this.imgSrc[0]);
-    // $preLoad.forEach(function (item, index) {
-    //   $(item).attr('src', rjBanner.imgSrc[index]);
-    // });
-    // $bannerImgs[0].src = testImg3;
-    // $bannerImgs[0].src = testImg2;
     this.setPosClass();
   },
   // 位置class的重置
@@ -284,6 +272,7 @@ let rjBanner = {
   },
   // 点击进入详情页的函数
   toDetailPage(pageIndex) {
+    // 轮播图右滑
     mqFunc();
     this.isInDetailPage = true;
     this.watchPageIndex = pageIndex;
@@ -320,44 +309,8 @@ let rjBanner = {
             })
           },0);
         },0);
-        // $banner.hide(0, function () {
-        //   $curtainUp.animate({
-        //     transform: 'translate3d(0,-100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)',
-        //     complete: () => {
-        //       $('.rj-curtain-container').remove();
-        //     }
-        //   });
-        //   $curtainDown.animate({
-        //     transform: 'translate3d(0,100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)'
-        //   })
-        // });
       }
     })
-    // 轮播图右滑
-    // $banner.removeClass('rj-banner-in').addClass('rj-banner-out').animate({
-    // }, {
-    //   duration: 1,
-    //   easing: 'cubic-bezier(.5,.52,0,1)',
-    //   complete: () => { 
-    //     $banner.hide();
-    //   },
-    //   delay: 500
-    // });
-    // $detailPages.eq(this.watchPageIndex).addClass('cf-blur-in').siblings().addClass('cf-blur-out');
-    // // 幕布出现->消失
-    // $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', ()=>{
-    //   $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-out')
-    //           .find('div').addClass('rj-curtain-in-div-pre').removeClass('rj-curtain-out-div-pre');
-    //   this.canBack = true;
-    //   this.hasInitDeg = false;
-    // });
-    // $('#zl-detail-pages').fadeIn();
   },
   // 返回轮播图界面
   backToBanner(callBack1, callBack2) {
@@ -374,7 +327,6 @@ let rjBanner = {
       duration: 700,
       easing: 'cubic-bezier(.57, .02, .1, .99)',
       complete: () => {
-        // $detailPages.eq(this.watchPageIndex).removeClass('cf-blur-out cf-blur-in');
         callBack1 && callBack1();
         $detailPages.removeClass('rj-detail-page-out cf-blur-out cf-blur-in');
         setTimeout(() => {
@@ -399,45 +351,9 @@ let rjBanner = {
             })
           },0);
         },0);
-        // $banner.show(0, function () {
-        //   $curtainUp.animate({
-        //     transform: 'translate3d(0,-100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)',
-        //     complete: () => {
-        //       $('.rj-curtain-container').remove();
-        //     }
-        //   });
-        //   $curtainDown.animate({
-        //     transform: 'translate3d(0,100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)'
-        //   })
-        // });
       }
     })
     rjBanner.isStopping && rjBanner.start();
-
-    // $banner.removeClass('rj-banner-out').addClass('rj-banner-in').animate({
-    // }, {
-    //   duration: 1,
-    //   easing: 'cubic-bezier(.5,.52,0,1)',
-    //   complete: () => { 
-    //     $banner.show();
-    //   },
-    //   delay: 500
-    // });
-    // // 幕布出现->消失
-    // $whiteCur.addClass('rj-white-curtain-in').on('webkitAnimationEnd', ()=>{
-    //   $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-in')
-    //   .find('div').addClass('rj-curtain-out-div-pre').removeClass('rj-curtain-in-div-pre');
-    //   $detailPages.removeClass('rj-detail-page-out cf-blur-out cf-blur-in');
-    //   $banner.removeClass('rj-banner-in');
-    //   this.canBack = false;
-    // });
-    // this.start();
   },
   openForm(e) {
     rjBanner.stop();
@@ -448,10 +364,6 @@ let rjBanner = {
     }).addClass('rj-circle-openning'); // 圆点放大
     $formPage.fadeIn(0);
     $('#wf-form').addClass('rj-openning').scrollTop(0);
-    // $('.first-part').attr("style", '').scrollTop(0);
-    // $('.second-part').animate({
-    //   transform: 'translate(16rem)'
-    // }, 800, 'linear');
   },
   createHtml(color) { 
     return `
@@ -469,16 +381,8 @@ let rjBanner = {
 $rjBackBtn.on('touchstart', function () {
   $('.zl-up-promot img').show() // 显示详情页的上滑提示元素
   rjBanner.backToBanner();
-  // if(rjBanner.canBack) {
-  //   rjBanner.canBack = false;
-  //   rjBanner.backToBanner();
-  // }
 })
 
-// 调试用
-// window.rjBanner = rjBanner;
-// window.$banner = $banner;
-// window.$whiteCur = $whiteCur;
 
 // 轮播图初始化
 rjBanner.init();
@@ -542,36 +446,6 @@ $bannerPages.on('click', function () {
 })
 
 //  轮播图打开表单
-let $joinBtn = $('#rj-join-btn');
-$joinBtn.on('click', rjBanner.openForm);
+$('#rj-join-btn').on('click', rjBanner.openForm);
 
 export default rjBanner;
-
-// 安卓表单聚焦滚动
-// if (/Android [4-6]/.test(navigator.appVersion)) {
-//   window.addEventListener('resize', function () {
-//     if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
-//       window.setTimeout(function () {
-//         document.activeElement.scrollIntoView(true)
-//         //  document.activeElement.scrollIntoViewIfNeeded()
-//        }, 0)
-//      }
-//   })
-// }
-
-// document.addEventListener('tap',function(){
-//   console.log($('#wf-form').height());
-//   console.log($('.first-part').height());
-// })
-
-// var u = navigator.userAgent;
-// if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
-//     //  拿到获取焦点的input
-//     let input = document.querySelector('input')
-//     input.addEventListener('focus', function () {
-//         setInterval(function () {
-//             // 核心
-//             input.scrollIntoView(false);
-//         }, 200)
-//     })
-// }
