@@ -133,7 +133,7 @@ $(".rj-form-input").on("focus", function (e) {
     if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
         setTimeout(function() {
             if (fixbug) {
-                    window.scroll(0,0);
+                window.scroll(0,0);
             }
         },100)
     }
