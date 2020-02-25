@@ -9,6 +9,7 @@ class DropDown {
     this.zIndex = 100;
     this.selectedKey = '';
     this.onfocus = false; // 判断是否聚焦
+    this.isDown = false;  // 是否展开
   }
 
 
@@ -48,7 +49,8 @@ class DropDown {
     // 收起
     this.dropUp = () => {
       this.onfocus = false;
-      this.selectedContainer.removeClass('dropDownClose').addClass('dropDownOpen');
+      this.isDown = false;
+      this.selectedContainer.removeClass('dropDownOpen').addClass('dropDownClose');
       this.options.forEach((item, index) => {
         $(item).css({
           'transform': `translate3d(0px,0px,0px)`
@@ -61,16 +63,16 @@ class DropDown {
 
     // 点击下拉
     this.dropDown = () => {
-      this.onfocus = true;
-      this.selectedContainer.removeClass('dropDownOpen').addClass('dropDownClose');
-      let isUp = this.selector.hasClass('dropUp');
-      if(!isUp) {
+      if(this.isDown) {
         this.dropUp();
         return ;
       }
+      this.selectedContainer.removeClass('dropDownClose').addClass('dropDownOpen');
+      this.onfocus = true;
+      this.isDown = true;
       this.options.forEach((item, index) => {
         $(item).css({
-          'transform': `translate3d(0px,${isUp ? 40 * (index + 1) : 0}px,0px)`
+          'transform': `translate3d(0px,${40 * (index + 1)}px,0px)`
         })
       })
       this.selector.css({
@@ -85,10 +87,10 @@ class DropDown {
       this.dropUp();
     }
 
-    this.selected.on('click',this.dropDown);
-    this.selector.on('blur',()=>{
+    this.selector.on('click', ".rj-dropDown-selected", this.dropDown);
+    this.selector.on('blur',(e)=>{
       if(this.onfocus) {
-        this.dropUp();
+        this.dropUp(e);
       }
     })
     this.options.on('click', this.select);
