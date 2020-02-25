@@ -1,11 +1,16 @@
 import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
+import { academy, direction } from './myDropDown'
+import tvHeader from '../../img/tv-header.png'
+console.log(academy.selectedKey);  // 学院
+console.log(direction.selectedKey); // 发展方向
 
 // 初始化表单数据,用于发给后台的表单数据
 let formData = {
     username: '', // 姓名
     studentId: '', // 学号
+    academy: '', // 学院
     gradeProfessional: '', // 年级班级
     sex: '', // 性别-》默认男
     phone: '', // 手机号码
@@ -28,6 +33,7 @@ let formData = {
     　　$('body').height($('body')[0].clientHeight);
     });//解决软键盘覆盖的问题Android---》不知道行不行哈 */
 var winHeight = $(window).height(); //获取当前页面高度  
+let $wfForm = $('#wf-form');
 $(window).resize(function () {
     //当窗体大小变化时
     var thisHeight = $(this).height();  //窗体变化后的高度
@@ -36,24 +42,26 @@ $(window).resize(function () {
         软键盘弹出
         50是设置的阈值，用来排除其他影响窗体大小变化的因素，比如有的浏览器的工具栏的显示和隐藏
         */
-        $('body').css('height', winHeight + 'px');
+        // console.log(document.activeElement.id, 'resize');
+        $wfForm.scrollTop($(document.activeElement).offset().top + $wfForm.scrollTop() - 4 * rem);
+        // $('body').css('height', winHeight + 'px');
     } else {
         /*
         软键盘关闭
         */
-        $('body').css('height', '100%');
+        // $('body').css('height', '100%');
     }
 });//监听resize ( Android）
 //------------------------------------------------------------------关注focus
 $('#zl-form-page input,#zl-form-page textarea').on('click', function (e) {
-    fixedForm()
-    e.preventDefault();
-    e.stopPropagation();
+    // fixedForm()
+    // e.preventDefault();
+    // e.stopPropagation();
 });
 
 $('#zl-form-page input,#zl-form-page textarea').on('focusout', function () {
     //失去焦点时让解除固定定位
-    relieveFixed()
+    // relieveFixed()
 });
 $('.getmypart').on('tap', function () {
     $('#wf-form').animate({ transform: 'translate(0,0)' }, 800, 'liner');
@@ -80,41 +88,66 @@ function relieveFixed() {
 // 下拉框
 let $select = $('.second-part-form .form-control')
 $select.click(function (e) {
-    fixedForm()
-    e.preventDefault();
-    e.stopPropagation();
+    // fixedForm()
+    // e.preventDefault();
+    // e.stopPropagation();
 })
 //下拉框的值发生改变时，
 $select.on('change', function () {
-    relieveFixed()
+    // relieveFixed()
 })
 // 整个表单页面
 $('#zl-form-page').click(function () {
-    console.log('relieveFixed')
-
-    relieveFixed()
+    // relieveFixed()
 })
 //上一页下一页----------------------------------------
-$("#next-page").on('tap', function () {
-    $("#rj-steps-container").addClass("rj-form-page2");
-    $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
-    $('.first-part').animate({ transform: 'translate(-16rem)' }, 300, 'linear');
-});
-$(".last-page").on('tap', function () {
-    $("#rj-steps-container").removeClass("rj-form-page2");
-    $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
-    $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
-    // $('.second-part').css({display: 'none'})
-    // $('.first-part').css({display: 'block'})
-});
+// $("#next-page button").on('tap', function () {
+//     $("#rj-steps-container").addClass("rj-form-page2");
+//     $('.second-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
+//     $('.first-part').animate({ transform: 'translate(-16rem)' }, 300, 'linear');
+// });
+// $(".last-page").on('tap', function () {
+//     $("#rj-steps-container").removeClass("rj-form-page2");
+//     $('.first-part').animate({ transform: 'translate(0)' }, 300, 'linear').scrollTop(0);
+//     $('.second-part').animate({ transform: 'translate(16rem)' }, 300, 'linear');
+//     // $('.second-part').css({display: 'none'})
+//     // $('.first-part').css({display: 'block'})
+// });
 //******************************************* 验证(在html中设置好了maxlength)
-$(".rj-form-input").on("focus", function () {
+let fixbug = false;
+$(".rj-form-input").on("focus", function (e) {
     let $field = $(this.parentNode);
     // console.log($field);
     if ($field[0].className === 'rj-field') {
         $field.addClass("rj-field-ready");
     }
-});
+
+    fixbug = false
+}).on('blur', function () {
+    let $field = $(this.parentNode);
+    if (!$(this).val()) {
+        $field.removeClass('rj-field-ready rj-field-valid rj-field-error');
+    }
+    fixbug = true
+    // ios微信软键盘的bug解决
+    if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+        setTimeout(function () {
+            if (fixbug) {
+                window.scroll(0, 0);
+            }
+        }, 100)
+    }
+})
+if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+    $(document).click(function () {
+        if (fixbug) {
+            // ios微信软键盘的bug解决
+            window.scroll(0, 0);
+            fixbug = false
+        }
+    })
+}
+
 let $wfName = $("#wf-name");        // 输入名字的input框
 $wfName.on("blur", nameCheck);//1.名字
 function nameCheck() {
@@ -139,6 +172,25 @@ function nameCheck() {
 }
 
 $(".rj-gender-select").on("click", function () {
+    let color = !$(this).hasClass('rj-boy') ? '#5fc7f2' : '#FF7070';
+    // 波纹特效
+    $(this).animate({
+        "box-shadow": `0 0 30px ${color}`,
+    }, {
+        duration: 150,
+        complete: () => {
+            $(this).animate({
+                "box-shadow": `0 0 30px white`,
+            }, {
+                duration: 150,
+                complete: () => {
+                    $(this).css({
+                        "box-shadow": ''
+                    })
+                },
+            })
+        },
+    })
     $(this).toggleClass("rj-boy rj-girl");
 })
 
@@ -146,7 +198,7 @@ let $wfId = $("#wf-id");
 $wfId.on("blur", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
-    let id = $wfId.val();
+    let id = $wfId.val().trim();
     formData.studentId = id;
     let $field = $wfId.parent('.rj-field');
     if (!reg.test(id) || id == '') {
@@ -164,7 +216,7 @@ function idCheck() {
 let $wfGrade = $("#wf-grade");
 $wfGrade.on("blur", gradeCheck);//3.年级专业
 function gradeCheck() {
-    let grade = $wfGrade.val();
+    let grade = $wfGrade.val().trim();
     let $field = $wfGrade.parent(".rj-field");
     grade = filterXSS(grade)
     formData.gradeProfessional = grade;
@@ -184,7 +236,7 @@ let $wfPhone = $("#wf-phone");
 $wfPhone.on("blur", phoneCheck);//4.手机
 function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
-    let phone = $wfPhone.val();
+    let phone = $wfPhone.val().trim();
     let $field = $wfPhone.parent(".rj-field");
     phone = filterXSS(phone)
     formData.phone = phone
@@ -204,7 +256,7 @@ let $wfEmail = $("#wf-email");
 $wfEmail.on("blur", emailCheck);//5.邮箱
 function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    let email = $wfEmail.val();
+    let email = $wfEmail.val().trim();
     let $field = $wfEmail.parent(".rj-field");
     email = filterXSS(email)
     formData.email = email
@@ -222,7 +274,7 @@ function emailCheck() {
 let $wfIntro = $("#wf-intro");
 $wfIntro.on("blur", introCheck);//6.自我介绍
 function introCheck() {
-    let intro = $wfIntro.val();
+    let intro = $wfIntro.val().trim();
     let $field = $wfIntro.parent(".rj-field");
     intro = filterXSS(intro)
     formData.introduction = intro
@@ -240,43 +292,34 @@ function introCheck() {
 let $wfSkills = $("#wf-skills");
 $wfSkills.on("blur", skillsCheck);
 function skillsCheck() {
-    let skills = $wfSkills.val();
+    let skills = $wfSkills.val().trim();
     let $field = $wfSkills.parent(".rj-field");
     skills = filterXSS(skills)
     formData.skills = skills
     if (skills == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
-        // $wfSkills.css("border", "1px solid red");
-        // $(".wf-skills-span").html("<span class='red-form'>不能为空！</span>");
         return false;
     }
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
-    // $wfSkills.css("border", "");
-    // $(".wf-skills-span").html("");
     return true;
 }
 let $wfCog = $("#wf-cog");
 $wfCog.on("blur", cogCheck);
 function cogCheck() {
-    let cog = $wfCog.val();
+    let cog = $wfCog.val().trim();
     let $field = $wfCog.parent(".rj-field");
     cog = filterXSS(cog)
     formData.idea = cog
     if (cog == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
-        // $wfCog.css("border", "1px solid red");
-        // $(".wf-cog-span").html("<span class='red-form'>不能为空！</span>");
         return false;
     }
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
-    // $wfCog.css("border", "");
-    // $(".wf-cog-span").html("");
     return true;
 }
 //产生验证码  
 createCode();
 var code; //在全局定义验证码  
-//  var zlFlag = true; //用于解决使用tap事件时触发两次的bug
 function createCode() {
     code = "";
     var codeLength = 4; //验证码的长度  
@@ -294,7 +337,6 @@ function createCode() {
 function check() {
     let $txtCode = $("#ctl00_txtcode");     // 验证码输入框
     let $field = $txtCode.parent(".rj-field");
-
     var inputCode = $txtCode.val().toUpperCase();
     inputCode = filterXSS(inputCode)
     formData.checkBack = inputCode
@@ -306,7 +348,7 @@ function check() {
         return false;
     } else if (inputCode != code) {
         // alert("验证码输入错误,请重新输入！");
-        $field.find(".rj-field-tip").text("验证码输入错误,请重新输入！");
+        $field.find(".rj-field-tip").text("看清楚点噢！");
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         createCode(); //刷新验证码  
         document.getElementById("ctl00_txtcode").value = ""; //清空文本框
@@ -356,26 +398,27 @@ $("#wf-commit").on('click', function () {
                 var info1 = $('.first-part-form').serializeArray();
                 var info2 = $('.second-part-form').serializeArray();
                 info1 = info1.concat(info2);
-                //console.log(info1)
-                let sex = $('.rj-gender-select').hasClass('rj-boy')?"男":"女"
-                //console.log(sex)
-                formData = {
-                    username: info1[0].value.trim(),
-                    studentId: info1[1].value.trim(),
-                    gradeProfessional: info1[2].value.trim(),
-                    sex: sex,
-                    phone: info1[3].value.trim(),
-                    email: info1[4].value.trim(),
-                    introduction: info1[5].value.trim(),
-                    direction: info1[6].value.trim(),
-                    skills: info1[7].value.trim(),
-                    idea: info1[8].value.trim(),
-                    checkFront: info1[9].value.trim(), // 前端动态生成的验证码
-                    checkBack: info1[9].value.trim() // 用户填写的验证码 */
-                }
-                textTip('提交成功', 1000, function () {
-                    //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
-                });
+                let sex = $('.rj-gender-select').hasClass('rj-boy') ? "男" : "女"
+                formData.direction = direction.selectedKey
+                formData.academy = academy.selectedKey
+                formData.sex = sex
+                // formData = {
+                //     username: info1[0].value.trim(),
+                //     studentId: info1[1].value.trim(),
+                //     gradeProfessional: info1[2].value.trim(),
+                //     sex: sex,
+                //     phone: info1[3].value.trim(),
+                //     email: info1[4].value.trim(),
+                //     introduction: info1[5].value.trim(),
+                //     direction: info1[6].value.trim(),
+                //     skills: info1[7].value.trim(),
+                //     idea: info1[8].value.trim(),
+                //     checkFront: info1[9].value.trim(), // 前端动态生成的验证码
+                //     checkBack: info1[9].value.trim() // 用户填写的验证码 */
+                // }
+                // textTip('提交成功', 1000, function () {
+                //     //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+                // });
                 commitCount++
                 //console.log(formData)
                 //在这里提交，小飞机 
@@ -383,24 +426,25 @@ $("#wf-commit").on('click', function () {
             }
         }
         else {
+            let wfForm = document.getElementById('wf-form');
             textTip('请正确输入信息', 1000, function () {
                 //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
             });
-            //alert("请正确输入信息")
-            //console.log("请正确输入信息");
+            let offset =  $('.rj-field-error')[0].offsetTop//第一个错误的表单项
+            $wfForm.scrollTop(offset)//使用scrollTop()方法移动页面
         }
     }
 })
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
-// 回到详情页
-$('.wf-close').tap(function () {
+
+export let closeForm = function () {
     commitCount = 0//count清零
     let $formPage = $('#zl-form-page');
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
     $('#rj-steps-container').removeClass('rj-form-page2');
     $rjCircle.removeClass("rj-circle-openning");
-    $('#wf-form').removeClass('rj-openning');
-
+    $('#wf-form').removeClass('rj-openning').scrollTop(0);
+    if (!rjBanner.isInDetailPage && rjBanner.isStopping) rjBanner.start();
     // 排他
     $("#zl-detail-pages").removeClass("rj-detail-out");
     $("#zl-form-page").removeClass("rj-form-in");
@@ -422,25 +466,101 @@ $('.wf-close').tap(function () {
     $('#wind').css({
         display: 'none'
     })
-    $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
+    // $('.second-part').animate({ transform: 'translate(16rem)' }, 800, 'linear');
     // $('#wf-form').fadeOut(1000);
-});
+    $('#rj-form-header').removeClass('rj-form-header-show');
+    $(document.activeElement).blur();
+
+}
+// 回到详情页
+$('.wf-close').on("click", closeForm);
+
 
 
 // 表单点击红色 x 清空内容
-$('.rj-icon-error').tap(function () {
+$('.rj-icon-error').on("click", function () {
+    let field = $(this).parent('.rj-field');
+    if (!field.hasClass('rj-field-error')) return;
     $(this).siblings('.rj-form-input').val('');
-    $(this).parent('.rj-field').toggleClass('rj-field-ready rj-field-error');
+    field.removeClass('rj-field-error');
 });
 
+// 字体计数器
+class textCounter {
+    constructor({ selector, maxLen }) {
+        this.selector = selector;
+        this.maxLen = maxLen;
+        this.rows = selector.attr('rows');
+    }
+    init() {
+        let $counter = $(`
+            <div class="rj-text-counter" style="top:${this.rows - 1}.2rem"><span class="rj-current-cnt">0</span>/<span class="rj-total-cnt">${this.maxLen}</span></div>
+        `);
+        this.selector.after($counter);
+        this.currentCntSpan = $counter.find('.rj-current-cnt');
+        // console.log(this.currentCntSpan);
+        let that = this;
+        this.currentCnt = this.currentCntSpan.text();  // 当前字数
+        this.countEvent = function (e) {
+            let length = $(e.target).val().length > 200 ? 200 : $(e.target).val().length;
+            that.currentCntSpan.text(length);
+        }
+        this.selector.on('input', this.countEvent);
+    }
+}
+(new textCounter({
+    selector: $('#wf-intro'),
+    maxLen: 200
+})).init();
+(new textCounter({
+    selector: $('#wf-skills'),
+    maxLen: 100
+})).init();
+(new textCounter({
+    selector: $('#wf-cog'),
+    maxLen: 100
+})).init();
 
+// 打开表单的时候获取
+let wfForm = document.getElementById('wf-form');
+let imgWidth = $(window).width() - 50;
+let $header = $('#rj-form-header');
+let $wfClose = $('.wf-close');
+let rem = document.documentElement.clientWidth / 16;
+$wfForm.on('scroll', function () {
+    let scrollTop = $wfForm.scrollTop();
+    if (imgWidth < scrollTop) {
+        if (!$header.hasClass('rj-form-header-show')) $header.addClass('rj-form-header-show');
+        if (!$wfClose.hasClass('__change')) $wfClose.addClass('__change');
+        $('#rj-form-progress-bar').css('transform', `scaleX(${scrollTop / (wfForm.scrollHeight - wfForm.clientHeight)})`)
+    } else {
+        $wfClose.removeClass('__change');
+        $header.removeClass('rj-form-header-show');
+    }
+});
 
+// 安卓表单空间聚焦自动滚动到合适位置
+if (/Android/.test(navigator.appVersion)) {
+    // $('.rj-form-input').on('focus', function (e) {
+    // $wfForm.scrollTop($(e.target).offset().top + $wfForm.scrollTop() - 4 * rem);
+    // });
+    $('#mq-production').css('font-weight', 'lighter');
+}
+// 聚焦校准
+$wfForm.on('tap', function (t) {
+    if ($(t.target).hasClass('rj-form-input')) {
+        $(t.target).focus();
+    }
+})
+
+// 表单图片
+$('#rj-tv-header').attr('src', tvHeader)
 
 /**
  * 文本框根据输入内容自适应高度
  * @param                {HTMLElement}        输入框元素
- * @param                {Number}                设置光标与输入框保持的距离(默认0)
- * @param                {Number}                设置最大高度(可选)
+ * @param                {Number}             设置光标与输入框保持的距离(默认0)
+ * @param                {Number}             设置最大高度(可选)
  */
 
 // var autoTextarea = function (elem, extra, maxHeight) {

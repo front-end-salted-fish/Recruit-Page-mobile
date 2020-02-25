@@ -84,11 +84,10 @@ imgUp.src = upIcon;
 
 $(imgUp).css({
   height: "auto",
-  width: "25px",
+  width: "1rem",
   position: "absolute",
-  left: "50%",
-  top: "93%",
-  marginLeft: "-12px"
+  left: "47%",
+  top: "81%",
 })
 $(imgUp).addClass('page-moveIconUp')
 $upPromot.append(imgUp);
@@ -151,37 +150,37 @@ function swipeU(classname) {
 
             switch (++mqObj.tag) {
                 case 2:
-                    title.animate({
-                        top: "1.8rem",
-                        left: "1rem",
-                        // textAlign: "start",
-                        // fontSize: "2rem",
-                        transform: "scale(.5)",
-                        transition:'2s'
-                    })
-                    
-                    // .children().css({
-                    //     // left: 0,
-                    //     // transform: 'translate(0)',
-                    //     // textAlign:'start',
-                    //     fontSize:"1.5rem"
-                    //     // transition: '1s'
-                    // })
-                    // innerSpan.css({
-                    //     textAlign:'start'
-                    // })
-                    // console.log(innerSpan)
-
-                    // span.css({
-                    //     transform: "scale(.5)",
-                    //     paddingLeft: ".5rem"
-                    // })
-                    // sup.css({
-                    //     fontSize: ".5rem",
-                    //     top: "-.8rem",
-                    //     left:'2.5rem'
-                    // })
-                    // $(list[0]).addClass('opa');
+                    let titleHtml = title.children().eq(0).html();
+                    if(titleHtml == '机器学习'){
+                      title
+                      .animate({
+                        top:"10%",
+                        left:"1.6rem",
+                        transform: "scale(.5)", 
+                      },800)
+                    }else if(titleHtml == "前端"||"后台"){
+                      title.
+                      animate({
+                        textIndent:"-6rem",
+                      },100)
+                      .animate({
+                        top:"10%",
+                        left:"1.6rem",
+                        transform: "scale(.5)", 
+                      },800)
+                    }else{
+                      title.
+                      animate({
+                        textIndent:"-4rem",
+                      },100)
+                      .animate({
+                        top:"10%",
+                        left:"1.6rem",
+                        transform: "scale(.5)", 
+                      },800)
+                    }
+                   
+                  
                     $(list[0]).css({
                         opacity: '1'
                     })
@@ -701,7 +700,7 @@ $('.cf-menu').on('click', 'svg', function () {
     setTimeout(function () {
       $('.cf-curtain-bg').animate({
         "-webkitTransform": "translate(100%,100%) scale3d(100,100,1)!important"
-      }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
+      }, 300, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
         $('.cf-curtain li>span').removeClass('cf-skew-text');
       });
       // $('.cf-curtain li>span').removeClass('cf-skew-text');
@@ -710,10 +709,15 @@ $('.cf-menu').on('click', 'svg', function () {
   } else {
     setTimeout(function () {
       $('.cf-curtain li>span').addClass('cf-skew-text');
-      $('.cf-curtain-bg').animate({
-        "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
-      }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
-      });
+      setTimeout(function(){
+        $('.cf-curtain-bg').animate({
+          "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
+        }, 300, 'cubic-bezier(0.65, 0.04, 1, 0.99)', function () {
+          $('.cf-curtain').css({
+            display: 'none'
+          })
+        });
+      },100)
     },20)
   }
 })
@@ -725,15 +729,21 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     $('#mq-production>div').removeClass('cf-blur-in').addClass('cf-blur-out');
     $('#mq-production>div').eq(index).removeClass('cf-blur-out').addClass('cf-blur-in');
     $('.cf-curtain li>span').addClass('cf-skew-text');
-    $('.cf-curtain-bg').animate({
-      "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
-    }, 500, 'cubic-bezier(0.48, 0.21, 0.95, 0.71)', function () {
-    });
+    setTimeout(function () {
+      $('.cf-curtain-bg').animate({
+        "-webkitTransform": "translate(100%,100%) scale3d(0,0,0)!important"
+      }, 300, 'cubic-bezier(0.65, 0.04, 1, 0.99)', function () {
+        $('.cf-curtain').css({
+          display: 'none'
+        })
+      });
+    },100)
     $('.grid input').prop('checked', false);
   },20)
   // mq的置1
   //重置1，并且恢复各组第一次的样子，防止圆盘滑动的时候触发滑动事件
   mqObj.tag = 1;
+  $(imgUp).show(); // 详情页提示上滑元素恢复显示
   let box = $('.innerwrap');
   let boxContent = $('.innerContent');
   let title = $('.title');
@@ -761,6 +771,7 @@ $('.cf-menu-wrap').on('click', 'li', function () {
     // justifyContent: space-between,
     // margin:0 auto,
     transform: 'scale(1)',
+    textIndent:'',
     // left: 10%;
     // width: 380/@rem;
     // height: 160/@rem;
@@ -780,12 +791,12 @@ $('.cf-menu-wrap').on('click', 'li', function () {
   // })
 });
 //当关闭过渡动画结束是dispaly:none
-$('.cf-curtain').on('webkitTransitionEnd',function(){
-  let isOpenMenu = !$('.grid input').prop('checked');
-  if(isOpenMenu) {
-    $('.cf-curtain').css({
-      display: 'none'
-    })
-  }
-})
+// $('.cf-curtain').on('webkitTransitionEnd',function(){
+//   let isOpenMenu = !$('.grid input').prop('checked');
+//   if(isOpenMenu) {
+//     $('.cf-curtain').css({
+//       display: 'none'
+//     })
+//   }
+// })
 export default mqObj;

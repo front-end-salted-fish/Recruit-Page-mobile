@@ -1,3 +1,16 @@
+@font-face {
+    font-family: gabrielastencil;
+    src: url(../fonts/gabrielastencil-light.woff2);
+}
+@font-face {
+    font-family: 'iconfont';  /* project id 1613212 */
+    src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot');
+    src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.svg#iconfont') format('svg');
+}
 .zl-com-height {
     //display: none;
     position: absolute;
@@ -8,8 +21,8 @@
     width: 16rem;
 }
 
-@loadingAnmFontSize: 9vw;
-@loadingSpanHeight: 7.5vw;
+@loadingAnmFontSize: 9 * 0.16rem;
+@loadingSpanHeight: 7.5 * 0.16rem;
 #loading-module {
     // display: none;
     //z-index: 100;
@@ -20,10 +33,10 @@
     
     position: absolute;
     transition: all ease 1s;
-    @font-face {
-        font-family: ITC;
-        src: url(../fonts/ITCAvantGardeStd-Md.otf);
-    }
+    // @font-face {
+    //     font-family: ITC;
+    //     src: url(../fonts/ITCAvantGardeStd-Md.otf);
+    // }
 
     font-family:
     '微软雅黑',
@@ -422,11 +435,12 @@
 
     .zl-join {
         position: absolute;
-        top: 80%;
+        top: 89%;
         left: 50%;
         transform: translateX(-50%);
         z-index: 3;
         .btn {
+            font-size: .6rem;
             width: 6rem;
             color:white;
             background: none;
@@ -455,12 +469,12 @@
     .cf-menu {
         position: absolute;
         z-index: 4;
-        width: 9vh;
+        width: 2.6rem;
         input {
             display: none;
         }
         svg {
-            width: 9vh;
+            width: 2.6rem;
         }
         path {
             fill: none;
@@ -472,7 +486,7 @@
             --offset: -38;
             stroke-dasharray : var(--length) var(--total-length);
             stroke-dashoffset: var(--offset);
-            transition: all .6s cubic-bezier(.645, .045, .355, 1);
+            transition: all .4s cubic-bezier(.645, .045, .355, 1);
           }
           
           circle {
@@ -576,7 +590,7 @@
 }
 
 #mq-production {
-    font-weight: lighter;
+    font-weight: normal;
     //display: none;
     position: relative;
     color: white;
@@ -603,6 +617,7 @@
             top: 28%;
             left:0;
             right: 0;
+            user-select: none;
             // background-color: red;
             
             transform: scale(1);
@@ -624,7 +639,7 @@
             }
 
             .inner-span {
-                top: 6rem!important;
+                top: 5rem!important;
                 font-size: 1.1rem;
                 display: inline-block;
                 transition: all 1s cubic-bezier(.39,.92,.74,.94);
@@ -785,7 +800,7 @@
 // 陈锐基的轮播图
 #rj-banner {
     user-select: none;
-    z-index:3;
+    z-index:2;
     height: 100%;
     background: rgb(29, 29, 29);
     width: 16rem;
@@ -827,13 +842,14 @@
         .rj-next-page {
             transform: translate3d(16rem, 0, 0);
         }
-
+        
+        @bannerTime: 1.5s;
         // 下翻页效果
         .rj-banner-out-to-left {
-            animation: bannerOutToLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgOutToLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -859,10 +875,10 @@
         }
 
         .rj-banner-in-from-right {
-            animation: bannerInFromRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgInFromRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -888,10 +904,10 @@
 
         // 上翻页效果
         .rj-banner-out-to-right {
-            animation: bannerOutToRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgOutToRight 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -917,10 +933,10 @@
         }
 
         .rj-banner-in-from-left {
-            animation: bannerInFromLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
 
             img {
-                animation: bannerImgInFromLeft 2s cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
             }
         }
 
@@ -1023,6 +1039,7 @@
     }
 
     #rj-fonts-container {
+      pointer-events: none;
       font-size: 1.6rem;
       user-select: none;
       position: absolute;
@@ -1030,7 +1047,8 @@
       height: 6rem;
       // overflow: hidden;
       // transform: scale(.5);
-      top: 36.5%;
+      top: 33.5%;
+      //   top: 36.5%;
 
       // background: url(../../img/rj-banner-test2.jpg) center transparent;
       // background-size: 100% auto;
@@ -1066,10 +1084,7 @@
         position: absolute;
       }
 
-      @font-face {
-        font-family: gabrielastencil;
-        src: url(../fonts/gabrielastencil-light.woff2);
-      }
+
 
       .rj-e-txt {
         font-family: gabrielastencil, Helvetica, Arial, sans-serif;
@@ -1077,10 +1092,9 @@
       }
 
       .rj-c-txt {
+        font-family: gabrielastencil, Helvetica, Arial, sans-serif;
         top: 0%;
         font-size: 2.7rem;
-        font-family: '宋体', gabrielastencil, '微软雅黑';
-        font-weight: lighter;
       }
     }
 
@@ -1101,10 +1115,38 @@
         // float: right;
       }
     }
+    #rj-join-btn {
+        // mix-blend-mode: difference;
+        position: absolute;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        height: 6vh;
+        // top: 78vh;
+        font-family: gabrielastencil, Helvetica, Arial, sans-serif;
+        bottom: 18vh;
+        left: 50%;
+        padding: 6px 12px;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
+        border: 1.7px solid white;
+        background-color: transparent;
+        // border-radius: 6rem;
+        color: white;
+        width: 6rem;
+        font-size: .77rem;
+        font-weight: bolder !important;
+        letter-spacing: 2px;
+    }
   }
+
 }
 
 #rj-white-curtain {
+  pointer-events: none;
   user-select: none;
   position: fixed;
   z-index: 3;
@@ -1256,6 +1298,7 @@
 @text-cubic: cubic-bezier(0.17, 1.31, 1, 0.99);
 // 幕布
 .cf-curtain {
+  user-select: none;
   display: none;
   position: absolute;
   width: 100vw;
@@ -1272,7 +1315,7 @@
     border-radius: 50%;
     -webkit-transform: translate(100%,100%) scale3d(100,100,1);
     background-color: rgba(0,0,0,.8);
-    transition: all  .5s cubic-bezier(0.48, 0.21, 0.95, 0.71);
+    //transition: all  .3s cubic-bezier(0.48, 0.21, 0.95, 0.71);
     overflow: hidden;
   }
   ul {
@@ -1283,10 +1326,10 @@
     li {
       color: #fff;
       text-align: center;
-      height: 8vh;
-      line-height: 8vh;
+      height: 2.28rem;
+      line-height: 2.28rem;
       letter-spacing: .5vw;
-      font-size: 3.3vh;
+      font-size: 0.9rem;
       font-weight: lighter;
       font-family: gabrielastencil, '微软雅黑';
       opacity: 1;
@@ -1298,23 +1341,23 @@
     }
 
     li:nth-child(1) span {
-      transition: all 0.5s @text-cubic @cf-duration*1;
+      transition: all 0.3s @text-cubic @cf-duration*1;
     }
 
     li:nth-child(2) span {
-      transition: all 0.5s @text-cubic @cf-duration*2;
+      transition: all 0.3s @text-cubic @cf-duration*2;
     }
 
     li:nth-child(3) span {
-      transition: all 0.5s @text-cubic @cf-duration*3;
+      transition: all 0.3s @text-cubic @cf-duration*3;
     }
 
     li:nth-child(4) span {
-      transition: all 0.5s @text-cubic @cf-duration*4;
+      transition: all 0.3s @text-cubic @cf-duration*4;
     }
 
     li:nth-child(5) span {
-      transition: all 0.5s @text-cubic @cf-duration*5;
+      transition: all 0.3s @text-cubic @cf-duration*5;
     }
   }
 }
