@@ -97,7 +97,7 @@ $select.on('change', function () {
     // relieveFixed()
 })
 // 整个表单页面
-$('#zl-form-page').click(function() {
+$('#zl-form-page').click(function () {
     // relieveFixed()
 })
 //上一页下一页----------------------------------------
@@ -123,33 +123,33 @@ $(".rj-form-input").on("focus", function (e) {
     }
 
     fixbug = false
-}).on('blur',function () {
+}).on('blur', function () {
     let $field = $(this.parentNode);
-    if(!$(this).val()) {
+    if (!$(this).val()) {
         $field.removeClass('rj-field-ready rj-field-valid rj-field-error');
     }
     fixbug = true
     // ios微信软键盘的bug解决
-    if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
-        setTimeout(function() {
+    if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+        setTimeout(function () {
             if (fixbug) {
-                window.scroll(0,0);
+                window.scroll(0, 0);
             }
-        },100)
+        }, 100)
     }
 })
 if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
-    $(document).click(function() {
+    $(document).click(function () {
         if (fixbug) {
             // ios微信软键盘的bug解决
-            window.scroll(0,0);
+            window.scroll(0, 0);
             fixbug = false
         }
     })
 }
 
 let $wfName = $("#wf-name");        // 输入名字的input框
-$wfName.on("input", nameCheck);//1.名字
+$wfName.on("blur", nameCheck);//1.名字
 function nameCheck() {
     //let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
     let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
@@ -172,17 +172,17 @@ function nameCheck() {
 }
 
 $(".rj-gender-select").on("click", function () {
-    let color = !$(this).hasClass('rj-boy') ? '#5fc7f2' :'#FF7070';
+    let color = !$(this).hasClass('rj-boy') ? '#5fc7f2' : '#FF7070';
     // 波纹特效
     $(this).animate({
         "box-shadow": `0 0 30px ${color}`,
     }, {
-        duration: 150,  
+        duration: 150,
         complete: () => {
             $(this).animate({
                 "box-shadow": `0 0 30px white`,
             }, {
-                duration: 150,  
+                duration: 150,
                 complete: () => {
                     $(this).css({
                         "box-shadow": ''
@@ -195,7 +195,7 @@ $(".rj-gender-select").on("click", function () {
 })
 
 let $wfId = $("#wf-id");
-$wfId.on("input", idCheck);//2.学号
+$wfId.on("blur", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
     let id = $wfId.val().trim();
@@ -214,7 +214,7 @@ function idCheck() {
     return true;
 }
 let $wfGrade = $("#wf-grade");
-$wfGrade.on("input", gradeCheck);//3.年级专业
+$wfGrade.on("blur", gradeCheck);//3.年级专业
 function gradeCheck() {
     let grade = $wfGrade.val().trim();
     let $field = $wfGrade.parent(".rj-field");
@@ -233,7 +233,7 @@ function gradeCheck() {
     return true;
 }
 let $wfPhone = $("#wf-phone");
-$wfPhone.on("input", phoneCheck);//4.手机
+$wfPhone.on("blur", phoneCheck);//4.手机
 function phoneCheck() {
     let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
     let phone = $wfPhone.val().trim();
@@ -253,7 +253,7 @@ function phoneCheck() {
 }
 
 let $wfEmail = $("#wf-email");
-$wfEmail.on("input", emailCheck);//5.邮箱
+$wfEmail.on("blur", emailCheck);//5.邮箱
 function emailCheck() {
     let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     let email = $wfEmail.val().trim();
@@ -272,7 +272,7 @@ function emailCheck() {
     return true;
 }
 let $wfIntro = $("#wf-intro");
-$wfIntro.on("input", introCheck);//6.自我介绍
+$wfIntro.on("blur", introCheck);//6.自我介绍
 function introCheck() {
     let intro = $wfIntro.val().trim();
     let $field = $wfIntro.parent(".rj-field");
@@ -290,7 +290,7 @@ function introCheck() {
     return true;
 }
 let $wfSkills = $("#wf-skills");
-$wfSkills.on("input", skillsCheck);
+$wfSkills.on("blur", skillsCheck);
 function skillsCheck() {
     let skills = $wfSkills.val().trim();
     let $field = $wfSkills.parent(".rj-field");
@@ -304,7 +304,7 @@ function skillsCheck() {
     return true;
 }
 let $wfCog = $("#wf-cog");
-$wfCog.on("input", cogCheck);
+$wfCog.on("blur", cogCheck);
 function cogCheck() {
     let cog = $wfCog.val().trim();
     let $field = $wfCog.parent(".rj-field");
@@ -374,7 +374,8 @@ function textTip(str, t, callBack) {
     }
     setTimeout(function () {
         mytip.style.display = "none";
-        mytip.parentNode.removeChild(mytip);
+        //mytip.parentNode.removeChild(mytip);``````````
+        mytip.remove()
         if (callBack) { callBack(); }
     }, t);
 }
@@ -399,7 +400,7 @@ $("#wf-commit").on('click', function () {
                 var info1 = $('.first-part-form').serializeArray();
                 var info2 = $('.second-part-form').serializeArray();
                 info1 = info1.concat(info2);
-                let sex = $('.rj-gender-select').hasClass('rj-boy')?"男":"女"
+                let sex = $('.rj-gender-select').hasClass('rj-boy') ? "男" : "女"
                 formData.direction = direction.selectedKey
                 formData.academy = academy.selectedKey
                 formData.sex = sex
@@ -427,24 +428,25 @@ $("#wf-commit").on('click', function () {
             }
         }
         else {
+            let wfForm = document.getElementById('wf-form');
             textTip('请正确输入信息', 1000, function () {
                 //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
             });
-            //alert("请正确输入信息")
-            //console.log("请正确输入信息");
+            let offset =  $('.rj-field-error')[0].offsetTop//第一个错误的表单项
+            $wfForm.scrollTop(offset)//使用scrollTop()方法移动页面
         }
     }
 })
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
 
-export let closeForm  = function () {
+export let closeForm = function () {
     commitCount = 0//count清零
     let $formPage = $('#zl-form-page');
     $formPage.siblings('#zl-detail-pages').fadeIn(0);
     $('#rj-steps-container').removeClass('rj-form-page2');
     $rjCircle.removeClass("rj-circle-openning");
     $('#wf-form').removeClass('rj-openning').scrollTop(0);
-    if(!rjBanner.isInDetailPage && rjBanner.isStopping) rjBanner.start();
+    if (!rjBanner.isInDetailPage && rjBanner.isStopping) rjBanner.start();
     // 排他
     $("#zl-detail-pages").removeClass("rj-detail-out");
     $("#zl-form-page").removeClass("rj-form-in");
@@ -473,21 +475,21 @@ export let closeForm  = function () {
 
 }
 // 回到详情页
-$('.wf-close').on("click",closeForm);
+$('.wf-close').on("click", closeForm);
 
 
 
 // 表单点击红色 x 清空内容
-$('.rj-icon-error').on("click",function () {
+$('.rj-icon-error').on("click", function () {
     let field = $(this).parent('.rj-field');
-    if(!field.hasClass('rj-field-error')) return ;
+    if (!field.hasClass('rj-field-error')) return;
     $(this).siblings('.rj-form-input').val('');
     field.removeClass('rj-field-error');
 });
 
 // 字体计数器
 class textCounter {
-    constructor({selector, maxLen}) {
+    constructor({ selector, maxLen }) {
         this.selector = selector;
         this.maxLen = maxLen;
         this.rows = selector.attr('rows');
@@ -505,7 +507,7 @@ class textCounter {
             let length = $(e.target).val().length > 200 ? 200 : $(e.target).val().length;
             that.currentCntSpan.text(length);
         }
-        this.selector.on('input',this.countEvent);
+        this.selector.on('input', this.countEvent);
     }
 }
 (new textCounter({
@@ -529,9 +531,9 @@ let $wfClose = $('.wf-close');
 let rem = document.documentElement.clientWidth / 16;
 $wfForm.on('scroll', function () {
     let scrollTop = $wfForm.scrollTop();
-    if(imgWidth < scrollTop) {
-        if(!$header.hasClass('rj-form-header-show')) $header.addClass('rj-form-header-show');
-        if(!$wfClose.hasClass('__change')) $wfClose.addClass('__change');
+    if (imgWidth < scrollTop) {
+        if (!$header.hasClass('rj-form-header-show')) $header.addClass('rj-form-header-show');
+        if (!$wfClose.hasClass('__change')) $wfClose.addClass('__change');
         $('#rj-form-progress-bar').css('transform', `scaleX(${scrollTop / (wfForm.scrollHeight - wfForm.clientHeight)})`)
     } else {
         $wfClose.removeClass('__change');
@@ -542,91 +544,16 @@ $wfForm.on('scroll', function () {
 // 安卓表单空间聚焦自动滚动到合适位置
 if (/Android/.test(navigator.appVersion)) {
     // $('.rj-form-input').on('focus', function (e) {
-        // $wfForm.scrollTop($(e.target).offset().top + $wfForm.scrollTop() - 4 * rem);
+    // $wfForm.scrollTop($(e.target).offset().top + $wfForm.scrollTop() - 4 * rem);
     // });
     $('#mq-production').css('font-weight', 'lighter');
 }
 // 聚焦校准
-$wfForm.on('tap',function(t){
-    if($(t.target).hasClass('rj-form-input')) {
-        $(t.target).focus(); 
+$wfForm.on('tap', function (t) {
+    if ($(t.target).hasClass('rj-form-input')) {
+        $(t.target).focus();
     }
 })
 
 // 表单图片
 $('#rj-tv-header').attr('src', tvHeader)
-
-/**
- * 文本框根据输入内容自适应高度
- * @param                {HTMLElement}        输入框元素
- * @param                {Number}             设置光标与输入框保持的距离(默认0)
- * @param                {Number}             设置最大高度(可选)
- */
-
-// var autoTextarea = function (elem, extra, maxHeight) {
-//     extra = extra || 0;
-//     var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
-//     isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera'),
-//             addEvent = function (type, callback) {
-//                     elem.addEventListener ?
-//                             elem.addEventListener(type, callback, false) :
-//                             elem.attachEvent('on' + type, callback);
-//             },
-//             getStyle = elem.currentStyle ? function (name) {
-//                     var val = elem.currentStyle[name];
-
-//                     if (name === 'height' && val.search(/px/i) !== 1) {
-//                             var rect = elem.getBoundingClientRect();
-//                             return rect.bottom - rect.top -
-//                                     parseFloat(getStyle('paddingTop')) -
-//                                     parseFloat(getStyle('paddingBottom')) + 'px';        
-//                     };
-
-//                     return val;
-//             } : function (name) {
-//                             return getComputedStyle(elem, null)[name];
-//             },
-//             minHeight = parseFloat(getStyle('height'));
-
-//     elem.style.resize = 'none';
-
-//     var change = function () {
-//             var scrollTop, height,
-//                     padding = 0,
-//                     style = elem.style;
-
-//             if (elem._length === elem.value.length) return;
-//             elem._length = elem.value.length;
-
-//             if (!isFirefox && !isOpera) {
-//                     padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
-//             };
-//             scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-
-//             elem.style.height = minHeight + 'px';
-//             if (elem.scrollHeight > minHeight) {
-//                     if (maxHeight && elem.scrollHeight > maxHeight) {
-//                             height = maxHeight - padding;
-//                             style.overflowY = 'auto';
-//                     } else {
-//                             height = elem.scrollHeight - padding;
-//                             style.overflowY = 'hidden';
-//                     };
-//                     style.height = height + extra + 'px';
-//                     scrollTop += parseInt(style.height) - elem.currHeight;
-//                     document.body.scrollTop = scrollTop;
-//                     document.documentElement.scrollTop = scrollTop;
-//                     elem.currHeight = parseInt(style.height);
-//             };
-//     };
-
-//     addEvent('propertychange', change);
-//     addEvent('input', change);
-//     addEvent('focus', change);
-//     change();
-// };
-
-
-// autoTextarea(document.getElementById("wf-skills"));
-// autoTextarea(document.getElementById("wf-intro"));
-// autoTextarea(document.getElementById("wf-cog"));

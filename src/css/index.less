@@ -843,13 +843,15 @@
             transform: translate3d(16rem, 0, 0);
         }
         
-        @bannerTime: 1.5s;
+        @bannerTime: 1.3s;
+        // @bannerCubic: cubic-bezier(0.5, 0, 0, 1);
+        @bannerCubic: cubic-bezier(0.5, 0, .1, 1);
         // 下翻页效果
         .rj-banner-out-to-left {
-            animation: bannerOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToLeft @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToLeft @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -875,10 +877,10 @@
         }
 
         .rj-banner-in-from-right {
-            animation: bannerInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromRight @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromRight @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -904,10 +906,10 @@
 
         // 上翻页效果
         .rj-banner-out-to-right {
-            animation: bannerOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToRight @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToRight @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -933,10 +935,10 @@
         }
 
         .rj-banner-in-from-left {
-            animation: bannerInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromLeft @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromLeft @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -997,7 +999,7 @@
 
                 .rj-banner-timer {
                     width: 0%;
-                    animation: btnTimer 4.0s linear;
+                    animation: btnTimer 2.7s linear;
                 }
 
                 @keyframes btnTimer {
