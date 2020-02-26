@@ -2,6 +2,7 @@ import 'zepto'
 import 'zepto/src/fx'
 import 'zepto/src/fx_methods'
 import mqObj from '../js/mq-production'
+import EventUtil from './eventUtil'
 let mqFunc = () => {
   mqObj.tag = 1;
     let box = $('.innerwrap');
@@ -424,10 +425,12 @@ function throttlePreBanner(jumpPage) {
 }
 
 // 触发轮播图翻下一页
-$banner.swipeLeft(throttleNextBanner);
+EventUtil.listenTouchDirection(document.querySelector('#rj-banner'), true, false, false, false, throttleNextBanner)
+// $banner.swipeLeft(throttleNextBanner);
 $nextBannerBtn.tap(throttleNextBanner);
 // 触发轮播图翻上一页
-$banner.swipeRight(throttlePreBanner);
+EventUtil.listenTouchDirection(document.querySelector('#rj-banner'), true, false, throttlePreBanner, false, false)
+// $banner.swipeRight(throttlePreBanner);
 $preBannerBtn.tap(throttlePreBanner);
 // 点击按钮跳转轮播图
 $bannerBtnUl.on('tap', '.rj-banner-btn', function () {

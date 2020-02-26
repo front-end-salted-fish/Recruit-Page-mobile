@@ -7,6 +7,7 @@ import './rem'
 import '../font/menu/iconfont.css'
 import functionCaller from "less/lib/less/functions/function-caller";
 import rjBanner from './rj-index'
+import EventUtil from './eventUtil'
 
 //我的我的
 var width = document.documentElement.clientWidth;
@@ -119,145 +120,147 @@ function distance2(classname) {
   $(imgUp).show();
 }
 
+
 //滑动向上
 function swipeU(classname) {
-    $(classname).swipeUp(
-        function () {
-            console.log('执行了')
-            let title = $(classname).find('.title');
-            let span = $(classname).find('.title').find('span');
-            let sup = $(classname).find('.title').find('sup');
-            let list = $(classname).find('.innerContent');
-            let box = $(classname).find('.innerwrap');
-            var pos = box.position();
-            // $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
-            //     // $(this).removeClass('opa1');
-            //     $(this).css({
-            //         opacity: '0'
-            //     })
-            // });
-            $(classname).find('.innerwrap').find('.innerContent').eq(0).css({
-                opacity: '0'
-            })
+  EventUtil.listenTouchDirection(document.querySelector(classname), true, swipeUp, false, false, false)
+  function swipeUp() {
+      console.log('执行了')
+      let title = $(classname).find('.title');
+      let span = $(classname).find('.title').find('span');
+      let sup = $(classname).find('.title').find('sup');
+      let list = $(classname).find('.innerContent');
+      let box = $(classname).find('.innerwrap');
+      var pos = box.position();
+      // $(classname).find('.innerwrap').find('.innerContent').each(function (item, index) {
+      //     // $(this).removeClass('opa1');
+      //     $(this).css({
+      //         opacity: '0'
+      //     })
+      // });
+      $(classname).find('.innerwrap').find('.innerContent').eq(0).css({
+          opacity: '0'
+      })
 
 
-            // sup.css({
-            //     transform: "scale(1.5)",
-            // })
+      // sup.css({
+      //     transform: "scale(1.5)",
+      // })
 
 
-            // if (box.position().top / rem >= -640 / rem) {
+      // if (box.position().top / rem >= -640 / rem) {
 
-            switch (++mqObj.tag) {
-                case 2:
-                    let titleHtml = title.children().eq(0).html();
-                    if(titleHtml == '机器学习'){
-                      title
-                      .animate({
-                        top:"10%",
-                        left:"1.6rem",
-                        transform: "scale(.5)", 
-                      },800)
-                    }else if(titleHtml == "前端"||"后台"){
-                      title.
-                      animate({
-                        textIndent:"-6rem",
-                      },100)
-                      .animate({
-                        top:"10%",
-                        left:"1.6rem",
-                        transform: "scale(.5)", 
-                      },800)
-                    }else{
-                      title.
-                      animate({
-                        textIndent:"-4rem",
-                      },100)
-                      .animate({
-                        top:"10%",
-                        left:"1.6rem",
-                        transform: "scale(.5)", 
-                      },800)
-                    }
-                   
-                  
-                    $(list[0]).css({
-                        opacity: '1'
-                    })
-                    // $(list[1]).addClass('opa');
-                    // distance1(classname)
-                    break;
-                case 3:
-                    // box.addClass('opa');
-                    console.log("没没没")
-                    console.log($(list[1]));
-                    distance1(classname)
-                    // $(list[0]).removeClass('opa');
-                    $(list[0]).css({
-                        opacity: '0'
-                    })
-                    // $(list[1]).addClass('opa');
-                    $(list[1]).css({
-                        opacity: '1'
-                    })
+      switch (++mqObj.tag) {
+          case 2:
+              let titleHtml = title.children().eq(0).html();
+              if(titleHtml == '机器学习'){
+                title
+                .animate({
+                  top:"10%",
+                  left:"1.6rem",
+                  transform: "scale(.5)", 
+                },800)
+              }else if(titleHtml == "前端"||"后台"){
+                title.
+                animate({
+                  textIndent:"-6rem",
+                },100)
+                .animate({
+                  top:"10%",
+                  left:"1.6rem",
+                  transform: "scale(.5)", 
+                },800)
+              }else{
+                title.
+                animate({
+                  textIndent:"-4rem",
+                },100)
+                .animate({
+                  top:"10%",
+                  left:"1.6rem",
+                  transform: "scale(.5)", 
+                },800)
+              }
+             
+            
+              $(list[0]).css({
+                  opacity: '1'
+              })
+              // $(list[1]).addClass('opa');
+              // distance1(classname)
+              break;
+          case 3:
+              // box.addClass('opa');
+              console.log("没没没")
+              console.log($(list[1]));
+              distance1(classname)
+              // $(list[0]).removeClass('opa');
+              $(list[0]).css({
+                  opacity: '0'
+              })
+              // $(list[1]).addClass('opa');
+              $(list[1]).css({
+                  opacity: '1'
+              })
 
-                    break;
-                case 4:
-                    $(list[1]).css({
-                        opacity: '0'
-                    })
-                    $(list[2]).css({
-                        opacity: '1'
-                    })
-                    // $(list[1]).removeClass('opa');
-                    // $(list[2]).addClass('opa');
-                    // console.log(list[2]);
-                    distance1(classname)
-                    break;
-                case 5:
-                    $(list[2]).css({
-                        opacity: '0'
-                    })
-                    $(list[3]).css({
-                        opacity: '1'
-                    })
-                    // $(list[2]).removeClass('opa');
-                    // $(list[3]).addClass('opa');
-                    // console.log(list[3]);
-                    distance1(classname)
-                    // $(imgUp).hide();
-                    break;
-                    // case 6:
-                    //     $(list[5]).addClass('opa');
-                    //     // console.log(list[4]);
-                    //     distance1(classname)
-                    //     $(imgUp).hide();
-                    //     break;
-                case 6:
-                    $(list[3]).css({
-                        opacity: '0'
-                    })
-                    $(list[4]).css({
-                        opacity: '1'
-                    })
+              break;
+          case 4:
+              $(list[1]).css({
+                  opacity: '0'
+              })
+              $(list[2]).css({
+                  opacity: '1'
+              })
+              // $(list[1]).removeClass('opa');
+              // $(list[2]).addClass('opa');
+              // console.log(list[2]);
+              distance1(classname)
+              break;
+          case 5:
+              $(list[2]).css({
+                  opacity: '0'
+              })
+              $(list[3]).css({
+                  opacity: '1'
+              })
+              // $(list[2]).removeClass('opa');
+              // $(list[3]).addClass('opa');
+              // console.log(list[3]);
+              distance1(classname)
+              // $(imgUp).hide();
+              break;
+              // case 6:
+              //     $(list[5]).addClass('opa');
+              //     // console.log(list[4]);
+              //     distance1(classname)
+              //     $(imgUp).hide();
+              //     break;
+          case 6:
+              $(list[3]).css({
+                  opacity: '0'
+              })
+              $(list[4]).css({
+                  opacity: '1'
+              })
 
-                    // $(list[3]).removeClass('opa');
-                    // $(list[4]).addClass('opa');
-                    // console.log(list[3]);
-                    distance1(classname)
-                    $(imgUp).hide();
-                    break;
-                default:
-                    mqObj.tag = 6;
-                    // $(list[4]).css({
-                    //     opacity: '1'
-                    // })
-                    break;
-            }
-            // }
-            console.log('mqObj.tag', mqObj.tag);
-        }
-    )
+              // $(list[3]).removeClass('opa');
+              // $(list[4]).addClass('opa');
+              // console.log(list[3]);
+              distance1(classname)
+              $(imgUp).hide();
+              break;
+          default:
+              mqObj.tag = 6;
+              // $(list[4]).css({
+              //     opacity: '1'
+              // })
+              break;
+      }
+      // }
+      console.log('mqObj.tag', mqObj.tag);
+  }
+    // $(classname).swipeUp(
+    // )
 }
 
 !(() => {
@@ -271,118 +274,119 @@ function swipeU(classname) {
 //滑动往下
 
 function swipeD(classname) {
+  EventUtil.listenTouchDirection(document.querySelector(classname), true, false, false, swipeDown, false)
 
-  $(classname).swipeDown(
-    function () {
-      console.log(mqObj.tag);
+  function swipeDown() {
+    console.log(mqObj.tag);
 
-      console.log("执行了1111")
-      let title = $(classname).find('.title');
-      let list = $(classname).find('.innerContent');
-      let box = $(classname).find('.innerwrap');
-      var pos = box.position();
-      // console.log(pos.top);   
-      $(classname).find('.innerwrap').find('.innerContent').eq(4).css({
-        opacity: '0'
-      })
+    console.log("执行了1111")
+    let title = $(classname).find('.title');
+    let list = $(classname).find('.innerContent');
+    let box = $(classname).find('.innerwrap');
+    var pos = box.position();
+    // console.log(pos.top);   
+    $(classname).find('.innerwrap').find('.innerContent').eq(4).css({
+      opacity: '0'
+    })
 
 
-      // if (box.position().top / rem <= -160 / rem) {
+    // if (box.position().top / rem <= -160 / rem) {
 
-      switch (mqObj.tag--) {
-        case 6:
-          // list.each(function(item,index){
-          //     $(this).removeClass('opa');
-          // });
-          console.log(1);
+    switch (mqObj.tag--) {
+      case 6:
+        // list.each(function(item,index){
+        //     $(this).removeClass('opa');
+        // });
+        console.log(1);
 
-          distance2(classname)
-          $(list[4]).css({
-            opacity: '0'
-          })
-          $(list[3]).css({
-            opacity: '1'
-          })
-          // $(list[3]).addClass('opa1');
-          // $(list[3]).addClass('opa1');
-          // console.log(1111111111)
+        distance2(classname)
+        $(list[4]).css({
+          opacity: '0'
+        })
+        $(list[3]).css({
+          opacity: '1'
+        })
+        // $(list[3]).addClass('opa1');
+        // $(list[3]).addClass('opa1');
+        // console.log(1111111111)
 
-          break;
-        case 5:
-          console.log(2);
-          $(list[3]).css({
-            opacity: '0'
-          })
-          $(list[2]).css({
-            opacity: '1'
-          })
-          // $(list[3]).removeClass('opa1');
-          // $(list[2]).addClass('opa1');
-          distance2(classname)
-          break;
-        case 4:
-          console.log(3);
-          // box.addClass('opa');
-          // console.log($(list[1]));
-          $(list[2]).css({
-            opacity: '0'
-          })
-          $(list[1]).css({
-            opacity: '1'
-          })
-          // $(list[2]).removeClass('opa1');
-          // $(list[1]).addClass('opa1');
-          distance2(classname)
-          console.log(1);
-          break;
-        case 3:
-          console.log("哈哈哈哈哈哈");
-          console.log(1111111111111);
+        break;
+      case 5:
+        console.log(2);
+        $(list[3]).css({
+          opacity: '0'
+        })
+        $(list[2]).css({
+          opacity: '1'
+        })
+        // $(list[3]).removeClass('opa1');
+        // $(list[2]).addClass('opa1');
+        distance2(classname)
+        break;
+      case 4:
+        console.log(3);
+        // box.addClass('opa');
+        // console.log($(list[1]));
+        $(list[2]).css({
+          opacity: '0'
+        })
+        $(list[1]).css({
+          opacity: '1'
+        })
+        // $(list[2]).removeClass('opa1');
+        // $(list[1]).addClass('opa1');
+        distance2(classname)
+        console.log(1);
+        break;
+      case 3:
+        console.log("哈哈哈哈哈哈");
+        console.log(1111111111111);
 
-          $(list[1]).css({
-            opacity: '0'
-          })
-          $(list[0]).css({
-            opacity: '1'
-          })
+        $(list[1]).css({
+          opacity: '0'
+        })
+        $(list[0]).css({
+          opacity: '1'
+        })
 
-          // $(list[1]).removeClass('opa1');
-          // $(list[0]).addClass('opa1');
+        // $(list[1]).removeClass('opa1');
+        // $(list[0]).addClass('opa1');
 
-          distance2(classname)
-          // a = 3;
-          // console.log(list[2]);
-          break;
-        case 2:
-          $(list[0]).css({
-            opacity: '1'
-          })
-          // title.css({
-          //     top: "1rem",
-          //     left: "-2.5rem",
-          //     textAlign: "start",
-          //     transform: "scale(.5)",
-          // })
-          // console.log(list[3]);
-          break;
-        // case 1:
-        //     $(list[0]).addClass('opa1');
-        //     a = 1;
-        //     distance2(classname)
-        //     // console.log(list[4]);
-        //     break;
-        default:
-          mqObj.tag = 1;
-          console.log(5);
-          // $(list[0]).css({
-          //     opacity: '1'
-          // })
-          break;
-      }
-      // }
-
+        distance2(classname)
+        // a = 3;
+        // console.log(list[2]);
+        break;
+      case 2:
+        $(list[0]).css({
+          opacity: '1'
+        })
+        // title.css({
+        //     top: "1rem",
+        //     left: "-2.5rem",
+        //     textAlign: "start",
+        //     transform: "scale(.5)",
+        // })
+        // console.log(list[3]);
+        break;
+      // case 1:
+      //     $(list[0]).addClass('opa1');
+      //     a = 1;
+      //     distance2(classname)
+      //     // console.log(list[4]);
+      //     break;
+      default:
+        mqObj.tag = 1;
+        console.log(5);
+        // $(list[0]).css({
+        //     opacity: '1'
+        // })
+        break;
     }
-  )
+    // }
+
+  }
+  // $(classname).swipeDown(
+  // )
 
 }
 
