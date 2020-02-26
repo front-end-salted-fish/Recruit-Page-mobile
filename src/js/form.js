@@ -382,6 +382,8 @@ function textTip(str, t, callBack) {
 let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('click', function () {
+    zlPlane();// 待删除
+    return false// 待删除
     if (commitCount > 0) {
         textTip("请勿重复提交！", 1000)
     }

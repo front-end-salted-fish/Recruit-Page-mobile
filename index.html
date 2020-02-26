@@ -603,28 +603,66 @@
                         <i class="glyphicon glyphicon-ok">&nbsp;提交成功</i>
                      </div>
                      <div class="check-ewm-wrap">
+                        <!-- <button class="zl-save-btn btn-primary btn-ghost btn-multiple-border-stroke">
+                            <div class="btn-borders-group">
+                              <div class="border-top"></div>
+                              <div class="border-right"></div>
+                              <div class="border-bottom"></div>
+                              <div class="border-left"></div>
+                            </div>
+                            <div class="btn-borders-group">
+                              <div class="border-top"></div>
+                              <div class="border-right"></div>
+                              <div class="border-bottom"></div>
+                              <div class="border-left"></div>
+                            </div>
+                            <div class="btn-borders-group">
+                              <div class="border-top"></div>
+                              <div class="border-right"></div>
+                              <div class="border-bottom"></div>
+                              <div class="border-left"></div>
+                            </div>
+                            <span class="btn-text">长按保存图片</span>
+                          </button> -->
+                        <span style="color: white;
+                        font-size: .8rem; padding-bottom: .1rem;
+    display: inline-block;">请保存该二维码，该二维码为小程序查询笔试、面试状态的凭证</span>
+    <span style="color: white;">(Tips：长按图片保存哟！)</span>
                     </div>
-                     <button class="zl-send-btn btn-primary btn-ghost btn-multiple-border-stroke send">
-                        <div class="btn-borders-group">
-                          <div class="border-top"></div>
-                          <div class="border-right"></div>
-                          <div class="border-bottom"></div>
-                          <div class="border-left"></div>
-                        </div>
-                        <div class="btn-borders-group">
-                          <div class="border-top"></div>
-                          <div class="border-right"></div>
-                          <div class="border-bottom"></div>
-                          <div class="border-left"></div>
-                        </div>
-                        <div class="btn-borders-group">
-                          <div class="border-top"></div>
-                          <div class="border-right"></div>
-                          <div class="border-bottom"></div>
-                          <div class="border-left"></div>
-                        </div>
-                        <span class="btn-text">返回首页</span>
-                      </button>
+                  
+                    
+
+                      <div class="zl-modal-wrap">
+                        <dialog id="zl-confirm-modal" class="zl-send-modal">
+                            <div class="zl-modal-content">
+                              <svg t="1574164208713" class="zl-model-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5819" width="63" height="63"><path d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0zM512 877.714286c-40.228571 0-73.142857-32.914286-73.142857-73.142857s32.914286-73.142857 73.142857-73.142857 73.142857 32.914286 73.142857 73.142857S552.228571 877.714286 512 877.714286zM585.142857 512c0 40.228571-32.914286 73.142857-73.142857 73.142857s-73.142857-32.914286-73.142857-73.142857L438.857143 219.428571c0-40.228571 32.914286-73.142857 73.142857-73.142857s73.142857 32.914286 73.142857 73.142857L585.142857 512z" p-id="5820" fill="white"></path></svg>
+                              <h2 class="zl-modal-title">你确定返回首页吗?</h2>
+                              <p class="zl-modal-description">
+                                注：返回首页页面将会刷新
+                              </p>
+                              <div class="zl-modal-options">
+                                <button
+                                  class="zl-send-btn btn-round btn-fill btn-fill-left option confirm"
+                                  data-text="Yes"
+                                  onclick="document.querySelector('#zl-confirm-modal').style.display = 'none';window.location.reload()"
+                                ></button>
+                                <button
+                                  class="zl-send-btn btn-round btn-fill btn-fill-right option cancel"
+                                  data-text="No"
+                                  onclick="document.querySelector('#zl-confirm-modal').style.display = 'none'"
+                                ></button>
+                              </div>
+                            </div>
+                          </dialog>
+                          <form action="javascript:void(0);">
+                            <button
+                              class="zl-send-btn btn-danger send"
+                            >
+                              返回首页
+                            </button>
+                          </form>
+                      </div>
+                    
                     <!-- <button class="send btn-default btn"> 返回首页 </button> <br /> -->
                 </div>
     
