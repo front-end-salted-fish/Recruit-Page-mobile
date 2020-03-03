@@ -3,6 +3,7 @@ import rjBanner from './rj-index'
 import filterXSS from 'xss'
 import { academy, direction } from './myDropDown'
 import tvHeader from '../../img/tv-header.png'
+import './gt'
 console.log(academy.selectedKey);  // 学院
 console.log(direction.selectedKey); // 发展方向
 
@@ -317,46 +318,46 @@ function cogCheck() {
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
     return true;
 }
-//产生验证码  
-createCode();
-var code; //在全局定义验证码  
-function createCode() {
-    code = "";
-    var codeLength = 4; //验证码的长度  
-    var checkCode = document.getElementById("code");
-    var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
-    for (var i = 0; i < codeLength; i++) { //循环操作  
-        var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
-        code += random[index]; //根据索引取得随机数加到code上  
-    }
-    formData.checkFront = code;
-    checkCode.value = code; //把code值赋给验证码  
-}
-// 匹配验证码
-function check() {
-    let $txtCode = $("#ctl00_txtcode");     // 验证码输入框
-    let $field = $txtCode.parent(".rj-field");
-    var inputCode = $txtCode.val().toUpperCase();
-    inputCode = filterXSS(inputCode)
-    formData.checkBack = inputCode
-    if (inputCode == "") {
-        console.log(1)
-        $field.find(".rj-field-tip").text("验证码不能为空!");
-        $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
-        // alert("验证码不能为空");
-        return false;
-    } else if (inputCode != code) {
-        // alert("验证码输入错误,请重新输入！");
-        $field.find(".rj-field-tip").text("看清楚点噢！");
-        $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
-        createCode(); //刷新验证码  
-        document.getElementById("ctl00_txtcode").value = ""; //清空文本框
-        return false;
-    }
-    $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
-    return true;
-}
+// //产生验证码  
+// createCode();
+// var code; //在全局定义验证码  
+// function createCode() {
+//     code = "";
+//     var codeLength = 4; //验证码的长度  
+//     var checkCode = document.getElementById("code");
+//     var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+//         'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
+//     for (var i = 0; i < codeLength; i++) { //循环操作  
+//         var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
+//         code += random[index]; //根据索引取得随机数加到code上  
+//     }
+//     formData.checkFront = code;
+//     checkCode.value = code; //把code值赋给验证码  
+// }
+// // 匹配验证码
+// function check() {
+//     let $txtCode = $("#ctl00_txtcode");     // 验证码输入框
+//     let $field = $txtCode.parent(".rj-field");
+//     var inputCode = $txtCode.val().toUpperCase();
+//     inputCode = filterXSS(inputCode)
+//     formData.checkBack = inputCode
+//     if (inputCode == "") {
+//         console.log(1)
+//         $field.find(".rj-field-tip").text("验证码不能为空!");
+//         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
+//         // alert("验证码不能为空");
+//         return false;
+//     } else if (inputCode != code) {
+//         // alert("验证码输入错误,请重新输入！");
+//         $field.find(".rj-field-tip").text("看清楚点噢！");
+//         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
+//         createCode(); //刷新验证码  
+//         document.getElementById("ctl00_txtcode").value = ""; //清空文本框
+//         return false;
+//     }
+//     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
+//     return true;
+// }
 function textTip(str, t, callBack) {
     t = t || 2000;
     var dom = document.createElement("p");
@@ -393,9 +394,9 @@ $("#wf-commit").on('click', function () {
         if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
 
             // 判断验证码是否匹配
-            if (!check()) {
-                return false
-            } else {
+            // if (!check()) {
+                // return false
+            // } else {
                 //获取到所有的表单元素并转换为数组
                 var info1 = $('.first-part-form').serializeArray();
                 var info2 = $('.second-part-form').serializeArray();
@@ -424,8 +425,7 @@ $("#wf-commit").on('click', function () {
                 commitCount++
                 //console.log(formData)
                 //在这里提交，小飞机 
-                zlPlane();
-            }
+            // }
         }
         else {
             let wfForm = document.getElementById('wf-form');
@@ -437,6 +437,59 @@ $("#wf-commit").on('click', function () {
         }
     }
 })
+
+
+// API1 调用初始化函数进行初始化
+$.ajax({
+    url: 'api/captcha/generate',
+    type: "get",
+    dataType: "json",
+    success: function (data) {
+        // 请检测data的数据结构， 保证data.gt, data.challenge, data.success有值
+        initGeetest({
+          product: 'bind',
+          lang: 'zh-cn',
+          // 以下配置参数来自服务端 SDK
+          gt: data.gt,
+          challenge: data.challenge,
+          offline: !data.success,
+          new_captcha: true,
+        }, function (captchaObj) {
+          document.getElementById("").addEventListener('click', function () {
+            // 模态框按钮点击确定
+            captchaObj.verify();
+          });
+          captchaObj.onSuccess(function () {
+              // 用户验证成功后，进行实际的提交行为
+              var result = captchaObj.getValidate();
+              $.ajax({
+                url: 'api/captcha/verify',
+                type: 'post',
+                data: {
+                  geetest_challenge: result.geetest_challenge,
+                  geetest_validate: result.geetest_validate,
+                  geetest_seccode: result.geetest_seccode,
+                },
+                dataType: "text",
+                success: function(data) {
+                    if(data === '') {     // 空字符串则验证失败
+                      captchaObj.reset(); // 调用该接口进行重置
+                    } else {
+                      formData.captchaToken = data;  // 获取到token
+                      // TODO: 在此发送报名信息，然后飞机
+                      //   ajax
+                      zlPlane();
+
+                    }
+                }
+              })
+          })
+        })
+    }
+  })
+
+
+
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
 
 export let closeForm = function () {
