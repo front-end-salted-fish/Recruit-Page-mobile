@@ -385,57 +385,52 @@ let commitCount = 0
 $("#wf-commit").on('click', function () {
     // zlPlane();// 待删除
     // return false// 待删除
-    if (commitCount > 0) {
-        textTip("请勿重复提交！", 1000)
-    }
-    //进行判断
-    else {
-        if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
+    if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
 
-            // 判断验证码是否匹配
-            if (!check()) {
-                return false
-            } else {
-                //获取到所有的表单元素并转换为数组
-                var info1 = $('.first-part-form').serializeArray();
-                var info2 = $('.second-part-form').serializeArray();
-                info1 = info1.concat(info2);
-                let sex = $('.rj-gender-select').hasClass('rj-boy') ? "男" : "女"
-                formData.direction = direction.selectedKey
-                formData.academy = academy.selectedKey
-                formData.sex = sex
-                // formData = {
-                //     username: info1[0].value.trim(),
-                //     studentId: info1[1].value.trim(),
-                //     gradeProfessional: info1[2].value.trim(),
-                //     sex: sex,
-                //     phone: info1[3].value.trim(),
-                //     email: info1[4].value.trim(),
-                //     introduction: info1[5].value.trim(),
-                //     direction: info1[6].value.trim(),
-                //     skills: info1[7].value.trim(),
-                //     idea: info1[8].value.trim(),
-                //     checkFront: info1[9].value.trim(), // 前端动态生成的验证码
-                //     checkBack: info1[9].value.trim() // 用户填写的验证码 */
-                // }
-                // textTip('提交成功', 1000, function () {
-                //     //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
-                // });
-                commitCount++
-                //console.log(formData)
-                //在这里提交，小飞机 
-                zlPlane();
-            }
-        }
-        else {
-            let wfForm = document.getElementById('wf-form');
-            textTip('请正确输入信息', 1000, function () {
-                //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
-            });
-            let offset =  $('.rj-field-error')[0].offsetTop//第一个错误的表单项
-            $wfForm.scrollTop(offset)//使用scrollTop()方法移动页面
+        // 判断验证码是否匹配
+        if (!check()) {
+            return false
+        } else {
+            //获取到所有的表单元素并转换为数组
+            var info1 = $('.first-part-form').serializeArray();
+            var info2 = $('.second-part-form').serializeArray();
+            info1 = info1.concat(info2);
+            let sex = $('.rj-gender-select').hasClass('rj-boy') ? "男" : "女"
+            formData.direction = direction.selectedKey
+            formData.academy = academy.selectedKey
+            formData.sex = sex
+            // formData = {
+            //     username: info1[0].value.trim(),
+            //     studentId: info1[1].value.trim(),
+            //     gradeProfessional: info1[2].value.trim(),
+            //     sex: sex,
+            //     phone: info1[3].value.trim(),
+            //     email: info1[4].value.trim(),
+            //     introduction: info1[5].value.trim(),
+            //     direction: info1[6].value.trim(),
+            //     skills: info1[7].value.trim(),
+            //     idea: info1[8].value.trim(),
+            //     checkFront: info1[9].value.trim(), // 前端动态生成的验证码
+            //     checkBack: info1[9].value.trim() // 用户填写的验证码 */
+            // }
+            // textTip('提交成功', 1000, function () {
+            //     //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+            // });
+            commitCount++
+            //console.log(formData)
+            //在这里提交，小飞机 
+            zlPlane();
         }
     }
+    else {
+        let wfForm = document.getElementById('wf-form');
+        textTip('请正确输入信息', 1000, function () {
+            //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+        });
+        let offset = $('.rj-field-error')[0].offsetTop//第一个错误的表单项
+        $wfForm.scrollTop(offset)//使用scrollTop()方法移动页面
+    }
+
 })
 let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
 

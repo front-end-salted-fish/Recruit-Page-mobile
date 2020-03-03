@@ -3,7 +3,7 @@ import 'zepto/src/touch'
 import rjBanner from './rj-index'
 import { closeForm } from './form'
 import ewmImgSrc from '../../img/ewm.jpg'
-console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
+//console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
 const $ewmWrap = $('#plane .check-ewm-wrap');
 
 // 动态生成二维码图片
