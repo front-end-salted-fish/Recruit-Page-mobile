@@ -6,23 +6,46 @@ import tvHeader from '../../img/tv-header.png'
 import './gt'
 console.log(academy.selectedKey);  // 学院
 console.log(direction.selectedKey); // 发展方向
+const $ewmWrap = $('#plane .check-ewm-wrap');
 
+// 动态生成二维码图片
+let ewmImg = new Image();
+$(ewmImg).css({
+  width: "64%",
+  'pointer-events': 'initial',
+  'border-radius': '50%'
+
+})
+$ewmWrap.append(ewmImg);
 // 初始化表单数据,用于发给后台的表单数据
+// let formData = {
+//     username: '', // 姓名
+//     studentId: '', // 学号
+//     academy: '', // 学院
+//     gradeProfessional: '', // 年级班级
+//     sex: '', // 性别-》默认男
+//     phone: '', // 手机号码
+//     email: '', // 邮箱
+//     introduction: '', // 自我介绍
+//     direction: '', // 选择的方向
+//     skills: '', // 你所掌握的技能
+//     idea: '', // 你对我们工作室的想法
+//     checkFront: '', // 前端动态生成的验证码
+//     checkBack: '' // 用户填写的验证码
+// };
 let formData = {
-    username: '', // 姓名
-    studentId: '', // 学号
-    academy: '', // 学院
-    gradeProfessional: '', // 年级班级
-    sex: '', // 性别-》默认男
+    name: '', // 姓名
+    schoolId: '', // 学号
+    institute: '', // 学院
+    major: '', // 年级班级
+    sex: 0, // 性别(默认男（ 0-男，1-女）)
     phone: '', // 手机号码
-    email: '', // 邮箱
+    mail: '', // 邮箱
     introduction: '', // 自我介绍
-    direction: '', // 选择的方向
-    skills: '', // 你所掌握的技能
-    idea: '', // 你对我们工作室的想法
-    checkFront: '', // 前端动态生成的验证码
-    checkBack: '' // 用户填写的验证码
-};
+    direction: 0, // 选择的方向（默认前端，（0-前端、1-后台、2-安卓、3-iOS、4-机器学习））
+    skill: '', // 你所掌握的技能
+    know: '', // 你对我们工作室的想法
+  };
 /* $(".rj-boy").on('tap', function () {
     formData.sex = '女'
 }) */
@@ -68,39 +91,10 @@ $('.getmypart').on('tap', function () {
     $('#wf-form').animate({ transform: 'translate(0,0)' }, 800, 'liner');
     console.log('s');
 })
-// 让表单不溢出
-function fixedForm() {
-    $('body').css({
-        position: 'fixed'
-    });
-    $('html').css({
-        position: 'fixed'
-    });
-}
-// 解除固定定位
-function relieveFixed() {
-    $('body').css({
-        position: 'static'
-    });
-    $('html').css({
-        position: 'static'
-    });
-}
+
 // 下拉框
 let $select = $('.second-part-form .form-control')
-$select.click(function (e) {
-    // fixedForm()
-    // e.preventDefault();
-    // e.stopPropagation();
-})
-//下拉框的值发生改变时，
-$select.on('change', function () {
-    // relieveFixed()
-})
-// 整个表单页面
-$('#zl-form-page').click(function () {
-    // relieveFixed()
-})
+
 //上一页下一页----------------------------------------
 // $("#next-page button").on('tap', function () {
 //     $("#rj-steps-container").addClass("rj-form-page2");
@@ -157,8 +151,7 @@ function nameCheck() {
     let name = $wfName.val();
     let $field = $wfName.parent('.rj-field');
     name = filterXSS(name)
-    formData.username = name
-    console.log(name)
+    formData.name = name
     if (!reg.test(name) || name == '') {
         // 如果输入为空或者格式错误
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
@@ -200,7 +193,7 @@ $wfId.on("blur", idCheck);//2.学号
 function idCheck() {
     let reg = /^\d{9,12}$/;//十位数字
     let id = $wfId.val().trim();
-    formData.studentId = id;
+    formData.schoolId = id;
     let $field = $wfId.parent('.rj-field');
     if (!reg.test(id) || id == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
@@ -220,7 +213,7 @@ function gradeCheck() {
     let grade = $wfGrade.val().trim();
     let $field = $wfGrade.parent(".rj-field");
     grade = filterXSS(grade)
-    formData.gradeProfessional = grade;
+    formData.major = grade;
 
     if (grade == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
@@ -260,7 +253,7 @@ function emailCheck() {
     let email = $wfEmail.val().trim();
     let $field = $wfEmail.parent(".rj-field");
     email = filterXSS(email)
-    formData.email = email
+    formData.mail = email
     if (!reg.test(email) || email == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         // $("#wf-email").css("border", "1px solid red");
@@ -296,7 +289,7 @@ function skillsCheck() {
     let skills = $wfSkills.val().trim();
     let $field = $wfSkills.parent(".rj-field");
     skills = filterXSS(skills)
-    formData.skills = skills
+    formData.skill = skills
     if (skills == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         return false;
@@ -310,7 +303,7 @@ function cogCheck() {
     let cog = $wfCog.val().trim();
     let $field = $wfCog.parent(".rj-field");
     cog = filterXSS(cog)
-    formData.idea = cog
+    formData.know = cog
     if (cog == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
         return false;
@@ -384,6 +377,8 @@ function textTip(str, t, callBack) {
 let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('click', function () {
+    console.log(direction.selectedKey)
+
     // zlPlane();// 待删除
     // return false// 待删除
     if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
@@ -396,9 +391,31 @@ $("#wf-commit").on('click', function () {
         var info1 = $('.first-part-form').serializeArray();
         var info2 = $('.second-part-form').serializeArray();
         info1 = info1.concat(info2);
-        let sex = $('.rj-gender-select').hasClass('rj-boy') ? "男" : "女"
-        formData.direction = direction.selectedKey
-        formData.academy = academy.selectedKey
+        // let sex = $('.rj-gender-select').hasClass('rj-boy') ? "男" : "女"
+        let sex = $('.rj-gender-select').hasClass('rj-boy') ? 0 : 1;
+        switch (direction.selectedKey) {
+            case '前端':
+                formData.direction = 0;
+                break;
+            case '后台':
+                formData.direction = 1;
+                break;
+            case '安卓':
+                formData.direction = 2;
+                break;
+            case 'ios':
+                formData.direction = 3;
+                break;
+            case '机器学习':
+                formData.direction = 4;
+                break;
+            default:
+                formData.direction = 0;
+                break;
+
+        }
+        // formData.direction = direction.selectedKey
+        formData.institute = academy.selectedKey
         formData.sex = sex
         // formData = {
         //     username: info1[0].value.trim(),
@@ -417,13 +434,23 @@ $("#wf-commit").on('click', function () {
         // textTip('提交成功', 1000, function () {
         //     //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
         // });
-        //console.log(formData)
+        console.log(formData)
         //弹出modal框提示确认信息
-        var txt1=$("<h4></h4>").text("姓名："+formData.username);
-        var txt2=$("<h4></h4>").text("学号："+formData.studentId);
-        var txt3=$("<h4></h4>").text("手机："+formData.phone);
+        // var txt1=$("<h4></h4>").text("姓名："+formData.name);
+        // var txt2=$("<h4></h4>").text("学号："+formData.schoolId);
+        var txt1=$("<h4></h4>").text('请再确认一遍自己所填的个人信息是否有误');
+        var txt2=$("<h4></h4>").text('注意：重复提交后果自负!');
+        var txt3=$("<h4></h4>").text('请确认该手机号是可以正常接收短信的！');
+        var txt4=$("<h4></h4>").text("手机："+formData.phone);
+        txt2.css({
+            color: 'red'
+        })
+        txt4.css({
+            color: 'red'
+        })
+        // var txt5=$("<h4></h4>").text("手机："+formData.phone);
         $('.wf-modal-description').html('')
-        $('.wf-modal-description').append(txt1,txt2,txt3)
+        $('.wf-modal-description').append(txt1,txt2,txt3,txt4)
         $('.wf-send-modal').css({
             'display': 'block'
         })
@@ -464,7 +491,7 @@ $.ajax({
             offline: !data.success,
             new_captcha: true,
         }, function (captchaObj) {
-            document.getElementById("").addEventListener('click', function () {
+            document.getElementById("wf-confirm-btn").addEventListener('click', function () {
                 // 模态框按钮点击确定
                 captchaObj.verify();
             });
@@ -486,8 +513,27 @@ $.ajax({
                         } else {
                             formData.captchaToken = data;  // 获取到token
                             // TODO: 在此发送报名信息，然后飞机
+                            $.ajax({
+                                type: "POST",
+                                url:'api/student/submitSignUp',
+                                data: JSON.stringify(formData),
+                                dataType: "json",
+                                contentType: "application/json",
+                                success: function (data) {
+                                  console.log(data)
+                                  if (data.success == true && data.code == 200) {
+                                    ewmImg.src = data.message;
+                                    textTip('提交成功', 1000, function () {
+                                        zlPlane();
+                                    });
+                                      // 设置二维码
+                                } else {
+                                   textTip(data.message, 1000, function () {
+                                    });
+                                }
+                              }
+                              })
                             //   ajax
-                            zlPlane();
 
                         }
                     }
