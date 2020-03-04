@@ -2,10 +2,10 @@ import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
 import { academy, direction } from './myDropDown'
-import tvHeader from '../../img/tv-header.png'
+// import tvHeader from '../../img/tv-header.png'
 import './gt'
-console.log(academy.selectedKey);  // 学院
-console.log(direction.selectedKey); // 发展方向
+  // 学院
+ // 发展方向
 const $ewmWrap = $('#plane .check-ewm-wrap');
 
 // 动态生成二维码图片
@@ -66,7 +66,7 @@ $(window).resize(function () {
         软键盘弹出
         50是设置的阈值，用来排除其他影响窗体大小变化的因素，比如有的浏览器的工具栏的显示和隐藏
         */
-        // console.log(document.activeElement.id, 'resize');
+        // 
         $wfForm.scrollTop($(document.activeElement).offset().top + $wfForm.scrollTop() - 4 * rem);
         // $('body').css('height', winHeight + 'px');
     } else {
@@ -89,7 +89,7 @@ $('#zl-form-page input,#zl-form-page textarea').on('focusout', function () {
 });
 $('.getmypart').on('tap', function () {
     $('#wf-form').animate({ transform: 'translate(0,0)' }, 800, 'liner');
-    console.log('s');
+    
 })
 
 // 下拉框
@@ -112,7 +112,7 @@ let $select = $('.second-part-form .form-control')
 let fixbug = false;
 $(".rj-form-input").on("focus", function (e) {
     let $field = $(this.parentNode);
-    // console.log($field);
+    // 
     if ($field[0].className === 'rj-field') {
         $field.addClass("rj-field-ready");
     }
@@ -335,7 +335,7 @@ function cogCheck() {
 //     inputCode = filterXSS(inputCode)
 //     formData.checkBack = inputCode
 //     if (inputCode == "") {
-//         console.log(1)
+//         
 //         $field.find(".rj-field-tip").text("验证码不能为空!");
 //         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
 //         // alert("验证码不能为空");
@@ -377,7 +377,7 @@ function textTip(str, t, callBack) {
 let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('click', function () {
-    console.log(direction.selectedKey)
+    
 
     // zlPlane();// 待删除
     // return false// 待删除
@@ -432,9 +432,9 @@ $("#wf-commit").on('click', function () {
         //     checkBack: info1[9].value.trim() // 用户填写的验证码 */
         // }
         // textTip('提交成功', 1000, function () {
-        //     //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+        //     //
         // });
-        console.log(formData)
+        
         //弹出modal框提示确认信息
         var txt1=$("<h4></h4>").text("姓名："+formData.name);
         var txt2=$("<h4></h4>").text("学号："+formData.schoolId);
@@ -461,7 +461,7 @@ $("#wf-commit").on('click', function () {
     else {
         let wfForm = document.getElementById('wf-form');
         textTip('请正确输入信息', 1000, function () {
-            //console.log('提示框消失后，执行的回调。时间t与回调函数callBack可传可不传');
+            //
         });
         let offset = $('.rj-field-error')[0].offsetTop//第一个错误的表单项
         $wfForm.scrollTop(offset)//使用scrollTop()方法移动页面
@@ -472,12 +472,12 @@ $("#wf-commit").on('click', function () {
 })
 $('#wf-confirm-btn').on('click',function(){
     //确认之后
-    console.log('验证！')
+    
 })
 
 // API1 调用初始化函数进行初始化
 $.ajax({
-    url: 'api/captcha/generate',
+    url: '/api/captcha/generate',
     type: "get",
     dataType: "json",
     success: function (data) {
@@ -499,7 +499,7 @@ $.ajax({
                 // 用户验证成功后，进行实际的提交行为
                 var result = captchaObj.getValidate();
                 $.ajax({
-                    url: 'api/captcha/verify',
+                    url: '/api/captcha/verify',
                     type: 'post',
                     data: {
                         geetest_challenge: result.geetest_challenge,
@@ -515,12 +515,12 @@ $.ajax({
                             // TODO: 在此发送报名信息，然后飞机
                             $.ajax({
                                 type: "POST",
-                                url:'api/student/submitSignUp',
+                                url:'/api/student/submitSignUp',
                                 data: JSON.stringify(formData),
                                 dataType: "json",
                                 contentType: "application/json",
                                 success: function (data) {
-                                  console.log(data)
+                                  
                                   if (data.success == true && data.code == 200) {
                                     ewmImg.src = data.message;
                                     textTip('提交成功', 1000, function () {
@@ -608,7 +608,7 @@ class textCounter {
         `);
         this.selector.after($counter);
         this.currentCntSpan = $counter.find('.rj-current-cnt');
-        // console.log(this.currentCntSpan);
+        // 
         let that = this;
         this.currentCnt = this.currentCntSpan.text();  // 当前字数
         this.countEvent = function (e) {
@@ -664,4 +664,4 @@ $wfForm.on('tap', function (t) {
 })
 
 // 表单图片
-$('#rj-tv-header').attr('src', tvHeader)
+// $('#rj-tv-header').attr('src', tvHeader)

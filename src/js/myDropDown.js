@@ -1,4 +1,4 @@
-import iconDown from '../../img/icon_down.png'
+// import iconDown from '../../img/icon_down.png'
 
 class DropDown {
   constructor(selector) {
@@ -22,7 +22,7 @@ class DropDown {
       <div class="rj-dropDown-container dropUp" tabindex="-1" id="${this.id}" style="z-index:${this.zIndex + 1};">
         <div style="z-index:${this.zIndex + 1};" class="rj-dropDown-selected-contianer">
           <span class="rj-dropDown-selected" style="z-index:${this.zIndex + 1};">${this.options.eq(0).text()}</span>
-          <img src="${iconDown}" class="rj-icon-down" style="z-index:${this.zIndex + 1};"/>
+          <img src="https://education.topviewclub.cn/file/assert/icon_down.png" class="rj-icon-down" style="z-index:${this.zIndex + 1};"/>
         </div>
         <ul class="rj-dropDown" style="z-index:${this.zIndex};">
         </ul>

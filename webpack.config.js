@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/js/index.js',
 
     output: {
-        filename: 'bundle.js',
+        filename: 'mobile-bundle.js',
         path: path.resolve(__dirname, './dist')
     },
     devServer: {
@@ -16,7 +16,7 @@ module.exports = {
         contentBase: './dist',
         proxy: {
             "/api/*": {
-                target: "https://recruit.topviewclub.cn/",
+                target: "https://recruit.topviewclub.cn",
                 ws: true,
                 changeOrigin: true,
             }
@@ -26,7 +26,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Output Management',
             template: path.join(__dirname, 'index.html'), 
-            filename: 'index.html'
+            filename: 'index.html',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                minifyCSS: true,
+            }
         })
     ],
     module: {

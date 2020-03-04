@@ -24,12 +24,12 @@ import rjBanner from '../js/rj-index'
         $($('.row-forth .move-span')[0]).off('webkitTransitionEnd');   
         loadingtransitionEnd = true; 
         loadingOut();     
-        // console.log('开机动画结束!',new Date().getTime());
+        // 
     })
     window.onload = function() {
         isAllLoaded = true;
         loadingOut();  
-        // console.log('资源加载结束!',new Date().getTime());
+        // 
     }
 
     let that;
@@ -46,7 +46,7 @@ import rjBanner from '../js/rj-index'
             this.$rowForth = $("#loading-module #loading-box .row-forth");
         }
         init() {
-            console.log(this.$rowOne);
+            
             let singgle = 600;
             //第一行
             this.resetStyle(this.$rowOne,"row-one-first-change","row-one-second-change",0);
@@ -58,7 +58,7 @@ import rjBanner from '../js/rj-index'
             this.resetStyle(this.$rowForth,"row-forth-first-change","row-forth-second-change",3 * singgle);
         }
         resetStyle(obj,change1,change2,time) {
-            console.log("类名被改了")
+            
             setTimeout(function() {
                 obj.addClass(change1);
                 setTimeout(function() {

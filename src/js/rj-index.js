@@ -17,7 +17,9 @@ let mqFunc = () => {
     boxContent.each(function (item, index) {
       $(this).css({
         opacity: "0",
-        transition: ''
+        transition: '',
+        filter: 'blur(30px)',
+        transform: 'scale(1.3)'
       })
     })
     title.css({
@@ -66,11 +68,11 @@ let rjBanner = {
   pagesPosClassArr: ["rj-pre-page", "rj-mid-page", "rj-next-page"],
   // 存放图片链接的数组
   imgSrc:[
-    "https://education.topviewclub.cn/homework-file/2020-2-15/e70fa300f6a14a3f9e22456b546c5d0f1581764421458/front-end-banner.jpg",
-    "https://education.topviewclub.cn/homework-file/2020-2-15/6c1f1a76b9cb4af08fd2aebba06c7a361581770295650/backstage.png",
-    "https://education.topviewclub.cn/homework-file/2020-2-15/1ab1e4687190487290d0d177d73300871581770367403/andriod-banner.jpg",
-    "https://education.topviewclub.cn/homework-file/2020-2-15/5727f3066fbe40279f5e23b09fa82df91581770418754/ios-banner.jpg",
-    "https://education.topviewclub.cn/homework-file/2020-2-15/02674cf25478490b8aaf0406612005fd1581770447407/machine-learning-banner-2.jpg"
+    "https://education.topviewclub.cn/file/assert/front-end-banner.jpg",
+    "https://education.topviewclub.cn/file/assert/backstage.png",
+    "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
+    "https://education.topviewclub.cn/file/assert/ios-banner.jpg",
+    "https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg"
   ],
   // 中文字体的数组
   cTxtArr: ["前端", "后台", "安卓", "iOS", "机器学习"],
@@ -259,7 +261,7 @@ let rjBanner = {
   stop() {
     this.isStopping = true;
     clearInterval(this.timer);
-    // console.log($('.rj-banner-btn-current .rj-banner-timer'));
+    // 
     let $timer = $('.rj-banner-btn-current .rj-banner-timer');
     $timer.css({
       animationPlayState: 'paused',
