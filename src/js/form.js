@@ -436,21 +436,21 @@ $("#wf-commit").on('click', function () {
         // });
         console.log(formData)
         //弹出modal框提示确认信息
-        // var txt1=$("<h4></h4>").text("姓名："+formData.name);
-        // var txt2=$("<h4></h4>").text("学号："+formData.schoolId);
-        var txt1=$("<h4></h4>").text('请再确认一遍自己所填的个人信息是否有误');
-        var txt2=$("<h4></h4>").text('注意：重复提交后果自负!');
-        var txt3=$("<h4></h4>").text('请确认该手机号是可以正常接收短信的！');
-        var txt4=$("<h4></h4>").text("手机："+formData.phone);
-        txt2.css({
+        var txt1=$("<h4></h4>").text("姓名："+formData.name);
+        var txt2=$("<h4></h4>").text("学号："+formData.schoolId);
+        // var txt1=$("<h4></h4>").text('请再确认一遍自己所填的个人信息是否有误');
+        var txt3=$("<h4></h4>").text('注意：重复提交后果自负!');
+        var txt4=$("<h4></h4>").text('请确认该手机号是可以正常接收短信的！');
+        var txt5=$("<h4></h4>").text("手机："+formData.phone);
+        txt3.css({
             color: 'red'
         })
-        txt4.css({
+        txt5.css({
             color: 'red'
         })
         // var txt5=$("<h4></h4>").text("手机："+formData.phone);
         $('.wf-modal-description').html('')
-        $('.wf-modal-description').append(txt1,txt2,txt3,txt4)
+        $('.wf-modal-description').append(txt1,txt2,txt3,txt4,txt5)
         $('.wf-send-modal').css({
             'display': 'block'
         })
