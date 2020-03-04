@@ -3,18 +3,8 @@ import 'zepto/src/touch'
 import rjBanner from './rj-index'
 import { closeForm } from './form'
 import ewmImgSrc from '../../img/ewm.jpg'
-console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
-const $ewmWrap = $('#plane .check-ewm-wrap');
+//console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
 
-// 动态生成二维码图片
-let ewmImg = new Image();
-ewmImg.src = ewmImgSrc;
-$(ewmImg).css({
-  width: "64%",
-  'pointer-events': 'initial'
-
-})
-$ewmWrap.append(ewmImg);
 
  let zlPlane = () => {
 	let $wind = $('#wind');
