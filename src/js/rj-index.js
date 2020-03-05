@@ -48,7 +48,19 @@ let $rjBackBtn = $('.zl-back-btn'); // 从详情页返回轮播图的按钮
 
 // 翻页节流共享previous
 let previous = 0;
-
+let imgSrc = [
+  "https://education.topviewclub.cn/file/assert/front-end-banner.jpg",
+  "https://education.topviewclub.cn/file/assert/backstage.png",
+  "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
+  "https://education.topviewclub.cn/file/assert/ios-banner.jpg",
+  "https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg"
+];
+let imgArr = imgSrc.map(item => {
+  let mewImage = new Image();
+  mewImage.crossOrigin = '';
+  mewImage.src = item;
+  return mewImage;
+})
 
 // 轮播图对象
 let rjBanner = {
@@ -67,13 +79,13 @@ let rjBanner = {
   // 存放位置类名的数组
   pagesPosClassArr: ["rj-pre-page", "rj-mid-page", "rj-next-page"],
   // 存放图片链接的数组
-  imgSrc:[
-    "https://education.topviewclub.cn/file/assert/front-end-banner.jpg",
-    "https://education.topviewclub.cn/file/assert/backstage.png",
-    "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
-    "https://education.topviewclub.cn/file/assert/ios-banner.jpg",
-    "https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg"
-  ],
+  // imgSrc:[
+  //   "https://education.topviewclub.cn/file/assert/front-end-banner.jpg",
+  //   "https://education.topviewclub.cn/file/assert/backstage.png",
+  //   "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
+  //   "https://education.topviewclub.cn/file/assert/ios-banner.jpg",
+  //   "https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg"
+  // ],
   // 中文字体的数组
   cTxtArr: ["前端", "后台", "安卓", "iOS", "机器学习"],
   // 英文字体的数组
@@ -82,7 +94,8 @@ let rjBanner = {
   detailPageColors: ["#452f12","#2d0d43","#454545","#1b3f3b","#16233d"],
   // 初始化函数
   init() {
-    $bannerImgs.eq(1).attr('src', this.imgSrc[0]);
+    $bannerPages.eq(1).empty().append(imgArr[0]);
+    // $bannerImgs.eq(1).attr('src', this.imgSrc[0]);
     this.setPosClass();
   },
   // 位置class的重置
@@ -192,8 +205,8 @@ let rjBanner = {
   },
   // 设置对应index的轮播图内容
   preSetSrc(className, index) {
-    $($bannerImgs[this.pagesPosClassArr.indexOf(className)])
-      .attr("src", this.imgSrc[index]);
+    $($bannerPages[this.pagesPosClassArr.indexOf(className)]).empty().append(imgArr[index]);
+      // .attr("src", this.imgSrc[index]);
   },
   // 下一页
   nextPage(nextPageIndex) {

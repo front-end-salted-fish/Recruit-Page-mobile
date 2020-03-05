@@ -630,7 +630,7 @@
                 <div id="plane" class="front">
 
                     <div class="message">
-                        <i class="glyphicon glyphicon-ok">&nbsp;提交成功</i>
+                        <i class="glyphicon glyphicon-ok"><span style='font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;padding-left: .7rem;'>提交成功</span></i>
                     </div>
                     <div class="check-ewm-wrap">
                         <!-- <button class="zl-save-btn btn-primary btn-ghost btn-multiple-border-stroke">
@@ -654,10 +654,12 @@
                             </div>
                             <span class="btn-text">长按保存图片</span>
                           </button> -->
-                        <span style="color: white;
-                        font-size: .8rem; padding-bottom: .1rem;
-    display: inline-block;">请保存该二维码，该二维码为查询笔试、面试状态的微信小程序</span>
-                        <span style="color: white;">(Tips：长按图片保存哟！)</span>
+                          <p style="color:#fff;font-size: .8rem;/* padding-bottom:.1rem; */display:inline-block;text-indent: 1.6rem;text-align: start;/* margin: 0; */">请保存此小程序码，通过微信扫码即可查询考核状态。</p>
+                          <p style="color:#fff;font-size:.8rem;/* padding-bottom: .05rem; */display:inline-block;text-indent: 1.6rem;text-align: start;">通过微信搜索<span style="
+                              padding: 0.15rem;
+                              word-break: break-all;
+                          ">“TopView Recruit”</span>也可以进入小程序。</p>
+                        <span style="color: white; font-size: .68rem;">(Tips：长按图片保存哟！)</span>
                     </div>
 
                     <div class="zl-modal-wrap">
@@ -684,7 +686,7 @@
                             </div>
                         </dialog>
                         <form action="javascript:void(0);">
-                            <button class="zl-send-btn btn-danger send">
+                            <button class="zl-send-btn btn-danger send" id="rj-plane-send-over-btn">
                                 返回首页
                             </button>
                         </form>
@@ -714,13 +716,15 @@
         </div>
     </div>
     <!-- 提前加载图片后删除 -->
-    <div id="rj-img-pre-load" style="display:none ">
+    <!-- <div id="rj-img-pre-load" style="display:none">
         <img crossOrigin src="https://education.topviewclub.cn/file/assert/front-end-banner.jpg">
         <img crossOrigin src="https://education.topviewclub.cn/file/assert/backstage.png">
         <img crossOrigin src="https://education.topviewclub.cn/file/assert/andriod-banner.jpg">
         <img crossOrigin src="https://education.topviewclub.cn/file/assert/ios-banner.jpg">
         <img crossOrigin src="https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg">
-    </div>
+    </div> -->
+    <div id="rj-modal-confirm" class="rj-modal-container"></div>
+    <div id="rj-plane-confirm-modal" class="rj-modal-container"></div>
 </body>
 
 </html>

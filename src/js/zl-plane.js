@@ -4,7 +4,20 @@ import 'zepto/src/touch'
 // import { closeForm } from './form'
 // import ewmImgSrc from '../../img/ewm.jpg'
 //  // 记得扫完二维码回到最初起点时调用
+import Modal from './Modal'
 
+let planeModal = new Modal({
+	modalId: '#rj-plane-confirm-modal',
+	header: '你确定返回首页吗？',
+	selector: '#rj-plane-send-over-btn',
+	modalBody: '<p>注: 返回首页页面将会刷新</p>',
+	okFunc: () => {
+		window.location.reload();
+	},
+	okBtnId: 'rj-plane-confirm-ok'
+})
+
+planeModal.init();
 
  let zlPlane = () => {
 	let $wind = $('#wind');
@@ -49,9 +62,9 @@ import 'zepto/src/touch'
 	                            $('.curvable').removeClass('curved');
 	                            // $wind.css({"background-color": "#ccc"}).removeClass('.zl-wind-zindex');
 								$wind.css({
-								"background": '#0F2027',  /* fallback for old browsers */
-								"background": "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)",  /* Chrome 10-25, Safari 5.1-6 */
-								"background": "linear-gradient(to right, #2C5364, #203A43, #0F2027)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+								"background": 'black',  /* fallback for old browsers */
+								// "background": "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)",  /* Chrome 10-25, Safari 5.1-6 */
+								// "background": "linear-gradient(to right, #2C5364, #203A43, #0F2027)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 								}).removeClass('.zl-wind-zindex');
 	                        },2000);
 	                    }, 400);
@@ -61,11 +74,11 @@ import 'zepto/src/touch'
 	    // });
 		// 关闭弹窗返回首页
 	
-	    $("#wind .send").on('click',function(){
+	    // $("#wind .send").on('click',function(){
 
-			$('.zl-send-modal').css({
-				'display': 'block'
-			})
+			// $('.zl-send-modal').css({
+			// 	'display': 'block'
+			// })
 				// rjBanner.stop();
 				// 
 				// $('#wf-form').fadeIn();
@@ -79,7 +92,7 @@ import 'zepto/src/touch'
 				// }
 				// else closeForm();
 				// window.location.reload()
-	    });
+	    // });
  }
  export default zlPlane;
 // $(function(){

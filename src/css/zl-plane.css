@@ -157,7 +157,7 @@ body{
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    width: 375px;
+    width: 15.6rem;;
     height: 260px;
     top: 60px;
  
@@ -389,21 +389,39 @@ body{
     color: white;
     margin-top: 16px;
     width: 100%;
-    padding: 10px;
+    padding: 0 1rem 1rem 1rem;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    height: 100px;
+    /* height: 100px; */
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-font-smoothing: subpixel-antialiased;
     -ms-font-smoothing: subpixel-antialiased;
     -o-font-smoothing: subpixel-antialiased;
-    font-size: 36px;
+    font-size: 1.3rem;
     font-family: "Microsoft YaHei",Helvetica, Arial, Verdana;
     line-height: 18px;
 }
- 
+
+.glyphicon-ok::before {
+    color: #52c41a;
+}
+.glyphicon {
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    display: inline-flex;
+    font-family: 'Glyphicons Halflings', '微软雅黑';
+    font-style: normal;
+    font-weight: 400;
+    justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+}
+.check-ewm-wrap {
+    font-weight: lighter;
+}
 /* .send {
     -webkit-appearance: none;
     -moz-appearance: none;

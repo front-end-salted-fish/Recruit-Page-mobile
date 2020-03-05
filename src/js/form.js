@@ -2,6 +2,7 @@ import zlPlane from './zl-plane'
 import rjBanner from './rj-index'
 import filterXSS from 'xss'
 import { academy, direction } from './myDropDown'
+import Modal from './Modal'
 // import tvHeader from '../../img/tv-header.png'
 import './gt'
   // 学院
@@ -13,8 +14,8 @@ let ewmImg = new Image();
 $(ewmImg).css({
   width: "64%",
   'pointer-events': 'initial',
-  'border-radius': '50%'
-
+  'border-radius': '50%',
+	margin: '1rem auto'
 })
 $ewmWrap.append(ewmImg);
 // 初始化表单数据,用于发给后台的表单数据
@@ -374,6 +375,24 @@ function textTip(str, t, callBack) {
     }, t);
 }
 
+let confirmModal = new Modal({
+    modalId: '#rj-modal-confirm',
+    header: '请确认如下信息',
+    cancelTxt: '修改',
+    OkText: '确定',
+    selector: '#wf-commit',
+		okBtnId: 'rj-confirm-btn',
+    modalBody: `
+			<p><span style="color:black">姓名：</span><span id="rj-confirm-name"></span></p>
+			<p><span style="color:black">学号：</span><span id="rj-confirm-number"></span></p>
+			<p style="color: red;">手机：<span id="rj-confirm-phone"></span></p>
+			<p>请确认该手机号是可以正常接收短信的！</p>
+			<p style="color: red;">注意：提交错误后果自负!</p>
+		`,
+		autoShow: false,
+});
+confirmModal.init();
+
 let commitCount = 0
 //$("#wf-commit").attr("disabled", true);
 $("#wf-commit").on('click', function () {
@@ -416,7 +435,12 @@ $("#wf-commit").on('click', function () {
         }
         // formData.direction = direction.selectedKey
         formData.institute = academy.selectedKey
-        formData.sex = sex
+				formData.sex = sex
+				
+				$('#rj-confirm-name').text(formData.name);
+				$('#rj-confirm-number').text(formData.schoolId);
+				$('#rj-confirm-phone').text(formData.phone);
+				confirmModal.show();
         // formData = {
         //     username: info1[0].value.trim(),
         //     studentId: info1[1].value.trim(),
@@ -436,29 +460,30 @@ $("#wf-commit").on('click', function () {
         // });
         
         //弹出modal框提示确认信息
-        var txt1=$("<h4></h4>").text("姓名："+formData.name);
-        var txt2=$("<h4></h4>").text("学号："+formData.schoolId);
-        // var txt1=$("<h4></h4>").text('请再确认一遍自己所填的个人信息是否有误');
-        var txt3=$("<h4></h4>").text('注意：重复提交后果自负!');
-        var txt4=$("<h4></h4>").text('请确认该手机号是可以正常接收短信的！');
-        var txt5=$("<h4></h4>").text("手机："+formData.phone);
-        txt3.css({
-            color: 'red'
-        })
-        txt5.css({
-            color: 'red'
-        })
+        // var txt1=$("<h4></h4>").text("姓名："+formData.name);
+        // var txt2=$("<h4></h4>").text("学号："+formData.schoolId);
+        // // var txt1=$("<h4></h4>").text('请再确认一遍自己所填的个人信息是否有误');
+        // var txt3=$("<h4></h4>").text('注意：重复提交后果自负!');
+        // var txt4=$("<h4></h4>").text('请确认该手机号是可以正常接收短信的！');
         // var txt5=$("<h4></h4>").text("手机："+formData.phone);
-        $('.wf-modal-description').html('')
-        $('.wf-modal-description').append(txt1,txt2,txt3,txt4,txt5)
-        $('.wf-send-modal').css({
-            'display': 'block'
-        })
+        // txt3.css({
+        //     color: 'red'
+        // })
+        // txt5.css({
+        //     color: 'red'
+        // })
+        // var txt5=$("<h4></h4>").text("手机："+formData.phone);
+        // $('.wf-modal-description').html('')
+        // $('.wf-modal-description').append(txt1,txt2,txt3,txt4,txt5)
+        // $('.wf-send-modal').css({
+        //     'display': 'block'
+        // })
         //在这里提交，小飞机 
         //zlPlane();
         // }
     }
     else {
+				confirmModal.hide();
         let wfForm = document.getElementById('wf-form');
         textTip('请正确输入信息', 1000, function () {
             //
@@ -469,10 +494,6 @@ $("#wf-commit").on('click', function () {
 
 
 
-})
-$('#wf-confirm-btn').on('click',function(){
-    //确认之后
-    
 })
 
 // API1 调用初始化函数进行初始化
@@ -491,7 +512,7 @@ $.ajax({
             offline: !data.success,
             new_captcha: true,
         }, function (captchaObj) {
-            document.getElementById("wf-confirm-btn").addEventListener('click', function () {
+            document.getElementById("rj-confirm-btn").addEventListener('click', function () {
                 // 模态框按钮点击确定
                 captchaObj.verify();
             });
@@ -526,7 +547,7 @@ $.ajax({
                                     textTip('提交成功', 1000, function () {
                                         zlPlane();
                                     });
-                                      // 设置二维码
+																		// 设置二维码
                                 } else {
                                    textTip(data.message, 1000, function () {
                                     });
@@ -639,10 +660,10 @@ let $wfClose = $('.wf-close');
 let rem = document.documentElement.clientWidth / 16;
 $wfForm.on('scroll', function () {
     let scrollTop = $wfForm.scrollTop();
+    $('#rj-form-progress-bar').css('transform', `scaleX(${scrollTop / (wfForm.scrollHeight - wfForm.clientHeight)})`)
     if (imgWidth < scrollTop) {
         if (!$header.hasClass('rj-form-header-show')) $header.addClass('rj-form-header-show');
         if (!$wfClose.hasClass('__change')) $wfClose.addClass('__change');
-        $('#rj-form-progress-bar').css('transform', `scaleX(${scrollTop / (wfForm.scrollHeight - wfForm.clientHeight)})`)
     } else {
         $wfClose.removeClass('__change');
         $header.removeClass('rj-form-header-show');
