@@ -126,16 +126,20 @@ body{
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    position: relative;
-    width: 400px;
-    height: 260px;
-    top: 0px;
+    position: absolute;
+    width: 16rem;
+    height: 11rem;
+    top: 30%;
     text-align: center;
     display: block;
     margin: auto;
 }
  
 #plane {
+    flex-wrap: wrap;
+    /* align-items: center; */
+    align-content: space-around;
+    justify-content: center;
     z-index:3;
     /* background: rgba(255, 255, 255, 0.15); */
     *background: hsl(0, 0%, 88%);
@@ -158,8 +162,8 @@ body{
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
     width: 15.6rem;;
-    height: 260px;
-    top: .5rem;
+    height: 100%;
+    /* top: .5rem; */
  
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
@@ -387,7 +391,7 @@ body{
  
 .message {
     color: white;
-    margin-top: 16px;
+    margin-top: .7rem;
     width: 100%;
     padding: 0 1rem 1rem 1rem;
     -webkit-box-sizing: border-box;
@@ -421,6 +425,13 @@ body{
 }
 .check-ewm-wrap {
     font-weight: lighter;
+}
+.check-ewm-wrap p {
+    margin: 0 0 .4rem;
+}
+.check-ewm-wrap img {
+    width: 9rem !important;
+    margin: 1rem 2rem;
 }
 /* .send {
     -webkit-appearance: none;
