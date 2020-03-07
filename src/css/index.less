@@ -1,16 +1,24 @@
 @font-face {
     font-family: gabrielastencil;
-    src: url(../fonts/gabrielastencil-light.woff2);
+    src: url(https://education.topviewclub.cn/file/assert/gabrielastencil-light.woff2);
 }
+
 @font-face {
     font-family: 'iconfont';  /* project id 1613212 */
-    src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot');
-    src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.eot');
+    src: url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.svg#iconfont') format('svg');
 }
+  
+.iconfont{
+font-family:"iconfont" !important;
+font-size:16px;font-style:normal;
+-webkit-font-smoothing: antialiased;
+-webkit-text-stroke-width: 0.2px;
+-moz-osx-font-smoothing: grayscale;}
 .zl-com-height {
     //display: none;
     position: absolute;
@@ -626,12 +634,12 @@
             // width: 380/@rem;
             // height: 160/@rem;
             // text-align: center;
-            transition: all 1s cubic-bezier(.39,.92,.74,.94);
+            transition: all .7s;
             span {
                 width: 15rem;
                 display: inline-block;
                 font-size: 3.5rem;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                transition: all .7s;
                 position: absolute;
                 left:50%;
                 transform: translate(-50%);
@@ -642,7 +650,7 @@
                 top: 5rem!important;
                 font-size: 1.1rem;
                 display: inline-block;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                transition: all .7s;
                 position: absolute;
                 // bottom: .5rem !important;
                 // text-align: center;
@@ -658,7 +666,7 @@
             // -ms-overflow-style: none;
             overflow: hidden;
             position: absolute;
-            top: 25%;
+            top: 30%;
             // left: 10%;
             // line-height: 40/@rem;
             // line-height: 2.5rem;
@@ -670,37 +678,40 @@
                 // top:-800px;
                 top: 0;
                 // opacity: 0;
-                transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                transition: all .7s;
 
                 .innerContent {
                     position: relative;
                     // height: 200/@rem;
                     // height: 10rem;
                     opacity: 0;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
-
+                    transition: all .7s;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     p {
                         position: absolute;
-                        bottom: 0;
+                        // bottom: 0;
+                        margin: 0 !important;
                     }
                 }
 
                 .opa {
                     opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                    transition: all .7s;
                 }
 
                 .opa1 {
                     opacity: 1;
-                    transition: all 1s cubic-bezier(.39,.92,.74,.94);
+                    transition: all .7s;
                 }
             }
         }
     }
 
     #mq-frontEnd {
-        display: none;
-        background-image: url(../../img/28.jpg);
+        // display: none;
+        // background-image: url(http://education.topviewclub.cn/file/assert/28.jpg);
         // background-color: gray;
         background-repeat: no-repeat;
         background-position: 50% 50%;
@@ -716,8 +727,8 @@
     }
 
     #mq-backend {
-        display: none;
-        background-image: url(../../img/backend1.jpg);
+        // display: none;
+        // background-image: url(http://education.topviewclub.cn/file/assert/backend1.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         // background-color: green;
@@ -732,8 +743,8 @@
     }
 
     #mq-android {
-        display: none;
-        background-image: url(../../img/27.jpg);
+        // display: none;
+        // background-image: url(http://education.topviewclub.cn/file/assert/27.jpg);
         // background-color: yellow;
         background-repeat: no-repeat;
         background-size: cover;
@@ -750,8 +761,8 @@
     }
 
     #mq-machineLearning {
-        display: none;
-        background-image: url(../../img/10.jpg);
+        // display: none;
+        // background-image: url(http://education.topviewclub.cn/file/assert/10.jpg);
         // background-color: red;
         background-repeat: no-repeat;
         background-size: cover;
@@ -776,8 +787,8 @@
     }
 
     #mq-ios {
-        display: none;
-        background-image: url(../../img/25.jpg);
+        // display: none;
+        // background-image: url(http://education.topviewclub.cn/file/assert/25.jpg);
         // background-color: gold;
         background-repeat: no-repeat;
         background-size: cover;
@@ -843,13 +854,15 @@
             transform: translate3d(16rem, 0, 0);
         }
         
-        @bannerTime: 1.5s;
+        @bannerTime: 1.3s;
+        // @bannerCubic: cubic-bezier(0.5, 0, 0, 1);
+        @bannerCubic: cubic-bezier(0.5, 0, .1, 1);
         // 下翻页效果
         .rj-banner-out-to-left {
-            animation: bannerOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToLeft @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgOutToLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToLeft @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -875,10 +888,10 @@
         }
 
         .rj-banner-in-from-right {
-            animation: bannerInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromRight @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgInFromRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromRight @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -904,10 +917,10 @@
 
         // 上翻页效果
         .rj-banner-out-to-right {
-            animation: bannerOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerOutToRight @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgOutToRight @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgOutToRight @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -933,10 +946,10 @@
         }
 
         .rj-banner-in-from-left {
-            animation: bannerInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+            animation: bannerInFromLeft @bannerTime @bannerCubic 0s forwards;
 
             img {
-                animation: bannerImgInFromLeft @bannerTime cubic-bezier(0.5, 0, 0, 1) 0s forwards;
+                animation: bannerImgInFromLeft @bannerTime @bannerCubic 0s forwards;
             }
         }
 
@@ -997,7 +1010,7 @@
 
                 .rj-banner-timer {
                     width: 0%;
-                    animation: btnTimer 4.0s linear;
+                    animation: btnTimer 2.7s linear;
                 }
 
                 @keyframes btnTimer {

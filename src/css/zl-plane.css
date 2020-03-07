@@ -16,6 +16,7 @@ body{
     transition: all 2s linear; */
 }
 #wind{
+    /* background: black !important; */
     position: absolute;
     top: 0px;
     left: 0px;
@@ -125,18 +126,22 @@ body{
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    position: relative;
-    width: 400px;
-    height: 260px;
-    top: 0px;
+    position: absolute;
+    width: 16rem;
+    height: 11rem;
+    top: 30%;
     text-align: center;
     display: block;
     margin: auto;
 }
  
 #plane {
+    flex-wrap: wrap;
+    /* align-items: center; */
+    align-content: space-around;
+    justify-content: center;
     z-index:3;
-    background: rgba(255, 255, 255, 0.15);
+    /* background: rgba(255, 255, 255, 0.15); */
     *background: hsl(0, 0%, 88%);
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
@@ -156,9 +161,9 @@ body{
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    width: 375px;
-    height: 260px;
-    top: 240px;
+    width: 15.6rem;;
+    height: 100%;
+    /* top: .5rem; */
  
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
@@ -386,24 +391,49 @@ body{
  
 .message {
     color: white;
-    margin-top: 16px;
+    margin-top: .7rem;
     width: 100%;
-    padding: 10px;
+    padding: 0 1rem 1rem 1rem;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    height: 140px;
+    /* height: 100px; */
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-font-smoothing: subpixel-antialiased;
     -ms-font-smoothing: subpixel-antialiased;
     -o-font-smoothing: subpixel-antialiased;
-    font-size: 40px;
+    font-size: 1.3rem;
     font-family: "Microsoft YaHei",Helvetica, Arial, Verdana;
-    line-height: 20px;
+    line-height: 18px;
 }
- 
-.send {
+
+.glyphicon-ok::before {
+    color: #52c41a;
+}
+.glyphicon {
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    display: inline-flex;
+    font-family: 'Glyphicons Halflings', '微软雅黑';
+    font-style: normal;
+    font-weight: 400;
+    justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+}
+.check-ewm-wrap {
+    font-weight: lighter;
+}
+.check-ewm-wrap p {
+    margin: 0 0 .4rem;
+}
+.check-ewm-wrap img {
+    width: 9rem !important;
+    margin: 1rem 2rem;
+}
+/* .send {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -424,7 +454,7 @@ body{
     font-family: "Microsoft YaHei";
     background-color: hsl(0, 0%, 94%);
     border-radius: (4px);
-}
+} */
 #plane_close{
     color: #FFF;
     text-decoration: none;
@@ -638,3 +668,5 @@ body{
     height: 260px; */
     transform: translateY(1.6rem) scaleY(.4);
 }
+
+

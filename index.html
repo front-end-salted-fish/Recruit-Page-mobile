@@ -15,8 +15,8 @@
 
         var realitySize = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
         if (rem !== realitySize) {
-        rem = rem * rem / realitySize;
-        docEl.style.fontSize = rem + 'px';
+            rem = rem * rem / realitySize;
+            docEl.style.fontSize = rem + 'px';
         }
     </script>
 </head>
@@ -159,7 +159,7 @@
                 <!-- <li role="presentation" class="active "><i class="glyphicon glyphicon-cloud">11</i> Home</a></li> -->
                 <li role="presentation" id="mq-production">
 
-                    <div class="mq-detail-page" id="mq-frontEnd">
+                    <div class="mq-detail-page" id="mq-frontEnd" style="display: none;background-image: url(https://education.topviewclub.cn/file/assert/28.jpg)">
                         <div class="title" style="opacity: 1;">
                             <span>前端</span>
                             <span class="inner-span">创意、前沿技术</span>
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mq-detail-page" id="mq-backend">
+                    <div class="mq-detail-page" id="mq-backend" style="display: none;background-image: url(https://education.topviewclub.cn/file/assert/backend1.jpg)">
                         <div class="title" style="opacity: 1;">
                             <span>后台</span>
                             <span class="inner-span">坚实后盾、严谨</span>
@@ -211,12 +211,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mq-detail-page" id="mq-android">
-                      <div class="title" style="opacity: 1;">
-                          <span>安卓</span>
-                          <span class="inner-span">技术探索、培养模式</span>
-                      </div>
-                      <div class="wrap">
+                    <div class="mq-detail-page" id="mq-android" style="display: none;background-image: url(https://education.topviewclub.cn/file/assert/27.jpg)">
+                        <div class="title" style="opacity: 1;">
+                            <span>安卓</span>
+                            <span class="inner-span">技术探索、培养模式</span>
+                        </div>
+                        <div class="wrap">
 
                             <div class="innerwrap">
                                 <div class="innerContent">
@@ -238,7 +238,7 @@
                         </div>
                     </div>
 
-                    <div class="mq-detail-page" id="mq-ios">
+                    <div class="mq-detail-page" id="mq-ios" style="display: none;background-image: url(https://education.topviewclub.cn/file/assert/25.jpg)">
                         <div class="title" style="opacity: 1;">
                             <span>iOS</span>
                             <span class="inner-span">优雅极致、中流砥柱</span>
@@ -264,7 +264,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mq-detail-page" id="mq-machineLearning">
+                    <div class="mq-detail-page" id="mq-machineLearning" style="display: none;background-image: url(https://education.topviewclub.cn/file/assert/10.jpg)">
                         <div class="title" style="opacity: 1;" id="mq-machine">
                             <span>机器学习</span>
                             <span class="inner-span">人工智能、大数据</span>
@@ -279,7 +279,7 @@
                                     <p>我们组以Python语言为主，目前工作内容以及发展方向为数据挖掘、机器学习、自然语言处理、计算机视觉等。</p>
                                 </div>
                                 <div class="innerContent">
-                                    <p>目前已在顶会发表过相关论文，并与研究生实验室有合作。<br/>面试要求：1.了解并且使用至少一门编程语言C/Python。</p>
+                                    <p>目前已在顶会发表过相关论文，并与研究生实验室有合作。<br />面试要求：1.了解并且使用至少一门编程语言C/Python。</p>
                                 </div>
                                 <div class="innerContent">
                                     <p>2.良好的自主学习能力，能坚持学习理论知识、数学相关知识、阅读外语文献、研究相关算法。</p>
@@ -317,11 +317,11 @@
 
             </div>
             <ul class="cf-menu-wrap">
-                <li data-index=0 ><span class="cf-skew-text">前端</span></li>
-                <li data-index=1 ><span class="cf-skew-text">后台</span></li>
-                <li data-index=2 ><span class="cf-skew-text">android</span></li>
-                <li data-index=3 ><span class="cf-skew-text">iOS</span></li>
-                <li data-index=4 ><span class="cf-skew-text">机器学习</span></li>
+                <li data-index=0><span class="cf-skew-text">前端</span></li>
+                <li data-index=1><span class="cf-skew-text">后台</span></li>
+                <li data-index=2><span class="cf-skew-text">android</span></li>
+                <li data-index=3><span class="cf-skew-text">iOS</span></li>
+                <li data-index=4><span class="cf-skew-text">机器学习</span></li>
             </ul>
         </div>
         <div class="zl-up-promot">
@@ -333,11 +333,33 @@
     </div>
     <!-- 表单界面 -->
     <div id="zl-wrap-form" style="height:100%;width:100%;overflow: hidden;">
-        <div id="zl-form-page" class="zl-com-height" style="display: none;" scroll="no" >
+        <div id="zl-form-page" class="zl-com-height" style="display: none;" scroll="no">
             <div id="wf-form">
+                <!-- <div class="wf-modal-wrap">
+                    <dialog id="wf-confirm-modal" class="wf-send-modal">
+                        <div class="wf-modal-content">
+                            <svg t="1574164208713" class="wf-model-icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="5819" width="63" height="63">
+                                <path
+                                    d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0zM512 877.714286c-40.228571 0-73.142857-32.914286-73.142857-73.142857s32.914286-73.142857 73.142857-73.142857 73.142857 32.914286 73.142857 73.142857S552.228571 877.714286 512 877.714286zM585.142857 512c0 40.228571-32.914286 73.142857-73.142857 73.142857s-73.142857-32.914286-73.142857-73.142857L438.857143 219.428571c0-40.228571 32.914286-73.142857 73.142857-73.142857s73.142857 32.914286 73.142857 73.142857L585.142857 512z"
+                                    p-id="5820" fill="white"></path>
+                            </svg>
+                            <h3 class="wf-modal-title">请确认如下信息</h3>
+                            <p class="wf-modal-description">
+                                
+                            </p>
+                            <div class="wf-modal-options">
+                                <button id='wf-confirm-btn' style="background-color: #4CAF50; color:white;" class="wf-send-btn btn-round btn-fill btn-fill-left option confirm" data-text="确认"
+                                    onclick="document.querySelector('#wf-confirm-modal').style.display = 'none'"></button>
+                                <button class="wf-send-btn btn-round btn-fill btn-fill-right option cancel" style="background-color: #F44336; color:white;" data-text="修改"
+                                    onclick="document.querySelector('#wf-confirm-modal').style.display = 'none'"></button>
+                            </div>
+                        </div>
+                    </dialog>
+                </div> -->
                 <div id="rj-form-header">
                     <!-- <div id="rj-form-header-title">TopView Studio</div> -->
-                    <img id="rj-tv-header" src="" alt="">
+                    <img id="rj-tv-header" src="https://education.topviewclub.cn/file/assert/tv-header.png" alt="">
                     <!-- <span class="rj-part-1-title">个人信息</span> -->
                     <!-- <span class="rj-part-2-title">你的想法</span> -->
                     <div id="rj-form-progress-bar"></div>
@@ -356,10 +378,12 @@
                         <div class="rj-step2 rj-step">2</div>
                     </div>
                 </div>
-            <!-- </div> -->
+                <!-- </div> -->
                 <div id="rj-form-top-image-container">
                     <div id="rj-form-placeholder-div"></div>
-                    <img id="rj-form-top-image" src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/d4ebafd3a89d4e8d872ed0f5373d95b81581865917258/form-top.jpg" alt="">
+                    <img id="rj-form-top-image"
+                        src="https://education.topviewclub.cn/file/assert/form-top.jpg"
+                        alt="">
                 </div>
                 <div class="first-part">
                     <div class="center">
@@ -383,16 +407,16 @@
                                     <div class="rj-field-line rj-line-valid"></div>
                                     <div class="rj-field-line rj-line-error"></div>
                                 </div>
-                        
-                            <div class="rj-field-icon rj-icon-valid"></div>
-                            <div class="rj-field-icon rj-icon-error"></div>
-                            <div class="rj-field-tip">请输入2~20位中文(可包含·)</div>
-                        </div>
-                        <div class="rj-gender-select rj-boy">
-                            <span class="rj-boy-txt">男</span>
-                            <span class="rj-circle"></span>
-                            <span class="rj-girl-txt">女</span>
-                        </div>
+
+                                <div class="rj-field-icon rj-icon-valid"></div>
+                                <div class="rj-field-icon rj-icon-error"></div>
+                                <div class="rj-field-tip">请输入2~20位中文(可包含·)</div>
+                            </div>
+                            <div class="rj-gender-select rj-boy">
+                                <span class="rj-boy-txt">男</span>
+                                <span class="rj-circle"></span>
+                                <span class="rj-girl-txt">女</span>
+                            </div>
                             <!-- <p class="gender form-group">
                                 <label for="gender" class="need control-label">性别</label>
                                 <input type="radio" name="sex" value="男" checked>男
@@ -409,27 +433,30 @@
                                 </div>
                                 <div class="rj-field-icon rj-icon-valid"></div>
                                 <div class="rj-field-icon rj-icon-error"></div>
-                                <div class="rj-field-tip">你确定这是广工学子的学号？<img class="wangchai" src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png"></div>
+                                <div class="rj-field-tip">你确定这是广工学子的学号？<img class="wangchai"
+                                        src="https://education.topviewclub.cn/file/assert/wangchai.png">
+                                </div>
                             </div>
-                        <div class="rj-field">
-                            <div class="rj-field-placeholder need" id="academy">学院</div>
-                            <label for="academy" class="rj-field-label">学院*</label>
-                            <select class="form-control" name='academy' id="academy-select">
-                                <option>计算机学院</option>
-                                <option>信息工程学院</option>
-                                <option>机电工程学院</option>
-                                <option>自动化学院</option>
-                                <option>材料与能源学院</option> 
-                                <option>环境科学与工程学院</option>
-                                <option>轻工化工学院</option>
-                                <option>土木与交通工程学院</option>
-                                <option>物理与光电工程学院</option>
-                                <option>外国语学院</option>
-                            </select>
-                        </div>
-        
                             <div class="rj-field">
-                                <input id='wf-grade' name='grade' type="text" class="rj-form-input" placeholder="例：计算机科学与技术18(2)">
+                                <div class="rj-field-placeholder need" id="academy">学院</div>
+                                <label for="academy" class="rj-field-label">学院*</label>
+                                <select class="form-control" name='academy' id="academy-select">
+                                    <option>计算机学院</option>
+                                    <option>信息工程学院</option>
+                                    <option>机电工程学院</option>
+                                    <option>自动化学院</option>
+                                    <option>材料与能源学院</option>
+                                    <option>环境科学与工程学院</option>
+                                    <option>轻工化工学院</option>
+                                    <option>土木与交通工程学院</option>
+                                    <option>物理与光电工程学院</option>
+                                    <option>外国语学院</option>
+                                </select>
+                            </div>
+
+                            <div class="rj-field">
+                                <input id='wf-grade' name='grade' type="text" class="rj-form-input"
+                                    placeholder="例：计算机科学与技术18(2)">
                                 <div class="rj-field-placeholder need">年级专业</div>
                                 <label for="grade" class="rj-field-label">年级专业*</label>
                                 <div class="rj-field-lines">
@@ -468,7 +495,8 @@
                                 <div class="rj-field-tip">这可能是个假邮箱</div>
                             </div>
                             <div class="rj-field">
-                                <textarea id='wf-intro' name='intro' class="rj-form-input" maxlength="200" placeholder="（限200字）" rows="13"></textarea>
+                                <textarea id='wf-intro' name='intro' class="rj-form-input" maxlength="200"
+                                    placeholder="（限200字）" rows="13"></textarea>
                                 <div class="rj-field-placeholder need">自我介绍</div>
                                 <label for="intro" class="rj-field-label">自我介绍*</label>
                                 <div class="rj-field-lines">
@@ -517,7 +545,7 @@
                                     placeholder="(限两百字)"></textarea>
                                 <p class="wf-intro-span"></p>
                             </p> -->
-    
+
                         </form>
                         <!-- <div class="tn" id="next-page"><button type="button" class="btn btn-default navbar-btn">下一页</button>
                         </div> -->
@@ -538,13 +566,13 @@
                                 <option>前端</option>
                                 <option>后台</option>
                                 <option>安卓</option>
-                                <option>ios</option>
+                                <option>iOS</option>
                                 <option>机器学习</option>
                             </select>
                         </div>
                         <div class="rj-field">
-                            <textarea name="skills" id='wf-skills' maxlength="100" rows="7"
-                            placeholder="限一百字" class="rj-form-input"></textarea>
+                            <textarea name="skills" id='wf-skills' maxlength="100" rows="7" placeholder="限一百字"
+                                class="rj-form-input"></textarea>
                             <div class="rj-field-placeholder need">计算机类技能经验</div>
                             <label for="skills" class="rj-field-label">计算机类技能经验*</label>
                             <div class="rj-field-lines">
@@ -557,8 +585,8 @@
                             <div class="rj-field-tip">啥都不会？好歹会吹水吧？</div>
                         </div>
                         <div class="rj-field">
-                            <textarea name="cognition" id='wf-cog' maxlength="100" rows="7"
-                            placeholder="限一百字" class="rj-form-input"></textarea>
+                            <textarea name="cognition" id='wf-cog' maxlength="100" rows="7" placeholder="限一百字"
+                                class="rj-form-input"></textarea>
                             <div class="rj-field-placeholder need">谈谈你对我们工作室的认识</div>
                             <label for="cognition" class="rj-field-label">谈谈你对我们工作室的认识*</label>
                             <div class="rj-field-lines">
@@ -568,9 +596,11 @@
                             </div>
                             <div class="rj-field-icon rj-icon-valid"></div>
                             <div class="rj-field-icon rj-icon-error"></div>
-                            <div class="rj-field-tip">总得吹点水吧 <img class="wangchai" src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png"></div>
+                            <div class="rj-field-tip">总得吹点水吧 <img class="wangchai"
+                                src="https://education.topviewclub.cn/file/assert/wangchai.png">
+                            </div>
                         </div>
-                        <div class="rj-field" id="rj-code-field">
+                        <!-- <div class="rj-field" id="rj-code-field">
                             <input type="text" name="code" id="ctl00_txtcode" class="rj-form-input">
                             <input type="button" id="code" >
                             <div class="rj-field-placeholder need">验证码</div>
@@ -583,7 +613,7 @@
                             <div class="rj-field-icon rj-icon-valid"></div>
                             <div class="rj-field-icon rj-icon-error"></div>
                             <div class="rj-field-tip"></div>
-                        </div>
+                        </div> -->
                     </form>
                     <div class="btn-groups">
                         <!-- <button class="last-page btn">上一页</button> -->
@@ -598,11 +628,73 @@
             </div>
             <div id="wind">
                 <div id="plane" class="front">
+
                     <div class="message">
-                        <i class="glyphicon glyphicon-ok">提交成功</i> </div>
-                    <button class="send btn-default btn"> 返回首页 </button> <br />
+                        <i class="glyphicon glyphicon-ok"><span style='font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;padding-left: .7rem;'>提交成功</span></i>
+                    </div>
+                    <div class="check-ewm-wrap">
+                        <!-- <button class="zl-save-btn btn-primary btn-ghost btn-multiple-border-stroke">
+                            <div class="btn-borders-group">
+                              <div class="border-top"></div>
+                              <div class="border-right"></div>
+                              <div class="border-bottom"></div>
+                              <div class="border-left"></div>
+                            </div>
+                            <div class="btn-borders-group">
+                              <div class="border-top"></div>
+                              <div class="border-right"></div>
+                              <div class="border-bottom"></div>
+                              <div class="border-left"></div>
+                            </div>
+                            <div class="btn-borders-group">
+                              <div class="border-top"></div>
+                              <div class="border-right"></div>
+                              <div class="border-bottom"></div>
+                              <div class="border-left"></div>
+                            </div>
+                            <span class="btn-text">长按保存图片</span>
+                          </button> -->
+                          <p style="color:#fff;font-size: .8rem;/* padding-bottom:.1rem; */display:inline-block;text-indent: 1.6rem;text-align: start;/* margin: 0; */">请保存此小程序码，通过微信扫码即可查询考核状态。</p>
+                          <p style="color:#fff;font-size:.8rem;/* padding-bottom: .05rem; */display:inline-block;text-indent: 1.6rem;text-align: start;">通过微信搜索<span style="
+                              padding: 0.15rem;
+                              word-break: break-all;
+                          ">“TopView Recruit”</span>也可以进入小程序。</p>
+                        <span style="color: white; font-size: .68rem;">(Tips：长按图片保存哟！)</span>
+                    </div>
+
+                    <div class="zl-modal-wrap">
+                        <!-- <dialog id="zl-confirm-modal" class="zl-send-modal">
+                            <div class="zl-modal-content">
+                                <svg t="1574164208713" class="zl-model-icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="5819" width="63" height="63">
+                                    <path
+                                        d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0zM512 877.714286c-40.228571 0-73.142857-32.914286-73.142857-73.142857s32.914286-73.142857 73.142857-73.142857 73.142857 32.914286 73.142857 73.142857S552.228571 877.714286 512 877.714286zM585.142857 512c0 40.228571-32.914286 73.142857-73.142857 73.142857s-73.142857-32.914286-73.142857-73.142857L438.857143 219.428571c0-40.228571 32.914286-73.142857 73.142857-73.142857s73.142857 32.914286 73.142857 73.142857L585.142857 512z"
+                                        p-id="5820" fill="white"></path>
+                                </svg>
+                                <h2 class="zl-modal-title">你确定返回首页吗?</h2>
+                                <p class="zl-modal-description">
+                                    注：返回首页页面将会刷新
+                                </p>
+                                <div class="zl-modal-options">
+                                    <button class="zl-send-btn btn-round btn-fill btn-fill-left option confirm"
+                                        data-text="Yes"
+                                        onclick="document.querySelector('#zl-confirm-modal').style.display = 'none';window.location.reload()"></button>
+                                    <button class="zl-send-btn btn-round btn-fill btn-fill-right option cancel"
+                                        data-text="No"
+                                        onclick="document.querySelector('#zl-confirm-modal').style.display = 'none'"></button>
+                                </div>
+                            </div>
+                        </dialog> -->
+                        <form action="javascript:void(0);">
+                            <button class="zl-send-btn btn-danger send" id="rj-plane-send-over-btn">
+                                返回首页
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- <button class="send btn-default btn"> 返回首页 </button> <br /> -->
                 </div>
-    
+
                 <div id="wind_container" class="beginning">
                     <div id="left-wing">
                         <div class="top_left curvable"> </div>
@@ -610,26 +702,29 @@
                         <div class="wing wing1"></div>
                         <div class="wing wing2"></div>
                     </div>
-    
+
                     <div id="right-wing">
                         <div class="top_right curvable"> </div>
                         <div class="bottom_right curvable"> </div>
                         <div class="wing wing3"></div>
                         <div class="wing wing4"></div>
                     </div>
-    
+
                 </div>
-    
+
             </div>
         </div>
     </div>
     <!-- 提前加载图片后删除 -->
-    <div id="rj-img-pre-load" style="display:none ">
-        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/e70fa300f6a14a3f9e22456b546c5d0f1581764421458/front-end-banner.jpg">
-        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/6c1f1a76b9cb4af08fd2aebba06c7a361581770295650/backstage.png">
-        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/1ab1e4687190487290d0d177d73300871581770367403/andriod-banner.jpg">
-        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/5727f3066fbe40279f5e23b09fa82df91581770418754/ios-banner.jpg">
-        <img crossOrigin src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/02674cf25478490b8aaf0406612005fd1581770447407/machine-learning-banner-2.jpg">
-    </div>
+    <!-- <div id="rj-img-pre-load" style="display:none">
+        <img crossOrigin src="https://education.topviewclub.cn/file/assert/front-end-banner.jpg">
+        <img crossOrigin src="https://education.topviewclub.cn/file/assert/backstage.png">
+        <img crossOrigin src="https://education.topviewclub.cn/file/assert/andriod-banner.jpg">
+        <img crossOrigin src="https://education.topviewclub.cn/file/assert/ios-banner.jpg">
+        <img crossOrigin src="https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg">
+    </div> -->
+    <div id="rj-modal-confirm" class="rj-modal-container"></div>
+    <div id="rj-plane-confirm-modal" class="rj-modal-container"></div>
 </body>
+
 </html>

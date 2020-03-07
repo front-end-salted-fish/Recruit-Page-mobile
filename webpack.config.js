@@ -2,24 +2,36 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/js/index.js',
 
     output: {
-        filename: 'bundle.js',
+        filename: 'mobile-bundle.js',
         path: path.resolve(__dirname, './dist')
     },
     devServer: {
         open: true,
         port: 3000,
         hot: true,
-        contentBase: './dist'
+        contentBase: './dist',
+        proxy: {
+            "/api/*": {
+                target: "https://recruit.topviewclub.cn",
+                ws: true,
+                changeOrigin: true,
+            }
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Output Management',
             template: path.join(__dirname, 'index.html'), 
-            filename: 'index.html'
+            filename: 'index.html',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                minifyCSS: true,
+            }
         })
     ],
     module: {

@@ -1,12 +1,25 @@
-// import $ from 'jquery'
 import $ from 'zepto'
 import 'zepto/src/touch'
-import rjBanner from './rj-index'
-import { closeForm } from './form'
-console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
- 
+// import rjBanner from './rj-index'
+// import { closeForm } from './form'
+// import ewmImgSrc from '../../img/ewm.jpg'
+//  // 记得扫完二维码回到最初起点时调用
+import Modal from './Modal'
+
+let planeModal = new Modal({
+	modalId: '#rj-plane-confirm-modal',
+	header: '你确定返回首页吗？',
+	selector: '#rj-plane-send-over-btn',
+	modalBody: '<p>注: 返回首页页面将会刷新</p>',
+	okFunc: () => {
+		window.location.reload();
+	},
+	okBtnId: 'rj-plane-confirm-ok'
+})
+
+planeModal.init();
+
  let zlPlane = () => {
-	 console.log(1)
 	let $wind = $('#wind');
     // 纸飞机
 	    // 起飞
@@ -47,18 +60,27 @@ console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
                                 })
 	                            $('#wind_container').removeClass('fly_away fly_away_first hover').addClass('beginning');
 	                            $('.curvable').removeClass('curved');
-	                            $wind.css({"background-color": "#ccc"}).removeClass('.zl-wind-zindex');
+	                            // $wind.css({"background-color": "#ccc"}).removeClass('.zl-wind-zindex');
+								$wind.css({
+								"background": 'black',  /* fallback for old browsers */
+								// "background": "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)",  /* Chrome 10-25, Safari 5.1-6 */
+								// "background": "linear-gradient(to right, #2C5364, #203A43, #0F2027)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+								}).removeClass('.zl-wind-zindex');
 	                        },2000);
 	                    }, 400);
 	                }, 1333.3);
 	            }, 1866.7);
 	        }, 600);
 	    // });
-	    // 关闭弹窗返回首页
+		// 关闭弹窗返回首页
 	
-	    $("#wind .send").on('click',function(){
+	    // $("#wind .send").on('click',function(){
+
+			// $('.zl-send-modal').css({
+			// 	'display': 'block'
+			// })
 				// rjBanner.stop();
-				// console.log('卓伦');
+				// 
 				// $('#wf-form').fadeIn();
 				// if(rjBanner.isInDetailPage) {
 				// 	rjBanner.backToBanner(()=>{
@@ -69,8 +91,8 @@ console.log(closeForm);  // 记得扫完二维码回到最初起点时调用
 				// 	});
 				// }
 				// else closeForm();
-				window.location.reload()
-	    });
+				// window.location.reload()
+	    // });
  }
  export default zlPlane;
 // $(function(){

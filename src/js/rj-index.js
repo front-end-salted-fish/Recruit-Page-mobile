@@ -1,13 +1,8 @@
-// import testImg1 from '../../img/front-end-banner.jpg'
-// import testImg2 from '../../img/backstage.png'
-// import testImg3 from '../../img/andriod-banner.jpg'
-// import testImg4 from '../../img/ios-banner.jpg'
-// import testImg5 from '../../img/machine-learning-banner-2.jpg'
-
 import 'zepto'
 import 'zepto/src/fx'
 import 'zepto/src/fx_methods'
 import mqObj from '../js/mq-production'
+import EventUtil from './eventUtil'
 let mqFunc = () => {
   mqObj.tag = 1;
     let box = $('.innerwrap');
@@ -22,7 +17,9 @@ let mqFunc = () => {
     boxContent.each(function (item, index) {
       $(this).css({
         opacity: "0",
-        transition: ''
+        transition: '',
+        filter: 'blur(30px)',
+        transform: 'scale(1.3)'
       })
     })
     title.css({
@@ -35,7 +32,7 @@ let mqFunc = () => {
     })
 };
 let $banner = $("#rj-banner"); // 获取整个轮播页面
-let $bannerContainer = $("#rj-banner-container"); // 获取轮播图容器
+// let $bannerContainer = $("#rj-banner-container"); // 获取轮播图容器
 let $bannerPages = $(".rj-banner-page"); // 每个轮播页
 let $bannerImgs = $(".rj-banner-page img"); // 每个轮播页的图片
 let $bannerBtnUl = $("#rj-banner-btns"); // 按钮ul
@@ -44,22 +41,34 @@ let $nextBannerBtn = $("#rj-next"); // 下一页按钮
 let $preBannerBtn = $("#rj-prev"); // 上一页按钮
 let $fontsContainer = $('#rj-fonts-container'); // 文字存储框
 let $detailPages = $('#mq-production').children(); // 获取详情页
-let $whiteCur = $('#rj-white-curtain'); // 切换时的白色幕布
+// let $whiteCur = $('#rj-white-curtain'); // 切换时的白色幕布
 let $spans = $('#rj-3d-tv').find('span'); // 轮播图TopView 字样
 let $rjBackBtn = $('.zl-back-btn'); // 从详情页返回轮播图的按钮
-let $preLoad = $('#rj-img-pre-load img');
+// let $preLoad = $('#rj-img-pre-load img');
 
 // 翻页节流共享previous
 let previous = 0;
-
+let imgSrc = [
+  "https://education.topviewclub.cn/file/assert/front-end-banner.jpg",
+  "https://education.topviewclub.cn/file/assert/backstage.png",
+  "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
+  "https://education.topviewclub.cn/file/assert/ios-banner.jpg",
+  "https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg"
+];
+let imgArr = imgSrc.map(item => {
+  let mewImage = new Image();
+  mewImage.crossOrigin = '';
+  mewImage.src = item;
+  return mewImage;
+})
 
 // 轮播图对象
 let rjBanner = {
   nowPageIndex: 0, // 正在播放的轮播图的index值
   timer: undefined, // 轮播图控制器
-  bannerTotalTime: 4000, // 动画时间+阅读时间
-  bannerWatchTime: 2500, // 阅读时间
-  bannerMoveTime: 1500, // 动画时间
+  bannerTotalTime: 2700, // 动画时间+阅读时间
+  bannerWatchTime: 1400, // 阅读时间
+  bannerMoveTime: 1300, // 动画时间
   bannerTxtDelayTime: 20,
   hasStart: false,
   isStopping: true,
@@ -70,14 +79,13 @@ let rjBanner = {
   // 存放位置类名的数组
   pagesPosClassArr: ["rj-pre-page", "rj-mid-page", "rj-next-page"],
   // 存放图片链接的数组
-  // imgSrc: [testImg1, testImg2, testImg3, testImg4, testImg5, ],
-  imgSrc:[
-    "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/e70fa300f6a14a3f9e22456b546c5d0f1581764421458/front-end-banner.jpg",
-    "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/6c1f1a76b9cb4af08fd2aebba06c7a361581770295650/backstage.png",
-    "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/1ab1e4687190487290d0d177d73300871581770367403/andriod-banner.jpg",
-    "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/5727f3066fbe40279f5e23b09fa82df91581770418754/ios-banner.jpg",
-    "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-15/02674cf25478490b8aaf0406612005fd1581770447407/machine-learning-banner-2.jpg"
-  ],
+  // imgSrc:[
+  //   "https://education.topviewclub.cn/file/assert/front-end-banner.jpg",
+  //   "https://education.topviewclub.cn/file/assert/backstage.png",
+  //   "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
+  //   "https://education.topviewclub.cn/file/assert/ios-banner.jpg",
+  //   "https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg"
+  // ],
   // 中文字体的数组
   cTxtArr: ["前端", "后台", "安卓", "iOS", "机器学习"],
   // 英文字体的数组
@@ -86,12 +94,8 @@ let rjBanner = {
   detailPageColors: ["#452f12","#2d0d43","#454545","#1b3f3b","#16233d"],
   // 初始化函数
   init() {
-    $bannerImgs.eq(1).attr('src', this.imgSrc[0]);
-    // $preLoad.forEach(function (item, index) {
-    //   $(item).attr('src', rjBanner.imgSrc[index]);
-    // });
-    // $bannerImgs[0].src = testImg3;
-    // $bannerImgs[0].src = testImg2;
+    $bannerPages.eq(1).empty().append(imgArr[0]);
+    // $bannerImgs.eq(1).attr('src', this.imgSrc[0]);
     this.setPosClass();
   },
   // 位置class的重置
@@ -201,8 +205,8 @@ let rjBanner = {
   },
   // 设置对应index的轮播图内容
   preSetSrc(className, index) {
-    $($bannerImgs[this.pagesPosClassArr.indexOf(className)])
-      .attr("src", this.imgSrc[index]);
+    $($bannerPages[this.pagesPosClassArr.indexOf(className)]).empty().append(imgArr[index]);
+      // .attr("src", this.imgSrc[index]);
   },
   // 下一页
   nextPage(nextPageIndex) {
@@ -270,7 +274,7 @@ let rjBanner = {
   stop() {
     this.isStopping = true;
     clearInterval(this.timer);
-    // console.log($('.rj-banner-btn-current .rj-banner-timer'));
+    // 
     let $timer = $('.rj-banner-btn-current .rj-banner-timer');
     $timer.css({
       animationPlayState: 'paused',
@@ -284,6 +288,7 @@ let rjBanner = {
   },
   // 点击进入详情页的函数
   toDetailPage(pageIndex) {
+    // 轮播图右滑
     mqFunc();
     this.isInDetailPage = true;
     this.watchPageIndex = pageIndex;
@@ -320,44 +325,8 @@ let rjBanner = {
             })
           },0);
         },0);
-        // $banner.hide(0, function () {
-        //   $curtainUp.animate({
-        //     transform: 'translate3d(0,-100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)',
-        //     complete: () => {
-        //       $('.rj-curtain-container').remove();
-        //     }
-        //   });
-        //   $curtainDown.animate({
-        //     transform: 'translate3d(0,100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)'
-        //   })
-        // });
       }
     })
-    // 轮播图右滑
-    // $banner.removeClass('rj-banner-in').addClass('rj-banner-out').animate({
-    // }, {
-    //   duration: 1,
-    //   easing: 'cubic-bezier(.5,.52,0,1)',
-    //   complete: () => { 
-    //     $banner.hide();
-    //   },
-    //   delay: 500
-    // });
-    // $detailPages.eq(this.watchPageIndex).addClass('cf-blur-in').siblings().addClass('cf-blur-out');
-    // // 幕布出现->消失
-    // $whiteCur.addClass('rj-white-curtain-out').on('webkitAnimationEnd', ()=>{
-    //   $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-out')
-    //           .find('div').addClass('rj-curtain-in-div-pre').removeClass('rj-curtain-out-div-pre');
-    //   this.canBack = true;
-    //   this.hasInitDeg = false;
-    // });
-    // $('#zl-detail-pages').fadeIn();
   },
   // 返回轮播图界面
   backToBanner(callBack1, callBack2) {
@@ -374,7 +343,6 @@ let rjBanner = {
       duration: 700,
       easing: 'cubic-bezier(.57, .02, .1, .99)',
       complete: () => {
-        // $detailPages.eq(this.watchPageIndex).removeClass('cf-blur-out cf-blur-in');
         callBack1 && callBack1();
         $detailPages.removeClass('rj-detail-page-out cf-blur-out cf-blur-in');
         setTimeout(() => {
@@ -399,45 +367,9 @@ let rjBanner = {
             })
           },0);
         },0);
-        // $banner.show(0, function () {
-        //   $curtainUp.animate({
-        //     transform: 'translate3d(0,-100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)',
-        //     complete: () => {
-        //       $('.rj-curtain-container').remove();
-        //     }
-        //   });
-        //   $curtainDown.animate({
-        //     transform: 'translate3d(0,100%,0)'
-        //   }, {
-        //     duration: 700,
-        //     easing: 'cubic-bezier(.57, .02, .1, .99)'
-        //   })
-        // });
       }
     })
     rjBanner.isStopping && rjBanner.start();
-
-    // $banner.removeClass('rj-banner-out').addClass('rj-banner-in').animate({
-    // }, {
-    //   duration: 1,
-    //   easing: 'cubic-bezier(.5,.52,0,1)',
-    //   complete: () => { 
-    //     $banner.show();
-    //   },
-    //   delay: 500
-    // });
-    // // 幕布出现->消失
-    // $whiteCur.addClass('rj-white-curtain-in').on('webkitAnimationEnd', ()=>{
-    //   $whiteCur.off('webkitAnimationEnd').removeClass('rj-white-curtain-in')
-    //   .find('div').addClass('rj-curtain-out-div-pre').removeClass('rj-curtain-in-div-pre');
-    //   $detailPages.removeClass('rj-detail-page-out cf-blur-out cf-blur-in');
-    //   $banner.removeClass('rj-banner-in');
-    //   this.canBack = false;
-    // });
-    // this.start();
   },
   openForm(e) {
     rjBanner.stop();
@@ -448,10 +380,6 @@ let rjBanner = {
     }).addClass('rj-circle-openning'); // 圆点放大
     $formPage.fadeIn(0);
     $('#wf-form').addClass('rj-openning').scrollTop(0);
-    // $('.first-part').attr("style", '').scrollTop(0);
-    // $('.second-part').animate({
-    //   transform: 'translate(16rem)'
-    // }, 800, 'linear');
   },
   createHtml(color) { 
     return `
@@ -469,16 +397,8 @@ let rjBanner = {
 $rjBackBtn.on('touchstart', function () {
   $('.zl-up-promot img').show() // 显示详情页的上滑提示元素
   rjBanner.backToBanner();
-  // if(rjBanner.canBack) {
-  //   rjBanner.canBack = false;
-  //   rjBanner.backToBanner();
-  // }
 })
 
-// 调试用
-// window.rjBanner = rjBanner;
-// window.$banner = $banner;
-// window.$whiteCur = $whiteCur;
 
 // 轮播图初始化
 rjBanner.init();
@@ -520,10 +440,12 @@ function throttlePreBanner(jumpPage) {
 }
 
 // 触发轮播图翻下一页
-$banner.swipeLeft(throttleNextBanner);
+EventUtil.listenTouchDirection(document.querySelector('#rj-banner'), true, false, false, false, throttleNextBanner)
+// $banner.swipeLeft(throttleNextBanner);
 $nextBannerBtn.tap(throttleNextBanner);
 // 触发轮播图翻上一页
-$banner.swipeRight(throttlePreBanner);
+EventUtil.listenTouchDirection(document.querySelector('#rj-banner'), true, false, throttlePreBanner, false, false)
+// $banner.swipeRight(throttlePreBanner);
 $preBannerBtn.tap(throttlePreBanner);
 // 点击按钮跳转轮播图
 $bannerBtnUl.on('tap', '.rj-banner-btn', function () {
@@ -542,36 +464,6 @@ $bannerPages.on('click', function () {
 })
 
 //  轮播图打开表单
-let $joinBtn = $('#rj-join-btn');
-$joinBtn.on('click', rjBanner.openForm);
+$('#rj-join-btn').on('click', rjBanner.openForm);
 
 export default rjBanner;
-
-// 安卓表单聚焦滚动
-// if (/Android [4-6]/.test(navigator.appVersion)) {
-//   window.addEventListener('resize', function () {
-//     if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
-//       window.setTimeout(function () {
-//         document.activeElement.scrollIntoView(true)
-//         //  document.activeElement.scrollIntoViewIfNeeded()
-//        }, 0)
-//      }
-//   })
-// }
-
-// document.addEventListener('tap',function(){
-//   console.log($('#wf-form').height());
-//   console.log($('.first-part').height());
-// })
-
-// var u = navigator.userAgent;
-// if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
-//     //  拿到获取焦点的input
-//     let input = document.querySelector('input')
-//     input.addEventListener('focus', function () {
-//         setInterval(function () {
-//             // 核心
-//             input.scrollIntoView(false);
-//         }, 200)
-//     })
-// }
