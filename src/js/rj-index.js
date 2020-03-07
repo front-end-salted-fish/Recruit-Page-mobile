@@ -49,15 +49,11 @@ let $rjBackBtn = $('.zl-back-btn'); // 从详情页返回轮播图的按钮
 // 翻页节流共享previous
 let previous = 0;
 let imgSrc = [
-  // "https://education.topviewclub.cn/file/assert/front-end-banner.jpg",
   "https://education.topviewclub.cn/file/assert/mb-frontend-newBanner.jpg",
-  // "https://education.topviewclub.cn/file/assert/backstage.png",
   "https://education.topviewclub.cn/file/assert/mb-backend-newBanner2.png",
   "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
-  // "https://education.topviewclub.cn/file/assert/ios-banner.jpg",
   "https://education.topviewclub.cn/file/assert/mb-ios-newBanner.png",
-  // "https://education.topviewclub.cn/file/assert/machine-learning-banner-2.jpg"
-  "https://education.topviewclub.cn/file/assert/mb-ml-newBanner.png",
+  "https://education.topviewclub.cn/file/assert/mb-ml-newBanner.png"
 ];
 let imgArr = imgSrc.map(item => {
   let mewImage = new Image();
