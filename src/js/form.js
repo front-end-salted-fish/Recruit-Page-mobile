@@ -114,22 +114,40 @@ $('#zl-form-page').click(function() {
 //     // $('.first-part').css({display: 'block'})
 // });
 //******************************************* 验证(在html中设置好了maxlength)
+let fixbug = false;
 $(".rj-form-input").on("focus", function (e) {
     let $field = $(this.parentNode);
     // console.log($field);
     if ($field[0].className === 'rj-field') {
         $field.addClass("rj-field-ready");
     }
+
+    fixbug = false
 }).on('blur',function () {
     let $field = $(this.parentNode);
     if(!$(this).val()) {
         $field.removeClass('rj-field-ready rj-field-valid rj-field-error');
     }
+    fixbug = true
     // ios微信软键盘的bug解决
     if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
-        window.scroll(0,0);
+        setTimeout(function() {
+            if (fixbug) {
+                    window.scroll(0,0);
+            }
+        },100)
     }
 })
+if (!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+    $(document).click(function() {
+        if (fixbug) {
+            // ios微信软键盘的bug解决
+            window.scroll(0,0);
+            fixbug = false
+        }
+    })
+}
+
 let $wfName = $("#wf-name");        // 输入名字的input框
 $wfName.on("input", nameCheck);//1.名字
 function nameCheck() {
@@ -280,13 +298,9 @@ function skillsCheck() {
     formData.skills = skills
     if (skills == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
-        // $wfSkills.css("border", "1px solid red");
-        // $(".wf-skills-span").html("<span class='red-form'>不能为空！</span>");
         return false;
     }
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
-    // $wfSkills.css("border", "");
-    // $(".wf-skills-span").html("");
     return true;
 }
 let $wfCog = $("#wf-cog");
@@ -298,19 +312,14 @@ function cogCheck() {
     formData.idea = cog
     if (cog == '') {
         $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-error");
-        // $wfCog.css("border", "1px solid red");
-        // $(".wf-cog-span").html("<span class='red-form'>不能为空！</span>");
         return false;
     }
     $field.removeClass("rj-field-ready rj-field-valid rj-field-error").addClass("rj-field-valid");
-    // $wfCog.css("border", "");
-    // $(".wf-cog-span").html("");
     return true;
 }
 //产生验证码  
 createCode();
 var code; //在全局定义验证码  
-//  var zlFlag = true; //用于解决使用tap事件时触发两次的bug
 function createCode() {
     code = "";
     var codeLength = 4; //验证码的长度  
@@ -328,7 +337,6 @@ function createCode() {
 function check() {
     let $txtCode = $("#ctl00_txtcode");     // 验证码输入框
     let $field = $txtCode.parent(".rj-field");
-
     var inputCode = $txtCode.val().toUpperCase();
     inputCode = filterXSS(inputCode)
     formData.checkBack = inputCode
