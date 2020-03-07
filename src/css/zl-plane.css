@@ -159,7 +159,7 @@ body{
     backface-visibility: hidden;
     width: 15.6rem;;
     height: 260px;
-    top: 60px;
+    top: .5rem;
  
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
