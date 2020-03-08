@@ -3,6 +3,7 @@ import rjBanner from './rj-index'
 import filterXSS from 'xss'
 import { academy, direction } from './myDropDown'
 import Modal from './Modal'
+import loadingImgSrc from '../../img/loading.png'
 // import tvHeader from '../../img/tv-header.png'
 import './gt'
   // 学院
@@ -18,6 +19,15 @@ $(ewmImg).css({
 	margin: '1rem auto'
 })
 $ewmWrap.append(ewmImg);
+// 动态生成loading图片
+let $loading = $('#zl-form-loading')
+let loadingImg = new Image();
+loadingImg.src = loadingImgSrc
+
+$loading.append(loadingImg);
+
+
+
 // 初始化表单数据,用于发给后台的表单数据
 // let formData = {
 //     username: '', // 姓名
@@ -515,10 +525,13 @@ $.ajax({
             document.getElementById("rj-confirm-btn").addEventListener('click', function () {
                 // 模态框按钮点击确定
                 captchaObj.verify();
+
             });
             captchaObj.onSuccess(function () {
                 // 用户验证成功后，进行实际的提交行为
                 var result = captchaObj.getValidate();
+                $loading.fadeIn()
+               
                 $.ajax({
                     url: '/api/captcha/verify',
                     type: 'post',
@@ -528,7 +541,9 @@ $.ajax({
                         geetest_seccode: result.geetest_seccode,
                     },
                     dataType: "text",
+                  
                     success: function (data) {
+
                         if (data === '') {     // 空字符串则验证失败
                             captchaObj.reset(); // 调用该接口进行重置
                         } else {
@@ -545,11 +560,15 @@ $.ajax({
                                   if (data.success == true && data.code == 200) {
                                     ewmImg.src = data.message;
                                     textTip('提交成功', 1000, function () {
+                                    $loading.fadeOut()
+
                                         zlPlane();
                                     });
 																		// 设置二维码
                                 } else {
                                    textTip(data.message, 1000, function () {
+                                    $loading.fadeOut()
+
                                     });
                                 }
                               }
