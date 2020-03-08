@@ -412,7 +412,10 @@ body{
     font-family: "Microsoft YaHei",Helvetica, Arial, Verdana;
     line-height: 18px;
 }
-
+.message i {
+    color: #47bda8;
+    font-size: 1.2rem;
+}
 .glyphicon-ok::before {
     color: #47bda8;
 }
