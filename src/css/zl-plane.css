@@ -136,6 +136,7 @@ body{
 }
  
 #plane {
+    display: flex;
     flex-wrap: wrap;
     /* align-items: center; */
     align-content: space-around;
@@ -161,7 +162,7 @@ body{
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    width: 15.6rem;;
+    width: 16rem;;
     height: 100%;
     /* top: .5rem; */
  
@@ -171,6 +172,10 @@ body{
     -ms-transition: all 0.8s ease-in-out;
     transition: all 0.8s ease-in-out;
     margin: auto;
+    background-image: url(https://education.topviewclub.cn/file/assert/mb-plane-background.png);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
  
 #left-wing,#right-wing {
@@ -390,7 +395,7 @@ body{
 }
  
 .message {
-    color: white;
+    color: black;
     margin-top: .7rem;
     width: 100%;
     padding: 0 1rem 1rem 1rem;
@@ -407,9 +412,12 @@ body{
     font-family: "Microsoft YaHei",Helvetica, Arial, Verdana;
     line-height: 18px;
 }
-
+.message i {
+    color: #47bda8;
+    font-size: 1.2rem;
+}
 .glyphicon-ok::before {
-    color: #52c41a;
+    color: #47bda8;
 }
 .glyphicon {
     position: relative;
@@ -428,6 +436,10 @@ body{
 }
 .check-ewm-wrap p {
     margin: 0 0 .4rem;
+    color: black !important;
+}
+.check-ewm-wrap span {
+    color: black !important;
 }
 .check-ewm-wrap img {
     width: 9rem !important;
@@ -669,4 +681,17 @@ body{
     transform: translateY(1.6rem) scaleY(.4);
 }
 
-
+#plane-logo {
+    width: 12rem;
+    height: 12rem;
+    position: absolute;
+    top:50%;
+    left:50%;
+    opacity: .1;
+    transform: translate(-50%, -50%);
+    background-image: url(https://education.topviewclub.cn/file/assert/mb-plane-logo.png);
+    background-position: center;
+    background-size: 83% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}

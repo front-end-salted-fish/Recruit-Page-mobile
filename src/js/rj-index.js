@@ -51,7 +51,7 @@ let previous = 0;
 let imgSrc = [
   "https://education.topviewclub.cn/file/assert/mb-frontend-newBanner.jpg",
   "https://education.topviewclub.cn/file/assert/mb-backend-newBanner2.png",
-  "https://education.topviewclub.cn/file/assert/andriod-banner.jpg",
+  "https://education.topviewclub.cn/file/assert/mb-android-newBanner.png",
   "https://education.topviewclub.cn/file/assert/mb-ios-newBanner.png",
   "https://education.topviewclub.cn/file/assert/mb-ml-newBanner.png"
 ];
@@ -91,7 +91,7 @@ let rjBanner = {
   // 英文字体的数组
   eTxtArr: ["Front-end", "Back-end", "android", "", "Machine-learning"],
   isInDetailPage: false,
-  detailPageColors: ["#452f12","#2d0d43","#454545","#1b3f3b","#16233d"],
+  detailPageColors: ["#cd4a7f","#321a6b","#0a8b41","#0d667d","#227dc3"],
   // 初始化函数
   init() {
     $bannerPages.eq(1).empty().append(imgArr[0]);
