@@ -693,4 +693,5 @@ body{
     background-position: center;
     background-size: 83% 100%;
     background-repeat: no-repeat;
+    pointer-events: none;
 }
