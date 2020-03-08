@@ -3,7 +3,7 @@ import rjBanner from './rj-index'
 import filterXSS from 'xss'
 import { academy, direction } from './myDropDown'
 import Modal from './Modal'
-import loadingImgSrc from '../../img/loading.png'
+// import loadingImgSrc from '../../img/loading.png'
 // import tvHeader from '../../img/tv-header.png'
 import './gt'
   // 学院
@@ -22,7 +22,7 @@ $ewmWrap.append(ewmImg);
 // 动态生成loading图片
 let $loading = $('#zl-form-loading')
 let loadingImg = new Image();
-loadingImg.src = loadingImgSrc
+loadingImg.src = "https://education.topviewclub.cn/file/assert/loading.png"
 
 $loading.append(loadingImg);
 
@@ -557,18 +557,15 @@ $.ajax({
                                 contentType: "application/json",
                                 success: function (data) {
                                   
+                                    $loading.fadeOut()  
                                   if (data.success == true && data.code == 200) {
                                     ewmImg.src = data.message;
                                     textTip('提交成功', 1000, function () {
-                                    $loading.fadeOut()
-
                                         zlPlane();
                                     });
 																		// 设置二维码
                                 } else {
                                    textTip(data.message, 1000, function () {
-                                    $loading.fadeOut()
-
                                     });
                                 }
                               }

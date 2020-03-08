@@ -9,13 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD
-    "build": "webpack --mode development",
-    "start": "webpack-dev-server --open --host "
-=======
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --host 192.168.0.22"
->>>>>>> 3de1e0c495ce456da5574a3115bec4eb91b6203f
   },
   "keywords": [],
   "author": "",
