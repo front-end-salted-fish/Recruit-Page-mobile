@@ -641,7 +641,7 @@ class textCounter {
     }
     init() {
         let $counter = $(`
-            <div class="rj-text-counter" style="top:${this.rows - 1}.2rem"><span class="rj-current-cnt">0</span>/<span class="rj-total-cnt">${this.maxLen}</span></div>
+            <div class="rj-text-counter" style="top:${this.rows}.3rem"><span class="rj-current-cnt">0</span>/<span class="rj-total-cnt">${this.maxLen}</span></div>
         `);
         this.selector.after($counter);
         this.currentCntSpan = $counter.find('.rj-current-cnt');
@@ -649,7 +649,7 @@ class textCounter {
         let that = this;
         this.currentCnt = this.currentCntSpan.text();  // 当前字数
         this.countEvent = function (e) {
-            let length = $(e.target).val().length > 200 ? 200 : $(e.target).val().length;
+            let length = $(e.target).val().length > this.maxLen ? this.maxLen : $(e.target).val().length;
             that.currentCntSpan.text(length);
         }
         this.selector.on('input', this.countEvent);
@@ -657,15 +657,15 @@ class textCounter {
 }
 (new textCounter({
     selector: $('#wf-intro'),
-    maxLen: 200
+    maxLen: 2000
 })).init();
 (new textCounter({
     selector: $('#wf-skills'),
-    maxLen: 100
+    maxLen: 2000
 })).init();
 (new textCounter({
     selector: $('#wf-cog'),
-    maxLen: 100
+    maxLen: 2000
 })).init();
 
 // 打开表单的时候获取
