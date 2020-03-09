@@ -16,6 +16,7 @@ import rjBanner from '../js/rj-index'
             // $('#rj-img-pre-load').remove();
             // FastClick.attach(document.body);
             $('body').css('background-color','#1d1d1d');
+            $('#rj-banner').css('background','#1d1d1d');
             $('#rj-join-btn').css('mix-blend-mode', 'difference');
         }
     }
