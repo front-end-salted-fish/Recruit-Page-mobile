@@ -1,6 +1,7 @@
 import $ from '../../lib/myZepto'
 // import qianduan from '../../img/1575287686458.jpg'
 // 放置逻辑功能的主函数
+import {direction} from './myDropDown'
 
 $(function() {
    
@@ -10,7 +11,7 @@ $(function() {
     let $joinBtn = $('.zl-join .btn');
     let $rjCircle = $('.rj-menu-overlay_circle');   // 打开表单的放大圆点
     $joinBtn.on("click",function(e) {
-
+        direction.updateSelectkey($('.cf-blur-in').index());
         let $formPage = $('#zl-form-page');
         $rjCircle.css({
             'top': e.clientY + 'px'

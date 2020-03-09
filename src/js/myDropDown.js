@@ -10,6 +10,7 @@ class DropDown {
     this.selectedKey = '';
     this.onfocus = false; // 判断是否聚焦
     this.isDown = false;  // 是否展开
+    this.selectedKeyArr = []; // 选择列表
   }
 
 
@@ -31,6 +32,7 @@ class DropDown {
     let html = '';
     for (let i = 0; i < this.num; i++) {
       let key = this.options.eq(i).text();
+      this.selectedKeyArr.push(key);
       if(!i) {
         html += `<li class="rj-dropDown-option option-selected" style="z-index:${this.zIndex - i};"><span class="rj-option-txt">${key}</span></li>`
         this.selectedKey = key;
@@ -85,6 +87,14 @@ class DropDown {
       this.selectedKey = $(target).find('span').text();
       this.selected.text(this.selectedKey);
       this.dropUp();
+    }
+
+    this.updateSelectkey = (index) => {
+      let key = this.selectedKeyArr[index];
+      let option = this.options.eq(index);
+      option.addClass('option-selected').siblings('li').removeClass('option-selected');
+      this.selectedKey = option.find('span').text();
+      this.selected.text(key);
     }
 
     this.selector.on('click', ".rj-dropDown-selected", this.dropDown);

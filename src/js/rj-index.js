@@ -3,6 +3,7 @@ import 'zepto/src/fx'
 import 'zepto/src/fx_methods'
 import mqObj from '../js/mq-production'
 import EventUtil from './eventUtil'
+import { direction } from './myDropDown'
 let mqFunc = () => {
   mqObj.tag = 1;
     let box = $('.innerwrap');
@@ -379,6 +380,8 @@ let rjBanner = {
       top: e.clientY
     }).addClass('rj-circle-openning'); // 圆点放大
     $formPage.fadeIn(0);
+    
+    direction.updateSelectkey(rjBanner.nowPageIndex);
     $('#wf-form').addClass('rj-openning').scrollTop(0);
   },
   createHtml(color) { 

@@ -394,7 +394,8 @@ let confirmModal = new Modal({
 		okBtnId: 'rj-confirm-btn',
     modalBody: `
 			<p><span style="color:black">姓名：</span><span id="rj-confirm-name"></span></p>
-			<p><span style="color:black">学号：</span><span id="rj-confirm-number"></span></p>
+            <p><span style="color:black">学号：</span><span id="rj-confirm-number"></span></p>
+            <p><span style="color:black">方向：</span><span id="rj-confirm-direction"></span></p>
 			<p style="color: red;">手机：<span id="rj-confirm-phone"></span></p>
 			<p>请确认该手机号是可以正常接收短信的！</p>
 			<p style="color: red;">注意：提交错误后果自负!</p>
@@ -432,7 +433,7 @@ $("#wf-commit").on('click', function () {
             case '安卓':
                 formData.direction = 2;
                 break;
-            case 'ios':
+            case 'iOS':
                 formData.direction = 3;
                 break;
             case '机器学习':
@@ -449,8 +450,11 @@ $("#wf-commit").on('click', function () {
 				
 				$('#rj-confirm-name').text(formData.name);
 				$('#rj-confirm-number').text(formData.schoolId);
-				$('#rj-confirm-phone').text(formData.phone);
-				confirmModal.show();
+                $('#rj-confirm-phone').text(formData.phone);
+                $('#rj-confirm-direction').text(direction.selectedKey);
+                confirmModal.show();
+                // console.log(formData);
+                
         // formData = {
         //     username: info1[0].value.trim(),
         //     studentId: info1[1].value.trim(),
@@ -527,6 +531,7 @@ $.ajax({
                 captchaObj.verify();
 
             });
+            // 验证成功之后才会执行
             captchaObj.onSuccess(function () {
                 // 用户验证成功后，进行实际的提交行为
                 var result = captchaObj.getValidate();
@@ -575,6 +580,8 @@ $.ajax({
                         }
                     }
                 })
+            }).onError(function() {
+                console.log('失败');
             })
         })
     }
